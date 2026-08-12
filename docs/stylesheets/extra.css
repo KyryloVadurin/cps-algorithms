@@ -1,0 +1,34 @@
+/* Закруглені кути для таблиць та тінь */
+.md-typeset table:not([class]) {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Красиві заголовки таблиць */
+.md-typeset table:not([class]) th {
+    background-color: var(--md-primary-bg-color);
+    font-weight: bold;
+}
+
+/* Закруглені кути для блоків коду */
+.md-typeset pre {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Трохи більший відступ між абзацами для зручності читання */
+.md-typeset p {
+    line-height: 1.7;
+}
+
+/* Плавні переходи для кнопок */
+.md-button {
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+}
+
+.md-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
