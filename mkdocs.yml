@@ -1,32 +1,73 @@
 site_name: Прикладні алгоритми кіберфізичних систем
+site_description: Навчальний портал з дисципліни "Прикладні алгоритми КФС"
 
 theme:
   name: material
   language: uk
+  
+  # Логотип і фавікон (використовуємо вбудовані іконки)
+  logo: material/chip
+  favicon: material/chip
+
   palette:
+    # Світла тема
     - scheme: default
-      primary: indigo
+      primary: indigo          # Основний колір (можна змінити на teal, blue, deep purple)
+      accent: cyan             # Акцентний колір (для посилань/кнопок)
       toggle:
         icon: material/brightness-7
-        name: Світла тема
+        name: Переключити на темну тему
+    # Темна тема
     - scheme: slate
       primary: indigo
+      accent: cyan
       toggle:
         icon: material/brightness-4
-        name: Темна тема
-  features:
-    - navigation.tabs          # Меню у вигляді верхніх вкладок
-    - navigation.sections      # Групування розділів
-    - navigation.expand        # Автоматичне розгортання меню
-    - search.suggest
-    - search.highlight
+        name: Переключити на світлу тему
 
+  features:
+    - navigation.tabs          # Верхні вкладки
+    - navigation.tabs.sticky   # Вкладки прилипають при скролі
+    - navigation.sections      # Групування розділів
+    - navigation.expand        # Автоматичне розгортання бокового меню
+    - navigation.top           # Кнопка "Нагору" з'являється при гортанні вниз
+    - navigation.tracking      # URL змінюється залежно від прокрутки
+    - header.autohide          # Шапка ховається при скролі вниз (більше місця для читання)
+    - search.suggest           # Підказки в пошуку
+    - search.highlight         # Підсвічування результатів пошуку
+    - search.share             # Кнопка поділитися пошуком
+    - content.code.copy        # Кнопка "Скопіювати код" в усіх блоках коду
+
+# Шрифт (можна змінити за бажанням)
+font:
+  text: Roboto
+  code: JetBrains Mono
+
+# РОЗШИРЕННЯ МАРКДАУН (ДЛЯ КРАСИВОГО КОНТЕНТУ)
 markdown_extensions:
-  - pymdownx.highlight
-  - pymdownx.superfences
-  - pymdownx.arithmatex:
+  - admonition                 # Кольорові блоки підказок (Info, Warning, Note)
+  - pymdownx.details           # Блоки, що згортаються
+  - pymdownx.superfences       # Покращений код
+  - pymdownx.highlight:        # Підсвітка синтаксису коду
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:           # Вкладки всередині тексту (наприклад, Windows/Linux/macOS)
+      alternate_style: true
+  - pymdownx.emoji:            # Підтримка іконок та емоджі
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tasklist:         # Чекбокси для завдань
+      custom_checkbox: true
+  - pymdownx.arithmatex:       # Формули LaTeX
       generic: true
-  - tables
+  - tables                     # Красиві таблиці
+  - attr_list                  # Можливість додавати CSS-класи (кнопки, теги)
+
+# Подключение кастомного CSS
+extra_css:
+  - stylesheets/extra.css
 
 # ДЕРЕВО НАВІГАЦІЇ
 nav:
