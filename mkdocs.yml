@@ -5,19 +5,18 @@ theme:
   name: material
   language: uk
   
-  # Логотип і фавікон (використовуємо вбудовані іконки)
-  logo: material/chip
-  favicon: material/chip
+  # Правильне підключення іконки логотипу
+  icon:
+    logo: material/chip
+    favicon: material/chip
 
   palette:
-    # Світла тема
     - scheme: default
-      primary: indigo          # Основний колір (можна змінити на teal, blue, deep purple)
-      accent: cyan             # Акцентний колір (для посилань/кнопок)
+      primary: indigo
+      accent: cyan
       toggle:
         icon: material/brightness-7
         name: Переключити на темну тему
-    # Темна тема
     - scheme: slate
       primary: indigo
       accent: cyan
@@ -26,50 +25,56 @@ theme:
         name: Переключити на світлу тему
 
   features:
-    - navigation.tabs          # Верхні вкладки
-    - navigation.tabs.sticky   # Вкладки прилипають при скролі
-    - navigation.sections      # Групування розділів
-    - navigation.expand        # Автоматичне розгортання бокового меню
-    - navigation.top           # Кнопка "Нагору" з'являється при гортанні вниз
-    - navigation.tracking      # URL змінюється залежно від прокрутки
-    - header.autohide          # Шапка ховається при скролі вниз (більше місця для читання)
-    - search.suggest           # Підказки в пошуку
-    - search.highlight         # Підсвічування результатів пошуку
-    - search.share             # Кнопка поділитися пошуком
-    - content.code.copy        # Кнопка "Скопіювати код" в усіх блоках коду
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.tracking
+    - header.autohide
+    - search.suggest
+    - search.highlight
+    - content.code.copy
 
-# Шрифт (можна змінити за бажанням)
 font:
   text: Roboto
   code: JetBrains Mono
 
-# РОЗШИРЕННЯ МАРКДАУН (ДЛЯ КРАСИВОГО КОНТЕНТУ)
 markdown_extensions:
-  - admonition                 # Кольорові блоки підказок (Info, Warning, Note)
-  - pymdownx.details           # Блоки, що згортаються
-  - pymdownx.superfences       # Покращений код
-  - pymdownx.highlight:        # Підсвітка синтаксису коду
+  - admonition
+  - pymdownx.details
+  # Підтримка Mermaid діаграм
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.inlinehilite
-  - pymdownx.tabbed:           # Вкладки всередині тексту (наприклад, Windows/Linux/macOS)
+  - pymdownx.tabbed:
       alternate_style: true
-  - pymdownx.emoji:            # Підтримка іконок та емоджі
+  - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - pymdownx.tasklist:         # Чекбокси для завдань
+  - pymdownx.tasklist:
       custom_checkbox: true
-  - pymdownx.arithmatex:       # Формули LaTeX
+  # Формули LaTeX
+  - pymdownx.arithmatex:
       generic: true
-  - tables                     # Красиві таблиці
-  - attr_list                  # Можливість додавати CSS-класи (кнопки, теги)
+  - tables
+  - attr_list
 
-# Подключение кастомного CSS
+# Підключення MathJax для рендерингу формул
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
 extra_css:
   - stylesheets/extra.css
 
-# ДЕРЕВО НАВІГАЦІЇ
 nav:
   - Головна: index.md
   - РНП: rnp.md
