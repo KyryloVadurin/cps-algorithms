@@ -1,0 +1,65 @@
+site_name: Прикладні алгоритми кіберфізичних систем
+
+theme:
+  name: material
+  language: uk
+  palette:
+    - scheme: default
+      primary: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Світла тема
+    - scheme: slate
+      primary: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Темна тема
+  features:
+    - navigation.tabs          # Меню у вигляді верхніх вкладок
+    - navigation.sections      # Групування розділів
+    - navigation.expand        # Автоматичне розгортання меню
+    - search.suggest
+    - search.highlight
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+  - tables
+
+# ДЕРЕВО НАВІГАЦІЇ
+nav:
+  - Головна: index.md
+  - РНП: rnp.md
+  
+  - Лекції:
+      - "Тема 1. Теоретичні засади": lectures/topic-1.md
+      - "Тема 2. Керуючі конструкції": lectures/topic-2.md
+      - "Тема 3. Архітектура та обмін даними": lectures/topic-3.md
+      - "Тема 4. Обробка структурованих даних": lectures/topic-4.md
+      - "Тема 5. Нечітка логіка та евристики": lectures/topic-5.md
+      - "Тема 6. Пошук, сортування та графи": lectures/topic-6.md
+      - "Тема 7. Хмарні та граничні обчислення": lectures/topic-7.md
+
+  - Лабораторні роботи:
+      - "ЛБ 1. Логіка низького рівня": labs/lab-1.md
+      - "ЛБ 2. Обробка даних з давачів": labs/lab-2.md
+      - "ЛБ 3. Потоки даних u Node-RED": labs/lab-3.md
+      - "ЛБ 4. Обробка матриць сигналів": labs/lab-4.md
+      - "ЛБ 5. Нечіткий контролер": labs/lab-5.md
+      - "ЛБ 6. Маршрутизація в мережах": labs/lab-6.md
+      - "ЛБ 7. Віртуалізація в Docker": labs/lab-7.md
+
+  - Практичні заняття:
+      - "ПЗ 1. Графічна формалізація": practicals/pz-1.md
+      - "ПЗ 2. Трудомісткість процесів": practicals/pz-2.md
+      - "ПЗ 3. Ієрархія тем MQTT": practicals/pz-3.md
+      - "ПЗ 4. Черга повідомлень": practicals/pz-4.md
+      - "ПЗ 5. Задачі маршрутизації": practicals/pz-5.md
+      - "ПЗ 6. Аналіз методів сортування": practicals/pz-6.md
+      - "ПЗ 7. Архітектури Big Data": practicals/pz-7.md
+
+  - Самостійна робота: self-study/index.md
+  - РГР: rgr/index.md
+  - Контрольні роботи: kr/index.md
