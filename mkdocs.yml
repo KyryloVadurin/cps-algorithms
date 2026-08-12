@@ -24,6 +24,8 @@ theme:
         icon: material/brightness-4
         name: Переключити на світлу тему
 
+  copyright: 'Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
+  
   features:
     - navigation.tabs
     - navigation.tabs.sticky
