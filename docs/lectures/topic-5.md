@@ -200,9 +200,9 @@ graph TD
 Логіка переходу в алгоритмі імітації відпалу описується ймовірнісною функцією, яка визначає, чи буде прийнято новий стан системи, якщо він є гіршим за поточний. Математична модель переходу структури до рівноважного стану має наступний вигляд:
 
 $$
-P(x^* \to x_{i+1} \mid x_i) = \begin{cases} 
-1, \quad \text{якщо } F(x^*) - F(x_i) \leq 0 \\ 
-\exp\left(-\frac{F(x^*) - F(x_i)}{Q_i}\right), \quad \text{якщо } F(x^*) - F(x_i) \gt 0 
+P(x^\ast \to x_{i+1} \mid x_i) = \begin{cases} 
+1, \quad \text{якщо } F(x^\ast) - F(x_i) \leq 0 \\ 
+\exp\left(-\frac{F(x^\ast) - F(x_i)}{Q_i}\right), \quad \text{якщо } F(x^\ast) - F(x_i) \gt 0 
 \end{cases}
 $$
 
