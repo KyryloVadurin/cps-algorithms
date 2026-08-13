@@ -40,8 +40,8 @@ flowchart TD
     end
 
     subgraph Wildcard_Subscriptions["Області охоплення шаблонів"]
-        SingleWild["Шаблон: kyiv_plant/+/furnace_01/temperature<br>Охоплює значення температури furnace_01 у всіх цехах"]
-        MultiWild["Шаблон: kyiv_plant/shop_smelting/#<br>Охоплює всі пристрої та параметри цеху плавки"]
+        SingleWild["Шаблон: kyiv_plant/+/furnace_01/temperature Охоплює значення температури furnace_01 у всіх цехах"]
+        MultiWild["Шаблон: kyiv_plant/shop_smelting/# Охоплює всі пристрої та параметри цеху плавки"]
     end
 
     Shop1 -.-> MultiWild
