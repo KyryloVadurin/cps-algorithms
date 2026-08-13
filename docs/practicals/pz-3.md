@@ -25,23 +25,23 @@ $$
 
 ```mermaid
 flowchart TD
-    subgraph Topic_Tree [Ієрархічне дерево тем MQTT]
-        Root[kyiv_plant] --> Shop1[shop_smelting]
-        Root --> Shop2[shop_assembly]
+    subgraph Topic_Tree ["Ієрархічне дерево тем MQTT"]
+        Root["kyiv_plant"] --> Shop1["shop_smelting"]
+        Root --> Shop2["shop_assembly"]
         
-        Shop1 --> Dev1[furnace_01]
-        Shop1 --> Dev2[furnace_02]
+        Shop1 --> Dev1["furnace_01"]
+        Shop1 --> Dev2["furnace_02"]
         
-        Dev1 --> Param1[temperature]
-        Dev1 --> Param2[pressure]
+        Dev1 --> Param1["temperature"]
+        Dev1 --> Param2["pressure"]
         
-        Shop2 --> Dev3[robot_arm]
-        Dev3 --> Param3[vibration]
+        Shop2 --> Dev3["robot_arm"]
+        Dev3 --> Param3["vibration"]
     end
 
-    subgraph Wildcard_Subscriptions [Області охоплення шаблонів]
-        SingleWild["Шаблон: kyiv_plant/+/furnace_01/temperature<br/>(Охоплює значення температури furnace_01 у всіх цехах)"]
-        MultiWild["Шаблон: kyiv_plant/shop_smelting/#<br/>(Охоплює всі пристрої та параметри цеху плавки)"]
+    subgraph Wildcard_Subscriptions ["Області охоплення шаблонів"]
+        SingleWild["Шаблон: kyiv_plant/&#43;/furnace_01/temperature<br/>(Охоплює значення температури furnace_01 у всіх цехах)"]
+        MultiWild["Шаблон: kyiv_plant/shop_smelting/&#35;<br/>(Охоплює всі пристрої та параметри цеху плавки)"]
     end
 
     Shop1 -.- MultiWild
