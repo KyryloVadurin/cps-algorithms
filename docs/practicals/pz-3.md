@@ -25,7 +25,7 @@ $$
 
 ```mermaid
 flowchart TD
-    subgraph Topic_Tree ["Ієрархічне дерево тем MQTT"]
+    subgraph Topic_Tree["Ієрархічне дерево тем MQTT"]
         Root["kyiv_plant"] --> Shop1["shop_smelting"]
         Root --> Shop2["shop_assembly"]
         
@@ -39,13 +39,13 @@ flowchart TD
         Dev3 --> Param3["vibration"]
     end
 
-    subgraph Wildcard_Subscriptions ["Області охоплення шаблонів"]
-        SingleWild["Шаблон: kyiv_plant/&#43;/furnace_01/temperature<br/>(Охоплює значення температури furnace_01 у всіх цехах)"]
-        MultiWild["Шаблон: kyiv_plant/shop_smelting/&#35;<br/>(Охоплює всі пристрої та параметри цеху плавки)"]
+    subgraph Wildcard_Subscriptions["Області охоплення шаблонів"]
+        SingleWild["Шаблон: kyiv_plant/+/furnace_01/temperature<br>Охоплює значення температури furnace_01 у всіх цехах"]
+        MultiWild["Шаблон: kyiv_plant/shop_smelting/#<br>Охоплює всі пристрої та параметри цеху плавки"]
     end
 
-    Shop1 -.- MultiWild
-    Param1 -.- SingleWild
+    Shop1 -.-> MultiWild
+    Param1 -.-> SingleWild
 ```
 
 *Рисунок 1 — Ієрархічне дерево тем MQTT та області охоплення шаблонів підписки + та #*
