@@ -71,6 +71,9 @@ markdown_extensions:
   - tables
   - attr_list
 
+hooks:
+  - hooks/gfm_fixer.py
+
 # Підключення MathJax для рендерингу формул
 extra_javascript:
   - javascripts/mathjax.js
