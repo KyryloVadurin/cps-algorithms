@@ -1,16 +1,21 @@
 window.MathJax = {
   tex: {
-    inlineMath: [["\\(", "\\)"]],
-    displayMath: [["\\[", "\\]"]],
+    inlineMath: [["\\(", "\\)"], ["$", "$"]],
+    displayMath: [["\\[", "\\]"], ["$$", "$$"]],
     processEscapes: true,
     processEnvironments: true
   },
   options: {
-    ignoreHtmlClass: ".*",
+    ignoreHtmlClass: ".*|",
     processHtmlClass: "arithmatex"
   }
 };
 
 document$.subscribe(() => { 
-  MathJax.typesetPromise()
+  if (typeof MathJax !== "undefined" && MathJax.typesetPromise) {
+    MathJax.startup.output.clearCache();
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typesetPromise();
+  }
 });
