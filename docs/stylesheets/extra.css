@@ -22,23 +22,40 @@
 }
 
 /* ==========================================================================
-   2. ТИПОГРАФІКА ТА ТЕКСТ
+   2. ТИПОГРАФІКА — Автоматичне плавне масштабування (Fluid Typography)
    ========================================================================== */
 
-/* Відступ між абзацами та нормальний однаковий розмір тексту для всіх p */
-.md-typeset p {
-    line-height: 1.7;
-    font-size: 1rem; /* Стандартний однаковий розмір для всіх абзаців */
+/* Базовий розмір тексту масштабується відносно ширини екрана (clamp) */
+.md-typeset {
+    /* clamp(мінімальний, плаваючий_від_екрана, максимальний) */
+    font-size: clamp(0.82rem, 0.35vw + 0.75rem, 0.92rem);
+    line-height: 1.6;
 }
 
-/* Заголовки: виразніші та контрастніші */
+/* Абзаци успадковують адаптивний розмір і не перезаписують його */
+.md-typeset p {
+    line-height: 1.6;
+    margin-bottom: 0.9em;
+}
+
+/* Заголовки плавно зменшуються/збільшуються разом із вікном */
 .md-typeset h1 {
+    font-size: clamp(1.4rem, 1.2vw + 1rem, 1.8rem);
     font-weight: 700;
     letter-spacing: -0.02em;
     color: var(--md-default-fg-color);
+    margin-bottom: 0.8em;
 }
 
-.md-typeset h2, .md-typeset h3 {
+.md-typeset h2 {
+    font-size: clamp(1.15rem, 0.8vw + 0.85rem, 1.4rem);
+    font-weight: 600;
+    color: var(--md-default-fg-color);
+    margin-top: 1.4em;
+}
+
+.md-typeset h3 {
+    font-size: clamp(1rem, 0.4vw + 0.8rem, 1.15rem);
     font-weight: 600;
     color: var(--md-default-fg-color);
 }
