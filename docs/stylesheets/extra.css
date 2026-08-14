@@ -1,3 +1,80 @@
+/* ==========================================================================
+   1. ВИПРАВЛЕННЯ ТЕМНОЇ ТЕМИ (SLATE) - Читабельність та контраст
+   ========================================================================== */
+[data-md-color-scheme="slate"] {
+  /* Головний текст (робимо яскравим світло-сірим, щоб не зливався) */
+  --md-typeset-color: #f1f5f9;
+  --md-default-fg-color: #f8fafc;
+  --md-default-fg-color--light: #cbd5e1;
+  --md-default-fg-color--lighter: #94a3b8;
+
+  /* Яскраві контрастні посилання (ціанові) */
+  --md-typeset-a-color: #38bdf8;
+
+  /* Глибокий технологічний фон (Slate 900) замість брудного сірого */
+  --md-default-bg-color: #0f172a;
+  --md-default-bg-color--page: #0f172a;
+  --md-default-bg-color--card: #1e293b;
+
+  /* Колір шапки та панелей */
+  --md-primary-fg-color: #1e293b;
+  --md-primary-fg-color--light: #334155;
+}
+
+/* ==========================================================================
+   2. ТИПОГРАФІКА ТА ПЕРШИЙ РЯДОК / ВСТУПНИЙ ТЕКСТ
+   ========================================================================== */
+
+/* Відступ між абзацами (з вашого CSS) */
+.md-typeset p {
+    line-height: 1.7;
+}
+
+/* Виправлення для першого абзацу сторінки (щоб чітко виділявся і не зливався) */
+.md-typeset > p:first-of-type {
+    font-size: 1.08rem;
+    font-weight: 400;
+    color: var(--md-default-fg-color);
+    margin-top: 0.5em;
+    margin-bottom: 1.2em;
+}
+
+/* Заголовки: виразніші та контрастніші */
+.md-typeset h1 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--md-default-fg-color);
+}
+
+.md-typeset h2, .md-typeset h3 {
+    font-weight: 600;
+    color: var(--md-default-fg-color);
+}
+
+/* Спеціальний клас для виділення важливого вступного рядка (необов'язково) */
+.md-typeset .lead {
+    font-size: 1.15rem;
+    border-left: 4px solid var(--md-accent-fg-color);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+}
+
+/* ==========================================================================
+   3. ШАПКА ТА НАВІГАЦІЯ (Glassmorphism)
+   ========================================================================== */
+.md-header {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+[data-md-color-scheme="slate"] .md-header {
+    background-color: rgba(15, 23, 42, 0.85) !important;
+}
+
+/* ==========================================================================
+   4. ТАБЛИЦІ (З вашого CSS + адаптація під темну тему)
+   ========================================================================== */
+
 /* Закруглені кути для таблиць та тінь */
 .md-typeset table:not([class]) {
     border-radius: 8px;
@@ -7,20 +84,43 @@
 
 /* Красиві заголовки таблиць */
 .md-typeset table:not([class]) th {
-    background-color: var(--md-primary-bg-color);
+    background-color: var(--md-primary-fg-color--light);
+    color: var(--md-default-fg-color);
     font-weight: bold;
 }
 
-/* Закруглені кути для блоків коду */
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) td {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   5. БЛОКИ КОДУ ТА ПРИМІТКИ (Admonitions)
+   ========================================================================== */
+
+/* Закруглені кути та чітка рамка для блоків коду */
 .md-typeset pre {
     border-radius: 8px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-/* Трохи більший відступ між абзацами для зручності читання */
-.md-typeset p {
-    line-height: 1.7;
+[data-md-color-scheme="slate"] .md-typeset pre {
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Рамка в темній темі для чіткості */
 }
+
+.md-typeset code {
+    border-radius: 4px;
+}
+
+/* Закруглення для блоков приміток (Admonition) */
+.md-typeset .admonition,
+.md-typeset details {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================================
+   6. КНОПКИ (З вашого CSS)
+   ========================================================================== */
 
 /* Плавні переходи для кнопок */
 .md-button {
@@ -30,12 +130,12 @@
 
 .md-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* ==========================================
-   Оформлення Mermaid
-   ========================================== */
+/* ==========================================================================
+   7. ОФОРМЛЕННЯ MERMAID (З вашого CSS)
+   ========================================================================== */
 
 /* Центрування діаграм */
 .md-typeset .mermaid {
