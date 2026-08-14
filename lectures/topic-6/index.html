@@ -1,0 +1,1955 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Прикладні алгоритми КФС"">
+      
+      
+      
+      
+        <link rel="prev" href="../topic-5/">
+      
+      
+        <link rel="next" href="../topic-7/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Тема 6. Пошук, сортування та графи в мережах - Прикладні алгоритми кіберфізичних систем</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Прикладні алгоритми кіберфізичних систем" class="md-header__button md-logo" aria-label="Прикладні алгоритми кіберфізичних систем" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v1h3v2h-3v2h3v2h-3v2h3v2h-3v2h3v2h-3v1H6v-1H3v-2h3v-2H3v-2h3v-2H3V9h3V7H3V5h3zm5 11v3h1v-3zm2 0v3h1v-3zm2 0v3h1v-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Прикладні алгоритми кіберфізичних систем
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Тема 6. Пошук, сортування та графи в мережах
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча навчальна програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../topic-1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/lab-1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../practicals/pz-1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../self-study/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../rg/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Розрахунково-графічна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../self-study/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Перелік тестових та практичних завдань для самопідготовки
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Прикладні алгоритми кіберфізичних систем" class="md-nav__button md-logo" aria-label="Прикладні алгоритми кіберфізичних систем" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v1h3v2h-3v2h3v2h-3v2h3v2h-3v2h3v2h-3v1H6v-1H3v-2h3v-2H3v-2h3v-2H3V9h3V7H3V5h3zm5 11v3h1v-3zm2 0v3h1v-3zm2 0v3h1v-3z"/></svg>
+
+    </a>
+    Прикладні алгоритми кіберфізичних систем
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча навчальна програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Теоретичні засади алгоритмізації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Керуючі конструкції в алгоритмах реального часу
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. Архітектура та обмін даними
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Алгоритми обробки структурованих даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Нечітка логіка та евристики
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Пошук, сортування та графи в мережах
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Пошук, сортування та графи в мережах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Алгоритми пошуку (лінійний, бінарний) та їх часова складність
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 Алгоритми пошуку (лінійний, бінарний) та їх часова складність">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Методи сортування: вставки, вибору, обміну (бульбашка), швидке сортування
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 Методи сортування: вставки, вибору, обміну (бульбашка), швидке сортування">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Алгоритми на графах: пошук найкоротшого шляху (Дейкстра, А*)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3 Алгоритми на графах: пошук найкоротшого шляху (Дейкстра, А*)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Хмарні та граничні обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання логіки керування низького рівня
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Розробка алгоритмів обробки даних з давачів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Оркестрування потоків даних у середовищі Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Обробка матриць сигналів у розподілених системах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Побудова нечіткого контролера для автоматизації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Оптимізація маршрутів у сенсорних мережах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Віртуалізація сервісів за допомогою Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Графічна формалізація алгоритмів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Оцінювання трудомісткості обчислювальних процесів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Проєктивання ієрархії тем MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Реалізація черги повідомлень для керування завданнями
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Вирішення задач маршрутизації евристичними методами
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Порівняльний аналіз методів сортування даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Аналіз архітектурних рішень для Big Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../self-study/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Розрахунково-графічна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../self-study/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Перелік тестових та практичних завдань для самопідготовки
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Алгоритми пошуку (лінійний, бінарний) та їх часова складність
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 Алгоритми пошуку (лінійний, бінарний) та їх часова складність">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Методи сортування: вставки, вибору, обміну (бульбашка), швидке сортування
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 Методи сортування: вставки, вибору, обміну (бульбашка), швидке сортування">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Алгоритми на графах: пошук найкоротшого шляху (Дейкстра, А*)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3 Алгоритми на графах: пошук найкоротшого шляху (Дейкстра, А*)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="6">Тема 6. Пошук, сортування та графи в мережах</h1>
+<h2 id="61">6.1 Алгоритми пошуку (лінійний, бінарний) та їх часова складність</h2>
+<p>У теорії алгоритмів та структурованої обробки даних у мережах кіберфізичних систем (КФС) <strong>загальна задача пошуку</strong> визначається як процес встановлення факту присутності та точного місцезнаходження заданого елемента <span class="arithmatex">\(X\)</span> у певній сукупності елементів. Залежно від наявності додаткової інформації про взаємозв'язки між даними (наприклад, їхньої впорядкованості), виділяють два основні підходи до вирішення цієї задачі. У випадку, коли будь-яка апріорна інформація про структуру даних відсутня, єдиним можливим розв’язком є <strong>лінійний (послідовний) пошук</strong>, який базується на послідовному переборі всіх елементів масиву та їх порівнянні з шуканим еталоном. Якщо ж дані в КФС-мережі попередньо впорядковані (наприклад, за зростанням або спаданням), стає можливим застосування значно ефективнішого <strong>двійкового (бінарного) пошуку</strong>, що суттєво скорочує час доступу до інформації в умовах обмежених ресурсів.</p>
+<p><strong>Лінійний пошук</strong> у своїй класичній реалізації за допомогою циклу з передумовою спирається на дві умови закінчення: або елемент <span class="arithmatex">\(X\)</span> знайдено (<span class="arithmatex">\(A[i] = X\)</span>), або всі елементи сукупності вже перебрані, але збігу не виявлено. Важливим аспектом проектування таких алгоритмів для КФС є врахування схеми обчислення булевих виразів компілятором. При використанні <strong>короткої схеми обчислення</strong> вираз у заголовку циклу <code>(i &lt; n) &amp;&amp; (A[i] != X)</code> працює коректно, оскільки при досягненні межі масиву (<span class="arithmatex">\(i = n\)</span>) перша частина виразу стає хибною, і звернення до пам’яті за межами масиву (<span class="arithmatex">\(A[i]\)</span>) не відбувається. Для підвищення швидкодії систем реального часу використовується алгоритмічний прийом <strong>бар'єра</strong>, при якому в кінець масиву додається фіктивний елемент, що дорівнює шуканому <span class="arithmatex">\(X\)</span>. Це дозволяє виключити перевірку індексу (<span class="arithmatex">\(i &lt; n\)</span>) з тіла циклу, оскільки гарантує, що елемент обов'язково буде знайдений (принаймні в позиції бар’єра), що скорочує кількість операцій порівняння в заголовку вдвічі.</p>
+<p><strong>Двійковий (бінарний) пошук</strong> реалізує стратегію «розділяй і володарюй», постійно ділячи область пошуку навпіл. Алгоритм порівнює шуканий елемент із середнім значенням поточного діапазону. Якщо значення збігаються, пошук успішно завершено. Якщо <span class="arithmatex">\(X\)</span> менше середнього, подальший пошук триває в лівій половині, якщо більше — у правій. У посібниках виділяють дві модифікації бінарного пошуку: <strong>Алгоритм 1</strong>, який знаходить випадковий елемент серед тих, що дорівнюють шуканому, та <strong>Алгоритм 2</strong>, що гарантовано знаходить «найлівіший» (перший) елемент у групі дублікатів. Особливу увагу слід приділяти формулі обчислення середнього індексу. Хоча математично вирази <span class="arithmatex">\((L+R)/2\)</span> та <span class="arithmatex">\(L+(R-L)/2\)</span> еквівалентні, у практичному програмуванні другий варіант є пріоритетним, оскільки він запобігає можливому арифметичному переповненню при роботі з великими масивами даних, де сума <span class="arithmatex">\(L+R\)</span> може перевищити максимальне значення цілого типу.</p>
+<p>Ефективність алгоритмів пошуку оцінюється через їхню <strong>часову складність</strong> <span class="arithmatex">\(T(n)\)</span>, яка описує залежність максимальної кількості операцій від розмірності вхідних даних <span class="arithmatex">\(n\)</span>. </p>
+<p>Для <strong>лінійного пошуку</strong> часова складність є лінійною функцією:</p>
+<div class="arithmatex">\[
+T(n) = O(n)
+\]</div>
+<p>де <span class="arithmatex">\(n\)</span> позначає кількість елементів у масиві. У найгіршому випадку, коли елемент відсутній або знаходиться в самому кінці, алгоритм виконує <span class="arithmatex">\(n\)</span> порівнянь.</p>
+<p>Для <strong>двійкового пошуку</strong> часова складність має логарифмічний характер:</p>
+<div class="arithmatex">\[
+T(n) = O(\log_2 n)
+\]</div>
+<p>Ця залежність випливає з того, що на кожному кроці область пошуку зменшується вдвічі. Максимальна кількість порівнянь <span class="arithmatex">\(K_c^{max}\)</span> для масиву довжиною <span class="arithmatex">\(n\)</span> розраховується як <span class="arithmatex">\(K_c^{max} = \lfloor \log_2(n+1) \rfloor\)</span>. </p>
+<p>Порівняння ефективності цих підходів при зростанні обсягу даних наведено нижче (з розрахунку 1 нс на операцію):</p>
+<ul>
+<li>
+<p>При <span class="arithmatex">\(n = 1024\)</span> (<span class="arithmatex">\(1K\)</span>): лінійний пошук потребує близько <span class="arithmatex">\(1,02\)</span> мкс, тоді як бінарний — лише <span class="arithmatex">\(10\)</span> нс.</p>
+</li>
+<li>
+<p>При <span class="arithmatex">\(n = 1,048,576\)</span> (<span class="arithmatex">\(1024K\)</span>): лінійний пошук триватиме понад <span class="arithmatex">\(1,05\)</span> мс, а бінарний — всього <span class="arithmatex">\(20\)</span> нс.</p>
+</li>
+</ul>
+<p>Розрахунок індексу середнього елемента <span class="arithmatex">\(i\)</span> у бінарному пошуку для запобігання переповненню:</p>
+<div class="arithmatex">\[
+i = L + \left\lfloor \frac{R - L}{2} \right\rfloor
+\]</div>
+<p>де <span class="arithmatex">\(L\)</span> — ліва межа поточного діапазону, а <span class="arithmatex">\(R\)</span> — права межа.</p>
+<p>Порівняльна характеристика алгоритмів пошуку за ключовими критеріями ефективності наведена в таблиці.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Характеристика</th>
+<th style="text-align: left;">Лінійний пошук</th>
+<th style="text-align: left;">Лінійний пошук з бар'єром</th>
+<th style="text-align: left;">Бінарний пошук</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Вимоги до даних</strong></td>
+<td style="text-align: left;">Немає (довільний порядок)</td>
+<td style="text-align: left;">Немає + 1 вільна комірка</td>
+<td style="text-align: left;"><strong>Обов'язкова впорядкованість</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Складність <span class="arithmatex">\(T(n)\)</span></strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(O(n)\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(O(n)\)</span></td>
+<td style="text-align: left;"><strong><span class="arithmatex">\(O(\log_2 n)\)</span></strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Кількість порівнянь</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(2n\)</span> (включаючи межу масиву)</td>
+<td style="text-align: left;"><strong><span class="arithmatex">\(n+1\)</span></strong> (економія на межі)</td>
+<td style="text-align: left;"><span class="arithmatex">\(\log_2(n+1)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Типове застосування</strong></td>
+<td style="text-align: left;">Малі масиви, динамічні дані</td>
+<td style="text-align: left;">Оптимізація послідовного пошуку</td>
+<td style="text-align: left;">Великі статичні бази даних</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Режим реального часу</strong></td>
+<td style="text-align: left;">Низька прогнозованість</td>
+<td style="text-align: left;">Середня</td>
+<td style="text-align: left;"><strong>Найвища (стабільний час)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Класифікація результатів бінарного пошуку залежно від напрямку та виходу з циклу:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Умова циклу та виходу</th>
+<th style="text-align: left;">Результат при дублюванні значень</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Цикл з виходом при знаходженні</td>
+<td style="text-align: left;">Знаходить <strong>випадковий</strong> елемент із рівних.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Цикл без виходу (Алгоритм 2)</td>
+<td style="text-align: left;">Знаходить <strong>найлівіший</strong> елемент із рівних.</td>
+</tr>
+</tbody>
+</table>
+<p>Логіка роботи бінарного пошуку (Алгоритм 1) з виходом при знаходженні елемента представлена нижче. Модель ілюструє ітераційне звуження меж <span class="arithmatex">\(L\)</span> та <span class="arithmatex">\(R\)</span>.</p>
+<pre class="mermaid"><code>flowchart TD
+    Start([Початок]) --&gt; Input["/Ввід масиву A,&lt;br/&gt;розміру n, шуканого X/"]
+    Input --&gt; Init["L = 0, R = n-1, ind =&lt;br/&gt;-1"]
+    Init --&gt; LoopCond{L &lt;= R?}
+    LoopCond -- Так --&gt; CalcMid["i = L + (R-L)/2"]
+    CalcMid --&gt; CheckEqual{"A[i] == X?"}
+    CheckEqual -- Так --&gt; Found[ind = i]
+    CheckEqual -- Ні --&gt; CheckLess{"X &lt; A[i]?"}
+    CheckLess -- Так --&gt; SetRight[R = i - 1]
+    CheckLess -- Ні --&gt; SetLeft[L = i + 1]
+    SetRight --&gt; LoopCond
+    SetLeft --&gt; LoopCond
+    Found --&gt; Result{ind != -1?}
+    LoopCond -- Ні --&gt; Result
+    Result -- Так --&gt; OutRes["/Елемент знайдено на&lt;br/&gt;позиції ind/"]
+    Result -- Ні --&gt; OutFail[/Елемент не знайдено/]
+    OutRes --&gt; End([Кінець])
+    OutFail --&gt; End</code></pre>
+<p>Ця схема демонструє перевагу бінарного методу: з кожною ітерацією кількість потенційних кандидатів зменшується вдвічі, що забезпечує логарифмічну швидкість збіжності алгоритму.</p>
+<h3 id="_1">Питання для самоперевірки</h3>
+<ol>
+<li>
+<p>Поясніть, чому для великих обсягів даних у мережах КФС логарифмічна часова складність <span class="arithmatex">\(O(\log_2 n)\)</span> є критично важливою порівняно з лінійною <span class="arithmatex">\(O(n)\)</span>.</p>
+</li>
+<li>
+<p>Яким чином використання «бар’єра» в лінійному пошуку дозволяє скоротити кількість машинних інструкцій у циклі, і які вимоги це накладає на розмір масиву?</p>
+</li>
+<li>
+<p>У чому полягає небезпека використання простої формули <span class="arithmatex">\((L+R)/2\)</span> для знаходження середини в бінарному пошуку при роботі з критичними системами?</p>
+</li>
+<li>
+<p>Чим відрізняється поведінка Алгоритму 1 та Алгоритму 2 бінарного пошуку у випадку, якщо шуканий елемент зустрічається в масиві декілька разів?</p>
+</li>
+<li>
+<p>Опишіть умови, за яких лінійний пошук може виявитися доцільнішим за бінарний, незважаючи на гіршу асимптотичну складність.</p>
+</li>
+</ol>
+<h2 id="62">6.2 Методи сортування: вставки, вибору, обміну (бульбашка), швидке сортування</h2>
+<p>У теорії алгоритмів та структур даних <strong>сортування</strong> визначається як процес переупорядкування заданої сукупності елементів у певній послідовності відповідно до значень їхніх ключів. Залежно від обсягу даних та способу їхнього збереження, методи сортування поділяють на внутрішні (виконуються в оперативній пам'яті) та зовнішні (використовуються для великих масивів на дискових носіях). У межах внутрішнього сортування особливу цінність мають алгоритми, що працюють <strong>«на тому ж місці» (in-place)</strong>, оскільки вони не потребують значних обсягів додаткової пам'яті, крім декількох допоміжних комірок для виконання операцій обміну. Класифікація цих методів базується на логіці вибору, вставки або обміну елементів.</p>
+<p><strong>Сортування прямим обміном</strong>, більш відоме як <strong>бульбашкове сортування (Bubble sort)</strong>, базується на принципі послідовного порівняння та, за необхідності, взаємної перестановки сусідніх елементів масиву. Під час кожного проходу алгоритм «проштовхує» найбільший (або найменший) елемент невідсортованої частини у відповідний кінець структури, подібно до того, як бульбашка повітря піднімається на поверхню води. Посібники виділяють кілька модифікацій цього методу для підвищення його ефективності: використання <strong>прапорця (flag)</strong> для дострокової зупинки при відсутності перестановок, запам'ятовування місця останнього обміну та двостороннє <strong>Шейкерне сортування</strong>, що змінює напрямок проходу на кожній ітерації.</p>
+<p><strong>Сортування прямим вибором (Selection sort)</strong> реалізує стратегію пошуку екстремального значення. На кожному кроці алгоритм знаходить мінімальний елемент у залишку масиву та міняє його місцями з першим елементом цієї невідсортованої частини. Хоча кількість операцій порівняння у цьому методі залишається сталою для будь-якого вхідного стану, кількість фактичних перестановок є значно меншою порівняно з бульбашковим методом, що робить його ефективнішим у випадках, коли операції запису в пам'ять є дорогими.</p>
+<p><strong>Сортування прямою вставкою (Insertion sort)</strong> нагадує процес упорядкування карт у руках гравця: елементи послідовно вилучаються з вихідної структури та вставляються у вже відсортовану частину на свої коректні позиції. Зазвичай виділяють чотири основні варіанти реалізації вставки: з лінійним пошуком місця зліва або справа, з використанням <strong>бар’єра</strong> для виключення перевірки межі масиву, та найбільш досконалий варіант — із <strong>двійковим (бінарним) пошуком</strong> місця вставки, що суттєво прискорює процес пошуку впорядкованої позиції.</p>
+<p><strong>Швидке сортування (Quick sort)</strong>, розроблене Тоні Хоаром, базується на концепції <strong>декомпозиції</strong> або методі «розділяй і володарюй». Алгоритм обирає опорний елемент (півот), після чого розбиває масив на дві підмножини: елементи, менші за півот, та елементи, більші або рівні йому. Процес рекурсивно повторюється для кожної підмножини доти, доки розмір частин не стане тривіальним (один елемент). Цей метод вважається одним із найшвидших у середньому випадку, оскільки він мінімізує кількість переміщень даних на великі відстані.</p>
+<p>Ефективність сортування оцінюється через часову складність <span class="arithmatex">\(T(n)\)</span>, яка залежить від кількості порівнянь та обмінів. Для алгоритмів прямого вибору, вставки та обміну часова складність у найгіршому випадку має квадратичний характер:</p>
+<div class="arithmatex">\[
+T(n) = O(n^2)
+\]</div>
+<p>де <span class="arithmatex">\(n\)</span> — загальна кількість елементів у масиві. Наприклад, при <span class="arithmatex">\(n = 1024K\)</span> (понад мільйон елементів) виконання такого алгоритму може тривати близько 18.3 хвилин, якщо одна операція займає 1 нс.</p>
+<p>Для <strong>швидкого сортування</strong> часова складність у середньому та найкращому випадках є значно меншою і описується логарифмічною залежністю:</p>
+<div class="arithmatex">\[
+T(n) = O(n \log_2 n)
+\]</div>
+<p>Цей показник радикально впливає на швидкість обробки великих даних: для того ж обсягу в <span class="arithmatex">\(1024K\)</span> елементів час виконання складе лише близько 21 мс. Однак слід пам'ятати, що у найгіршому випадку (при вкрай невдалому виборі півота на впорядкованих даних) швидке сортування може деградувати до <span class="arithmatex">\(O(n^2)\)</span>.</p>
+<p>Загальна кількість операцій <span class="arithmatex">\(K\)</span> при виконанні ітераційних методів обчислюється як сума операцій ініціалізації, ітерацій циклів та порівнянь:</p>
+<div class="arithmatex">\[
+K = K_{init} + \sum_{i=1}^{n} (K_{compare} + K_{swap})
+\]</div>
+<p>Для методу вставки з бінарним пошуком кількість порівнянь для пошуку позиції <span class="arithmatex">\(i\)</span>-го елемента зменшується з <span class="arithmatex">\(O(i)\)</span> до <span class="arithmatex">\(O(\log_2 i)\)</span>.</p>
+<p>Порівняльна характеристика розглянутих методів сортування за ключовими показниками асимптотичної складності та стабільності наведена у таблиці нижче.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Метод сортування</th>
+<th style="text-align: left;">Складність (найкраща)</th>
+<th style="text-align: left;">Складність (найгірша)</th>
+<th style="text-align: left;">Стабільність (стійкість)</th>
+<th style="text-align: left;">Особливість реалізації</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Бульбашка (Обмін)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(O(n)\)</span> (з прапорцем)</td>
+<td style="text-align: left;"><span class="arithmatex">\(O(n^2)\)</span></td>
+<td style="text-align: left;">Стійке</td>
+<td style="text-align: left;">Прості перестановки сусідів.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Вибір (Selection)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(O(n^2)\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(O(n^2)\)</span></td>
+<td style="text-align: left;">Нестійке</td>
+<td style="text-align: left;">Мінімум переміщень даних.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Вставка (Insertion)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(O(n)\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(O(n^2)\)</span></td>
+<td style="text-align: left;">Стійке</td>
+<td style="text-align: left;">Ефективне на малих масивах.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Швидке (Quick sort)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(O(n \log n)\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(O(n^2)\)</span></td>
+<td style="text-align: left;">Нестійке</td>
+<td style="text-align: left;">Використовує рекурсію та півот.</td>
+</tr>
+</tbody>
+</table>
+<p>Під <strong>стійкістю (стабільністю)</strong> сортування розуміють здатність алгоритму зберігати відносний порядок елементів із однаковими ключами.</p>
+<p>Логіку виконання однієї ітерації бульбашкового сортування (прохід «бульбашки» знизу вгору) можна представити у вигляді наступної діаграми дій.</p>
+<pre class="mermaid"><code>flowchart TD
+    Start([Початок проходу]) --&gt; Loop{j від n-1 до i+1}
+    Loop -- Так --&gt; Compare{"A[j-1] &gt; A[j]?"}
+    Compare -- Так --&gt; Swap["Обмін A[j-1] та A[j]"]
+    Compare -- Ні --&gt; Next[j = j - 1]
+    Swap --&gt; Next
+    Next --&gt; Loop
+    Loop -- Ні --&gt; Exit([Елемент i встановлено])
+
+    subgraph Bubble_Phase[Механізм обміну]
+    Compare
+    Swap
+    end</code></pre>
+<p>Ця модель ілюструє дискретний крок алгоритму, де на кожній ітерації внутрішнього циклу один елемент гарантовано займає своє фінальне місце у відсортованій частині. Для швидкого сортування така схема включала б фазу розділення масиву відносно опорного елемента.</p>
+<h3 id="_2">Питання для самоперевірки</h3>
+<ol>
+<li>
+<p>Поясніть сутність принципу «бульбашки» при сортуванні обміном. Яким чином використання прапорця (булевої змінної) дозволяє оптимізувати цей процес для вже впорядкованих масивів?</p>
+</li>
+<li>
+<p>Чому сортування вибором вважається кращим за бульбашкове у випадках, коли елементи масиву є складними структурами великого обсягу, хоча асимптотична складність обох методів однакова?</p>
+</li>
+<li>
+<p>Опишіть переваги використання двійкового пошуку замість лінійного при визначенні місця вставки в алгоритмі сортування вставками. Як це впливає на загальну кількість порівнянь?</p>
+</li>
+<li>
+<p>Яку роль відіграє «опорний елемент» (півот) у методі швидкого сортування і як невдалий вибір цього елемента може призвести до деградації швидкодії до <span class="arithmatex">\(O(n^2)\)</span>?</p>
+</li>
+<li>
+<p>На основі розрахункових даних часової складності порівняйте прогнозований час сортування масиву розміром 50 000 елементів методами вставки та швидкого сортування (за умови 1 нс на операцію).</p>
+</li>
+</ol>
+<h2 id="63">6.3 Алгоритми на графах: пошук найкоротшого шляху (Дейкстра, А*)</h2>
+<p>У фундаментальній теорії алгоритмів <strong>графи</strong> розглядаються як універсальна математична модель, що призначена для зображення сукупності об’єктів та існуючих зв’язків між ними. У контексті розробки сучасного програмного забезпечення велика кількість структур, що мають практичну цінність — від систем автомобільних доріг та схем метрополітену до комунікаційних вузлів в мережі Інтернет — представляються саме у вигляді графів. Особливого значення в таких мережах набуває задача відшукання <strong>найкоротшого шляху</strong>, яка в навантажених (зважених) графах полягає у значенні такого ланцюга ребер між двома вершинами, сумарна вага яких є мінімальною.</p>
+<p><strong>Алгоритм Дейкстри</strong> є класичним методом розв’язання задачі пошуку найкоротшого шляху від однієї фіксованої вершини до всіх інших вершин у зваженому графі з невід’ємними вагами ребер. Його логіка базується на "жадібній" стратегії, де на кожному кроці обирається вершина з мінімальною поточною оцінкою відстані, яка ще не була оброблена. Для технічної реалізації цього процесу використовується спеціалізований клас вершин (наприклад, <code>VertexForAlgorithms</code>), який містить додаткові атрибути: <strong>відстань</strong> (<code>mDistance</code>), що ініціалізується умовним значенням нескінченності, та <strong>джерело</strong> (<code>mSource</code>), яке вказує на попередню вершину в оптимальному шляху. Процес завершується, коли всі доступні вершини стають відвіданими, а їхні навантаження відображають фактичну мінімальну відстань від стартової точки.</p>
+<p><strong>Алгоритм А</strong><em> (A-star) є інтелектуальним розширенням методу Дейкстри, орієнтованим на пошук шляху до конкретної цільової вершини. На відміну від звичайного пошуку, який рівномірно розширює зону дослідження, А</em> використовує <strong>евристичну функцію</strong>, яка допомагає алгоритму "вгадувати", у якому напрямку знаходиться мета. Це дозволяє суттєво скоротити кількість переглянутих вершин, що особливо критично для систем реального часу та ігрових симуляцій. Обидва алгоритми спираються на однакову технічну базу збереження інформації про стан вузлів, проте А* потребує додаткового розрахунку пріоритету на основі поєднання пройденої відстані та оцінки залишку шляху.</p>
+<p>При проектуванні таких систем важливо враховувати спосіб представлення графа в пам'яті. Використання <strong>матриці суміжності</strong> є ефективним для задач, де кількість сусідів для кожної вершини є значною, проте для розріджених мереж (де кількість ребер набагато менша за квадрат кількості вершин) такий підхід може призвести до нераціонального використання ресурсів. Ефективність пошуку також прямо залежить від обраної структури даних для черги вершин: використання <strong>пріоритетної черги</strong> на основі двійкової купи забезпечує виконання операцій за логарифмічний час, що робить алгоритм масштабованим для великих обсягів даних.</p>
+<p>Математична логіка оновлення оцінок у алгоритмах пошуку найкоротшого шляху базується на процедурі <strong>релаксації ребра</strong>. Якщо ми позначимо поточну відстань до вершини <span class="arithmatex">\(u\)</span> як <span class="arithmatex">\(d(u)\)</span>, а вагу ребра між вершинами <span class="arithmatex">\(u\)</span> та <span class="arithmatex">\(v\)</span> як <span class="arithmatex">\(w(u, v)\)</span>, то нова оцінка відстані до вершини <span class="arithmatex">\(v\)</span> розраховується за формулою:</p>
+<div class="arithmatex">\[
+d(v) = \min(d(v), d(u) + w(u, v))
+\]</div>
+<p>У цій залежності змінна <span class="arithmatex">\(d(v)\)</span> позначає найкоротшу відому відстань від старту до вузла <span class="arithmatex">\(v\)</span> на поточному етапі. Якщо сума відстані до вершини <span class="arithmatex">\(u\)</span> та ваги переходу <span class="arithmatex">\((u, v)\)</span> є меншою за вже зафіксовану в <span class="arithmatex">\(v\)</span>, значення <span class="arithmatex">\(d(v)\)</span> оновлюється, а <span class="arithmatex">\(u\)</span> записується як нове джерело (<code>mSource</code>) для вузла <span class="arithmatex">\(v\)</span>.</p>
+<p>Асимптотична складність алгоритму Дейкстри при використанні пріоритетної черги визначається кількістю вершин <span class="arithmatex">\(V\)</span> та ребер <span class="arithmatex">\(E\)</span> і описується виразом:</p>
+<div class="arithmatex">\[
+T = O(E \cdot \log V)
+\]</div>
+<p>У цій формулі операція <span class="arithmatex">\(\log V\)</span> відображає складність процедур "просіювання" елементів у двійковій купі під час додавання або вилучення вузла з найвищим пріоритетом.</p>
+<p>Для алгоритму А* функція вартості вузла <span class="arithmatex">\(f(n)\)</span> поєднує реальні витрати та прогноз:</p>
+<div class="arithmatex">\[
+f(n) = g(n) + h(n)
+\]</div>
+<p>Де:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(g(n)\)</span> — фактична вартість шляху від стартової вершини до поточної вершини <span class="arithmatex">\(n\)</span>.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(h(n)\)</span> — евристична оцінка вартості найкоротшого шляху від вершини <span class="arithmatex">\(n\)</span> до мети (наприклад, евклідова відстань).</p>
+</li>
+</ul>
+<p>Порівняльна характеристика алгоритмів пошуку найкоротшого шляху на графах наведена в таблиці нижче на основі аналізу теоретичних матеріалів.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Критерій порівняння</th>
+<th style="text-align: left;">Алгоритм Дейкстри</th>
+<th style="text-align: left;">Алгоритм А*</th>
+<th style="text-align: left;">Алгоритм Беллмана-Форда</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Тип пошуку</strong></td>
+<td style="text-align: left;">Рівномірний (від однієї до всіх).</td>
+<td style="text-align: left;">Направлений (евристичний).</td>
+<td style="text-align: left;">Універсальний (від однієї до всіх).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Обмеження по вагах</strong></td>
+<td style="text-align: left;">Тільки невід’ємні ваги.</td>
+<td style="text-align: left;">Тільки невід’ємні ваги.</td>
+<td style="text-align: left;">Допускає від’ємні ваги.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Часова складність</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(O(E \log V)\)</span> (з купою).</td>
+<td style="text-align: left;">Залежить від евристики.</td>
+<td style="text-align: left;"><span class="arithmatex">\(O(V \cdot E)\)</span>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Використання пам'яті</strong></td>
+<td style="text-align: left;">Зберігає відстані до всіх вузлів.</td>
+<td style="text-align: left;">Потребує менше вузлів у черзі.</td>
+<td style="text-align: left;">Ітераційне оновлення всього графа.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Основна перевага</strong></td>
+<td style="text-align: left;">Гарантована оптимальність.</td>
+<td style="text-align: left;">Висока швидкість до мети.</td>
+<td style="text-align: left;">Робота з від’ємними циклами.</td>
+</tr>
+</tbody>
+</table>
+<p>Технічні атрибути вершини для реалізації цих алгоритмів згідно з об'єктно-орієнтованою моделлю:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Назва атрибута</th>
+<th style="text-align: left;">Математичний зміст</th>
+<th style="text-align: left;">Початкове значення</th>
+<th style="text-align: left;">Призначення в алгоритмі</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>mDistance</strong></td>
+<td style="text-align: left;">Оцінка найкоротшого шляху.</td>
+<td style="text-align: left;"><span class="arithmatex">\(INF\)</span> (нескінченність)</td>
+<td style="text-align: left;">Зберігання накопиченої ваги переходу.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>mSource</strong></td>
+<td style="text-align: left;">Батьківська вершина.</td>
+<td style="text-align: left;"><span class="arithmatex">\(None\)</span> (невизначено)</td>
+<td style="text-align: left;">Відновлення шляху у зворотному порядку.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>mKey</strong></td>
+<td style="text-align: left;">Ідентифікатор вузла.</td>
+<td style="text-align: left;">Ціле число / рядок</td>
+<td style="text-align: left;">Унікальне ім'я вершини в графі.</td>
+</tr>
+</tbody>
+</table>
+<p>Життєвий цикл алгоритму Дейкстри, що забезпечує ітераційне оновлення навантажень у вершинах, представлений наступною моделлю.</p>
+<pre class="mermaid"><code>flowchart TD
+    Start([Початок]) --&gt; Init["Встановити для всіх&lt;br/&gt;вузлів distance = INF,&lt;br/&gt;source = None"]
+    Init --&gt; SetStart["Для стартової вершини&lt;br/&gt;distance = 0"]
+    SetStart --&gt; Queue["Додати всі вершини у&lt;br/&gt;пріоритетну чергу"]
+    Queue --&gt; Loop{Черга не порожня?}
+    Loop -- Ні --&gt; End([Кінець: шляхи знайдено])
+    Loop -- Так --&gt; Extract["Вилучити вершину u з&lt;br/&gt;min distance"]
+    Extract --&gt; Neighbors{"Для кожного сусіда v&lt;br/&gt;вузла u"}
+    Neighbors -- Релаксація --&gt; Check{"dist_u + weight &lt;&lt;br/&gt;dist_v?"}
+    Check -- Так --&gt; Update["dist_v = dist_u +&lt;br/&gt;weight, source_v = u"]
+    Update --&gt; Neighbors
+    Check -- Ні --&gt; Neighbors
+    Neighbors -- Всі сусіди оброблені --&gt; Loop</code></pre>
+<p>Ця модель ілюструє дискретний крок вибору вершини з мінімальним навантаженням та подальшу перевірку умови релаксації для всіх її суміжних вузлів. На графіку це виглядає як хвиля, що розповсюджується від джерела, поступово уточнюючи значення у віддалених частинах графа.</p>
+<h3 id="_3">Питання для самоперевірки</h3>
+<ol>
+<li>
+<p>Поясніть роль "нескінченності" (<span class="arithmatex">\(INF\)</span>) при ініціалізації вершин перед початком роботи алгоритму Дейкстри. Як це значення впливає на першу операцію релаксації?</p>
+</li>
+<li>
+<p>Чому використання пріоритетної черги на основі двійкової купи критично впливає на часову складність алгоритму при роботі з графами, що мають тисячі вершин?</p>
+</li>
+<li>
+<p>У чому полягає принципова різниця в поведінці алгоритму Дейкстри та алгоритму А* при пошуку шляху до конкретної цілі в умовах великого графа?</p>
+</li>
+<li>
+<p>Яким чином за допомогою значень атрибутів <code>mSource</code> (джерело) можна відновити повний ланцюжок вершин найкоротшого шляху після завершення розрахунків?</p>
+</li>
+<li>
+<p>Проаналізуйте обмеження алгоритму Дейкстри: чому він може працювати некоректно у графах, де існують ребра з від’ємною вагою?</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

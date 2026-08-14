@@ -1,0 +1,2672 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Прикладні алгоритми КФС"">
+      
+      
+      
+      
+      
+        <link rel="next" href="lectures/topic-1/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Прикладні алгоритми кіберфізичних систем</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#i" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="." title="Прикладні алгоритми кіберфізичних систем" class="md-header__button md-logo" aria-label="Прикладні алгоритми кіберфізичних систем" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v1h3v2h-3v2h3v2h-3v2h3v2h-3v2h3v2h-3v1H6v-1H3v-2h3v-2H3v-2h3v-2H3V9h3V7H3V5h3zm5 11v3h1v-3zm2 0v3h1v-3zm2 0v3h1v-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Прикладні алгоритми кіберфізичних систем
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Робоча навчальна програма
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча навчальна програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="lectures/topic-1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="labs/lab-1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="practicals/pz-1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="self-study/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="rg/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Розрахунково-графічна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="self-study/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Перелік тестових та практичних завдань для самопідготовки
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Прикладні алгоритми кіберфізичних систем" class="md-nav__button md-logo" aria-label="Прикладні алгоритми кіберфізичних систем" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v1h3v2h-3v2h3v2h-3v2h3v2h-3v2h3v2h-3v1H6v-1H3v-2h3v-2H3v-2h3v-2H3V9h3V7H3V5h3zm5 11v3h1v-3zm2 0v3h1v-3zm2 0v3h1v-3z"/></svg>
+
+    </a>
+    Прикладні алгоритми кіберфізичних систем
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча навчальна програма
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча навчальна програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        РОБОЧА ПРОГРАМА ОСВIТНЬОГО КОМПОНЕНТА«Прикладні алгоритми кіберфізичних систем»
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="РОБОЧА ПРОГРАМА ОСВIТНЬОГО КОМПОНЕНТА«Прикладні алгоритми кіберфізичних систем»">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Опис освітнього компонента
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Мета та завдання навчальної дисципліни
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Компетентності та програмні результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Програма навчальної дисципліни
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Структура освітнього компонента
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Теми лабораторних робіт
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Теми практичних занять
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Самостійна робота
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Методи навчання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Методи контролю
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Розподіл балів, які отримують здобувачі за темами
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Розподіл балів, які отримують здобувачі за видами занять
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Критерії оцінювання за видом контролю «Розрахунково-графічна робота»
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-ects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Шкала оцінювання: національна та ECTS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Рекомендована література та інформаційні ресурси
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Рекомендована література та інформаційні ресурси">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Основна література
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Додаткова література
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інформаційні ресурси в Інтернеті
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lectures/topic-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Теоретичні засади алгоритмізації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lectures/topic-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Керуючі конструкції в алгоритмах реального часу
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lectures/topic-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. Архітектура та обмін даними
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lectures/topic-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Алгоритми обробки структурованих даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lectures/topic-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Нечітка логіка та евристики
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lectures/topic-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Пошук, сортування та графи в мережах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lectures/topic-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Хмарні та граничні обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="labs/lab-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання логіки керування низького рівня
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="labs/lab-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Розробка алгоритмів обробки даних з давачів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="labs/lab-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Оркестрування потоків даних у середовищі Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="labs/lab-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Обробка матриць сигналів у розподілених системах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="labs/lab-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Побудова нечіткого контролера для автоматизації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="labs/lab-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Оптимізація маршрутів у сенсорних мережах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="labs/lab-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Віртуалізація сервісів за допомогою Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="practicals/pz-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Графічна формалізація алгоритмів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="practicals/pz-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Оцінювання трудомісткості обчислювальних процесів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="practicals/pz-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Проєктивання ієрархії тем MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="practicals/pz-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Реалізація черги повідомлень для керування завданнями
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="practicals/pz-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Вирішення задач маршрутизації евристичними методами
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="practicals/pz-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Порівняльний аналіз методів сортування даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="practicals/pz-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Аналіз архітектурних рішень для Big Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="self-study/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Розрахунково-графічна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="self-study/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Перелік тестових та практичних завдань для самопідготовки
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        РОБОЧА ПРОГРАМА ОСВIТНЬОГО КОМПОНЕНТА«Прикладні алгоритми кіберфізичних систем»
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="РОБОЧА ПРОГРАМА ОСВIТНЬОГО КОМПОНЕНТА«Прикладні алгоритми кіберфізичних систем»">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Опис освітнього компонента
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Мета та завдання навчальної дисципліни
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Компетентності та програмні результати навчання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Програма навчальної дисципліни
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Структура освітнього компонента
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Теми лабораторних робіт
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Теми практичних занять
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Самостійна робота
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Методи навчання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Методи контролю
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Розподіл балів, які отримують здобувачі за темами
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Розподіл балів, які отримують здобувачі за видами занять
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Критерії оцінювання за видом контролю «Розрахунково-графічна робота»
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-ects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Шкала оцінювання: національна та ECTS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Рекомендована література та інформаційні ресурси
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Рекомендована література та інформаційні ресурси">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Основна література
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Додаткова література
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Інформаційні ресурси в Інтернеті
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Робоча навчальна програма</h1>
+
+<h2 id="i">РОБОЧА ПРОГРАМА ОСВIТНЬОГО КОМПОНЕНТА<br>«Прикладні алгоритми кіберфізичних систем»</h2>
+<h3 id="1">1. Опис освітнього компонента</h3>
+<p>Освітній компонент «Прикладні алгоритми кіберфізичних систем» належить до циклу обов'язкових дисциплін професійної підготовки здобувачів вищої освіти першого (бакалаврського) рівня. Програма спрямована на вивчення фундаментальних та прикладних алгоритмічних рішень, що забезпечують безпосередню взаємодію обчислювальних компонентів із фізичними процесами, первинними перетворювачами, сенсорними мережами та виконавчими механізмами в умовах реального часу.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Найменування показників</th>
+<th style="text-align: left;">Галузь знань, спеціальність, освітній рівень</th>
+<th style="text-align: left;">Характеристика навчальної дисципліни</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Кількість кредитів ECTS:</strong> 6</td>
+<td style="text-align: left;"><strong>Галузь знань:</strong> F «Інформаційні технології»</td>
+<td style="text-align: left;"><strong>Вид дисципліни:</strong> Обов'язкова</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Модулів:</strong> 1<br><strong>Кількість змістових модулів:</strong> 2<br><strong>Індивідуальне науково-дослідне завдання:</strong> РГР<br><strong>Загальний обсяг годин:</strong> 180</td>
+<td style="text-align: left;"><strong>Спеціальність:</strong> F7 «Комп'ютерна інженерія»<br><strong>Освітня програма:</strong> «Комп'ютерна інженерія»</td>
+<td style="text-align: left;"><strong>Рік підготовки:</strong> 1-й<br><strong>Семестр:</strong> 2-й</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Тижневих годин</strong> для денної форми навчання: аудиторних – 3; самостійної роботи студента – 6</td>
+<td style="text-align: left;"><strong>Освітній рівень:</strong> Перший (бакалаврський)</td>
+<td style="text-align: left;"><strong>Лекції:</strong> 30 год.<br><strong>Практичні заняття:</strong> 14 год.<br><strong>Лабораторні заняття:</strong> 16 год.<br><strong>Самостійна робота (СР):</strong> 90 год.<br><strong>Індивідуальне завдання:</strong> РГР, 30 год.<br><strong>Вид підсумкового контролю:</strong> Іспит</td>
+</tr>
+</tbody>
+</table>
+<p>співвідношення кількості годин аудиторних занять до самостійної і індивідуальної
+роботи становить для денної форми навчання – 1/2.</p>
+<hr />
+<h3 id="2">2. Мета та завдання навчальної дисципліни</h3>
+<p><strong>Метою викладання освітнього компонента</strong> є формування у здобувачів вищої освіти комплексу теоретичних знань, системного інженерного мислення та практичних навичок із розробки, оптимізації, програмної реалізації та критичного аналізу прикладних алгоритмів низького та середнього рівнів, які функціонують у складі сучасних кіберфізичних систем.</p>
+<p><strong>Основними завданнями освітнього компонента є:</strong></p>
+<ul>
+<li>
+<p>засвоєння фундаментальних моделей обчислень та формальних принципів побудови алгоритмів для низькоуровневого керування виконавчою автоматикою;</p>
+</li>
+<li>
+<p>опанування алгоритмічних прийомів фільтрації, первинної обробки та агрегації даних від різнорідних сенсорних пристроїв;</p>
+</li>
+<li>
+<p>вивчення архітектурних концепцій Інтернету речей, протоколів потокового обміну даними та принципів ієрархічного адресування;</p>
+</li>
+<li>
+<p>засвоєння алгоритмів та структур даних для опрацювання часових рядів, векторно-матричних сигналів і черг повідомлень у розподілених обчислювальних середовищах;</p>
+</li>
+<li>
+<p>набуття практичних навичок побудови нечітких контролерів, застосування евристичних методів та алгоритмів на графах для розв'язання задач маршрутизації та прийняття рішень;</p>
+</li>
+<li>
+<p>оволодіння сучасними інструментами віртуалізації, контейнеризації та хмарно-граничного обчислення для забезпечення функціональної та операційної безпеки КФС.</p>
+</li>
+</ul>
+<p><strong>У результаті вивчення освітнього компонента здобувач вищої освіти повинен:</strong></p>
+<p><strong>Знати:</strong></p>
+<ul>
+<li>
+<p>математичні та формальні моделі обчислень, що лежать в основі алгоритмізації процесів у кіберфізичних системах;</p>
+</li>
+<li>
+<p>часову та ємнісну складність алгоритмів, методи її асимптотичного оцінювання за допомогою <span class="arithmatex">\(O\)</span>-символіки;</p>
+</li>
+<li>
+<p>особливості виконання циклічних та розгалужених керуючих конструкцій в умовах обмежених обчислювальних ресурсів та суворих часових обмежень;</p>
+</li>
+<li>
+<p>сучасні мережеві протоколи передачі даних (зокрема MQTT та WebSockets) та структури побудови ієрархічних тем для сенсорних мереж;</p>
+</li>
+<li>
+<p>математичні засади нечіткої логіки, методи дефазифікації та евристичні алгоритми оптимізації;</p>
+</li>
+<li>
+<p>алгоритми пошуку найкоротших шляхів та топологічного сортування в граф-орієнтованих структурах КФС;</p>
+</li>
+<li>
+<p>концепції контейнеризації, принципи розгортання та оркестрування Edge/Fog сервісів.</p>
+</li>
+</ul>
+<p><strong>Уміти:</strong></p>
+<ul>
+<li>
+<p>розробляти, формалізувати та візуалізувати алгоритми керування за допомогою структурних діаграм дій та блок-схем;</p>
+</li>
+<li>
+<p>кодувати алгоритми обробки даних з давачів у середовищах Node.js, Node-RED та Arduino IDE;</p>
+</li>
+<li>
+<p>здійснювати аналіз трудомісткості обчислювальних процесів для найгіршого та середнього випадків;</p>
+</li>
+<li>
+<p>проєктувати архітектуру потоків даних між сенсорними вузлами, брокерами повідомлень та хмарними аналітичними платформами;</p>
+</li>
+<li>
+<p>реалізовувати алгоритми нечіткого керування для автоматизації фізичних процесів у КФС;</p>
+</li>
+<li>
+<p>розгортати мікросервісні обчислювальні конвеєри в ізольованих Docker-контейнерах для безпечного збору та аналізу даних.</p>
+</li>
+</ul>
+<h3 id="3">3. Компетентності та програмні результати навчання</h3>
+<p>Вивчення освітнього компонента дає можливість здобути компетентності та набути відповідні результати навчання, потрібні для подальшої професійної діяльності:</p>
+<p><strong>Загальні компетентності (ЗК):</strong></p>
+<ul>
+<li>
+<p><strong>ЗК 1.</strong> Здатність до абстрактного мислення, аналізу та синтезу</p>
+</li>
+<li>
+<p><strong>ЗК 2.</strong> Здатність вчитися і оволодівати сучасними знаннями</p>
+</li>
+<li>
+<p><strong>ЗК 3.</strong> Здатність застосовувати знання у практичних ситуаціях</p>
+</li>
+<li>
+<p><strong>ЗК 7.</strong> Вміння виявляти, ставити та вирішувати проблеми</p>
+</li>
+</ul>
+<p><strong>Фахові компетентності (ФК):</strong></p>
+<ul>
+<li>
+<p><strong>ФК 15.</strong> Здатність аргументувати вибір методів розв’язування спеціалізованих задач, критично оцінювати отримані результати, обґрунтовувати та захищати прийняті рішення</p>
+</li>
+<li>
+<p><strong>ФК 17.</strong> Здатність проєктувати комп’ютерні системи для керування ергатичними системами, екологічного та енергетичного моніторингу, моніторингу складних систем на основі інтелектуального аналізу даних</p>
+</li>
+</ul>
+<p><strong>Програмні результати навчання (ПРН):</strong></p>
+<ul>
+<li>
+<p><strong>ПРН 2.</strong> Мати навички проведення експериментів, збирання даних та моделювання в комп’ютерних системах</p>
+</li>
+<li>
+<p><strong>ПРН 6.</strong> Вміти застосовувати знання для ідентифікації, формулювання і розв’язування технічних задач спеціальності, використовуючи методи, що є найбільш придатними для досягнення поставлених цілей</p>
+</li>
+<li>
+<p><strong>ПРН 8.</strong> Вміти системно мислити та застосовувати творчі здібності до формування нових ідей</p>
+</li>
+<li>
+<p><strong>ПРН 11.</strong> Вміти здійснювати пошук інформації в різних джерелах для розв’язання задач комп’ютерної інженерії</p>
+</li>
+<li>
+<p><strong>ПРН 17.</strong> Спілкуватись усно та письмово з професійних питань українською мовою та однією з іноземних мов (англійською, німецькою, італійською, французькою, іспанською)</p>
+</li>
+<li>
+<p><strong>ПРН 21.</strong> Якісно виконувати роботу та досягати поставленої мети з дотриманням вимог професійної етики</p>
+</li>
+</ul>
+<hr />
+<h3 id="4">4. Програма навчальної дисципліни</h3>
+<p><strong>Модуль 1. Алгоритмізація, структури даних та мережевий обмін у кіберфізичних системах</strong></p>
+<p><strong>Змістовий модуль 1. Теоретичні основи алгоритмізації та протоколи обміну</strong></p>
+<p><strong>Тема 1. Теоретичні засади алгоритмізації.</strong> Поняття алгоритму, його властивості та способи запису. Візуалізація алгоритмів: блок-схеми та структурні діаграми дій. Формальні моделі обчислень: машини Поста та Тюрінґа.</p>
+<p><strong>Тема 2. Керуючі конструкції в алгоритмах реального часу.</strong> Розгалужені алгоритми та булеві операції в умовах обмежених ресурсів. Циклічні конструкції (While, DoWhile, For) та правила їх організації. Алгоритмічні прийоми: прапорці, знакові змінні, бар'єри.</p>
+<p><strong>Тема 3. Архітектура та обмін даними.</strong> Екосистема Інтернету речей та архітектура IoT. Сенсорні пристрої, давачі та системи їх живлення. Протоколи обміну даними: MQTT та використання веб-сокетів.</p>
+<p><strong>Тема 4. Алгоритми обробки структурованих даних.</strong> Опрацювання одновимірних масивів та двовимірних матриць. Способи обходу матриць (змійка, спіраль) та симетричні перетворення. Лінійні структури: стек, черга, пріоритетна черга.</p>
+<p><strong>Змістовий модуль 2. Нечітке керування, оптимізаційні алгоритми та віртуалізація</strong></p>
+<p><strong>Тема 5. Нечітка логіка та евристики.</strong> Поняття нечітких множин, лінгвістичні змінні та функції приналежності. Нечітке логічне виведення та правила прийняття рішень. Евристичні алгоритми: жадібний пошук, метод Монте-Карло та імітація відпалу.</p>
+<p><strong>Тема 6. Пошук, сортування та графи в мережах.</strong> Алгоритми пошуку (лінійний, бінарний) та їх часова складність. Методи сортування: вставки, вибору, обміну (бульбашка), швидке сортування. Алгоритми на графах: пошук найкоротшого шляху (Дейкстра, А*).</p>
+<p><strong>Тема 7. Хмарні та граничні обчислення.</strong> Моделі хмарних сервісів (IaaS, PaaS, SaaS) у кіберфізичних системах. Граничні та туманні обчислення: топологія та оркестрування. Big Data в КФС та Lambda-архітектура.</p>
+<hr />
+<h3 id="5">5. Структура освітнього компонента</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Назва змістових модулів і тем</th>
+<th style="text-align: center;">Усього годин</th>
+<th style="text-align: center;">Лекції</th>
+<th style="text-align: center;">Практичні</th>
+<th style="text-align: center;">Лабораторні</th>
+<th style="text-align: center;">Самостійна робота</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Змістовий модуль 1. Теоретичні основи алгоритмізації та протоколи обміну</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Тема 1. Теоретичні засади алгоритмізації</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr>
+<td style="text-align: left;">Тема 2. Керуючі конструкції в алгоритмах реального часу</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr>
+<td style="text-align: left;">Тема 3. Архітектура та обмін даними в КФС</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr>
+<td style="text-align: left;">Тема 4. Алгоритми обробки структурованих даних</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Усього за змістовим модулем 1</strong></td>
+<td style="text-align: center;"><strong>78</strong></td>
+<td style="text-align: center;"><strong>16</strong></td>
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: center;"><strong>46</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Змістовий модуль 2. Нечітке керування, оптимізаційні алгоритми та віртуалізація</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Тема 5. Нечітка логіка та евристики</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr>
+<td style="text-align: left;">Тема 6. Пошук, сортування та графи в мережах</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">16</td>
+</tr>
+<tr>
+<td style="text-align: left;">Тема 7. Хмарні та граничні обчислення</td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">16</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Усього за змістовим модулем 2</strong></td>
+<td style="text-align: center;"><strong>72</strong></td>
+<td style="text-align: center;"><strong>14</strong></td>
+<td style="text-align: center;"><strong>6</strong></td>
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: center;"><strong>44</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Виконання розрахунково-графічної роботи</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">30</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>УСЬОГО ГОДИН</strong></td>
+<td style="text-align: center;"><strong>180</strong></td>
+<td style="text-align: center;"><strong>30</strong></td>
+<td style="text-align: center;"><strong>14</strong></td>
+<td style="text-align: center;"><strong>16</strong></td>
+<td style="text-align: center;"><strong>120</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="6">6. Теми лабораторних робіт</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">№ з/п</th>
+<th style="text-align: left;">Назва теми лабораторної роботи</th>
+<th style="text-align: center;">Кількість годин</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">Моделювання логіки керування низького рівня</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">Розробка алгоритмів обробки даних з давачів</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: left;">Оркестрування потоків даних у середовищі Node-RED</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">Обробка матриць сигналів у розподілених системах</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: left;">Побудова нечіткого контролера для автоматизації</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: left;">Оптимізація маршрутів у сенсорних мережах</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: left;">Віртуалізація сервісів за допомогою Docker</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: left;"><strong>Усього годин</strong></td>
+<td style="text-align: center;"><strong>16</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="7">7. Теми практичних занять</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">№ з/п</th>
+<th style="text-align: left;">Назва теми практичного заняття</th>
+<th style="text-align: center;">Кількість годин</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">Графічна формалізація алгоритмів</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">Оцінювання трудомісткості обчислювальних процесів</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: left;">Проєктування ієрархії тем MQTT</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">Реалізація черги повідомлень для керування завданнями</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: left;">Вирішення задач маршрутизації евристичними методами</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: left;">Порівняльний аналіз методів сортування даних</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: left;">Аналіз архітектурних рішень для Big Data</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: left;"><strong>Усього годин</strong></td>
+<td style="text-align: center;"><strong>14</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="8">8. Самостійна робота</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">№ з/п</th>
+<th style="text-align: left;">Назва теми для самостійного опрацювання та короткий зміст робіт</th>
+<th style="text-align: center;">Кількість годин СР</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;"><strong>Тема 1. Теоретичні засади алгоритмізації.</strong> Опрацювання концепції Brainware як первинного рівня поведінки КФС, вивчення фундаментальних властивостей алгоритмів, аналітичне формалізування часової складності <span class="arithmatex">\(T(n)\)</span> та функції трудомісткості <span class="arithmatex">\(\Psi\)</span>, асимптотичний аналіз у нотаціях <span class="arithmatex">\(O\)</span>, <span class="arithmatex">\(\Omega\)</span>, <span class="arithmatex">\(\Theta\)</span>, дослідження формальних моделей обчислень Поста і Тюрінґа, тези Черча — Тюрінґа та алгоритмічної нерозв'язності проблеми зупинки.</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;"><strong>Тема 2. Керуючі конструкції в алгоритмах реального часу.</strong> Проєктування алгоритмів реального часу на основі послідовного відсікання значень бар'єрами, аналіз повної та короткої схем обчислення булевих виразів, організація умовних циклів, застосування знакових змінних для чергування знаків, використання логічних та індекс-прапорців, оптимізація пошуку елементів у масиві з бар'єром та опрацювання методів динамічного програмування з табуляцією.</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: left;"><strong>Тема 3. Архітектура та обмін даними.</strong> Інтеграція технологій OT та IT у промислових мережах IIoT, розрахунок часу життя автономних сенсорних вузлів та методів збору енергії Energy Harvesting, вивчення брокер-центричної моделі «публікація/підписка» протоколу MQTT, побудова ієрархічних тем, порівняльний аналіз рівнів якості обслуговування QoS 0/1/2, декодування остаточної довжини пакетів та організація повнодуплексного обміну через WebSockets.</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: left;"><strong>Тема 4. Алгоритми обробки структурованих даних.</strong> Адресація векторів та матриць у послідовній пам'яті за формулою зміщення, реалізація топологічних обходів сигнальних матриць «змійкою» та «спіраллю», виконання симетричних перетворень in-place, застосування індекс-прапорців для виявлення аномалій, дослідження динамічних структур даних (стек, черга, дек) та реалізація пріоритетної черги на основі двійкової купи.</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: left;"><strong>Тема 5. Нечітка логіка та евристики.</strong> Дослідження математичних засад нечітких множин Заде, побудова функцій належності та лінгвістичних змінних, опрацювання етапів нечіткого виведення за методом Мамдані (фазифікація, база правил, максимінна композиція, дефазифікація Центром Ваги), застосування жадібного пошуку, методу Монте-Карло, алгоритму імітації відпалу з критерієм Метрополіса та основ логічного програмування.</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: left;"><strong>Тема 6. Пошук, сортування та графи в мережах.</strong> Порівняльний аналіз швидкодії лінійного та бінарного пошуку, хронометраж квадратичних алгоритмів сортування (бульбашкове, вибором, вставкою), реалізація логарифмічного алгоритму QuickSort, графове моделювання сенсорних мереж, реалізація алгоритму Дейкстри із прискоренням пріоритетною чергою, евристичний пошук А* та вивчення дерев відрізків і AVL-дерев.</td>
+<td style="text-align: center;">16</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: left;"><strong>Тема 7. Хмарні та граничні обчислення.</strong> Аналіз моделей хмарного обслуговування IaaS, PaaS, SaaS, дослідження Edge та Fog обчислень за стандартом OpenFog, оркестрація мікросервісів у Docker Compose, концепція Big Data «6V», розробка трирівневої Lambda-архітектури (Batch, Speed, Serving Layers), конвеєри обробки складних подій (CEP) та вивчення криптографічних методів безпеки КФС.</td>
+<td style="text-align: center;">16</td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td style="text-align: left;"><strong>Розрахунково-графічна робота.</strong> Розробка комплексної системи моніторингу та керування КФС. Проєктування мережевої архітектури та ієрархії MQTT-тем, програмна реалізація алгоритмів обробки даних і нечіткого контролера в Node-RED та Arduino IDE, контейнеризація сервісів за допомогою Docker Compose, аналіз асимптотичної складності алгоритмів та підготовка звіту.</td>
+<td style="text-align: center;">30</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: left;"><strong>Усього годин</strong></td>
+<td style="text-align: center;"><strong>120</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="9">9. Методи навчання</h3>
+<p>Під час викладання освітнього комопнента застосовуються словесні (лекції, бесіди, пояснення, розповіді), наочні (ілюстрації та демонстрації) та практичні методи (практичні й лабораторні заняття, виконання індивідуальних завдань), що за особливостями навчально-пізнавальної діяльності здобувачів вищої освіти базуються на пояснювально-інформативному (інформаційно-рецептивному), репродуктивному, частково-пошуковому та дослідницькому методах навчання, а також застосовується метод проблемного виконання.</p>
+<p><strong>Організація навчальних занять:</strong></p>
+<ul>
+<li>
+<p>На <strong>лекційних заняттях</strong> викладач викладає навчальний матеріал із демонстрацією конспекту, після чого в кінці кожної лекції проводиться експрес-тестування здобувачів за розглянутою темою.</p>
+</li>
+<li>
+<p>На <strong>лабораторних та практичних заняттях</strong> викладач коротко роз'яснює завдання та хід його виконання, після чого здобувачі самостійно виконують свої індивідуальні варіанти завдань із подальшим представленням та захистом отриманих результатів.</p>
+</li>
+<li>
+<p><strong>Індивідуальне завдання</strong> у  форматі <strong>розрахунково-графічної роботи</strong> виконується здобувачами повністю самостійно, а оцінювання здійснюється за пояснювальною запискою та публічну презентацію презентації до неї.</p>
+</li>
+</ul>
+<hr />
+<h3 id="10">10. Методи контролю</h3>
+<p>Методи контролю включають облік відвідування, опитування, перевірку та захист лабораторних і практичних робіт, комплекти тестових завдань для поточного, модульного та підсумкового контролю (вид контролю — «іспит»).</p>
+<p><strong>Форми та види контролю:</strong></p>
+<ul>
+<li>
+<p>Поточний та модульний контроль:</p>
+</li>
+<li>
+<p>облік відвідування занять та опитування;</p>
+</li>
+<li>
+<p>тести за результатами вивчення кожної теми;</p>
+</li>
+<li>
+<p>оцінювання виконання та представлення результатів індивідуальних завдань на лабораторних і практичних заняттях;</p>
+</li>
+<li>
+<p>контрольні тести за підсумками вивчення кожного змістового модуля.</p>
+</li>
+<li>
+<p>Оцінювання індивідуального завдання (РГР) проводиться за результатами самостійної роботи над запискою, представлення та захист презентації до роботи.</p>
+</li>
+<li>
+<p>Підсумковий семестровий контроль семестровий іспит, який складається з двох частин: тестового завдання та виконання практичного завдання.</p>
+</li>
+</ul>
+<hr />
+<h3 id="11">11. Розподіл балів, які отримують здобувачі за темами</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Вид занять / Контрольні заходи</th>
+<th style="text-align: center;">Змістовий модуль 1</th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Змістовий модуль 2</th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Підсумковий контроль</th>
+<th style="text-align: center;">Сума</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: center;"><strong>Т1</strong></td>
+<td style="text-align: center;"><strong>Т2</strong></td>
+<td style="text-align: center;"><strong>Т3</strong></td>
+<td style="text-align: center;"><strong>Т4</strong></td>
+<td style="text-align: center;"><strong>Т5</strong></td>
+<td style="text-align: center;"><strong>Т6</strong></td>
+<td style="text-align: center;"><strong>Т7</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Активність на лекціях та тематичне тестування</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;"><strong>14</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Виконання та захист практичних робіт</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;"><strong>21</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Виконання та захист лабораторних робіт</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;"><strong>21</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Тести за змістовими модулями</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;"><strong>14</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Виконання розрахунково-графічної роботи</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;"><strong>10</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Підсумковий контроль (іспит)</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;"><strong>20</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Усього</strong></td>
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: center;"><strong>25</strong></td>
+<td style="text-align: center;"><strong>20</strong></td>
+<td style="text-align: center;"><strong>100</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Т1 – Т7 — теми змістових модулів.</em></p>
+<hr />
+<h3 id="12">12. Розподіл балів, які отримують здобувачі за видами занять</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Вид роботи, пояснення</th>
+<th style="text-align: center;">Максимальні бали</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Опрацювання теоретичного матеріалу за тематикою лекцій.</strong><br>Усього 7 тем.<br>Ваше завдання — опрацювати лекційний матеріал, пройти експрес-тестування в кінці лекції або активно підтримувати дискусійні теми: за 1 тему <strong>2 бали</strong> (<span class="arithmatex">\(7 \cdot 2 = 14\)</span>).</td>
+<td style="text-align: center;"><strong>14</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Виконання завдань із лабораторних робіт.</strong><br>Усього виконується 7 лабораторних робіт.<br>Здобувачі виконують індивідуальні варіанти завдань.<br>Завдання — виконати завдання, оформити звіт із лабораторної роботи та захистити отримані результати: за 1 захищену роботу <strong>3 бали</strong> (<span class="arithmatex">\(7 \cdot 3 = 21\)</span>).</td>
+<td style="text-align: center;"><strong>21</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Виконання завдань із практичних робіт.</strong><br>Усього виконується 7 практичних робіт.<br>Здобувачі виконують індивідуальні варіанти завдань.<br>Завдання — виконати завдання, оформити звіт із практичної роботи та захистити отримані результати: за 1 захищену роботу <strong>3 бали</strong> (<span class="arithmatex">\(7 \cdot 3 = 21\)</span>).</td>
+<td style="text-align: center;"><strong>21</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Виконання тестового завдання за змістовими модулями.</strong><br>Для закріплення теоретичних знань та практичних навичок за змістовими модулями здобувачу надається доступ до контрольного тесту: за 1 пройдений тест <strong>7 балів</strong> (<span class="arithmatex">\(2 \cdot 7 = 14\)</span>).</td>
+<td style="text-align: center;"><strong>14</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Виконання та захист індивідуального завдання (РГР).</strong><br>Розрахунково-графічна робота виконується здобувачем повністю самостійно. Оцінювання проводиться за поданою пояснювальною запискою та результатами публічного захисту презентації до неї.</td>
+<td style="text-align: center;"><strong>10</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Підсумковий контроль (вид контролю «іспит»).</strong><br>Підсумкове оцінювання знань відбувається під час іспиту, який складається з двох частин: комп'ютерного тестового завдання (10 балів) та виконання практичного завдання (10 балів).</td>
+<td style="text-align: center;"><strong>20</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Усього балів:</strong></td>
+<td style="text-align: center;"><strong>100</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="13-">13. Критерії оцінювання за видом контролю «Розрахунково-графічна робота»</h3>
+<p>Розрахунково-графічна робота є формою самостійної індивідуальної роботи здобувача вищої освіти, спрямованою на наскрізне проєктування та дослідження розподіленої системи моніторингу й керування кіберфізичною системою. Завершений проєкт подається керівникові у вигляді пояснювальної записки та графічної мультимедійної презентації. Підсумкова оцінка за розрахунково-графічну роботу виставляється за результатами комплексної перевірки наданих матеріалів та публічного захисту, під час якого здобувач має до 5–7 хвилин для доповіді, демонструє роботу алгоритмічного забезпечення та відповідає на запитання.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">№ з/п</th>
+<th style="text-align: left;">Об’єкт оцінювання</th>
+<th style="text-align: center;">Максимальна кількість балів</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">Зміст, алгоритмічна та технічна якість розробки</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">Якість оформлення пояснювальної записки та презентації</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: left;">Захист роботи, доповідь та відповіді на запитання</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: left;"><strong>УСЬОГО</strong></td>
+<td style="text-align: center;"><strong>10</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Оцінювання змісту та технічної якості роботи (до 5 балів) ґрунтується на глибині опрацювання системної архітектури кіберфізичного об’єкта та ступені складності реалізованих обчислювальних процедур. Для отримання максимального бала здобувач повинен представити коректну схему взаємодії сенсорних вузлів, обґрунтувати ієрархічну структуру тем протоколу MQTT для обміну телеметрією та сформулювати математичний апарат обробки даних. Програмна частина роботи у середовищах Node-RED та Arduino IDE має містити діючі алгоритми первинної фільтрації сигналів, нечіткі контролери автоматизованого керування або алгоритми оптимізації маршрутів у графах, підкріплені розрахунком асимптотичної часової складності у нотаціях <span class="arithmatex">\(O\)</span>-велике. Важливим показником високої технічної якості розробки є успішна контейнеризація брокера повідомлень і сервісів обробки даних за допомогою інструменту Docker Compose.</p>
+<p>Якість оформлення пояснювальної записки та графічних матеріалів презентації (до 2 балів) оцінюється за ступенем відповідності чинним міжнародним чи державним стандартам України та вимогам до викладу науково-технічних текстів. Текстова частина повинна бути логічно структурованою, із дотриманням правил оформлення математичних виразів, блок-схем алгоритмів, таблиць та діаграм. Слайди мультимедійної презентації мають бути професійно оформленими, забезпечувати наочну візуалізацію топології мережі, конвеєрів обробки даних та результатів роботи алгоритмів. Бібліографічний опис у пояснювальній записці повинен містити актуальні джерела, фахову літературу та офіційну технічну документацію, оформлені згідно з установленими вимогами.</p>
+<p>Захист розрахунково-графічної роботи (до 3 балів) є завершальним етапом контролю, на якому оцінюється рівень професійної підготовки, академічної грамотності та системного мислення здобувача. Максимальний бал виставляється за умови вільного володіння матеріалом, здатності логічно та переконливо викласти сутність прийнятих технічних рішень із використанням наочних матеріалів презентації. Здобувач повинен надавати вичерпні й аргументовані відповіді на запитання щодо вибору рівнів якості обслуговування QoS, принципів нечіткого логічного виведення, методів оптимізації обчислювального коду та забезпечення функціональної безпеки КФС.</p>
+<p>Обов’язковою умовою допуску до захисту є дотримання принципів академічної доброчесності та самостійне виконання всіх етапів проєктування. Будь-які виявлені ознаки плагіату, запозичення програмного коду або використання чужих розрахункових і графічних матеріалів без належного цитування призводять до скасування результатів оцінювання з виставленням незадовільної оцінки.</p>
+<h3 id="14-ects">14. Шкала оцінювання: національна та ECTS</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Сума балів за 100-бальною шкалою</th>
+<th style="text-align: center;">Оцінка в ECTS</th>
+<th style="text-align: left;">Значення оцінки ECTS</th>
+<th style="text-align: left;">Критерії оцінювання</th>
+<th style="text-align: center;">Рівень компетентності</th>
+<th style="text-align: center;">Оцінка за національною шкалою (іспит, диференційований залік)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>90–100</strong></td>
+<td style="text-align: center;"><strong>A</strong></td>
+<td style="text-align: left;"><strong>Відмінно</strong></td>
+<td style="text-align: left;">Здобувач виявляє особливі творчі здібності, уміє самостійно здобувати знання, без допомоги викладача знаходить та опрацьовує необхідну інформацію, уміє використовувати набуті знання і вміння для прийняття рішень у нестандартних ситуаціях, переконливо аргументує відповіді, самостійно розкриває власні обдарування і нахили</td>
+<td style="text-align: center;"><strong>Високий</strong><br>(творчий)</td>
+<td style="text-align: center;"><strong>Відмінно</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>82–89</strong></td>
+<td style="text-align: center;"><strong>B</strong></td>
+<td style="text-align: left;"><strong>Дуже добре</strong></td>
+<td style="text-align: left;">Здобувач вільно володіє вивченим обсягом матеріалу, застосовує його на практиці, вільно розв’язує вправи і задачі у стандартних ситуаціях, самостійно виправляє допущені помилки, кількість яких незначна</td>
+<td style="text-align: center;"><strong>Достатній</strong><br>(конструктивно-варіативний)</td>
+<td style="text-align: center;"><strong>Добре</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>74–81</strong></td>
+<td style="text-align: center;"><strong>C</strong></td>
+<td style="text-align: left;"><strong>Добре</strong></td>
+<td style="text-align: left;">Здобувач уміє зіставляти, узагальнювати, систематизувати інформацію під керівництвом викладача; в цілому самостійно застосовувати її на практиці; контролювати власну діяльність; виправляти помилки, серед яких є суттєві, добирати аргументи для підтвердження думок</td>
+<td style="text-align: center;"><strong>Достатній</strong><br>(конструктивно-варіативний)</td>
+<td style="text-align: center;"><strong>Добре</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>64–73</strong></td>
+<td style="text-align: center;"><strong>D</strong></td>
+<td style="text-align: left;"><strong>Задовільно</strong></td>
+<td style="text-align: left;">Здобувач відтворює значну частину теоретичного матеріалу, виявляє знання і розуміння основних положень; за допомогою викладача може аналізувати навчальний матеріал, виправляти помилки, серед яких є значна кількість суттєвих</td>
+<td style="text-align: center;"><strong>Середній</strong><br>(репродуктивний)</td>
+<td style="text-align: center;"><strong>Задовільно</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>60–63</strong></td>
+<td style="text-align: center;"><strong>E</strong></td>
+<td style="text-align: left;"><strong>Достатньо</strong></td>
+<td style="text-align: left;">Здобувач володіє навчальним матеріалом на рівні, вищому, ніж початковий, значну частину його відтворює на репродуктивному рівні</td>
+<td style="text-align: center;"><strong>Середній</strong><br>(репродуктивний)</td>
+<td style="text-align: center;"><strong>Задовільно</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>35–59</strong></td>
+<td style="text-align: center;"><strong>FX</strong></td>
+<td style="text-align: left;"><strong>Незадовільно</strong><br>з можливістю повторного складання семестрового контролю</td>
+<td style="text-align: left;">Здобувач володіє матеріалом на рівні окремих фрагментів, що становлять незначну частину навчального матеріалу</td>
+<td style="text-align: center;"><strong>Низький</strong><br>(рецептивно-продуктивний)</td>
+<td style="text-align: center;"><strong>Незадовільно</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>1–34</strong></td>
+<td style="text-align: center;"><strong>F</strong></td>
+<td style="text-align: left;"><strong>Незадовільно</strong><br>з обов’язковим повторним вивченням залікового кредиту</td>
+<td style="text-align: left;">Здобувач володіє матеріалом на рівні елементарного розпізнання і відтворення окремих фактів, елементів, об’єктів</td>
+<td style="text-align: center;"><strong>Низький</strong><br>(рецептивно-продуктивний)</td>
+<td style="text-align: center;"><strong>Незадовільно</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="15">15. Рекомендована література та інформаційні ресурси</h3>
+<h4 id="_1">Основна література</h4>
+<ol>
+<li>
+<p><strong>Гарбич-Мошора О. Р.</strong> Методичні вказівки для виконання лабораторних робіт з курсу «Теорія алгоритмів» : навч.-метод. посіб. Дрогобич : ДДПУ імені Івана Франка, 2024. 76 с. [Електронний ресурс] — URL: <a href="http://www.ir.dspu.edu.ua/jspui/bitstream/123456789/3988/1/%D0%9E.%20%D0%93%D0%B0%D1%80%D0%B1%D0%B8%D1%87-%D0%9C%D0%BE%D1%88%D0%BE%D1%80%D0%B0%20%D0%A2%D0%B5%D0%BE%D1%80%D1%96%D1%8F%20%20%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D1%96%D0%B2%C2%BB.pdf">ir.dspu.edu.ua</a> (дата звернення: 11.08.2026).</p>
+</li>
+<li>
+<p><strong>Грудзинський Ю. Є.</strong> Технології сучасних кібер-фізичних систем : навч. посіб. Київ : КПІ ім. Ігоря Сікорського, 2020. 215 с. [Електронний ресурс] — URL: <a href="https://ela.kpi.ua/bitstream/123456789/43394/1/TKFS_NP_2020_Lektsii.pdf">ela.kpi.ua</a> (дата звернення: 11.08.2026).</p>
+</li>
+<li>
+<p><strong>Креневич А. П.</strong> Алгоритми і структури даних : підручник. Київ : ВПЦ «Київський університет», 2021. 200 с. [Електронний ресурс] — URL: <a href="https://www.mechmat.univ.kiev.ua/wp-content/uploads/2021/09/pidruchnyk-alhorytmy-i-struktury-danykh.pdf">mechmat.univ.kiev.ua</a> (дата звернення: 11.08.2026).</p>
+</li>
+<li>
+<p><strong>Марченко О. І., Марченко О. О.</strong> Структури даних та алгоритми : підручник : у 2-х ч. Ч. 1. Київ : Просвіта, 2024. 268 с. [Електронний ресурс] — URL: <a href="https://e-library.kpefk.com.ua/wp-content/uploads/2025/03/ASD-Marchenko-O.I.-Pidruchnyk-2024r-Liudmyla-Meleshchuk.pdf">e-library.kpefk.com.ua</a> (дата звернення: 11.08.2026).</p>
+</li>
+<li>
+<p><strong>Темнікова О. Л.</strong> Математична логіка та теорія алгоритмів : конспект лекцій : навч. посіб. Київ : КПІ ім. Ігоря Сікорського, 2021. 177 с. [Електронний ресурс] — URL: <a href="https://ela.kpi.ua/server/api/core/bitstreams/90cfd1e3-1a98-4370-95f3-bd1d677d0e7c/content">ela.kpi.ua</a> (дата звернення: 11.08.2026).</p>
+</li>
+<li>
+<p><strong>Троцько В. В.</strong> Теорія алгоритмів : навч.-метод. посіб. Київ : ВНЗ «Університет економіки та права «КРОК», 2023. 123 с. [Електронний ресурс] — URL: <a href="https://library.krok.edu.ua/media/library/category/navchalni-posibniki/trotsko_0003.pdf">library.krok.edu.ua</a> (дата звернення: 11.08.2026).</p>
+</li>
+</ol>
+<h4 id="_2">Додаткова література</h4>
+<ol>
+<li>
+<p><strong>Peksa J., Perekrest A., Vadurin K., Mamchur D.</strong> A Quantum-Hybrid Framework for Urban Environmental Forecasting Integrating Advanced AI and Geospatial Simulation. <em>Sensors</em>. 2025. Vol. 25(24). Article 7422. DOI: <a href="https://doi.org/10.3390/s25247422">https://doi.org/10.3390/s25247422</a></p>
+</li>
+<li>
+<p><strong>Vadurin K., Perekrest A., Guchenko M.</strong> Прототип кіберфізичної системи моніторингу фізичного стану оператора літального апарата. <em>Системи управління, навігації та зв’язку</em>. 2022. Вип. 4(70). С. 57–65. DOI: <a href="https://doi.org/10.26906/SUNZ.2022.4.057">https://doi.org/10.26906/SUNZ.2022.4.057</a></p>
+</li>
+<li>
+<p><strong>Vadurin K., Kramek A., Perekrest A.</strong> Conceptual Models of Data Collection, Forecasting and Preparation Processes for Professional Analysis in Environmental Monitoring Information Systems. <em>Advances in Lean Manufacturing</em> / ed. by I. Karabegović et al. Cham : Springer Nature Switzerland, 2025. Vol. 1. P. 75–87. (Lecture Notes in Networks and Systems). DOI: <a href="https://doi.org/10.1007/978-3-032-09806-1_7">https://doi.org/10.1007/978-3-032-09806-1_7</a></p>
+</li>
+<li>
+<p><strong>Vadurin K., Perekrest A., Mamchur D., Vladov S.</strong> Components of ensuring secure infrastructure for environmental monitoring systems using the LwM2M protocol. <em>CEUR Workshop Proceedings</em>. 2025. Vol. 4024. P. 287–306. URL: <a href="https://ceur-ws.org/Vol-4024/paper19.pdf">https://ceur-ws.org/Vol-4024/paper19.pdf</a></p>
+</li>
+<li>
+<p><strong>Vadurin K., Perekrest A., Bakharev V., Mamchur D.</strong> Dynamic exposure modeling and personalized risk assessment in urban environments: a data-driven approach based on heterogeneous IoT networks. <em>CEUR Workshop Proceedings</em>. 2026. Vol. 4220. P. 128–147. URL: <a href="https://ceur-ws.org/Vol-4220/paper11.pdf">https://ceur-ws.org/Vol-4220/paper11.pdf</a></p>
+</li>
+<li>
+<p><strong>Vadurin K., Kortsova O., Vasiutynska K., Perekrest A., Bakharev V.</strong> A Big Data Framework for Automated Environmental Risk Stratification Using a Composite Hazard Index and Unsupervised Clustering. <em>Proceedings of International Conference on Applied Innovation in IT</em>. 2025. Vol. 13, No. 5. P. 127–133.</p>
+</li>
+</ol>
+<h4 id="_3">Інформаційні ресурси в Інтернеті</h4>
+<ol>
+<li>
+<p>Офіційна документація Node.js та асинхронного середовища виконання. URL: https://nodejs.org/en/docs/</p>
+</li>
+<li>
+<p>Документація платформи графічного програмування Node-RED. URL: https://nodered.org/docs/</p>
+</li>
+<li>
+<p>Документація проекту Docker та специфікації контейнеризації. URL: https://docs.docker.com/</p>
+</li>
+<li>
+<p>Офіційний сайт та документація апаратного середовища Arduino. URL: https://www.arduino.cc/</p>
+</li>
+<li>
+<p>Онлайн-платформа та документація симулятора Simul IDE. URL: https://simulide.com/</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

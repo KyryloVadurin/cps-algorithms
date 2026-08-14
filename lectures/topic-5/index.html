@@ -1,0 +1,1965 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Прикладні алгоритми КФС"">
+      
+      
+      
+      
+        <link rel="prev" href="../topic-4/">
+      
+      
+        <link rel="next" href="../topic-6/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Тема 5. Нечітка логіка та евристики - Прикладні алгоритми кіберфізичних систем</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#5" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Прикладні алгоритми кіберфізичних систем" class="md-header__button md-logo" aria-label="Прикладні алгоритми кіберфізичних систем" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v1h3v2h-3v2h3v2h-3v2h3v2h-3v2h3v2h-3v1H6v-1H3v-2h3v-2H3v-2h3v-2H3V9h3V7H3V5h3zm5 11v3h1v-3zm2 0v3h1v-3zm2 0v3h1v-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Прикладні алгоритми кіберфізичних систем
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Тема 5. Нечітка логіка та евристики
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча навчальна програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../topic-1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/lab-1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../practicals/pz-1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../self-study/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../rg/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Розрахунково-графічна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../self-study/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Перелік тестових та практичних завдань для самопідготовки
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Прикладні алгоритми кіберфізичних систем" class="md-nav__button md-logo" aria-label="Прикладні алгоритми кіберфізичних систем" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v1h3v2h-3v2h3v2h-3v2h3v2h-3v2h3v2h-3v1H6v-1H3v-2h3v-2H3v-2h3v-2H3V9h3V7H3V5h3zm5 11v3h1v-3zm2 0v3h1v-3zm2 0v3h1v-3z"/></svg>
+
+    </a>
+    Прикладні алгоритми кіберфізичних систем
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча навчальна програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Теоретичні засади алгоритмізації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Керуючі конструкції в алгоритмах реального часу
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. Архітектура та обмін даними
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Алгоритми обробки структурованих даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Нечітка логіка та евристики
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Нечітка логіка та евристики
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Поняття нечітких множин, лінгвістичні змінні та функції приналежності
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 Поняття нечітких множин, лінгвістичні змінні та функції приналежності">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Нечітке логічне виведення та правила прийняття рішень
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 Нечітке логічне виведення та правила прийняття рішень">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Евристичні алгоритми: жадібний пошук, метод Монте-Карло та імітація відпалу
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 Евристичні алгоритми: жадібний пошук, метод Монте-Карло та імітація відпалу">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Пошук, сортування та графи в мережах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Хмарні та граничні обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання логіки керування низького рівня
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Розробка алгоритмів обробки даних з давачів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Оркестрування потоків даних у середовищі Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Обробка матриць сигналів у розподілених системах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Побудова нечіткого контролера для автоматизації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Оптимізація маршрутів у сенсорних мережах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Віртуалізація сервісів за допомогою Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Графічна формалізація алгоритмів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Оцінювання трудомісткості обчислювальних процесів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Проєктивання ієрархії тем MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Реалізація черги повідомлень для керування завданнями
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Вирішення задач маршрутизації евристичними методами
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Порівняльний аналіз методів сортування даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Аналіз архітектурних рішень для Big Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../self-study/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Розрахунково-графічна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../self-study/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Перелік тестових та практичних завдань для самопідготовки
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Поняття нечітких множин, лінгвістичні змінні та функції приналежності
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 Поняття нечітких множин, лінгвістичні змінні та функції приналежності">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Нечітке логічне виведення та правила прийняття рішень
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 Нечітке логічне виведення та правила прийняття рішень">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Евристичні алгоритми: жадібний пошук, метод Монте-Карло та імітація відпалу
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 Евристичні алгоритми: жадібний пошук, метод Монте-Карло та імітація відпалу">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="5">Тема 5. Нечітка логіка та евристики</h1>
+<h2 id="51">5.1 Поняття нечітких множин, лінгвістичні змінні та функції приналежності</h2>
+<p>У проектуванні складних кіберфізичних систем (КФС) виникає необхідність формалізації знань про прикладні проблемні області, які часто є погано структурованими та містять невизначеність. Традиційна математична логіка, що базується на бінарних значеннях «істина» або «хибність», не завжди здатна адекватно описати реальні фізичні процеси та людські міркування. Концепція <strong>нечітких множин</strong> (fuzzy sets) є фундаментальним узагальненням класичної канторовської теорії множин, де перехід від приналежності елемента до множини до його неприналежності здійснюється не стрибкоподібно, а плавно. Це дозволяє обробляти інформацію, подану природною мовою, що є критично важливим для інтелектуального рівня <strong>Brainware</strong> у сучасних КФС.</p>
+<p><strong>Нечітка множина</strong> визначається як сукупність пар, що складаються з елемента універсальної множини та відповідного йому ступеня приналежності. На відміну від чіткої множини, де характеристична функція може приймати лише значення 0 або 1, у нечітких множинах вводиться <strong>функція приналежності</strong> <span class="arithmatex">\(\mu_A(x)\)</span>, значення якої лежать у неперервному інтервалі від <span class="arithmatex">\([0, 1]\)</span>. Якщо значення функції дорівнює одиниці, елемент безумовно належить множині, якщо нулю — безумовно не належить, а проміжні значення вказують на ступінь схожості або часткової відповідності. Важливою характеристикою нечіткої множини є її <strong>носій</strong> (support) — підмножина елементів, для яких ступінь приналежності є суворо більшим за нуль. Також виділяють <strong>ядро</strong> нечіткої множини, яке утворюють елементи з максимальним ступенем приналежності, що дорівнює одиниці.</p>
+<p>Для опису якісних характеристик об'єктів у системах управління КФС використовується поняття <strong>лінгвістичної змінної</strong>. Лінгвістична змінна — це змінна, значеннями якої є не числа, а слова або речення природної чи штучної мови, що називаються <strong>термами</strong>. Наприклад, для фізичного параметра «температура» термами можуть бути «холодно», «тепло» та «гаряче». Кожен такий терм математично описується певною нечіткою множиною через власну функцію приналежності. Структура лінгвістичної змінної включає назву, терм-множину (набір значень), універсум (область визначення), а також синтаксичні правила для генерації нових термів за допомогою модифікаторів (наприклад, «дуже», «злегка») та семантичні правила для визначення змісту цих термів.</p>
+<p>Побудова коректної функції приналежності є ключовим етапом алгоритмізації нечіткої логіки. Існує декілька методів їх формування, серед яких найбільш поширеними є метод статистичної обробки експертної інформації та метод парних порівнянь. Статистичний метод базується на опитуванні групи експертів, де ступінь приналежності елемента до нечіткої множини визначається як відношення кількості позитивних відповідей до загальної кількості експертів. Метод парних порівнянь Сааті використовує матриці переваг, де експерти порівнюють елементи між собою за ступенем вираженості певної властивості, що дозволяє отримати більш точні ваги приналежності через розрахунок власних векторів матриці.</p>
+<p>Графічне представлення функцій приналежності наочно ілюструє логіку нечіткого висновку. На графіку по осі абсцис відкладаються фізичні значення (наприклад, зріст у сантиметрах), а по осі ординат — значення <span class="arithmatex">\(\mu \in [0, 1]\)</span>. Опис графіка показує три криві: «низький», «середній» та «високий», які перетинаються між собою. Це означає, що одне й те саме числове значення (наприклад, 175 см) може одночасно належати до множини «середній» зі ступенем 1.0 та до множини «низький» зі ступенем 0.0, або до множини «середній» та «високий» з різними ненульовими ступенями, що відображає природну розмитість понять.</p>
+<p>Для кількісного оцінювання степеня належності елемента <span class="arithmatex">\(u_i\)</span> до лінгвістичного терму <span class="arithmatex">\(l_j\)</span> на основі думок експертів використовується формула статистичної ймовірності:</p>
+<div class="arithmatex">\[
+\mu_{l_j}(u_i) = \frac{1}{K} \sum_{k=1}^{K} b_{j,i}^k
+\]</div>
+<p>У наведеній математичній залежності використовуються такі змінні:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(\mu_{l_j}(u_i)\)</span> — розрахований ступінь належності елемента <span class="arithmatex">\(u_i\)</span> до нечіткої множини, що відповідає терму <span class="arithmatex">\(l_j\)</span>.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(K\)</span> — загальна кількість експертів, що брали участь в опитуванні.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(b_{j,i}^k\)</span> — бінарна оцінка <span class="arithmatex">\(k\)</span>-го експерта щодо наявності у елемента <span class="arithmatex">\(u_i\)</span> властивостей нечіткої множини <span class="arithmatex">\(l_j\)</span>. Значення <span class="arithmatex">\(1\)</span> вказує на наявність властивості, <span class="arithmatex">\(0\)</span> — на її відсутність.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(u_i\)</span> — конкретний елемент з універсальної множини <span class="arithmatex">\(U\)</span>.</p>
+</li>
+</ul>
+<p>Для нормалізації нечіткої множини, яка за результатами опитування або розрахунків виявилася субнормальною (тобто максимальне значення приналежності менше за одиницю), застосовується операція ділення всіх ступенів приналежності на максимальне отримане значення:</p>
+<div class="arithmatex">\[
+\mu_{norm}(u_i) = \frac{\mu_{sub}(u_i)}{\max(\mu_{sub})},
+\]</div>
+<p>де <span class="arithmatex">\(\mu_{norm}(u_i)\)</span> — нормалізоване значення приналежності, а <span class="arithmatex">\(\mu_{sub}(u_i)\)</span> — вихідне значення ступеня приналежності для кожного елемента. Ця процедура забезпечує наявність у множині хоча б одного елемента з повним ступенем приналежності, що спрощує подальше нечітке логічне виведення у КФС.</p>
+<p>Результати обробки експертних оцінок для лінгвістичної змінної «зріст чоловіка» (на основі матеріалів прикладу 10.3) представлені у таблиці нижче. Дані демонструють перехід від фізичних діапазонів до абстрактних ступенів приналежності.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Лінгвістичний терм</th>
+<th style="text-align: center;">Діапазон [160, 165)</th>
+<th style="text-align: center;">Діапазон [170, 175)</th>
+<th style="text-align: center;">Діапазон [175, 180)</th>
+<th style="text-align: center;">Діапазон [185, 190)</th>
+<th style="text-align: center;">Діапазон [195, 200)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>«Низький» (степінь <span class="arithmatex">\(\mu\)</span>)</strong></td>
+<td style="text-align: center;">1.0</td>
+<td style="text-align: center;">0.6</td>
+<td style="text-align: center;">0.0</td>
+<td style="text-align: center;">0.0</td>
+<td style="text-align: center;">0.0</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>«Середній» (степінь <span class="arithmatex">\(\mu\)</span>)</strong></td>
+<td style="text-align: center;">0.0</td>
+<td style="text-align: center;">0.8</td>
+<td style="text-align: center;">1.0</td>
+<td style="text-align: center;">0.4</td>
+<td style="text-align: center;">0.0</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>«Високий» (степінь <span class="arithmatex">\(\mu\)</span>)</strong></td>
+<td style="text-align: center;">0.0</td>
+<td style="text-align: center;">0.0</td>
+<td style="text-align: center;">0.2</td>
+<td style="text-align: center;">0.8</td>
+<td style="text-align: center;">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Порівняння властивостей класичних та нечітких множин у контексті алгоритмізації наведено у наступній класифікації.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Характеристика</th>
+<th style="text-align: left;">Класична множина (Кантора)</th>
+<th style="text-align: left;">Нечітка множина (Заде)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Значення приналежності</strong></td>
+<td style="text-align: left;">Дискретне {0, 1}.</td>
+<td style="text-align: left;">Неперервне.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Межі множини</strong></td>
+<td style="text-align: left;">Суворо визначені, різкі.</td>
+<td style="text-align: left;">Розмиті, плавні переходи.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Формалізація</strong></td>
+<td style="text-align: left;">Предикати першого порядку.</td>
+<td style="text-align: left;">Лінгвістичні змінні та терми.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Логічні операції</strong></td>
+<td style="text-align: left;">Булева алгебра (AND, OR, NOT).</td>
+<td style="text-align: left;">Нечіткі операції (min, max, інверсія).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Сфера застосування</strong></td>
+<td style="text-align: left;">Чіткі математичні доведення.</td>
+<td style="text-align: left;">Системи штучного інтелекту, КФС.</td>
+</tr>
+</tbody>
+</table>
+<p>Структура лінгвістичної змінної як складного об'єкта, що поєднує мовні поняття з математичними моделями, представлена на діаграмі нижче.</p>
+<pre class="mermaid"><code>flowchart TD
+    LV[Лінгвістична змінна] --&gt; Name["Назва: напр.&lt;br/&gt;Температура"]
+    LV --&gt; TermSet[Терм-множина T]
+    LV --&gt; Universe["Універсум X: область&lt;br/&gt;значень"]
+    LV --&gt; SynRule["Синтаксичне правило G:&lt;br/&gt;генерація назв термів"]
+    LV --&gt; SemRule["Семантичне правило M:&lt;br/&gt;визначення нечітких&lt;br/&gt;множин"]
+
+    TermSet --&gt; T1[Терм 1: Холодно]
+    TermSet --&gt; T2[Терм 2: Тепло]
+    TermSet --&gt; T3[Терм 3: Гаряче]
+
+    SynRule --- Modifiers["Модифікатори: ДУЖЕ,&lt;br/&gt;ЗЛЕГКА, НЕ"]
+    SemRule --- Membership["Функції приналежності&lt;br/&gt;mu_A"]
+
+    subgraph MathModel["Математична&lt;br/&gt;інтерпретація"]
+    Membership
+    Universe
+    end</code></pre>
+<p>Наведена схема ілюструє ієрархічну побудову інтелектуального аналізу даних у КФС: від визначення фізичного параметра до формування набору термів, що мають чітко задану математичну семантику через функції приналежності.</p>
+<h3 id="_1">Питання для самоперевірки</h3>
+<ol>
+<li>
+<p>Поясніть концептуальну різницю між характеристичною функцією класичної множини та функцією приналежності нечіткої множини. Як це впливає на визначення меж множин?</p>
+</li>
+<li>
+<p>Опишіть компоненти лінгвістичної змінної згідно з визначенням Лотфі Заде. Яку роль відіграють синтаксичні та семантичні правила у її формуванні?</p>
+</li>
+<li>
+<p>У чому полягає сутність статистичного методу побудови функцій приналежності? Яким чином думки експертів трансформуються у числові значення ступенів приналежності?</p>
+</li>
+<li>
+<p>Дайте визначення поняттям «носій», «ядро» та «α-рівень» нечіткої множини. Як ці характеристики використовуються для аналізу нечітких даних?</p>
+</li>
+<li>
+<p>Поясніть процедуру нормалізації субнормальної нечіткої множини. Чому наявність хоча б одного елемента зі ступенем приналежності <span class="arithmatex">\(1.0\)</span> є важливою для нечіткої логіки?</p>
+</li>
+</ol>
+<h2 id="52">5.2 Нечітке логічне виведення та правила прийняття рішень</h2>
+<p>У сучасному проектуванні інтелектуальних систем управління, зокрема кіберфізичних систем, виникає гостра потреба у методах, які б дозволяли комп’ютеру приймати рішення в умовах невизначеності та неповноти вхідної інформації. Одним із найбільш ефективних способів реалізації таких процесів є <strong>нечітке логічне виведення</strong>, яке базується на апараті нечіткої логіки та теорії нечітких множин. На відміну від класичних детермінованих алгоритмів, де умови є суворо бінарними («так» або «ні»), нечітке виведення дозволяє оперувати поняттями природної мови, що робить поведінку системи більш гнучкою та наближеною до людського мислення.</p>
+<p>Фундаментальною основою нечіткого виведення є перехід від чітких числових значень, отриманих від сенсорів, до абстрактних понять, що описуються через <strong>лінгвістичні змінні</strong>. Кожна така змінна характеризується набором значень (терм-множиною), де кожен терм математично представлений своєю функцією приналежності. Процес прийняття рішення в такій системі реалізується через систему <strong>нечітких правил</strong>, які зазвичай мають структуру «ЯКЩО умова, ТО наслідок». Наприклад, у системі клімат-контролю правило може виглядати так: «ЯКЩО температура Висока, ТО потужність охолодження Велика».</p>
+<p>Ключовим теоретичним положенням у цій галузі є <strong>композиційне правило виведення Заде</strong>. Воно стверджує: якщо відоме нечітке відношення між вхідною та вихідною змінними, то при наявності нечіткого значення вхідної змінної можна однозначно визначити нечітке значення виходу за допомогою операції максимінної композиції. У практичних задачах часто використовується розширена форма умовного висловлювання: «ЯКЩО <span class="arithmatex">\(x\)</span> є <span class="arithmatex">\(A\)</span>, ТО <span class="arithmatex">\(y\)</span> є <span class="arithmatex">\(B\)</span>, ІНАКШЕ <span class="arithmatex">\(y\)</span> є <span class="arithmatex">\(C\)</span>». Такий підхід дозволяє створювати складні логічні дерева, де брокер знань або контролер аналізує одночасно декілька правил, що спрацьовують з різним ступенем істинності.</p>
+<p>Процес нечіткого виведення складається з декількох послідовних етапів. Спочатку виконується фазифікація, під час якої чіткі вхідні дані трансформуються у ступені приналежності до відповідних термів. Далі за допомогою логічних зв'язок (кон'юнкція, диз'юнкція) обчислюється рівень істинності передумов кожного правила. Наступний етап — активізація наслідків, де за допомогою методів нечіткої імплікації формуються вихідні нечіткі множини. Завершується процес дефазифікацією, яка перетворює отриманий нечіткий результат у конкретну керуючу дію або числове значення. Це забезпечує цілісність архітектури <strong>Brainware</strong>, де високорівнева логіка безпосередньо впливає на фізичні компоненти системи.</p>
+<p>Математична інтерпретація нечіткого виведення базується на операціях над функціями приналежності. Для визначення ступеня приналежності пари елементів до нечіткого відношення (наприклад, при формуванні бази правил) використовується операція мінімуму:</p>
+<div class="arithmatex">\[
+\mu_{\lt a_i; b_j&gt;} = \min(\mu_a, \mu_{b_j}).
+\]</div>
+<p>У наведеній формулі змінна <span class="arithmatex">\(\mu_a\)</span> позначає ступінь приналежності входу до множини <span class="arithmatex">\(A\)</span>, а <span class="arithmatex">\(\mu_{b_j}\)</span> — ступінь приналежності виходу до множини <span class="arithmatex">\(B\)</span>. Результат <span class="arithmatex">\(\mu_{&lt;a_i; b_j&gt;}\)</span> визначає силу зв'язку між конкретними значеннями входу та виходу в рамках одного логічного правила.</p>
+<p>Для обчислення результату виведення <span class="arithmatex">\(\tilde{D}\)</span> за композиційним правилом Заде використовується вираз:</p>
+<div class="arithmatex">\[
+y = \tilde{A} \circ R,
+\]</div>
+<p>де <span class="arithmatex">\(\tilde{A}\)</span> — нечітке значення вхідної змінної, а <span class="arithmatex">\(R\)</span> — нечітке відношення, що описує правило «ЯКЩО-ТО». Оператор <span class="arithmatex">\(\circ\)</span> позначає <strong>максимінну композицію</strong>, яка вибирає максимальне значення серед мінімальних попарних приналежностей.</p>
+<p>Окрему увагу приділяють правилам, що переводять умовне висловлювання у нечітке відношення. Одне з таких правил для імплікації <span class="arithmatex">\(\mu_A(u) \to \mu_B(v)\)</span> описується кусочно-заданою функцією:</p>
+<div class="arithmatex">\[
+\mu_A(u) \to \mu_B(v) = 
+\begin{cases} 
+1, &amp; \text{якщо } \mu_A \le \mu_B \\
+\mu_B, &amp; \text{якщо } \mu_A &gt; \mu_B 
+\end{cases}
+\]</div>
+<p>Ця залежність (відома як імплікація Геделя) гарантує, що якщо умова правила виконується меншою мірою, ніж очікуваний наслідок, то правило вважається повністю істинним (<span class="arithmatex">\(1\)</span>). Якщо ж ступінь виконання умови перевищує ступінь наслідку, істинність правила обмежується значенням <span class="arithmatex">\(\mu_B\)</span>.</p>
+<p>Логіка прийняття рішень у системах із нечітким виведенням вимагає чіткої класифікації типів правил та способів їх поєднання. У таблиці нижче наведено порівняння основних структур правил.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Тип логічної конструкції</th>
+<th style="text-align: left;">Формальний запис (псевдокод)</th>
+<th style="text-align: left;">Сфера застосування</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Проста імплікація</strong></td>
+<td style="text-align: left;">IF <span class="arithmatex">\(x\)</span> is <span class="arithmatex">\(A\)</span> THEN <span class="arithmatex">\(y\)</span> is <span class="arithmatex">\(B\)</span></td>
+<td style="text-align: left;">Базові ланки управління КФС.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Альтернативна імплікація</strong></td>
+<td style="text-align: left;">IF <span class="arithmatex">\(x\)</span> is <span class="arithmatex">\(A\)</span> THEN <span class="arithmatex">\(y\)</span> is <span class="arithmatex">\(B\)</span> ELSE <span class="arithmatex">\(y\)</span> is <span class="arithmatex">\(C\)</span></td>
+<td style="text-align: left;">Системи з чітким поділом на нормальні та аварійні режими.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Складна умова (AND)</strong></td>
+<td style="text-align: left;">IF <span class="arithmatex">\(x_1\)</span> is <span class="arithmatex">\(A_1\)</span> AND <span class="arithmatex">\(x_2\)</span> is <span class="arithmatex">\(A_2\)</span> THEN <span class="arithmatex">\(y\)</span> is <span class="arithmatex">\(B\)</span></td>
+<td style="text-align: left;">Багатофакторний аналіз (напр. температура + вологість).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Складна умова (OR)</strong></td>
+<td style="text-align: left;">IF <span class="arithmatex">\(x_1\)</span> is <span class="arithmatex">\(A_1\)</span> OR <span class="arithmatex">\(x_2\)</span> is <span class="arithmatex">\(A_2\)</span> THEN <span class="arithmatex">\(y\)</span> is <span class="arithmatex">\(B\)</span></td>
+<td style="text-align: left;">Резервування каналів отримання даних.</td>
+</tr>
+</tbody>
+</table>
+<p>Також важливо враховувати відмінності між нечітким виведенням та ймовірнісними методами, які часто плутають у проектуванні.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Критерій порівняння</th>
+<th style="text-align: left;">Нечітка логіка (Fuzzy Logic)</th>
+<th style="text-align: left;">Теорія ймовірностей</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Природа невизначеності</strong></td>
+<td style="text-align: left;">Розмитість значень понять (термів).</td>
+<td style="text-align: left;">Випадковість настання події.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Значення</strong></td>
+<td style="text-align: left;">Ступінь приналежності <span class="arithmatex">\(\mu \in [0, 1]\)</span>.</td>
+<td style="text-align: left;">Ймовірність події <span class="arithmatex">\(P \in\)</span>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Сума значень</strong></td>
+<td style="text-align: left;">Не обов'язково дорівнює 1.</td>
+<td style="text-align: left;">Сума ймовірностей повної групи завжди 1.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Застосування</strong></td>
+<td style="text-align: left;">Моделювання знань експерта.</td>
+<td style="text-align: left;">Статистичний аналіз масивів даних.</td>
+</tr>
+</tbody>
+</table>
+<p>Цикл нечіткого логічного виведення від моменту отримання даних до формування керуючої дії можна представити у вигляді наступної моделі.</p>
+<pre class="mermaid"><code>graph TD
+    Input["Чіткі вхідні дані -&lt;br/&gt;Sensors"] --&gt; Fuzz["Фазифікація:&lt;br/&gt;розрахунок mu_A"]
+    Fuzz --&gt; Rules{"База нечітких правил -&lt;br/&gt;IF/THEN"}
+    subgraph Inference_Engine[Механізм виведення]
+    Rules --&gt; Aggr["Агрегування умов:&lt;br/&gt;min/max"]
+    Aggr --&gt; Impl["Активізація наслідків&lt;br/&gt;- Імплікація"]
+    Impl --&gt; Comp[Композиція Заде: A o R]
+    end
+    Comp --&gt; Defuzz["Дефазифікація: нечітке&lt;br/&gt;-&gt; чітке"]
+    Defuzz --&gt; Output["Виконавчий механізм -&lt;br/&gt;Actuators"]</code></pre>
+<p>Описана модель ілюструє покрокову трансформацію інформації. На стадії <strong>агрегування</strong> система з'єднує декілька умов за допомогою нечітких операцій, а стадія <strong>композиції</strong> забезпечує отримання результуючої нечіткої множини, яка потім перетворюється у фізичний сигнал на етапі <strong>дефазифікації</strong>.</p>
+<h3 id="_2">Питання для самоперевірки</h3>
+<ol>
+<li>
+<p>Чому нечітке логічне виведення вважається більш ефективним для кіберфізичних систем, ніж класична булева логіка, при описі процесів, що задані природною мовою?</p>
+</li>
+<li>
+<p>Поясніть фізичний та математичний зміст операції максимінної композиції у правилі Заде. Як вона пов'язує вхідне нечітке значення з результатом виведення?</p>
+</li>
+<li>
+<p>Опишіть умови істинністі правила «ЯКЩО-ТО» згідно з імплікацією Геделя, наведеною в математичному апараті. Що відбувається, коли ступінь приналежності входу перевищує ступінь приналежності виходу?</p>
+</li>
+<li>
+<p>У чому полягає роль семантичного правила <span class="arithmatex">\(M\)</span> у структурі лінгвістичної змінної в контексті підготовки даних для логічного виведення?</p>
+</li>
+<li>
+<p>Яким чином використання нечітких відношень <span class="arithmatex">\(R\)</span> дозволяє об'єднувати знання декількох експертів у єдину базу правил прийняття рішень?</p>
+</li>
+</ol>
+<h2 id="53-">5.3 Евристичні алгоритми: жадібний пошук, метод Монте-Карло та імітація відпалу</h2>
+<p>У теорії алгоритмів існує значний клас задач, для яких пошук точного розв'язку за допомогою детермінованих методів потребує надмірних обчислювальних ресурсів або часу, що перевищує життєвий цикл системи. Для вирішення таких проблем, особливо тих, що відносяться до класів складності <strong>NP</strong> та <strong>NP-повних</strong>, застосовуються <strong>евристичні алгоритми</strong>. Евристичний алгоритм — це наближений метод розв'язання задачі, який не гарантує знаходження глобального оптимуму, проте забезпечує отримання прийнятного результату за осяжний час. Основний акцент у таких підходах робиться на балансі між швидкістю виконання та якістю отриманого рішення.</p>
+<p><strong>Жадібний пошук</strong> (Greedy Search) базується на принципі прийняття локально оптимального рішення на кожному окремому кроці з надією, що послідовність таких кроків приведе до глобально оптимального результату. У процесі роботи цей алгоритм ніколи не повертається назад для перегляду вже прийнятих рішень, що робить його надзвичайно швидким, проте схильним до потрапляння в локальні екстремуми, які значно гірші за загальний мінімум або максимум цільової функції. Типовим прикладом застосування жадібного підходу є побудова початкового маршруту в задачах комівояжера, де на кожному етапі обирається найближче невідвідане місто.</p>
+<p><strong>Метод Монте-Карло</strong> являє собою групу евристичних методів, що ґрунтуються на використанні випадкових величин та статистичного моделювання. Сутність методу полягає у багаторазовому генерації випадкових станів системи (проб) та виборі найкращого результату серед усіх отриманих варіантів. Цей метод демонструє високу ефективність в умовах обмеженої пам’яті та дозволяє аналізувати складні обчислювальні простори, де аналітичний опис є неможливим. При розрахунку маршрутів метод Монте-Карло дозволяє за велику кількість ітерацій (наприклад, від 10 000 до 50 000) знайти статистично виправдане наближення до оптимального шляху.</p>
+<p><strong>Алгоритм імітації відпалу</strong> (Simulated Annealing) відноситься до класу метаевристичних методів та використовує фізичну метафору процесу охолодження металу для досягнення кристалічної структури з мінімальною енергією. На відміну від жадібного пошуку, імітація відпалу дозволяє системі приймати «гірші» рішення на початкових етапах з певною ймовірністю, що дає можливість вийти з локальних ям. Ця ймовірність поступово зменшується відповідно до закону спадання «температури», що врешті-решт приводить систему до стійкого стану, близького до глобального оптимуму.</p>
+<p>Логіка переходу в алгоритмі імітації відпалу описується ймовірнісною функцією, яка визначає, чи буде прийнято новий стан системи, якщо він є гіршим за поточний. Математична модель переходу структури до рівноважного стану має наступний вигляд:</p>
+<div class="arithmatex">\[
+P(x^\ast \to x_{i+1} \mid x_i) = \begin{cases} 
+1, \quad \text{якщо } F(x^\ast) - F(x_i) \leq 0 \\ 
+\exp\left(-\frac{F(x^\ast) - F(x_i)}{Q_i}\right), \quad \text{якщо } F(x^\ast) - F(x_i) \gt 0 
+\end{cases}
+\]</div>
+<p>У наведеній математичній залежності використовуються такі змінні:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(P\)</span> — ймовірність переходу з поточного стану <span class="arithmatex">\(x_i\)</span> до наступного стану <span class="arithmatex">\(x_{i+1}\)</span>.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(x^*\)</span> — обрана випадковим чином точка в просторі пошуку (кандидат на наступний стан).</p>
+</li>
+<li>
+<p><span class="arithmatex">\(x_i\)</span> — поточна точка на маршруті або поточний стан системи.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(F(x)\)</span> — значення цільової функції (наприклад, довжина маршруту), яку необхідно мінімізувати або максимізувати.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(Q_i\)</span> — параметр, що позначає «температуру» на <span class="arithmatex">\(i\)</span>-му кроці, який є елементом довільної спадаючої послідовності, що сходиться до нуля.</p>
+</li>
+</ul>
+<p>Дана формула демонструє, що при великих значеннях <span class="arithmatex">\(Q_i\)</span> (на початку алгоритму) ймовірність прийняття гіршого рішення є високою, що забезпечує активне дослідження всього простору станів. Зі зменшенням <span class="arithmatex">\(Q_i\)</span> алгоритм стає все більш схожим на жадібний пошук, концентруючись на локальному уточненні результату.</p>
+<p>Ефективність розглянутих евристичних методів залежить від розмірності вхідних даних та кількості ітерацій. Порівняльна характеристика методів наведена в таблиці нижче на основі лабораторних досліджень.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Характеристика</th>
+<th style="text-align: left;">Жадібний пошук</th>
+<th style="text-align: left;">Метод Монте-Карло</th>
+<th style="text-align: left;">Імітація відпалу</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Принцип вибору</strong></td>
+<td style="text-align: left;">Локальний оптимум (найкраще зараз).</td>
+<td style="text-align: left;">Випадковий перебір станів.</td>
+<td style="text-align: left;">Ймовірнісний перехід (метафора відпалу).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ризик локального оптимуму</strong></td>
+<td style="text-align: left;">Дуже високий (завжди застрягає).</td>
+<td style="text-align: left;">Низький (залежить від кількості проб).</td>
+<td style="text-align: left;">Мінімальний (має механізм виходу).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Швидкість виконання</strong></td>
+<td style="text-align: left;">Миттєво (один прохід).</td>
+<td style="text-align: left;">Залежить від кількості ітерацій <span class="arithmatex">\(N\)</span>.</td>
+<td style="text-align: left;">Середня/Низька (потребує охолодження).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Точність результату</strong></td>
+<td style="text-align: left;">Низька (приблизна).</td>
+<td style="text-align: left;">Статистична (покращується з часом).</td>
+<td style="text-align: left;">Висока (найближча до оптимуму).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Кількість ітерацій</strong></td>
+<td style="text-align: left;">Фіксована (1).</td>
+<td style="text-align: left;">Велика (10 000 – 50 000).</td>
+<td style="text-align: left;">Визначена графіком охолодження.</td>
+</tr>
+</tbody>
+</table>
+<p>Послідовність застосування евристичних методів для розрахунку оптимальних маршрутів у кіберфізичних системах та теорії алгоритмів передбачає створення матриці та ітераційну обробку даних.</p>
+<pre class="mermaid"><code>flowchart TD
+    Start((Початок)) --&gt; Matrix["Створення матриці для&lt;br/&gt;розрахунку маршрутів"]
+    Matrix --&gt; Input["Введення вхідних даних&lt;br/&gt;- точки/ваги"]
+    Input --&gt; Choice{Вибір методу}
+
+    Choice --&gt; Greedy["Жадібний пошук: один&lt;br/&gt;прохід"]
+    Choice --&gt; MonteCarlo["Метод Монте-Карло:&lt;br/&gt;випадкові проби N&lt;br/&gt;разів"]
+    Choice --&gt; Annealing["Імітація відпалу:&lt;br/&gt;зміна температури Q_i"]
+
+    Greedy --&gt; Result
+    MonteCarlo --&gt; Result
+    Annealing --&gt; Result
+
+    Result["Порівняння отриманих&lt;br/&gt;довжин маршрутів"] --&gt; Hist["Побудова гістограми та&lt;br/&gt;аналіз"]
+    Hist --&gt; End((Кінець))</code></pre>
+<p>Описана схема ілюструє логіку лабораторного дослідження, де результати різних евристик порівнюються для визначення найбільш ефективного підходу для конкретної структури даних.</p>
+<h3 id="_3">Питання для самоперевірки</h3>
+<ol>
+<li>
+<p>Чому евристичні алгоритми вважаються наближеними методами і за яких умов розробник має надати їм перевагу перед точними методами повного перебору?</p>
+</li>
+<li>
+<p>Поясніть сутність «жадібної» стратегії. Яка головна вада цього підходу при роботі зі складними ландшафтами цільових функцій?</p>
+</li>
+<li>
+<p>Яким чином метод Монте-Карло використовує статистичну ймовірність для знаходження наближеного розв'язку задачі комівояжера?</p>
+</li>
+<li>
+<p>Опишіть фізичний зміст параметра «температури» <span class="arithmatex">\(Q_i\)</span> в алгоритмі імітації відпалу та його вплив на ймовірність прийняття рішення, що погіршує поточний стан.</p>
+</li>
+<li>
+<p>На основі формули ймовірності переходу поясніть, чому на фінальних стадіях (коли <span class="arithmatex">\(Q_i\)</span> наближається до нуля) алгоритм імітації відпалу починає поводитися як жадібний пошук.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

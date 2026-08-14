@@ -1,0 +1,2834 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Прикладні алгоритми КФС"">
+      
+      
+      
+      
+        <link rel="prev" href="../lab-2/">
+      
+      
+        <link rel="next" href="../lab-4/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>ЛБ 3. Оркестрування потоків даних у середовищі Node-RED - Прикладні алгоритми кіберфізичних систем</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#no-3-node-red" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Прикладні алгоритми кіберфізичних систем" class="md-header__button md-logo" aria-label="Прикладні алгоритми кіберфізичних систем" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v1h3v2h-3v2h3v2h-3v2h3v2h-3v2h3v2h-3v1H6v-1H3v-2h3v-2H3v-2h3v-2H3V9h3V7H3V5h3zm5 11v3h1v-3zm2 0v3h1v-3zm2 0v3h1v-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Прикладні алгоритми кіберфізичних систем
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ЛБ 3. Оркестрування потоків даних у середовищі Node-RED
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча навчальна програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lectures/topic-1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../lab-1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../practicals/pz-1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../self-study/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../rg/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Розрахунково-графічна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../self-study/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Перелік тестових та практичних завдань для самопідготовки
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Прикладні алгоритми кіберфізичних систем" class="md-nav__button md-logo" aria-label="Прикладні алгоритми кіберфізичних систем" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v1h3v2h-3v2h3v2h-3v2h3v2h-3v2h3v2h-3v1H6v-1H3v-2h3v-2H3v-2h3v-2H3V9h3V7H3V5h3zm5 11v3h1v-3zm2 0v3h1v-3zm2 0v3h1v-3z"/></svg>
+
+    </a>
+    Прикладні алгоритми кіберфізичних систем
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча навчальна програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Теоретичні засади алгоритмізації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Керуючі конструкції в алгоритмах реального часу
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. Архітектура та обмін даними
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Алгоритми обробки структурованих даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Нечітка логіка та евристики
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Пошук, сортування та графи в мережах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Хмарні та граничні обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання логіки керування низького рівня
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Розробка алгоритмів обробки даних з давачів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Оркестрування потоків даних у середовищі Node-RED
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Оркестрування потоків даних у середовищі Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета роботи та стек технологій
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 Теоретичні відомості
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 Теоретичні відомості">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iiot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Екосистема IIoT та парадигма публікації/підписки
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ієрархія топіків та структуризація JSON-пакетів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Рівні якості обслуговування
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Математичний апарат аналізу каналів зв'язку та автономності
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 Підготовка середовища та розгортання проєкту (Крок 0)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 Підготовка середовища та розгортання проєкту (Крок 0)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-nodejs-node-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 0.1. Перевірка Node.js та глобальне встановлення Node-RED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-mqtt-mosquitto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 0.2. Встановлення та запуск MQTT-брокера Mosquitto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-node-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 0.3. Запуск Node-RED та встановлення додаткових вузлів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 0.4. Створення структури папок проєкту
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 Порядок виконання роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Порядок виконання роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Індивідуальні завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покрокова побудова потоку в Node-RED
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покрокова побудова потоку в Node-RED">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Конфігурація вузлів потоку
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-node-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Написання коду генерації телеметрії в Node-RED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Написання коду обробки та фільтрації підписаних даних
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-node-red-flow-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Повний код експорту потоку Node-RED (Flow JSON)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Запуск та перевірка функціонування дашборду
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 Вимоги до змісту звіту
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 Контрольні запитання
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Обробка матриць сигналів у розподілених системах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Побудова нечіткого контролера для автоматизації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Оптимізація маршрутів у сенсорних мережах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Віртуалізація сервісів за допомогою Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Графічна формалізація алгоритмів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Оцінювання трудомісткості обчислювальних процесів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Проєктивання ієрархії тем MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Реалізація черги повідомлень для керування завданнями
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Вирішення задач маршрутизації евристичними методами
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Порівняльний аналіз методів сортування даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Аналіз архітектурних рішень для Big Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../self-study/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Розрахунково-графічна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../self-study/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Перелік тестових та практичних завдань для самопідготовки
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета роботи та стек технологій
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 Теоретичні відомості
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 Теоретичні відомості">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iiot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Екосистема IIoT та парадигма публікації/підписки
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ієрархія топіків та структуризація JSON-пакетів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Рівні якості обслуговування
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Математичний апарат аналізу каналів зв'язку та автономності
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 Підготовка середовища та розгортання проєкту (Крок 0)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 Підготовка середовища та розгортання проєкту (Крок 0)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-nodejs-node-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 0.1. Перевірка Node.js та глобальне встановлення Node-RED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-mqtt-mosquitto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 0.2. Встановлення та запуск MQTT-брокера Mosquitto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-node-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 0.3. Запуск Node-RED та встановлення додаткових вузлів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 0.4. Створення структури папок проєкту
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 Порядок виконання роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Порядок виконання роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Індивідуальні завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покрокова побудова потоку в Node-RED
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Покрокова побудова потоку в Node-RED">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Конфігурація вузлів потоку
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-node-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Написання коду генерації телеметрії в Node-RED
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Написання коду обробки та фільтрації підписаних даних
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-node-red-flow-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Повний код експорту потоку Node-RED (Flow JSON)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Запуск та перевірка функціонування дашборду
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 Вимоги до змісту звіту
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 Контрольні запитання
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="no-3-node-red"><strong>Лабораторна робота № 3<br>Оркестрування потоків даних у середовищі Node-RED</strong></h1>
+<h2 id="_1">Мета роботи та стек технологій</h2>
+<p><strong>Мета:</strong> Засвоєння практичних навичок оркістрування потоків телеметрії в екосистемах Інтернету речей (IoT) та промислового Інтернету речей (IIoT), налаштування протоколів обміну даними реального часу, конфігурування MQTT-брокера, формування структурованих повідомлень у форматі JSON, розробка ієрархічних тем (топіків) публікації та підписки, а також побудова інтерактивних панелей моніторингу в середовищі Node-RED.</p>
+<p><strong>Стек технологій та інструменти:</strong></p>
+<ul>
+<li>
+<p><strong>Платформа оркестрування:</strong> Node-RED (потокове програмування на базі Node.js).</p>
+</li>
+<li>
+<p><strong>Мова скриптів обробки:</strong> JavaScript (ECMAScript 2022+).</p>
+</li>
+<li>
+<p><strong>Протокол передачі даних:</strong> MQTT (Message Queuing Telemetry Transport v3.1.1 / v5.0).</p>
+</li>
+<li>
+<p><strong>MQTT-брокер:</strong> Eclipse Mosquitto.</p>
+</li>
+<li>
+<p><strong>Формат даних:</strong> JSON (JavaScript Object Notation).</p>
+</li>
+<li>
+<p><strong>Модуль візуалізації:</strong> <code>node-red-dashboard</code>.</p>
+</li>
+</ul>
+<hr />
+<h2 id="1">1 Теоретичні відомості</h2>
+<h3 id="iiot">Екосистема IIoT та парадигма публікації/підписки</h3>
+<p>У кіберфізичних системах рівень <strong>Brainware</strong> забезпечує перетворення первинних фізичних сигналів на інтелектуальні рішення. Для обміну даними між розподіленими сенсорними вузлами та хмарно-граничними обчислювальними платформами використовується протокол MQTT. На відміну від традиційної клієнт-серверної моделі HTTP, де клієнт постійно опитує сервер, протокол MQTT працює за моделлю <strong>«публікація/підписка» (publish/subscribe)</strong>.</p>
+<p>Парадигма публікації та підписки повністю розв'язує відправника (публікатора) і отримувача (підписника) у часі, просторі та за джерелами даних. Центральним вузлом такої мережі є <strong>MQTT-брокер</strong>, який приймає повідомлення від пристроїв-публікаторів, виконує їх фільтрацію та миттєво перенаправляє відповідним пристроям-підписникам.</p>
+<p><pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    participant Sensor as Віртуальний сенсор (Node-RED)
+    participant Broker as MQTT Брокер (Mosquitto)
+    participant UI as Дашборд (Node-RED Dashboard)
+
+    Note over UI, Broker: Підписка на ієрархічний топік
+    UI-&gt;&gt;Broker: SUBSCRIBE (""фабрика/цех/пристрій/параметр",&lt;br/&gt;QoS")
+    Broker--&gt;&gt;UI: SUBACK (Підтвердження підписки)
+
+    Note over Sensor, Broker: Періодична публікація телеметрії
+    Sensor-&gt;&gt;Broker: PUBLISH (""фабрика/цех/пристрій/параметр",&lt;br/&gt;payload: JSON")
+
+    Note over Broker: Фільтрація та маршрутизація
+    Broker-&gt;&gt;UI: PUBLISH (""фабрика/цех/пристрій/параметр",&lt;br/&gt;payload: JSON")
+
+    opt Рівні QoS 1 та QoS 2
+        UI--&gt;&gt;Broker: PUBACK / PUBCOMP (Підтвердження доставки)
+    end</code></pre>
+<em>Рисунок 1 — Схема взаємодії компонентів у екосистемі MQTT при передачі телеметрії КФС</em></p>
+<p>Наведений рисунок ілюструє повний життєвий цикл передачі даних. Процес розпочинається з ініціалізації підписки панеллю моніторингу, після чого віртуальний сенсор генерує телеметрію та публікує її на брокер, який здійснює маршрутизацію до споживачів.</p>
+<h3 id="json-">Ієрархія топіків та структуризація JSON-пакетів</h3>
+<p>Маршрутизація повідомлень у протоколі MQTT здійснюється за допомогою <strong>тем (топіків)</strong>, які являють собою текстові рядки у кодуванні UTF-8 з ієрархічною структурою. Рівні ієрархії розділяються символом похилої риски <code>/</code>. Для кіберфізичних систем стандартом де-факто є чотирирівнева адресація:</p>
+<div class="arithmatex">\[
+\text{Топік} = \text{фабрика} / \text{цех} / \text{пристрій} / \text{параметр}
+\]</div>
+<p>Наприклад, тема <code>kyiv_plant/shop_1/press_04/pressure</code> чітко ідентифікує тиск на пресі №4 у першому цеху київського заводу. </p>
+<p>Для гнучкого управління підписками протокол підтримує символи шаблонів (wildcards):</p>
+<ul>
+<li>
+<p>Однорівневий шаблон <code>+</code> замінює точно один рівень ієрархії. Підписка <code>kyiv_plant/+/press_04/pressure</code> дозволить отримувати дані про тиск з усіх цехів.</p>
+</li>
+<li>
+<p>Багаторівневий шаблон <code>#</code> замінює всі наступні рівні ієрархії і повинен стояти лише наприкінці рядка. Підписка <code>kyiv_plant/shop_1/#</code> дозволить отримувати всю телеметрію першого цеху.</p>
+</li>
+</ul>
+<p>Для забезпечення універсальності обміну даними корисне навантаження (payload) формується у форматі <strong>JSON</strong>. Структура JSON-пакета в КФС включає метку часу (timestamp), числове значення параметра, одиниці вимірювання та діагностичний статус.</p>
+<h3 id="_2">Рівні якості обслуговування</h3>
+<p>Протокол MQTT підтримує три рівні якості обслуговування (Quality of Service), які визначають гарантії доставки повідомлень в умовах нестабільного зв'язку:</p>
+<ul>
+<li>
+<p>Рівень <strong>QoS 0 (At most once)</strong> забезпечує доставку повідомлення не більше одного разу без очікування підтвердження, що гарантує мінімальне використання мережевого трафіку та низьку затримку.</p>
+</li>
+<li>
+<p>Рівень <strong>QoS 1 (At least once)</strong> гарантує доставку повідомлення принаймні один раз за допомогою квитування пакетом <code>PUBACK</code>. Якщо підтвердження не надійшло, відправник повторює передачу, що може призвести до дублювання даних.</p>
+</li>
+<li>
+<p>Рівень <strong>QoS 2 (Exactly once)</strong> забезпечує доставку повідомлення строго один раз за допомогою чотирьохетапного рукостискання (<code>PUBREC</code>, <code>PUBREL</code>, <code>PUBCOMP</code>), що виключає втрату чи дублювання команд у критичних вузлах КФС.</p>
+</li>
+</ul>
+<h3 id="_3">Математичний апарат аналізу каналів зв'язку та автономності</h3>
+<p>Максимальна пропускна здатність каналу зв'язку <span class="arithmatex">\(C\)</span>, яка визначає верхню межу швидкості передачі телеметрії від сенсорного вузла до брокера, розраховується за <strong>теоремою Шеннона-Гартлі</strong>:</p>
+<div class="arithmatex">\[
+C = W \cdot \log_2\left(1 + \frac{S}{N}\right)
+\]</div>
+<p>де:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(C\)</span> — максимальна швидкість передачі інформації, вимірюється в бітах за секунду (<span class="arithmatex">\(\text{біт/с}\)</span>);</p>
+</li>
+<li>
+<p><span class="arithmatex">\(W\)</span> — смуга пропускання радіоканалу, вимірюється в герцах (<span class="arithmatex">\(\text{Гц}\)</span>);</p>
+</li>
+<li>
+<p><span class="arithmatex">\(S/N\)</span> — безрозмірне відношення потужності корисного сигналу <span class="arithmatex">\(S\)</span> до потужності завад і шуму <span class="arithmatex">\(N\)</span> (відношення сигнал/шум).</p>
+</li>
+</ul>
+<p>Для автономних сенсорних вузлів КФС критичним показником є час життя батареї <span class="arithmatex">\(T_{life}\)</span>, який залежить від періоду опитування та тривалості активної фази передачі через MQTT:</p>
+<div class="arithmatex">\[
+T_{life} = \frac{C_{bat}}{I_{avg} \cdot 24 \cdot 365}
+\]</div>
+<div class="arithmatex">\[
+I_{avg} = \frac{I_{active} \cdot t_{active} + I_{sleep} \cdot t_{sleep}}{t_{cycle}}
+\]</div>
+<p>де:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(T_{life}\)</span> — розрахунковий термін роботи автономного живлення, вимірюється в роках;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(C_{bat}\)</span> — номінальна ємність акумулятора, вимірюється в міліампер-годинах (<span class="arithmatex">\(\text{мА}\cdot\text{год}\)</span>);</p>
+</li>
+<li>
+<p><span class="arithmatex">\(I_{avg}\)</span> — середній струм споживання за один повний цикл, вимірюється в міліамперах (<span class="arithmatex">\(\text{мА}\)</span>);</p>
+</li>
+<li>
+<p><span class="arithmatex">\(I_{active}\)</span> та <span class="arithmatex">\(t_{active}\)</span> — струм (<span class="arithmatex">\(\text{мА}\)</span>) та тривалість (<span class="arithmatex">\(\text{с}\)</span>) активного стану пристрою під час зняття показників та MQTT-сесії;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(I_{sleep}\)</span> та <span class="arithmatex">\(t_{sleep}\)</span> — струм (<span class="arithmatex">\(\text{мА}\)</span>) та тривалість (<span class="arithmatex">\(\text{с}\)</span>) режиму енергозбереження (сну);</p>
+</li>
+<li>
+<p><span class="arithmatex">\(t_{cycle}\)</span> — загальний період циклу роботи (<span class="arithmatex">\(t_{cycle} = t_{active} + t_{sleep}\)</span>), вимірюється в секундах (<span class="arithmatex">\(\text{с}\)</span>).</p>
+</li>
+</ul>
+<p>Для кодування поля залишкової довжини (Remaining Length) у заголовку пакета MQTT використовується змінна кількість байтів від 1 до 4. Обчислення фактичної довжини корисного навантаження <span class="arithmatex">\(L\)</span> здійснюється за формулою:</p>
+<div class="arithmatex">\[
+L = \sum_{i=1}^{n} (B_i \ \&amp; \ 127) \cdot 128^{i-1}
+\]</div>
+<p>де <span class="arithmatex">\(n\)</span> позначає кількість байтів поля довжини (<span class="arithmatex">\(1 \le n \le 4\)</span>), <span class="arithmatex">\(B_i\)</span> — значення <span class="arithmatex">\(i\)</span>-го байта, а побітова операція <span class="arithmatex">\(\&amp; \ 127\)</span> виділяє 7 молодших бітів даних, відкидаючи старший біт продовження.</p>
+<hr />
+<h2 id="2-0">2 Підготовка середовища та розгортання проєкту (Крок 0)</h2>
+<p>Для виконання лабораторної роботи необхідно встановити середовище Node.js, платформу Node-RED, панель візуалізації <code>node-red-dashboard</code> та брокер повідомлень Eclipse Mosquitto.</p>
+<h3 id="01-nodejs-node-red">Крок 0.1. Перевірка Node.js та глобальне встановлення Node-RED</h3>
+<p>Відкрийте системний термінал (PowerShell, Bash) і перевірте наявність Node.js:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>node<span class="w"> </span>-v
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>npm<span class="w"> </span>-v
+</span></code></pre></div>
+<p>Якщо Node.js встановлено, виконайте глобальну інсталяцію платформи Node-RED:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>--unsafe-perm<span class="w"> </span>node-red
+</span></code></pre></div>
+<h3 id="02-mqtt-mosquitto">Крок 0.2. Встановлення та запуск MQTT-брокера Mosquitto</h3>
+<p>Встановити брокер Mosquitto можна залежно від вашої операційної системи:</p>
+<ul>
+<li>
+<p><strong>Windows:</strong> Завантажте та встановіть інсталятор з офіційного сайту <a href="https://mosquitto.org/download/">mosquitto.org</a>.</p>
+</li>
+<li>
+<p><strong>Linux (Ubuntu/Debian):</strong>
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mosquitto<span class="w"> </span>mosquitto-clients
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>mosquitto
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>mosquitto
+</span></code></pre></div></p>
+</li>
+</ul>
+<p>Перевірте функціонування брокера за допомогою локального підключення на порт <code>1883</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mosquitto_sub<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-t<span class="w"> </span><span class="s2">&quot;test/topic&quot;</span><span class="w"> </span>-v
+</span></code></pre></div>
+<p>У новому вікні термінала опублікуйте тестове повідомлення:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>mosquitto_pub<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-t<span class="w"> </span><span class="s2">&quot;test/topic&quot;</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Hello CPS MQTT&quot;</span>
+</span></code></pre></div>
+<p>Якщо в першому терміналі відобразився текст <code>test/topic Hello CPS MQTT</code>, брокер працює коректно.</p>
+<h3 id="03-node-red">Крок 0.3. Запуск Node-RED та встановлення додаткових вузлів</h3>
+<p>Запустіть платформу Node-RED з термінала:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>node-red
+</span></code></pre></div>
+<p>У терміналі з'явиться лог запуску та мережева адреса веб-інтерфейсу (зазвичай <code>http://127.0.0.1:1880/</code>).</p>
+<p>Відкрийте веб-браузер і перейдіть за адресою <code>http://127.0.0.1:1880/</code>.</p>
+<p>Для встановлення панелі візуалізації перейдіть у меню Node-RED (верхній правий кут) <span class="arithmatex">\(\to\)</span> <strong>Manage palette</strong> <span class="arithmatex">\(\to\)</span> вкладка <strong>Install</strong>, у полі пошуку введіть <code>node-red-dashboard</code> та натисніть кнопку <strong>Install</strong>.</p>
+<p>Альтернативно встановити плагін можна через термінал у домашній папці Node-RED:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span>~/.node-red
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>npm<span class="w"> </span>install<span class="w"> </span>node-red-dashboard
+</span></code></pre></div>
+<p>Після встановлення перезапустіть Node-RED у терміналі.</p>
+<h3 id="04">Крок 0.4. Створення структури папок проєкту</h3>
+<p>Створіть на локальному диску папку проєкту для збереження конфігурацій та експортованих потоків:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>mkdir<span class="w"> </span>cps-lab3-nodered
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">cd</span><span class="w"> </span>cps-lab3-nodered
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>touch<span class="w"> </span>README.md
+</span></code></pre></div>
+<p>Структура робочої директорії матиме вигляд:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>cps-lab3-nodered/
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>├── flows.json          (Експортований потік Node-RED)
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>└── README.md           (Опис виконаної роботи)
+</span></code></pre></div>
+<hr />
+<h2 id="3">3 Порядок виконання роботи</h2>
+<h3 id="_4">Індивідуальні завдання</h3>
+<p>Кожен студент виконує завдання відповідно до свого номера у списку групи. Необхідно налаштувати симуляцію сенсора, сформувати топік за шаблоном <code>фабрика/цех/пристрій/параметр</code>, налаштувати відповідний рівень QoS, сформувати JSON-пакет та вивести дані на панель дашборду.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Варіант</th>
+<th style="text-align: left;">Фабрика</th>
+<th style="text-align: left;">Цех</th>
+<th style="text-align: left;">Пристрій</th>
+<th style="text-align: left;">Параметр</th>
+<th style="text-align: center;">Діапазон значень</th>
+<th style="text-align: center;">Період (мс)</th>
+<th style="text-align: center;">Рівень QoS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;"><code>kyiv_metal</code></td>
+<td style="text-align: left;"><code>shop_smelting</code></td>
+<td style="text-align: left;"><code>furnace_01</code></td>
+<td style="text-align: left;"><code>temperature</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(500 \dots 1500\ ^\circ\text{C}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1000\)</span></td>
+<td style="text-align: center;">QoS 1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: left;"><code>dnipro_auto</code></td>
+<td style="text-align: left;"><code>shop_assembly</code></td>
+<td style="text-align: left;"><code>robot_arm_3</code></td>
+<td style="text-align: left;"><code>vibration</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(0 \dots 50\ \text{мм/с}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(500\)</span></td>
+<td style="text-align: center;">QoS 2</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: left;"><code>lviv_pharma</code></td>
+<td style="text-align: left;"><code>shop_clean</code></td>
+<td style="text-align: left;"><code>reactor_v2</code></td>
+<td style="text-align: left;"><code>pressure</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(1.0 \dots 5.0\ \text{бар}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2000\)</span></td>
+<td style="text-align: center;">QoS 0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: left;"><code>kharkiv_chem</code></td>
+<td style="text-align: left;"><code>shop_acid</code></td>
+<td style="text-align: left;"><code>pump_p102</code></td>
+<td style="text-align: left;"><code>flow_rate</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(10 \dots 200\ \text{л/хв}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1500\)</span></td>
+<td style="text-align: center;">QoS 1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: left;"><code>odesa_port</code></td>
+<td style="text-align: left;"><code>grain_terminal</code></td>
+<td style="text-align: left;"><code>conveyor_c1</code></td>
+<td style="text-align: left;"><code>load_weight</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(0 \dots 500\ \text{т/год}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1000\)</span></td>
+<td style="text-align: center;">QoS 2</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>6</strong></td>
+<td style="text-align: left;"><code>zap_power</code></td>
+<td style="text-align: left;"><code>turbine_hall</code></td>
+<td style="text-align: left;"><code>generator_g1</code></td>
+<td style="text-align: left;"><code>frequency</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(49.0 \dots 51.0\ \text{Гц}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(500\)</span></td>
+<td style="text-align: center;">QoS 1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>7</strong></td>
+<td style="text-align: left;"><code>vin_agro</code></td>
+<td style="text-align: left;"><code>greenhouse_01</code></td>
+<td style="text-align: left;"><code>climate_node</code></td>
+<td style="text-align: left;"><code>humidity</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(30 \dots 95\ \%\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3000\)</span></td>
+<td style="text-align: center;">QoS 0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: left;"><code>poltava_gas</code></td>
+<td style="text-align: left;"><code>well_site_12</code></td>
+<td style="text-align: left;"><code>compressor_k4</code></td>
+<td style="text-align: left;"><code>gas_pressure</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(10 \dots 100\ \text{атм}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1000\)</span></td>
+<td style="text-align: center;">QoS 2</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>9</strong></td>
+<td style="text-align: left;"><code>chernihiv_paper</code></td>
+<td style="text-align: left;"><code>shop_paper</code></td>
+<td style="text-align: left;"><code>dryer_d02</code></td>
+<td style="text-align: left;"><code>temp_roller</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(80 \dots 220\ ^\circ\text{C}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1500\)</span></td>
+<td style="text-align: center;">QoS 1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>10</strong></td>
+<td style="text-align: left;"><code>sumy_machine</code></td>
+<td style="text-align: left;"><code>shop_cnc</code></td>
+<td style="text-align: left;"><code>milling_m01</code></td>
+<td style="text-align: left;"><code>spindle_speed</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(500 \dots 12000\ \text{об/хв}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(500\)</span></td>
+<td style="text-align: center;">QoS 0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>11</strong></td>
+<td style="text-align: left;"><code>rivne_basalt</code></td>
+<td style="text-align: left;"><code>crushing_plant</code></td>
+<td style="text-align: left;"><code>jaw_crusher</code></td>
+<td style="text-align: left;"><code>current_draw</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(10 \dots 250\ \text{А}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1000\)</span></td>
+<td style="text-align: center;">QoS 1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>12</strong></td>
+<td style="text-align: left;"><code>zhytomyr_milk</code></td>
+<td style="text-align: left;"><code>pasteurizer_01</code></td>
+<td style="text-align: left;"><code>tank_t3</code></td>
+<td style="text-align: left;"><code>level_liters</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(100 \dots 5000\ \text{л}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2000\)</span></td>
+<td style="text-align: center;">QoS 2</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>13</strong></td>
+<td style="text-align: left;"><code>kremenchuk_oil</code></td>
+<td style="text-align: left;"><code>refinery_unit</code></td>
+<td style="text-align: left;"><code>cracking_c1</code></td>
+<td style="text-align: left;"><code>temp_column</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(200 \dots 450\ ^\circ\text{C}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1000\)</span></td>
+<td style="text-align: center;">QoS 1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>14</strong></td>
+<td style="text-align: left;"><code>ternopil_solar</code></td>
+<td style="text-align: left;"><code>inverter_station</code></td>
+<td style="text-align: left;"><code>inverter_i05</code></td>
+<td style="text-align: left;"><code>dc_voltage</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(300 \dots 800\ \text{В}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1000\)</span></td>
+<td style="text-align: center;">QoS 0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: left;"><code>frankivsk_cement</code></td>
+<td style="text-align: left;"><code>kiln_dept</code></td>
+<td style="text-align: left;"><code>rotary_kiln</code></td>
+<td style="text-align: left;"><code>torque</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(50 \dots 300\ \text{кН}\cdot\text{м}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1500\)</span></td>
+<td style="text-align: center;">QoS 2</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>16</strong></td>
+<td style="text-align: left;"><code>lutsk_plastic</code></td>
+<td style="text-align: left;"><code>injection_shop</code></td>
+<td style="text-align: left;"><code>moulding_m04</code></td>
+<td style="text-align: left;"><code>oil_pressure</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(50 \dots 210\ \text{бар}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(500\)</span></td>
+<td style="text-align: center;">QoS 1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>17</strong></td>
+<td style="text-align: left;"><code>cherkasy_azot</code></td>
+<td style="text-align: left;"><code>ammonia_shop</code></td>
+<td style="text-align: left;"><code>synthesis_s2</code></td>
+<td style="text-align: left;"><code>gas_temp</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(350 \dots 550\ ^\circ\text{C}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1000\)</span></td>
+<td style="text-align: center;">QoS 2</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>18</strong></td>
+<td style="text-align: left;"><code>zakarpattia_wind</code></td>
+<td style="text-align: left;"><code>wind_farm_03</code></td>
+<td style="text-align: left;"><code>turbine_t12</code></td>
+<td style="text-align: left;"><code>wind_speed</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(0 \dots 35\ \text{м/с}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2000\)</span></td>
+<td style="text-align: center;">QoS 0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>19</strong></td>
+<td style="text-align: left;"><code>kropyv_oil</code></td>
+<td style="text-align: left;"><code>extraction_shop</code></td>
+<td style="text-align: left;"><code>extractor_e1</code></td>
+<td style="text-align: left;"><code>solvent_level</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(5 \dots 95\ \%\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1500\)</span></td>
+<td style="text-align: center;">QoS 1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>20</strong></td>
+<td style="text-align: left;"><code>mfg_smart_city</code></td>
+<td style="text-align: left;"><code>water_pumping</code></td>
+<td style="text-align: left;"><code>pump_station_3</code></td>
+<td style="text-align: left;"><code>water_head</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(20 \dots 80\ \text{м}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1000\)</span></td>
+<td style="text-align: center;">QoS 2</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="node-red">Покрокова побудова потоку в Node-RED</h3>
+<h4 id="1_1">Крок 1. Конфігурація вузлів потоку</h4>
+<p>У веб-інтерфейсі Node-RED (<code>http://127.0.0.1:1880/</code>) перетягніть на робоче поле з лівої панелі наступні вузли:</p>
+<ol>
+<li>
+<p><strong>Inject (Inject node):</strong> Служить таймером для періодичного запуску генерації даних.</p>
+<ul>
+<li>У налаштуваннях оберіть <strong>Repeat</strong> <span class="arithmatex">\(\to\)</span> <strong>interval</strong>, вкажіть період у мілісекундах відповідно до вашого варіанта.</li>
+</ul>
+</li>
+<li>
+<p><strong>Function (Function node):</strong> Містить JavaScript-код для розрахунку симульованого значення сенсора з накладанням завад та формування JSON-об'єкта.</p>
+</li>
+<li>
+<p><strong>MQTT Out (mqtt out node):</strong> Публікує сформований пакет у брокер.</p>
+<ul>
+<li>
+<p>Натисніть іконку олівця біля поля <strong>Server</strong> для додавання брокера: <strong>Server</strong> = <code>localhost</code> (або <code>127.0.0.1</code>), <strong>Port</strong> = <code>1883</code>.</p>
+</li>
+<li>
+<p>Поле <strong>Topic</strong>: вкажіть ієрархічний топік вашого варіанта (наприклад, <code>kyiv_metal/shop_smelting/furnace_01/temperature</code>).</p>
+</li>
+<li>
+<p>Поле <strong>QoS</strong>: виберіть рівень QoS (0, 1 або 2) відповідно до вашого варіанта.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>MQTT In (mqtt in node):</strong> Підписується на топік для отримання даних з брокера.</p>
+<ul>
+<li>
+<p>Використовуйте той самий сервер <code>localhost:1883</code>.</p>
+</li>
+<li>
+<p>Вкажіть топік вашого варіанта або топік з маскою (наприклад, <code>kyiv_metal/+/+/temperature</code>).</p>
+</li>
+<li>
+<p>Встановіть відповідний рівень QoS.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>JSON (json node):</strong> Перетворює отриманий з MQTT рядок у об'єкт JavaScript.</p>
+</li>
+<li>
+<p><strong>Function "Filter &amp; Check" (Function node):</strong> Перевіряє отримане значення на нормальний стан та готує дані для візуалізації.</p>
+</li>
+<li>
+<p><strong>Dashboard Gauge &amp; Chart (ui_gauge, ui_chart):</strong> Візуалізують поточне значення та графік зміни у часі.</p>
+</li>
+<li>
+<p><strong>Debug (debug node):</strong> Виводить лог повідомлень у праву панель відлагодження.</p>
+</li>
+</ol>
+<p><pre class="mermaid"><code>flowchart LR
+    subgraph Publisher_Side ["Блок генерації та&lt;br/&gt;публікації"]
+        Inject[Inject Node: Таймер] --&gt;|Trigger| FuncGen["Function Node:&lt;br/&gt;Генератор JSON&lt;br/&gt;телеметрії"]
+        FuncGen --&gt;|msg.payload JSON| MqttOut["MQTT Out Node:&lt;br/&gt;Публікація в Mosquitto"]
+    end
+
+    subgraph Network [Мережевий рівень]
+        MqttOut --&gt;|TCP 1883 / MQTT| Mosquitto[("Eclipse Mosquitto&lt;br/&gt;Broker")]
+        Mosquitto --&gt;|TCP 1883 / MQTT| MqttIn["MQTT In Node: Підписка&lt;br/&gt;на топік"]
+    end
+
+    subgraph Subscriber_Side ["Блок прийому, обробки&lt;br/&gt;та візуалізації"]
+        MqttIn --&gt;|Raw String| JsonNode["JSON Node: Парсинг у&lt;br/&gt;JS Object"]
+        JsonNode --&gt;|Object| FuncProc["Function Node:&lt;br/&gt;Фільтрація та аналіз"]
+        FuncProc --&gt;|Value| GaugeUI["Dashboard Gauge:&lt;br/&gt;Стрілочний індикатор"]
+        FuncProc --&gt;|Value| ChartUI["Dashboard Chart:&lt;br/&gt;Графік тренду"]
+        FuncProc --&gt;|Debug| DebugNode["Debug Node: Консоль&lt;br/&gt;логів"]
+    end</code></pre>
+<em>Рисунок 2 — Схема розробленого потоку даних у середовищі Node-RED</em></p>
+<p>На рисунку показано поділ потоку на два незалежні блоки. Перший блок створює віртуальні виміри та відправляє їх у брокер Mosquitto, а другий блок підписується на цей же брокер, розпаковує пакет та передає дані на елементи дашборду.</p>
+<hr />
+<h4 id="2-node-red">Крок 2. Написання коду генерації телеметрії в Node-RED</h4>
+<p>Двічі клацніть на вузол <strong>Function Node</strong> у блоці генератора телеметрії та введіть наступний код JavaScript:</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="cm">/**</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="cm"> * Вузол генерації віртуальної телеметрії КФС (Варіант №1).</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="cm"> * Генерує значення з плаваючою крапкою, додає випадковий шум,</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="cm"> * формує ієрархічний топік та JSON-пакет з меткою часу.</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="cm"> */</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="c1">// 1. Параметри варіанта завдання</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="kd">const</span><span class="w"> </span><span class="nx">factory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;kyiv_metal&quot;</span><span class="p">;</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="kd">const</span><span class="w"> </span><span class="nx">shop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;shop_smelting&quot;</span><span class="p">;</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="kd">const</span><span class="w"> </span><span class="nx">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;furnace_01&quot;</span><span class="p">;</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="kd">const</span><span class="w"> </span><span class="nx">parameter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;temperature&quot;</span><span class="p">;</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="c1">// 2. Генерація симульованого значення з шумним розподілом</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="kd">const</span><span class="w"> </span><span class="nx">minVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">500.0</span><span class="p">;</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="kd">const</span><span class="w"> </span><span class="nx">maxVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1500.0</span><span class="p">;</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="c1">// Базове синусоїдальне значення + випадковий шум</span>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="kd">const</span><span class="w"> </span><span class="nx">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">10000</span><span class="p">;</span>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="kd">const</span><span class="w"> </span><span class="nx">baseValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">minVal</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">time</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nx">maxVal</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">minVal</span><span class="p">);</span>
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="kd">const</span><span class="w"> </span><span class="nx">noise</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">20.0</span><span class="p">;</span><span class="w"> </span><span class="c1">// завада +-10 градусів</span>
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="kd">const</span><span class="w"> </span><span class="nx">currentVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseFloat</span><span class="p">((</span><span class="nx">baseValue</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">noise</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">));</span>
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="c1">// 3. Формування ієрархічного топіка публікації</span>
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="kd">const</span><span class="w"> </span><span class="nx">fullTopic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">factory</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">shop</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">device</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">parameter</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a>
+</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="c1">// 4. Формування об&#39;єкта корисного навантаження (Payload)</span>
+</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="kd">const</span><span class="w"> </span><span class="nx">telemetryPayload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="w">    </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">(),</span>
+</span><span id="__span-9-31"><a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a><span class="w">    </span><span class="nx">factory</span><span class="o">:</span><span class="w"> </span><span class="nx">factory</span><span class="p">,</span>
+</span><span id="__span-9-32"><a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a><span class="w">    </span><span class="nx">shop</span><span class="o">:</span><span class="w"> </span><span class="nx">shop</span><span class="p">,</span>
+</span><span id="__span-9-33"><a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a><span class="w">    </span><span class="nx">device</span><span class="o">:</span><span class="w"> </span><span class="nx">device</span><span class="p">,</span>
+</span><span id="__span-9-34"><a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a><span class="w">    </span><span class="nx">metric</span><span class="o">:</span><span class="w"> </span><span class="nx">parameter</span><span class="p">,</span>
+</span><span id="__span-9-35"><a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a><span class="w">    </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="nx">currentVal</span><span class="p">,</span>
+</span><span id="__span-9-36"><a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a><span class="w">    </span><span class="nx">unit</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;degC&quot;</span><span class="p">,</span>
+</span><span id="__span-9-37"><a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a><span class="w">    </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">currentVal</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">1400.0</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">&quot;CRITICAL&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;NORMAL&quot;</span>
+</span><span id="__span-9-38"><a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a><span class="p">};</span>
+</span><span id="__span-9-39"><a id="__codelineno-9-39" name="__codelineno-9-39" href="#__codelineno-9-39"></a>
+</span><span id="__span-9-40"><a id="__codelineno-9-40" name="__codelineno-9-40" href="#__codelineno-9-40"></a><span class="c1">// 5. Заповнення вихідного повідомлення Node-RED</span>
+</span><span id="__span-9-41"><a id="__codelineno-9-41" name="__codelineno-9-41" href="#__codelineno-9-41"></a><span class="nx">msg</span><span class="p">.</span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fullTopic</span><span class="p">;</span>
+</span><span id="__span-9-42"><a id="__codelineno-9-42" name="__codelineno-9-42" href="#__codelineno-9-42"></a><span class="nx">msg</span><span class="p">.</span><span class="nx">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">telemetryPayload</span><span class="p">);</span><span class="w"> </span><span class="c1">// Серіалізація в JSON-рядок</span>
+</span><span id="__span-9-43"><a id="__codelineno-9-43" name="__codelineno-9-43" href="#__codelineno-9-43"></a>
+</span><span id="__span-9-44"><a id="__codelineno-9-44" name="__codelineno-9-44" href="#__codelineno-9-44"></a><span class="k">return</span><span class="w"> </span><span class="nx">msg</span><span class="p">;</span>
+</span></code></pre></div>
+<hr />
+<h4 id="3_1">Крок 3. Написання коду обробки та фільтрації підписаних даних</h4>
+<p>Двічі клацніть на вузол <strong>Function Node</strong> у блоці обробки підписаного повідомлення та введіть наступний код:</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="cm">/**</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="cm"> * Вузол десеріалізації, перевірки та підготовки даних для Dashboard.</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="cm"> */</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1">// Отримання об&#39;єкта телеметрії (якщо пройшов через JSON node)</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="kd">let</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">payload</span><span class="p">;</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;string&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">        </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">        </span><span class="nx">node</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Помилка парсингу JSON: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="p">}</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="c1">// Виділення числового значення та формування статусного повідомлення</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="kd">const</span><span class="w"> </span><span class="nx">sensorValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="kd">const</span><span class="w"> </span><span class="nx">deviceStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;UNKNOWN&quot;</span><span class="p">;</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="c1">// Формування вихідних повідомлень для візуальних вузлів</span>
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="kd">const</span><span class="w"> </span><span class="nx">msgGauge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="nx">sensorValue</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="kd">const</span><span class="w"> </span><span class="nx">msgStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="sb">`Пристрій: </span><span class="si">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">device</span><span class="si">}</span><span class="sb"> | Стан: </span><span class="si">${</span><span class="nx">deviceStatus</span><span class="si">}</span><span class="sb">`</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a>
+</span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="nx">msgGauge</span><span class="p">,</span><span class="w"> </span><span class="nx">msgStatus</span><span class="p">];</span>
+</span></code></pre></div>
+<hr />
+<h4 id="4-node-red-flow-json">Крок 4. Повний код експорту потоку Node-RED (Flow JSON)</h4>
+<p>Для імпорту готової конфігурації у Node-RED натисніть меню (верхній правий кут) <span class="arithmatex">\(\to\)</span> <strong>Import</strong>, вставте наведений нижче JSON-код і натисніть <strong>Import</strong>:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">[</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tab_cps_lab3&quot;</span><span class="p">,</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tab&quot;</span><span class="p">,</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ЛБ3: MQTT Телеметрія КФС&quot;</span><span class="p">,</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">        </span><span class="nt">&quot;disabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">        </span><span class="nt">&quot;info&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Потік генерації, публікації та візуалізації телеметрії КФС&quot;</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mqtt_broker_local&quot;</span><span class="p">,</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mqtt-broker&quot;</span><span class="p">,</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mosquitto Local&quot;</span><span class="p">,</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">        </span><span class="nt">&quot;broker&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1883&quot;</span><span class="p">,</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">        </span><span class="nt">&quot;clientid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NodeRed_CPS_Client&quot;</span><span class="p">,</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">        </span><span class="nt">&quot;usetls&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="w">        </span><span class="nt">&quot;protocolVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4&quot;</span><span class="p">,</span>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="w">        </span><span class="nt">&quot;keepalive&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;60&quot;</span><span class="p">,</span>
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="w">        </span><span class="nt">&quot;cleansession&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ui_group_telemetry&quot;</span><span class="p">,</span>
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ui_group&quot;</span><span class="p">,</span>
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Показники телеметрії&quot;</span><span class="p">,</span>
+</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="w">        </span><span class="nt">&quot;tab&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ui_tab_dashboard&quot;</span><span class="p">,</span>
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="w">        </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="w">        </span><span class="nt">&quot;disp&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a><span class="w">        </span><span class="nt">&quot;width&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6&quot;</span><span class="p">,</span>
+</span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a><span class="w">        </span><span class="nt">&quot;collapse&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+</span><span id="__span-11-30"><a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-11-31"><a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-32"><a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a><span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ui_tab_dashboard&quot;</span><span class="p">,</span>
+</span><span id="__span-11-33"><a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ui_tab&quot;</span><span class="p">,</span>
+</span><span id="__span-11-34"><a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a><span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Дашборд КФС&quot;</span><span class="p">,</span>
+</span><span id="__span-11-35"><a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a><span class="w">        </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dashboard&quot;</span><span class="p">,</span>
+</span><span id="__span-11-36"><a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a><span class="w">        </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-11-37"><a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-11-38"><a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-39"><a id="__codelineno-11-39" name="__codelineno-11-39" href="#__codelineno-11-39"></a><span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node_inject_timer&quot;</span><span class="p">,</span>
+</span><span id="__span-11-40"><a id="__codelineno-11-40" name="__codelineno-11-40" href="#__codelineno-11-40"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;inject&quot;</span><span class="p">,</span>
+</span><span id="__span-11-41"><a id="__codelineno-11-41" name="__codelineno-11-41" href="#__codelineno-11-41"></a><span class="w">        </span><span class="nt">&quot;z&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tab_cps_lab3&quot;</span><span class="p">,</span>
+</span><span id="__span-11-42"><a id="__codelineno-11-42" name="__codelineno-11-42" href="#__codelineno-11-42"></a><span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Таймер 1000мс&quot;</span><span class="p">,</span>
+</span><span id="__span-11-43"><a id="__codelineno-11-43" name="__codelineno-11-43" href="#__codelineno-11-43"></a><span class="w">        </span><span class="nt">&quot;props&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-11-44"><a id="__codelineno-11-44" name="__codelineno-11-44" href="#__codelineno-11-44"></a><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-11-45"><a id="__codelineno-11-45" name="__codelineno-11-45" href="#__codelineno-11-45"></a><span class="w">                </span><span class="nt">&quot;p&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;payload&quot;</span>
+</span><span id="__span-11-46"><a id="__codelineno-11-46" name="__codelineno-11-46" href="#__codelineno-11-46"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-11-47"><a id="__codelineno-11-47" name="__codelineno-11-47" href="#__codelineno-11-47"></a><span class="w">        </span><span class="p">],</span>
+</span><span id="__span-11-48"><a id="__codelineno-11-48" name="__codelineno-11-48" href="#__codelineno-11-48"></a><span class="w">        </span><span class="nt">&quot;repeat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+</span><span id="__span-11-49"><a id="__codelineno-11-49" name="__codelineno-11-49" href="#__codelineno-11-49"></a><span class="w">        </span><span class="nt">&quot;crontab&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-50"><a id="__codelineno-11-50" name="__codelineno-11-50" href="#__codelineno-11-50"></a><span class="w">        </span><span class="nt">&quot;once&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-11-51"><a id="__codelineno-11-51" name="__codelineno-11-51" href="#__codelineno-11-51"></a><span class="w">        </span><span class="nt">&quot;onceDelay&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>
+</span><span id="__span-11-52"><a id="__codelineno-11-52" name="__codelineno-11-52" href="#__codelineno-11-52"></a><span class="w">        </span><span class="nt">&quot;topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-53"><a id="__codelineno-11-53" name="__codelineno-11-53" href="#__codelineno-11-53"></a><span class="w">        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span>
+</span><span id="__span-11-54"><a id="__codelineno-11-54" name="__codelineno-11-54" href="#__codelineno-11-54"></a><span class="w">        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span>
+</span><span id="__span-11-55"><a id="__codelineno-11-55" name="__codelineno-11-55" href="#__codelineno-11-55"></a><span class="w">        </span><span class="nt">&quot;wires&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-11-56"><a id="__codelineno-11-56" name="__codelineno-11-56" href="#__codelineno-11-56"></a><span class="w">            </span><span class="p">[</span>
+</span><span id="__span-11-57"><a id="__codelineno-11-57" name="__codelineno-11-57" href="#__codelineno-11-57"></a><span class="w">                </span><span class="s2">&quot;node_func_generator&quot;</span>
+</span><span id="__span-11-58"><a id="__codelineno-11-58" name="__codelineno-11-58" href="#__codelineno-11-58"></a><span class="w">            </span><span class="p">]</span>
+</span><span id="__span-11-59"><a id="__codelineno-11-59" name="__codelineno-11-59" href="#__codelineno-11-59"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-11-60"><a id="__codelineno-11-60" name="__codelineno-11-60" href="#__codelineno-11-60"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-11-61"><a id="__codelineno-11-61" name="__codelineno-11-61" href="#__codelineno-11-61"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-62"><a id="__codelineno-11-62" name="__codelineno-11-62" href="#__codelineno-11-62"></a><span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node_func_generator&quot;</span><span class="p">,</span>
+</span><span id="__span-11-63"><a id="__codelineno-11-63" name="__codelineno-11-63" href="#__codelineno-11-63"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;function&quot;</span><span class="p">,</span>
+</span><span id="__span-11-64"><a id="__codelineno-11-64" name="__codelineno-11-64" href="#__codelineno-11-64"></a><span class="w">        </span><span class="nt">&quot;z&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tab_cps_lab3&quot;</span><span class="p">,</span>
+</span><span id="__span-11-65"><a id="__codelineno-11-65" name="__codelineno-11-65" href="#__codelineno-11-65"></a><span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Генератор телеметрії (JSON)&quot;</span><span class="p">,</span>
+</span><span id="__span-11-66"><a id="__codelineno-11-66" name="__codelineno-11-66" href="#__codelineno-11-66"></a><span class="w">        </span><span class="nt">&quot;func&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;const factory = \&quot;kyiv_metal\&quot;;\nconst shop = \&quot;shop_smelting\&quot;;\nconst device = \&quot;furnace_01\&quot;;\nconst parameter = \&quot;temperature\&quot;;\n\nconst minVal = 500.0;\nconst maxVal = 1500.0;\nconst time = Date.now() / 10000;\nconst baseValue = minVal + (Math.sin(time) + 1) * 0.5 * (maxVal - minVal);\nconst noise = (Math.random() - 0.5) * 20.0;\nconst currentVal = parseFloat((baseValue + noise).toFixed(2));\n\nconst fullTopic = `${factory}/${shop}/${device}/${parameter}`;\n\nconst telemetryPayload = {\n    timestamp: new Date().toISOString(),\n    factory: factory,\n    shop: shop,\n    device: device,\n    metric: parameter,\n    value: currentVal,\n    unit: \&quot;degC\&quot;,\n    status: (currentVal &gt; 1400.0) ? \&quot;CRITICAL\&quot; : \&quot;NORMAL\&quot;\n};\n\nmsg.topic = fullTopic;\nmsg.payload = JSON.stringify(telemetryPayload);\nreturn msg;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-67"><a id="__codelineno-11-67" name="__codelineno-11-67" href="#__codelineno-11-67"></a><span class="w">        </span><span class="nt">&quot;outputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-11-68"><a id="__codelineno-11-68" name="__codelineno-11-68" href="#__codelineno-11-68"></a><span class="w">        </span><span class="nt">&quot;noerr&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-11-69"><a id="__codelineno-11-69" name="__codelineno-11-69" href="#__codelineno-11-69"></a><span class="w">        </span><span class="nt">&quot;initialize&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-70"><a id="__codelineno-11-70" name="__codelineno-11-70" href="#__codelineno-11-70"></a><span class="w">        </span><span class="nt">&quot;finalize&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-71"><a id="__codelineno-11-71" name="__codelineno-11-71" href="#__codelineno-11-71"></a><span class="w">        </span><span class="nt">&quot;libs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+</span><span id="__span-11-72"><a id="__codelineno-11-72" name="__codelineno-11-72" href="#__codelineno-11-72"></a><span class="w">        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">410</span><span class="p">,</span>
+</span><span id="__span-11-73"><a id="__codelineno-11-73" name="__codelineno-11-73" href="#__codelineno-11-73"></a><span class="w">        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span>
+</span><span id="__span-11-74"><a id="__codelineno-11-74" name="__codelineno-11-74" href="#__codelineno-11-74"></a><span class="w">        </span><span class="nt">&quot;wires&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-11-75"><a id="__codelineno-11-75" name="__codelineno-11-75" href="#__codelineno-11-75"></a><span class="w">            </span><span class="p">[</span>
+</span><span id="__span-11-76"><a id="__codelineno-11-76" name="__codelineno-11-76" href="#__codelineno-11-76"></a><span class="w">                </span><span class="s2">&quot;node_mqtt_out&quot;</span>
+</span><span id="__span-11-77"><a id="__codelineno-11-77" name="__codelineno-11-77" href="#__codelineno-11-77"></a><span class="w">            </span><span class="p">]</span>
+</span><span id="__span-11-78"><a id="__codelineno-11-78" name="__codelineno-11-78" href="#__codelineno-11-78"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-11-79"><a id="__codelineno-11-79" name="__codelineno-11-79" href="#__codelineno-11-79"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-11-80"><a id="__codelineno-11-80" name="__codelineno-11-80" href="#__codelineno-11-80"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-81"><a id="__codelineno-11-81" name="__codelineno-11-81" href="#__codelineno-11-81"></a><span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node_mqtt_out&quot;</span><span class="p">,</span>
+</span><span id="__span-11-82"><a id="__codelineno-11-82" name="__codelineno-11-82" href="#__codelineno-11-82"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mqtt out&quot;</span><span class="p">,</span>
+</span><span id="__span-11-83"><a id="__codelineno-11-83" name="__codelineno-11-83" href="#__codelineno-11-83"></a><span class="w">        </span><span class="nt">&quot;z&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tab_cps_lab3&quot;</span><span class="p">,</span>
+</span><span id="__span-11-84"><a id="__codelineno-11-84" name="__codelineno-11-84" href="#__codelineno-11-84"></a><span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Публікація MQTT (QoS 1)&quot;</span><span class="p">,</span>
+</span><span id="__span-11-85"><a id="__codelineno-11-85" name="__codelineno-11-85" href="#__codelineno-11-85"></a><span class="w">        </span><span class="nt">&quot;topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-86"><a id="__codelineno-11-86" name="__codelineno-11-86" href="#__codelineno-11-86"></a><span class="w">        </span><span class="nt">&quot;qos&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+</span><span id="__span-11-87"><a id="__codelineno-11-87" name="__codelineno-11-87" href="#__codelineno-11-87"></a><span class="w">        </span><span class="nt">&quot;retain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+</span><span id="__span-11-88"><a id="__codelineno-11-88" name="__codelineno-11-88" href="#__codelineno-11-88"></a><span class="w">        </span><span class="nt">&quot;respTopic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-89"><a id="__codelineno-11-89" name="__codelineno-11-89" href="#__codelineno-11-89"></a><span class="w">        </span><span class="nt">&quot;contentType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-90"><a id="__codelineno-11-90" name="__codelineno-11-90" href="#__codelineno-11-90"></a><span class="w">        </span><span class="nt">&quot;userProps&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-91"><a id="__codelineno-11-91" name="__codelineno-11-91" href="#__codelineno-11-91"></a><span class="w">        </span><span class="nt">&quot;correl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-92"><a id="__codelineno-11-92" name="__codelineno-11-92" href="#__codelineno-11-92"></a><span class="w">        </span><span class="nt">&quot;expiry&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-93"><a id="__codelineno-11-93" name="__codelineno-11-93" href="#__codelineno-11-93"></a><span class="w">        </span><span class="nt">&quot;broker&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mqtt_broker_local&quot;</span><span class="p">,</span>
+</span><span id="__span-11-94"><a id="__codelineno-11-94" name="__codelineno-11-94" href="#__codelineno-11-94"></a><span class="w">        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">710</span><span class="p">,</span>
+</span><span id="__span-11-95"><a id="__codelineno-11-95" name="__codelineno-11-95" href="#__codelineno-11-95"></a><span class="w">        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span>
+</span><span id="__span-11-96"><a id="__codelineno-11-96" name="__codelineno-11-96" href="#__codelineno-11-96"></a><span class="w">        </span><span class="nt">&quot;wires&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+</span><span id="__span-11-97"><a id="__codelineno-11-97" name="__codelineno-11-97" href="#__codelineno-11-97"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-11-98"><a id="__codelineno-11-98" name="__codelineno-11-98" href="#__codelineno-11-98"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-99"><a id="__codelineno-11-99" name="__codelineno-11-99" href="#__codelineno-11-99"></a><span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node_mqtt_in&quot;</span><span class="p">,</span>
+</span><span id="__span-11-100"><a id="__codelineno-11-100" name="__codelineno-11-100" href="#__codelineno-11-100"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mqtt in&quot;</span><span class="p">,</span>
+</span><span id="__span-11-101"><a id="__codelineno-11-101" name="__codelineno-11-101" href="#__codelineno-11-101"></a><span class="w">        </span><span class="nt">&quot;z&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tab_cps_lab3&quot;</span><span class="p">,</span>
+</span><span id="__span-11-102"><a id="__codelineno-11-102" name="__codelineno-11-102" href="#__codelineno-11-102"></a><span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Підписка MQTT&quot;</span><span class="p">,</span>
+</span><span id="__span-11-103"><a id="__codelineno-11-103" name="__codelineno-11-103" href="#__codelineno-11-103"></a><span class="w">        </span><span class="nt">&quot;topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kyiv_metal/shop_smelting/furnace_01/temperature&quot;</span><span class="p">,</span>
+</span><span id="__span-11-104"><a id="__codelineno-11-104" name="__codelineno-11-104" href="#__codelineno-11-104"></a><span class="w">        </span><span class="nt">&quot;qos&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+</span><span id="__span-11-105"><a id="__codelineno-11-105" name="__codelineno-11-105" href="#__codelineno-11-105"></a><span class="w">        </span><span class="nt">&quot;datatype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+</span><span id="__span-11-106"><a id="__codelineno-11-106" name="__codelineno-11-106" href="#__codelineno-11-106"></a><span class="w">        </span><span class="nt">&quot;broker&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mqtt_broker_local&quot;</span><span class="p">,</span>
+</span><span id="__span-11-107"><a id="__codelineno-11-107" name="__codelineno-11-107" href="#__codelineno-11-107"></a><span class="w">        </span><span class="nt">&quot;nl&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-11-108"><a id="__codelineno-11-108" name="__codelineno-11-108" href="#__codelineno-11-108"></a><span class="w">        </span><span class="nt">&quot;rap&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-11-109"><a id="__codelineno-11-109" name="__codelineno-11-109" href="#__codelineno-11-109"></a><span class="w">        </span><span class="nt">&quot;rh&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-11-110"><a id="__codelineno-11-110" name="__codelineno-11-110" href="#__codelineno-11-110"></a><span class="w">        </span><span class="nt">&quot;inputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-11-111"><a id="__codelineno-11-111" name="__codelineno-11-111" href="#__codelineno-11-111"></a><span class="w">        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span>
+</span><span id="__span-11-112"><a id="__codelineno-11-112" name="__codelineno-11-112" href="#__codelineno-11-112"></a><span class="w">        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">260</span><span class="p">,</span>
+</span><span id="__span-11-113"><a id="__codelineno-11-113" name="__codelineno-11-113" href="#__codelineno-11-113"></a><span class="w">        </span><span class="nt">&quot;wires&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-11-114"><a id="__codelineno-11-114" name="__codelineno-11-114" href="#__codelineno-11-114"></a><span class="w">            </span><span class="p">[</span>
+</span><span id="__span-11-115"><a id="__codelineno-11-115" name="__codelineno-11-115" href="#__codelineno-11-115"></a><span class="w">                </span><span class="s2">&quot;node_json_parser&quot;</span>
+</span><span id="__span-11-116"><a id="__codelineno-11-116" name="__codelineno-11-116" href="#__codelineno-11-116"></a><span class="w">            </span><span class="p">]</span>
+</span><span id="__span-11-117"><a id="__codelineno-11-117" name="__codelineno-11-117" href="#__codelineno-11-117"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-11-118"><a id="__codelineno-11-118" name="__codelineno-11-118" href="#__codelineno-11-118"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-11-119"><a id="__codelineno-11-119" name="__codelineno-11-119" href="#__codelineno-11-119"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-120"><a id="__codelineno-11-120" name="__codelineno-11-120" href="#__codelineno-11-120"></a><span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node_json_parser&quot;</span><span class="p">,</span>
+</span><span id="__span-11-121"><a id="__codelineno-11-121" name="__codelineno-11-121" href="#__codelineno-11-121"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="p">,</span>
+</span><span id="__span-11-122"><a id="__codelineno-11-122" name="__codelineno-11-122" href="#__codelineno-11-122"></a><span class="w">        </span><span class="nt">&quot;z&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tab_cps_lab3&quot;</span><span class="p">,</span>
+</span><span id="__span-11-123"><a id="__codelineno-11-123" name="__codelineno-11-123" href="#__codelineno-11-123"></a><span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;JSON Парсер&quot;</span><span class="p">,</span>
+</span><span id="__span-11-124"><a id="__codelineno-11-124" name="__codelineno-11-124" href="#__codelineno-11-124"></a><span class="w">        </span><span class="nt">&quot;property&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;payload&quot;</span><span class="p">,</span>
+</span><span id="__span-11-125"><a id="__codelineno-11-125" name="__codelineno-11-125" href="#__codelineno-11-125"></a><span class="w">        </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-126"><a id="__codelineno-11-126" name="__codelineno-11-126" href="#__codelineno-11-126"></a><span class="w">        </span><span class="nt">&quot;pretty&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-11-127"><a id="__codelineno-11-127" name="__codelineno-11-127" href="#__codelineno-11-127"></a><span class="w">        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">360</span><span class="p">,</span>
+</span><span id="__span-11-128"><a id="__codelineno-11-128" name="__codelineno-11-128" href="#__codelineno-11-128"></a><span class="w">        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">260</span><span class="p">,</span>
+</span><span id="__span-11-129"><a id="__codelineno-11-129" name="__codelineno-11-129" href="#__codelineno-11-129"></a><span class="w">        </span><span class="nt">&quot;wires&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-11-130"><a id="__codelineno-11-130" name="__codelineno-11-130" href="#__codelineno-11-130"></a><span class="w">            </span><span class="p">[</span>
+</span><span id="__span-11-131"><a id="__codelineno-11-131" name="__codelineno-11-131" href="#__codelineno-11-131"></a><span class="w">                </span><span class="s2">&quot;node_func_processor&quot;</span><span class="p">,</span>
+</span><span id="__span-11-132"><a id="__codelineno-11-132" name="__codelineno-11-132" href="#__codelineno-11-132"></a><span class="w">                </span><span class="s2">&quot;node_debug_out&quot;</span>
+</span><span id="__span-11-133"><a id="__codelineno-11-133" name="__codelineno-11-133" href="#__codelineno-11-133"></a><span class="w">            </span><span class="p">]</span>
+</span><span id="__span-11-134"><a id="__codelineno-11-134" name="__codelineno-11-134" href="#__codelineno-11-134"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-11-135"><a id="__codelineno-11-135" name="__codelineno-11-135" href="#__codelineno-11-135"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-11-136"><a id="__codelineno-11-136" name="__codelineno-11-136" href="#__codelineno-11-136"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-137"><a id="__codelineno-11-137" name="__codelineno-11-137" href="#__codelineno-11-137"></a><span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node_func_processor&quot;</span><span class="p">,</span>
+</span><span id="__span-11-138"><a id="__codelineno-11-138" name="__codelineno-11-138" href="#__codelineno-11-138"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;function&quot;</span><span class="p">,</span>
+</span><span id="__span-11-139"><a id="__codelineno-11-139" name="__codelineno-11-139" href="#__codelineno-11-139"></a><span class="w">        </span><span class="nt">&quot;z&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tab_cps_lab3&quot;</span><span class="p">,</span>
+</span><span id="__span-11-140"><a id="__codelineno-11-140" name="__codelineno-11-140" href="#__codelineno-11-140"></a><span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Обробка даних&quot;</span><span class="p">,</span>
+</span><span id="__span-11-141"><a id="__codelineno-11-141" name="__codelineno-11-141" href="#__codelineno-11-141"></a><span class="w">        </span><span class="nt">&quot;func&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;const sensorValue = Number(msg.payload.value);\nmsg.payload = sensorValue;\nreturn msg;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-142"><a id="__codelineno-11-142" name="__codelineno-11-142" href="#__codelineno-11-142"></a><span class="w">        </span><span class="nt">&quot;outputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-11-143"><a id="__codelineno-11-143" name="__codelineno-11-143" href="#__codelineno-11-143"></a><span class="w">        </span><span class="nt">&quot;noerr&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-11-144"><a id="__codelineno-11-144" name="__codelineno-11-144" href="#__codelineno-11-144"></a><span class="w">        </span><span class="nt">&quot;initialize&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-145"><a id="__codelineno-11-145" name="__codelineno-11-145" href="#__codelineno-11-145"></a><span class="w">        </span><span class="nt">&quot;finalize&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-146"><a id="__codelineno-11-146" name="__codelineno-11-146" href="#__codelineno-11-146"></a><span class="w">        </span><span class="nt">&quot;libs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+</span><span id="__span-11-147"><a id="__codelineno-11-147" name="__codelineno-11-147" href="#__codelineno-11-147"></a><span class="w">        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">580</span><span class="p">,</span>
+</span><span id="__span-11-148"><a id="__codelineno-11-148" name="__codelineno-11-148" href="#__codelineno-11-148"></a><span class="w">        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">260</span><span class="p">,</span>
+</span><span id="__span-11-149"><a id="__codelineno-11-149" name="__codelineno-11-149" href="#__codelineno-11-149"></a><span class="w">        </span><span class="nt">&quot;wires&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-11-150"><a id="__codelineno-11-150" name="__codelineno-11-150" href="#__codelineno-11-150"></a><span class="w">            </span><span class="p">[</span>
+</span><span id="__span-11-151"><a id="__codelineno-11-151" name="__codelineno-11-151" href="#__codelineno-11-151"></a><span class="w">                </span><span class="s2">&quot;node_ui_gauge&quot;</span><span class="p">,</span>
+</span><span id="__span-11-152"><a id="__codelineno-11-152" name="__codelineno-11-152" href="#__codelineno-11-152"></a><span class="w">                </span><span class="s2">&quot;node_ui_chart&quot;</span>
+</span><span id="__span-11-153"><a id="__codelineno-11-153" name="__codelineno-11-153" href="#__codelineno-11-153"></a><span class="w">            </span><span class="p">]</span>
+</span><span id="__span-11-154"><a id="__codelineno-11-154" name="__codelineno-11-154" href="#__codelineno-11-154"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-11-155"><a id="__codelineno-11-155" name="__codelineno-11-155" href="#__codelineno-11-155"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-11-156"><a id="__codelineno-11-156" name="__codelineno-11-156" href="#__codelineno-11-156"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-157"><a id="__codelineno-11-157" name="__codelineno-11-157" href="#__codelineno-11-157"></a><span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node_debug_out&quot;</span><span class="p">,</span>
+</span><span id="__span-11-158"><a id="__codelineno-11-158" name="__codelineno-11-158" href="#__codelineno-11-158"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;debug&quot;</span><span class="p">,</span>
+</span><span id="__span-11-159"><a id="__codelineno-11-159" name="__codelineno-11-159" href="#__codelineno-11-159"></a><span class="w">        </span><span class="nt">&quot;z&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tab_cps_lab3&quot;</span><span class="p">,</span>
+</span><span id="__span-11-160"><a id="__codelineno-11-160" name="__codelineno-11-160" href="#__codelineno-11-160"></a><span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Лог Консолі&quot;</span><span class="p">,</span>
+</span><span id="__span-11-161"><a id="__codelineno-11-161" name="__codelineno-11-161" href="#__codelineno-11-161"></a><span class="w">        </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-11-162"><a id="__codelineno-11-162" name="__codelineno-11-162" href="#__codelineno-11-162"></a><span class="w">        </span><span class="nt">&quot;toside&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-11-163"><a id="__codelineno-11-163" name="__codelineno-11-163" href="#__codelineno-11-163"></a><span class="w">        </span><span class="nt">&quot;console&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-11-164"><a id="__codelineno-11-164" name="__codelineno-11-164" href="#__codelineno-11-164"></a><span class="w">        </span><span class="nt">&quot;tostatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-11-165"><a id="__codelineno-11-165" name="__codelineno-11-165" href="#__codelineno-11-165"></a><span class="w">        </span><span class="nt">&quot;complete&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;payload&quot;</span><span class="p">,</span>
+</span><span id="__span-11-166"><a id="__codelineno-11-166" name="__codelineno-11-166" href="#__codelineno-11-166"></a><span class="w">        </span><span class="nt">&quot;targetType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;msg&quot;</span><span class="p">,</span>
+</span><span id="__span-11-167"><a id="__codelineno-11-167" name="__codelineno-11-167" href="#__codelineno-11-167"></a><span class="w">        </span><span class="nt">&quot;statusVal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-168"><a id="__codelineno-11-168" name="__codelineno-11-168" href="#__codelineno-11-168"></a><span class="w">        </span><span class="nt">&quot;statusType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+</span><span id="__span-11-169"><a id="__codelineno-11-169" name="__codelineno-11-169" href="#__codelineno-11-169"></a><span class="w">        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">570</span><span class="p">,</span>
+</span><span id="__span-11-170"><a id="__codelineno-11-170" name="__codelineno-11-170" href="#__codelineno-11-170"></a><span class="w">        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">340</span><span class="p">,</span>
+</span><span id="__span-11-171"><a id="__codelineno-11-171" name="__codelineno-11-171" href="#__codelineno-11-171"></a><span class="w">        </span><span class="nt">&quot;wires&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+</span><span id="__span-11-172"><a id="__codelineno-11-172" name="__codelineno-11-172" href="#__codelineno-11-172"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-11-173"><a id="__codelineno-11-173" name="__codelineno-11-173" href="#__codelineno-11-173"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-174"><a id="__codelineno-11-174" name="__codelineno-11-174" href="#__codelineno-11-174"></a><span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node_ui_gauge&quot;</span><span class="p">,</span>
+</span><span id="__span-11-175"><a id="__codelineno-11-175" name="__codelineno-11-175" href="#__codelineno-11-175"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ui_gauge&quot;</span><span class="p">,</span>
+</span><span id="__span-11-176"><a id="__codelineno-11-176" name="__codelineno-11-176" href="#__codelineno-11-176"></a><span class="w">        </span><span class="nt">&quot;z&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tab_cps_lab3&quot;</span><span class="p">,</span>
+</span><span id="__span-11-177"><a id="__codelineno-11-177" name="__codelineno-11-177" href="#__codelineno-11-177"></a><span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Індикатор температури&quot;</span><span class="p">,</span>
+</span><span id="__span-11-178"><a id="__codelineno-11-178" name="__codelineno-11-178" href="#__codelineno-11-178"></a><span class="w">        </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ui_group_telemetry&quot;</span><span class="p">,</span>
+</span><span id="__span-11-179"><a id="__codelineno-11-179" name="__codelineno-11-179" href="#__codelineno-11-179"></a><span class="w">        </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-11-180"><a id="__codelineno-11-180" name="__codelineno-11-180" href="#__codelineno-11-180"></a><span class="w">        </span><span class="nt">&quot;width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-11-181"><a id="__codelineno-11-181" name="__codelineno-11-181" href="#__codelineno-11-181"></a><span class="w">        </span><span class="nt">&quot;height&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-11-182"><a id="__codelineno-11-182" name="__codelineno-11-182" href="#__codelineno-11-182"></a><span class="w">        </span><span class="nt">&quot;gtype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gage&quot;</span><span class="p">,</span>
+</span><span id="__span-11-183"><a id="__codelineno-11-183" name="__codelineno-11-183" href="#__codelineno-11-183"></a><span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Температура (°C)&quot;</span><span class="p">,</span>
+</span><span id="__span-11-184"><a id="__codelineno-11-184" name="__codelineno-11-184" href="#__codelineno-11-184"></a><span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;°C&quot;</span><span class="p">,</span>
+</span><span id="__span-11-185"><a id="__codelineno-11-185" name="__codelineno-11-185" href="#__codelineno-11-185"></a><span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{{value}}&quot;</span><span class="p">,</span>
+</span><span id="__span-11-186"><a id="__codelineno-11-186" name="__codelineno-11-186" href="#__codelineno-11-186"></a><span class="w">        </span><span class="nt">&quot;min&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;500&quot;</span><span class="p">,</span>
+</span><span id="__span-11-187"><a id="__codelineno-11-187" name="__codelineno-11-187" href="#__codelineno-11-187"></a><span class="w">        </span><span class="nt">&quot;max&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1500&quot;</span><span class="p">,</span>
+</span><span id="__span-11-188"><a id="__codelineno-11-188" name="__codelineno-11-188" href="#__codelineno-11-188"></a><span class="w">        </span><span class="nt">&quot;colors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-11-189"><a id="__codelineno-11-189" name="__codelineno-11-189" href="#__codelineno-11-189"></a><span class="w">            </span><span class="s2">&quot;#00b500&quot;</span><span class="p">,</span>
+</span><span id="__span-11-190"><a id="__codelineno-11-190" name="__codelineno-11-190" href="#__codelineno-11-190"></a><span class="w">            </span><span class="s2">&quot;#e6e600&quot;</span><span class="p">,</span>
+</span><span id="__span-11-191"><a id="__codelineno-11-191" name="__codelineno-11-191" href="#__codelineno-11-191"></a><span class="w">            </span><span class="s2">&quot;#ca3838&quot;</span>
+</span><span id="__span-11-192"><a id="__codelineno-11-192" name="__codelineno-11-192" href="#__codelineno-11-192"></a><span class="w">        </span><span class="p">],</span>
+</span><span id="__span-11-193"><a id="__codelineno-11-193" name="__codelineno-11-193" href="#__codelineno-11-193"></a><span class="w">        </span><span class="nt">&quot;seg1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000&quot;</span><span class="p">,</span>
+</span><span id="__span-11-194"><a id="__codelineno-11-194" name="__codelineno-11-194" href="#__codelineno-11-194"></a><span class="w">        </span><span class="nt">&quot;seg2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1400&quot;</span><span class="p">,</span>
+</span><span id="__span-11-195"><a id="__codelineno-11-195" name="__codelineno-11-195" href="#__codelineno-11-195"></a><span class="w">        </span><span class="nt">&quot;className&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-196"><a id="__codelineno-11-196" name="__codelineno-11-196" href="#__codelineno-11-196"></a><span class="w">        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">830</span><span class="p">,</span>
+</span><span id="__span-11-197"><a id="__codelineno-11-197" name="__codelineno-11-197" href="#__codelineno-11-197"></a><span class="w">        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">240</span><span class="p">,</span>
+</span><span id="__span-11-198"><a id="__codelineno-11-198" name="__codelineno-11-198" href="#__codelineno-11-198"></a><span class="w">        </span><span class="nt">&quot;wires&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+</span><span id="__span-11-199"><a id="__codelineno-11-199" name="__codelineno-11-199" href="#__codelineno-11-199"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-11-200"><a id="__codelineno-11-200" name="__codelineno-11-200" href="#__codelineno-11-200"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-201"><a id="__codelineno-11-201" name="__codelineno-11-201" href="#__codelineno-11-201"></a><span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node_ui_chart&quot;</span><span class="p">,</span>
+</span><span id="__span-11-202"><a id="__codelineno-11-202" name="__codelineno-11-202" href="#__codelineno-11-202"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ui_chart&quot;</span><span class="p">,</span>
+</span><span id="__span-11-203"><a id="__codelineno-11-203" name="__codelineno-11-203" href="#__codelineno-11-203"></a><span class="w">        </span><span class="nt">&quot;z&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tab_cps_lab3&quot;</span><span class="p">,</span>
+</span><span id="__span-11-204"><a id="__codelineno-11-204" name="__codelineno-11-204" href="#__codelineno-11-204"></a><span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Графік Тренду&quot;</span><span class="p">,</span>
+</span><span id="__span-11-205"><a id="__codelineno-11-205" name="__codelineno-11-205" href="#__codelineno-11-205"></a><span class="w">        </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ui_group_telemetry&quot;</span><span class="p">,</span>
+</span><span id="__span-11-206"><a id="__codelineno-11-206" name="__codelineno-11-206" href="#__codelineno-11-206"></a><span class="w">        </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+</span><span id="__span-11-207"><a id="__codelineno-11-207" name="__codelineno-11-207" href="#__codelineno-11-207"></a><span class="w">        </span><span class="nt">&quot;width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-11-208"><a id="__codelineno-11-208" name="__codelineno-11-208" href="#__codelineno-11-208"></a><span class="w">        </span><span class="nt">&quot;height&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-11-209"><a id="__codelineno-11-209" name="__codelineno-11-209" href="#__codelineno-11-209"></a><span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Тренд температури&quot;</span><span class="p">,</span>
+</span><span id="__span-11-210"><a id="__codelineno-11-210" name="__codelineno-11-210" href="#__codelineno-11-210"></a><span class="w">        </span><span class="nt">&quot;chartType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;line&quot;</span><span class="p">,</span>
+</span><span id="__span-11-211"><a id="__codelineno-11-211" name="__codelineno-11-211" href="#__codelineno-11-211"></a><span class="w">        </span><span class="nt">&quot;legend&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+</span><span id="__span-11-212"><a id="__codelineno-11-212" name="__codelineno-11-212" href="#__codelineno-11-212"></a><span class="w">        </span><span class="nt">&quot;xformat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HH:mm:ss&quot;</span><span class="p">,</span>
+</span><span id="__span-11-213"><a id="__codelineno-11-213" name="__codelineno-11-213" href="#__codelineno-11-213"></a><span class="w">        </span><span class="nt">&quot;interpolate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+</span><span id="__span-11-214"><a id="__codelineno-11-214" name="__codelineno-11-214" href="#__codelineno-11-214"></a><span class="w">        </span><span class="nt">&quot;nodata&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Очікування даних...&quot;</span><span class="p">,</span>
+</span><span id="__span-11-215"><a id="__codelineno-11-215" name="__codelineno-11-215" href="#__codelineno-11-215"></a><span class="w">        </span><span class="nt">&quot;dot&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-11-216"><a id="__codelineno-11-216" name="__codelineno-11-216" href="#__codelineno-11-216"></a><span class="w">        </span><span class="nt">&quot;ymin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;500&quot;</span><span class="p">,</span>
+</span><span id="__span-11-217"><a id="__codelineno-11-217" name="__codelineno-11-217" href="#__codelineno-11-217"></a><span class="w">        </span><span class="nt">&quot;ymax&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1500&quot;</span><span class="p">,</span>
+</span><span id="__span-11-218"><a id="__codelineno-11-218" name="__codelineno-11-218" href="#__codelineno-11-218"></a><span class="w">        </span><span class="nt">&quot;removeOlder&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-11-219"><a id="__codelineno-11-219" name="__codelineno-11-219" href="#__codelineno-11-219"></a><span class="w">        </span><span class="nt">&quot;removeOlderPoints&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-220"><a id="__codelineno-11-220" name="__codelineno-11-220" href="#__codelineno-11-220"></a><span class="w">        </span><span class="nt">&quot;removeOlderUnit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3600&quot;</span><span class="p">,</span>
+</span><span id="__span-11-221"><a id="__codelineno-11-221" name="__codelineno-11-221" href="#__codelineno-11-221"></a><span class="w">        </span><span class="nt">&quot;cutout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-11-222"><a id="__codelineno-11-222" name="__codelineno-11-222" href="#__codelineno-11-222"></a><span class="w">        </span><span class="nt">&quot;useOneColor&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-11-223"><a id="__codelineno-11-223" name="__codelineno-11-223" href="#__codelineno-11-223"></a><span class="w">        </span><span class="nt">&quot;useUTC&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-11-224"><a id="__codelineno-11-224" name="__codelineno-11-224" href="#__codelineno-11-224"></a><span class="w">        </span><span class="nt">&quot;colors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-11-225"><a id="__codelineno-11-225" name="__codelineno-11-225" href="#__codelineno-11-225"></a><span class="w">            </span><span class="s2">&quot;#1f77b4&quot;</span><span class="p">,</span>
+</span><span id="__span-11-226"><a id="__codelineno-11-226" name="__codelineno-11-226" href="#__codelineno-11-226"></a><span class="w">            </span><span class="s2">&quot;#aec7e8&quot;</span><span class="p">,</span>
+</span><span id="__span-11-227"><a id="__codelineno-11-227" name="__codelineno-11-227" href="#__codelineno-11-227"></a><span class="w">            </span><span class="s2">&quot;#ff7f0e&quot;</span><span class="p">,</span>
+</span><span id="__span-11-228"><a id="__codelineno-11-228" name="__codelineno-11-228" href="#__codelineno-11-228"></a><span class="w">            </span><span class="s2">&quot;#2ca02c&quot;</span><span class="p">,</span>
+</span><span id="__span-11-229"><a id="__codelineno-11-229" name="__codelineno-11-229" href="#__codelineno-11-229"></a><span class="w">            </span><span class="s2">&quot;#98df8a&quot;</span><span class="p">,</span>
+</span><span id="__span-11-230"><a id="__codelineno-11-230" name="__codelineno-11-230" href="#__codelineno-11-230"></a><span class="w">            </span><span class="s2">&quot;#d62728&quot;</span><span class="p">,</span>
+</span><span id="__span-11-231"><a id="__codelineno-11-231" name="__codelineno-11-231" href="#__codelineno-11-231"></a><span class="w">            </span><span class="s2">&quot;#ff9896&quot;</span><span class="p">,</span>
+</span><span id="__span-11-232"><a id="__codelineno-11-232" name="__codelineno-11-232" href="#__codelineno-11-232"></a><span class="w">            </span><span class="s2">&quot;#9467bd&quot;</span><span class="p">,</span>
+</span><span id="__span-11-233"><a id="__codelineno-11-233" name="__codelineno-11-233" href="#__codelineno-11-233"></a><span class="w">            </span><span class="s2">&quot;#c5b0d5&quot;</span>
+</span><span id="__span-11-234"><a id="__codelineno-11-234" name="__codelineno-11-234" href="#__codelineno-11-234"></a><span class="w">        </span><span class="p">],</span>
+</span><span id="__span-11-235"><a id="__codelineno-11-235" name="__codelineno-11-235" href="#__codelineno-11-235"></a><span class="w">        </span><span class="nt">&quot;outputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-11-236"><a id="__codelineno-11-236" name="__codelineno-11-236" href="#__codelineno-11-236"></a><span class="w">        </span><span class="nt">&quot;useDifferentColor&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-11-237"><a id="__codelineno-11-237" name="__codelineno-11-237" href="#__codelineno-11-237"></a><span class="w">        </span><span class="nt">&quot;className&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span id="__span-11-238"><a id="__codelineno-11-238" name="__codelineno-11-238" href="#__codelineno-11-238"></a><span class="w">        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">800</span><span class="p">,</span>
+</span><span id="__span-11-239"><a id="__codelineno-11-239" name="__codelineno-11-239" href="#__codelineno-11-239"></a><span class="w">        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span>
+</span><span id="__span-11-240"><a id="__codelineno-11-240" name="__codelineno-11-240" href="#__codelineno-11-240"></a><span class="w">        </span><span class="nt">&quot;wires&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-11-241"><a id="__codelineno-11-241" name="__codelineno-11-241" href="#__codelineno-11-241"></a><span class="w">            </span><span class="p">[]</span>
+</span><span id="__span-11-242"><a id="__codelineno-11-242" name="__codelineno-11-242" href="#__codelineno-11-242"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-11-243"><a id="__codelineno-11-243" name="__codelineno-11-243" href="#__codelineno-11-243"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-11-244"><a id="__codelineno-11-244" name="__codelineno-11-244" href="#__codelineno-11-244"></a><span class="p">]</span>
+</span></code></pre></div>
+<hr />
+<h3 id="_5">Запуск та перевірка функціонування дашборду</h3>
+<ol>
+<li>
+<p>Після імпорту або ручного створення потоку натисніть червону кнопку <strong>Deploy</strong> у верхньому правому куті вікна Node-RED.</p>
+</li>
+<li>
+<p>Перевірте статус підключення під вузлами <strong>MQTT Out</strong> та <strong>MQTT In</strong>: має з'явитися зелений індикатор зі словом <code>connected</code>.</p>
+</li>
+<li>
+<p>Для відкриття панелі візуалізації (Dashboard) перейдіть за адресою:</p>
+</li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>http://127.0.0.1:1880/ui
+</span></code></pre></div>
+<ol>
+<li>На екрані відобразиться інтерактивна панель із стрілочним індикатором (Gauge) та графіком часового тренду (Chart), що оновлюватимуться в реальному часі згідно з інтервалом вашого варіанта.</li>
+</ol>
+<hr />
+<h2 id="4">4 Вимоги до змісту звіту</h2>
+<p>Звіт з лабораторної роботи оформлюється у форматі PDF або MS Word і повинен містити наступні обов'язкові розділи:</p>
+<ol>
+<li>
+<p><strong>Титульна сторінка.</strong></p>
+<ul>
+<li>
+<p>Назва вищого навчального закладу, кафедри, дисципліни.</p>
+</li>
+<li>
+<p>Номер та назва лабораторної роботи, номер обраного варіанта.</p>
+</li>
+<li>
+<p>ПІБ, шифр навчальної групи.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Мета роботи, короткі теоретичні відомості та опис отриманого завдання.</strong></p>
+<ul>
+<li>
+<p>Виклад основного теоретичного базису.</p>
+</li>
+<li>
+<p>Опис завдання згідно з таблицею варіантів.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Схема потоку даних Node-RED.</strong> Скріншот робочого поля редактора Node-RED із розгорнутими вузлами та статусними індикаторами підключення <code>connected</code>.</p>
+</li>
+<li>
+<p><strong>Програмний код функціональних вузлів.</strong> Повний код JavaScript з вузлів генерації та обробки даних.</p>
+</li>
+<li>
+<p><strong>Інтерфейс дашборду.</strong> Скріншот веб-сторінки <code>http://127.0.0.1:1880/ui</code> із працюючим індикатором Gauge та графіком Chart.</p>
+</li>
+<li>
+<p><strong>Мережевий лог MQTT.</strong> Скріншот термінала з командами <code>mosquitto_sub</code>, який підтверджує прийом JSON-повідомлень безпосередньо з брокера.</p>
+</li>
+<li>
+<p><strong>Розрахункова частина.</strong></p>
+<ul>
+<li>
+<p>Розрахунок тривалості автономної роботи акумулятора <span class="arithmatex">\(T_{life}\)</span> за наведеними у теорії формулами для заданого періоду оновлення.</p>
+</li>
+<li>
+<p>Обчислення залишкової довжини корисного навантаження <span class="arithmatex">\(L\)</span> пакета MQTT.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Висновки.</strong> Підсумковий аналіз переваг використання протоколу MQTT та середовища Node-RED для побудови рішень IIoT.</p>
+</li>
+</ol>
+<hr />
+<h2 id="5">5 Контрольні запитання</h2>
+<ol>
+<li>
+<p>У чому полягає концептуальна відмінність між моделлю «запит/відповідь» (HTTP) та моделлю «публікація/підписка» (MQTT)? Які переваги надає MQTT для мереж з мільйонами сенсорів?</p>
+</li>
+<li>
+<p>Яким чином вибір рівнів якості обслуговування QoS 0, QoS 1 та QoS 2 впливає на обсяг мережевого трафіку, затримки та час життя автономного давача?</p>
+</li>
+<li>
+<p>Поясніть алгоритм розрахунку поля змінної довжини пакета MQTT (Remaining Length). Яка максимальна довжина корисного навантаження може бути закодована чотирма байтами?</p>
+</li>
+<li>
+<p>У чому полягає функціональна відмінність між символами шаблонів підписки <code>+</code> та <code>#</code>? Наведіть приклади їх використання для збору телеметрії з кількох цехів.</p>
+</li>
+<li>
+<p>Як використання граничних обчислень (Edge Computing) безпосередньо у вузлах Node-RED допомагає зменшити навантаження на мережеві канали та розвантажити центральні хмарні сервери?</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

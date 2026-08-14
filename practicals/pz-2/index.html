@@ -1,0 +1,2405 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Прикладні алгоритми КФС"">
+      
+      
+      
+      
+        <link rel="prev" href="../pz-1/">
+      
+      
+        <link rel="next" href="../pz-3/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>ПЗ 2. Оцінювання трудомісткості обчислювальних процесів - Прикладні алгоритми кіберфізичних систем</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#no-2" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Прикладні алгоритми кіберфізичних систем" class="md-header__button md-logo" aria-label="Прикладні алгоритми кіберфізичних систем" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v1h3v2h-3v2h3v2h-3v2h3v2h-3v2h3v2h-3v1H6v-1H3v-2h3v-2H3v-2h3v-2H3V9h3V7H3V5h3zm5 11v3h1v-3zm2 0v3h1v-3zm2 0v3h1v-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Прикладні алгоритми кіберфізичних систем
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ПЗ 2. Оцінювання трудомісткості обчислювальних процесів
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча навчальна програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lectures/topic-1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/lab-1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../pz-1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../self-study/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../rg/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Розрахунково-графічна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../self-study/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Перелік тестових та практичних завдань для самопідготовки
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Прикладні алгоритми кіберфізичних систем" class="md-nav__button md-logo" aria-label="Прикладні алгоритми кіберфізичних систем" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v1h3v2h-3v2h3v2h-3v2h3v2h-3v2h3v2h-3v1H6v-1H3v-2h3v-2H3v-2h3v-2H3V9h3V7H3V5h3zm5 11v3h1v-3zm2 0v3h1v-3zm2 0v3h1v-3z"/></svg>
+
+    </a>
+    Прикладні алгоритми кіберфізичних систем
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча навчальна програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Теоретичні засади алгоритмізації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Керуючі конструкції в алгоритмах реального часу
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. Архітектура та обмін даними
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Алгоритми обробки структурованих даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Нечітка логіка та евристики
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Пошук, сортування та графи в мережах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Хмарні та граничні обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання логіки керування низького рівня
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Розробка алгоритмів обробки даних з давачів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Оркестрування потоків даних у середовищі Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Обробка матриць сигналів у розподілених системах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Побудова нечіткого контролера для автоматизації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Оптимізація маршрутів у сенсорних мережах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Віртуалізація сервісів за допомогою Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Графічна формалізація алгоритмів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Оцінювання трудомісткості обчислювальних процесів
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Оцінювання трудомісткості обчислювальних процесів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 Теоретичні відомості
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 Підготовка середовища та розгортання проєкту (Крок 0)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 Підготовка середовища та розгортання проєкту (Крок 0)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 0.1. Перевірка та встановлення системних інструментів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 0.2. Створення структури папок проєкту
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 0.3. Налаштування профайлінгу часу та пам'яті у мікроконтролері
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 Порядок виконання роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Порядок виконання роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Індивідуальні завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Покроковий алгоритм розробки з роз'ясненням коду
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Покроковий алгоритм розробки з роз&#39;ясненням коду">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-c-arduino-ide-cps-pz2-complexityino" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Реалізація скетчу C++ в Arduino IDE (cps-pz2-complexity.ino)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-python-srccomplexity_analyzerpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Розробка аналітичного та графічного скрипта у Python (src/complexity_analyzer.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-simulide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Схема конвеєра експериментального профайлінгу в SimulIDE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Запуск та зняття метрик
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 Вимоги до змісту звіту
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 Контрольні запитання
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Проєктивання ієрархії тем MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Реалізація черги повідомлень для керування завданнями
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Вирішення задач маршрутизації евристичними методами
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Порівняльний аналіз методів сортування даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pz-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Аналіз архітектурних рішень для Big Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../self-study/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Розрахунково-графічна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../self-study/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Перелік тестових та практичних завдань для самопідготовки
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 Теоретичні відомості
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 Підготовка середовища та розгортання проєкту (Крок 0)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 Підготовка середовища та розгортання проєкту (Крок 0)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 0.1. Перевірка та встановлення системних інструментів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 0.2. Створення структури папок проєкту
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 0.3. Налаштування профайлінгу часу та пам'яті у мікроконтролері
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 Порядок виконання роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Порядок виконання роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Індивідуальні завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Покроковий алгоритм розробки з роз'ясненням коду
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Покроковий алгоритм розробки з роз&#39;ясненням коду">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-c-arduino-ide-cps-pz2-complexityino" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 1. Реалізація скетчу C++ в Arduino IDE (cps-pz2-complexity.ino)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-python-srccomplexity_analyzerpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 2. Розробка аналітичного та графічного скрипта у Python (src/complexity_analyzer.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-simulide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 3. Схема конвеєра експериментального профайлінгу в SimulIDE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 4. Запуск та зняття метрик
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 Вимоги до змісту звіту
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 Контрольні запитання
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="no-2">Практичне заняття № 2<br>Оцінювання трудомісткості обчислювальних процесів</h1>
+<p><strong>Мета.</strong> Засвоєння практичних навичок аналітичного та експериментального розрахунку часової й ємнісної складності обчислювальних процесів у кіберфізичних системах реального часу, розрахунок кількості елементарних операцій у циклах та розгалуженнях, визначення середнього значущого показника <span class="arithmatex">\(K_{сер}\)</span> та найгіршого сценарію трудомісткості <span class="arithmatex">\(\Psi\)</span> (WCET) на базі мікроконтролера ATmega328P у середовищах Arduino IDE та SimulIDE, а також математична апроксимація складності за допомогою асимптотичної <span class="arithmatex">\(O\)</span>-символіки у Python.</p>
+<p><strong>Стек та інструменти:</strong></p>
+<ul>
+<li>
+<p><strong>Мови програмування:</strong> C/C++ (стандарт C++17 для вбудованих систем), Python (версія v3.10+).</p>
+</li>
+<li>
+<p><strong>Середовище розробки:</strong> Arduino IDE (версії 1.8.x або 2.x).</p>
+</li>
+<li>
+<p><strong>Схемотехнічний симулятор:</strong> SimulIDE (версія 0.4.15 або новіша).</p>
+</li>
+<li>
+<p><strong>Апаратна платформа симуляції:</strong> мікроконтролер ATmega328P (платформа Arduino Uno), послідовний порт UART (Serial Monitor).</p>
+</li>
+<li>
+<p><strong>Аналітичні бібліотеки Python:</strong> <code>matplotlib</code> (для побудови графічних залежностей складності).</p>
+</li>
+</ul>
+<hr />
+<h3 id="1">1 Теоретичні відомості</h3>
+<p>У системному проєктуванні кіберфізичних комплексів обчислювальні процеси функціонують у тісному зв'язку з фізичним часом. На відміну від універсальних програмних систем, де першочерговою є середня швидкість обробки даних, у системах жорсткого реального часу критичне значення має детермінованість та прогнозованість найгіршого часу виконання. Поняття найгіршого часу виконання (з англійської <strong>Worst-Case Execution Time, WCET</strong>) описує максимально можливу тривалість обчислювального процесу при найбільш несприятливих вхідних даних та максимальному завантаженні апаратури. Перевищення розрахованого порогу WCET у КФС вважається системною відмовою, яка може призвести до деструкції фізичного об'єкта.</p>
+<p>Часова складність алгоритму визначає загальну кількість елементарних машинних операцій, виконуваних процесором для обробки вхідного сигналу розмірністю <span class="arithmatex">\(n\)</span>. Загальний час виконання алгоритму <span class="arithmatex">\(T(n)\)</span> описується класичною формулою:</p>
+<div class="arithmatex">\[
+T(n) = \sum_{i=1}^{N} t_i
+\]</div>
+<p>У наведеній математичній залежності змінна <span class="arithmatex">\(T(n)\)</span> позначає загальний час виконання алгоритму як функцію від розмірності вхідних даних <span class="arithmatex">\(n\)</span>, змінна <span class="arithmatex">\(t_i\)</span> відповідає тривалості виконання <span class="arithmatex">\(i\)</span>-ї елементарної операції у секундах, а параметр <span class="arithmatex">\(N\)</span> визначає загальну кількість таких операцій. У спрощеній обчислювальній моделі з одиничною вартістю припускають, що тривалість кожної елементарної дії є сталою величиною <span class="arithmatex">\(t_i = 1\)</span>, що дозволяє ототожнити час із кількістю виконаних команд.</p>
+<p>Для комплексного оцінювання використання апаратних ресурсів мікроконтролера (наприклад, ATmega328P) застосовується універсальна функція трудомісткості <span class="arithmatex">\(\Psi\)</span>:</p>
+<div class="arithmatex">\[
+\Psi = c_1 \cdot F_a(N) + c_2 \cdot M + c_3 \cdot S_d + c_4 \cdot S_r
+\]</div>
+<p>У наведеній формулі трудомісткості:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(F_a(N)\)</span> — часова складність алгоритму, тобто кількість виконаних елементарних операцій у тактах;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(M\)</span> — обсяг програмного коду у байтах (розмір Flash-пам'яті, зайнятий прошивкою);</p>
+</li>
+<li>
+<p><span class="arithmatex">\(S_d\)</span> — обсяг оперативної пам'яті (SRAM) у байтах, виділений під зберігання статичних та глобальних змінних (буферів);</p>
+</li>
+<li>
+<p><span class="arithmatex">\(S_r\)</span> — обсяг оперативної пам'яті у байтах, що витрачається на системний стек та виклики функцій;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(c_1, c_2, c_3, c_4\)</span> — безрозмірні вагові коефіцієнти, які визначають дефіцитність кожного ресурсу для конкретної апаратної платформи.</p>
+</li>
+</ul>
+<p>Під час аналізу циклічних та розгалужених алгоритмів загальну кількість елементарних дій <span class="arithmatex">\(K\)</span> структурують за функціональними категоріями:</p>
+<div class="arithmatex">\[
+K = K_L + K_{AS} + K_A + K_C
+\]</div>
+<p>де:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(K_L\)</span> — кількість виконаних обробок заголовків циклів;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(K_{AS}\)</span> — кількість операцій присвоювання значень змінним;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(K_A\)</span> — кількість виконаних арифметичних дій;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(K_C\)</span> — кількість виконаних порівнянь та обчислень умовних виразів.</p>
+</li>
+</ul>
+<p>Для розгалужених алгоритмів, де шлях виконання залежить від значення вхідного сигналу, розраховується середня кількість операцій <span class="arithmatex">\(K_{сер}\)</span>:</p>
+<div class="arithmatex">\[
+K_{сер} = \frac{K_{min} + K_{max}}{2}
+\]</div>
+<p>де <span class="arithmatex">\(K_{min}\)</span> позначає мінімальну кількість операцій, що виконується у найпростішій гілці алгоритму (найкращий випадок), а <span class="arithmatex">\(K_{max}\)</span> відповідає максимальній кількості операцій у найбільш навантаженій гілці, що формує межу WCET.</p>
+<p>Математична апроксимація поведінки алгоритму при прагненні розмірності входу <span class="arithmatex">\(n\)</span> до нескінченності здійснюється за допомогою асимптотичного аналізу. Верхня межа зростання складності позначається символікою <span class="arithmatex">\(O(f(n))\)</span>, що гарантує, що час виконання алгоритму зростатиме не швидше за функцію <span class="arithmatex">\(f(n)\)</span>, помножену на деяку сталу константу.</p>
+<p><pre class="mermaid"><code>flowchart TD
+    NodeStart(["Початок аналізу&lt;br/&gt;алгоритму КФС"]) --&gt; NodeInput["Зчитування масиву&lt;br/&gt;телеметрії розмірністю&lt;br/&gt;n"]
+    NodeInput --&gt; NodeBranch{"Аналіз гілок&lt;br/&gt;розгалуження"}
+
+    NodeBranch -- Гілка кращого випадку --&gt; NodeBest["Обчислення K_min:&lt;br/&gt;Мінімальна кількість&lt;br/&gt;операцій"]
+    NodeBranch -- Гілка найгіршого випадку WCET --&gt; NodeWorst["Обчислення K_max:&lt;br/&gt;Максимальна кількість&lt;br/&gt;операцій"]
+
+    NodeBest --&gt; NodeAvg["Розрахунок K_сер =&lt;br/&gt;K_min + K_max / 2"]
+    NodeWorst --&gt; NodeAvg
+
+    NodeAvg --&gt; NodeFormula["Обчислення функції&lt;br/&gt;трудомісткості Psi"]
+    NodeFormula --&gt; NodeAsymptotics["Асимптотична оцінка&lt;br/&gt;O-велике"]
+    NodeAsymptotics --&gt; NodeEnd(["Формування висновку&lt;br/&gt;щодо придатності для&lt;br/&gt;КФС"])</code></pre>
+<em>Рисунок 1 — Структурна схема алгоритмічного конвеєра оцінювання часової та ємнісної складності в КФС</em></p>
+<hr />
+<h3 id="2-0">2 Підготовка середовища та розгортання проєкту (Крок 0)</h3>
+<p>Для виконання аналітичних та експериментальних розрахунків використовується середовище <strong>Arduino IDE</strong> для компіляції прошивки мікроконтролера, симулятор <strong>SimulIDE</strong> для вимірювання часу виконання через UART та інтерпретатор <strong>Python</strong> із бібліотекою <code>matplotlib</code> для побудови графічних залежностей.</p>
+<h4 id="01">Крок 0.1. Перевірка та встановлення системних інструментів</h4>
+<ol>
+<li>
+<p>Перевірте наявність середовища <strong>Arduino IDE</strong> та симулятора <strong>SimulIDE</strong>.</p>
+</li>
+<li>
+<p>Відкрийте системний термінал та перевірте наявність Python:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python<span class="w"> </span>--version
+</span></code></pre></div></p>
+</li>
+<li>
+<p>У разі відсутності бібліотеки графічного побудування <code>matplotlib</code>, встановіть її через менеджер пакетів <code>pip</code>:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>matplotlib
+</span></code></pre></div></p>
+</li>
+</ol>
+<h4 id="02">Крок 0.2. Створення структури папок проєкту</h4>
+<p>Створіть робочий каталог <code>cps-pz2-complexity</code> та перейдіть у нього через термінал:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mkdir<span class="w"> </span>cps-pz2-complexity
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">cd</span><span class="w"> </span>cps-pz2-complexity
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>mkdir<span class="w"> </span>src<span class="w"> </span>exports
+</span></code></pre></div>
+<p>Структура робочого проєкту матиме такий вигляд:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cps-pz2-complexity/
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├── cps-pz2-complexity.ino   (Скетч C/C++ для Arduino IDE / ATmega328P)
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>├── circuit.simu              (Схема симуляції SimulIDE)
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>├── src/
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>│   └── complexity_analyzer.py (Скрипт побудови графіків у Python)
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>└── exports/
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    └── complexity_plot.png    (Збережений графік складності)
+</span></code></pre></div>
+<h4 id="03">Крок 0.3. Налаштування профайлінгу часу та пам'яті у мікроконтролері</h4>
+<ul>
+<li>
+<p>Для точного вимірювання часу виконання алгоритму в мікроконтролері ATmega328P використовується системний мікросекундний таймер <code>micros()</code>.</p>
+</li>
+<li>
+<p>Показники використання Flash-пам'яті (<span class="arithmatex">\(M\)</span>) та оперативної пам'яті SRAM (<span class="arithmatex">\(S_d\)</span>) визначаються безпосередньо зі звіту компілятора Arduino IDE після завершення збірки скетчу.</p>
+</li>
+</ul>
+<hr />
+<h3 id="3">3 Порядок виконання роботи</h3>
+<h4 id="31">3.1 Індивідуальні завдання</h4>
+<p>Кожен студент виконує практичне завдання відповідно до обраного варіанта (номер студента у списку групи). Необхідно аналітично розрахувати кількість операцій <span class="arithmatex">\(K_{min}\)</span>, <span class="arithmatex">\(K_{max}\)</span>, <span class="arithmatex">\(K_{сер}\)</span>, обчислити трудомісткість <span class="arithmatex">\(\Psi\)</span> за вказаними коефіцієнтами та експериментально побудувати графіки часової й ємнісної складності.</p>
+<blockquote>
+<p><strong>Примітка щодо пам'яті ATmega328P:</strong> Для експериментального випробування на мікроконтролері з <span class="arithmatex">\(2\text{ КБ}\)</span> SRAM тестова розмірність вхідного масиву обмежена <span class="arithmatex">\(n \in [10, 200]\)</span> елементів, тоді як у Python-аналізаторі проводиться математична екстраполяція до великих <span class="arithmatex">\(n\)</span>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Варіант</th>
+<th style="text-align: left;">Алгоритмічна задача КФС</th>
+<th style="text-align: center;">Вхідний параметр <span class="arithmatex">\(n\)</span> (на MCU / аналіз)</th>
+<th style="text-align: center;">Вагові коефіцієнти <span class="arithmatex">\((c_1, c_2, c_3, c_4)\)</span></th>
+<th style="text-align: left;">Розгалуження в циклі</th>
+<th style="text-align: center;">Очікувана асимптотика <span class="arithmatex">\(O(f(n))\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;">Фільтрація аномалій телеметрії</td>
+<td style="text-align: center;"><span class="arithmatex">\(10 \dots 200\)</span> / <span class="arithmatex">\(100 \dots 10000\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((1.5, 0.2, 0.8, 0.5)\)</span></td>
+<td style="text-align: left;">Перевірка 2-х бар'єрів</td>
+<td style="text-align: center;"><span class="arithmatex">\(O(n)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: left;">Пошук пікового тиску в буфері</td>
+<td style="text-align: center;"><span class="arithmatex">\(10 \dots 200\)</span> / <span class="arithmatex">\(500 \dots 20000\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((1.0, 0.5, 0.5, 1.0)\)</span></td>
+<td style="text-align: left;">Пошук максимуму з умовою</td>
+<td style="text-align: center;"><span class="arithmatex">\(O(n)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: left;">Сортування буфера бульбашкою</td>
+<td style="text-align: center;"><span class="arithmatex">\(10 \dots 100\)</span> / <span class="arithmatex">\(50 \dots 2000\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((2.0, 0.1, 1.0, 0.2)\)</span></td>
+<td style="text-align: left;">Обмін сусідніх елементів</td>
+<td style="text-align: center;"><span class="arithmatex">\(O(n^2)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: left;">Множення матриці сигналів <span class="arithmatex">\(n \times n\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4 \dots 20\)</span> / <span class="arithmatex">\(10 \dots 300\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((1.0, 0.3, 1.5, 0.1)\)</span></td>
+<td style="text-align: left;">Вкладений цикл обчислень</td>
+<td style="text-align: center;"><span class="arithmatex">\(O(n^3)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: left;">Обчислення синуса рядом Тейлора</td>
+<td style="text-align: center;"><span class="arithmatex">\(5 \dots 50\)</span> / <span class="arithmatex">\(5 \dots 50\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((0.8, 0.4, 0.2, 2.0)\)</span></td>
+<td style="text-align: left;">Точність зупинки циклу</td>
+<td style="text-align: center;"><span class="arithmatex">\(O(n)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>6</strong></td>
+<td style="text-align: left;">Циклічний зсув масиву датчиків</td>
+<td style="text-align: center;"><span class="arithmatex">\(10 \dots 200\)</span> / <span class="arithmatex">\(1000 \dots 50000\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((1.2, 0.1, 0.6, 0.3)\)</span></td>
+<td style="text-align: left;">Перевірка межі зсуву</td>
+<td style="text-align: center;"><span class="arithmatex">\(O(n)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>7</strong></td>
+<td style="text-align: left;">Бінарний пошук у таблиці устав</td>
+<td style="text-align: center;"><span class="arithmatex">\(10 \dots 200\)</span> / <span class="arithmatex">\(100 \dots 100000\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((0.5, 0.8, 0.4, 1.2)\)</span></td>
+<td style="text-align: left;">Ділення інтервалу навпіл</td>
+<td style="text-align: center;"><span class="arithmatex">\(O(\log n)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: left;">Сортування вставками телеметрії</td>
+<td style="text-align: center;"><span class="arithmatex">\(10 \dots 100\)</span> / <span class="arithmatex">\(50 \dots 2500\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((1.8, 0.2, 0.9, 0.4)\)</span></td>
+<td style="text-align: left;">Вставка в упорядковану частину</td>
+<td style="text-align: center;"><span class="arithmatex">\(O(n^2)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>9</strong></td>
+<td style="text-align: left;">Лінійний пошук з бар'єром</td>
+<td style="text-align: center;"><span class="arithmatex">\(10 \dots 200\)</span> / <span class="arithmatex">\(500 \dots 50000\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((1.0, 0.3, 0.5, 0.2)\)</span></td>
+<td style="text-align: left;">Одна перевірка у циклі</td>
+<td style="text-align: center;"><span class="arithmatex">\(O(n)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>10</strong></td>
+<td style="text-align: left;">Дзеркальне відображення матриці</td>
+<td style="text-align: center;"><span class="arithmatex">\(4 \dots 20\)</span> / <span class="arithmatex">\(20 \dots 500\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((1.1, 0.2, 1.2, 0.3)\)</span></td>
+<td style="text-align: left;">Попарний обмін in-place</td>
+<td style="text-align: center;"><span class="arithmatex">\(O(n^2)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>11</strong></td>
+<td style="text-align: left;">Ковзне середнє для <span class="arithmatex">\(n\)</span> замірів</td>
+<td style="text-align: center;"><span class="arithmatex">\(10 \dots 200\)</span> / <span class="arithmatex">\(100 \dots 20000\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((1.3, 0.1, 0.7, 0.5)\)</span></td>
+<td style="text-align: left;">Переповнення вікна</td>
+<td style="text-align: center;"><span class="arithmatex">\(O(n)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>12</strong></td>
+<td style="text-align: left;">Обхід матриці датчиків змійкою</td>
+<td style="text-align: center;"><span class="arithmatex">\(4 \dots 20\)</span> / <span class="arithmatex">\(20 \dots 400\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((1.0, 0.4, 1.1, 0.2)\)</span></td>
+<td style="text-align: left;">Зміна напрямку за парністю</td>
+<td style="text-align: center;"><span class="arithmatex">\(O(n^2)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>13</strong></td>
+<td style="text-align: left;">Швидке сортування (QuickSort)</td>
+<td style="text-align: center;"><span class="arithmatex">\(10 \dots 100\)</span> / <span class="arithmatex">\(100 \dots 10000\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((1.4, 0.3, 0.8, 1.5)\)</span></td>
+<td style="text-align: left;">Рекурсивний поділ (WCET)</td>
+<td style="text-align: center;"><span class="arithmatex">\(O(n^2)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>14</strong></td>
+<td style="text-align: left;">Інтерполяційний пошук у КФС</td>
+<td style="text-align: center;"><span class="arithmatex">\(10 \dots 200\)</span> / <span class="arithmatex">\(500 \dots 50000\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((0.7, 0.6, 0.5, 1.0)\)</span></td>
+<td style="text-align: left;">Оцінка позиції за значенням</td>
+<td style="text-align: center;"><span class="arithmatex">\(O(\log \log n)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: left;">Знаходження квадратного кореня</td>
+<td style="text-align: center;"><span class="arithmatex">\(10 \dots 200\)</span> / <span class="arithmatex">\(10 \dots 1000\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((1.0, 0.2, 0.3, 0.8)\)</span></td>
+<td style="text-align: left;">Ітерації ітераційного методу</td>
+<td style="text-align: center;"><span class="arithmatex">\(O(\log n)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>16</strong></td>
+<td style="text-align: left;">Обчислення автокореляції</td>
+<td style="text-align: center;"><span class="arithmatex">\(10 \dots 80\)</span> / <span class="arithmatex">\(50 \dots 1500\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((2.2, 0.1, 1.2, 0.4)\)</span></td>
+<td style="text-align: left;">Сумування зі зсувом</td>
+<td style="text-align: center;"><span class="arithmatex">\(O(n^2)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>17</strong></td>
+<td style="text-align: left;">Пошук підрядка в логах (KMP)</td>
+<td style="text-align: center;"><span class="arithmatex">\(10 \dots 200\)</span> / <span class="arithmatex">\(1000 \dots 100000\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((1.1, 0.5, 0.8, 0.6)\)</span></td>
+<td style="text-align: left;">Зсув за префікс-функцією</td>
+<td style="text-align: center;"><span class="arithmatex">\(O(n)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>18</strong></td>
+<td style="text-align: left;">Транспонування сітки датчиків</td>
+<td style="text-align: center;"><span class="arithmatex">\(4 \dots 20\)</span> / <span class="arithmatex">\(30 \dots 600\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((1.0, 0.2, 1.0, 0.1)\)</span></td>
+<td style="text-align: left;">Елементи вище діагоналі</td>
+<td style="text-align: center;"><span class="arithmatex">\(O(n^2)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>19</strong></td>
+<td style="text-align: left;">Апроксимація сигналу поліномом</td>
+<td style="text-align: center;"><span class="arithmatex">\(5 \dots 30\)</span> / <span class="arithmatex">\(10 \dots 200\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((1.6, 0.3, 0.9, 0.5)\)</span></td>
+<td style="text-align: left;">Обчислення степенів</td>
+<td style="text-align: center;"><span class="arithmatex">\(O(n^2)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>20</strong></td>
+<td style="text-align: left;">Декодування пакетів з усуненням</td>
+<td style="text-align: center;"><span class="arithmatex">\(10 \dots 200\)</span> / <span class="arithmatex">\(500 \dots 30000\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\((1.2, 0.4, 0.6, 0.7)\)</span></td>
+<td style="text-align: left;">Перевірка контрольної суми</td>
+<td style="text-align: center;"><span class="arithmatex">\(O(n)\)</span></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="32">3.2 Покроковий алгоритм розробки з роз'ясненням коду</h4>
+<p>Нижче наведено приклад виконання практичного заняття для <strong>Варіанта №1 (Фільтрація аномалій телеметрії)</strong>.</p>
+<h5 id="1-c-arduino-ide-cps-pz2-complexityino">Крок 1. Реалізація скетчу C++ в Arduino IDE (<code>cps-pz2-complexity.ino</code>)</h5>
+<p>Створіть у папці проєкту файл скетчу <code>cps-pz2-complexity.ino</code>. Код реалізує фільтрацію телеметрії, обчислення точної кількості операцій <span class="arithmatex">\(K_L, K_{AS}, K_A, K_C\)</span> та вимірювання часу виконання у мікросекундах за допомогою таймера <code>micros()</code>.</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cm">/**</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="cm"> * Практичне заняття №2. Оцінювання трудомісткості обчислювальних процесів.</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="cm"> * Варіант №1: Фільтрація аномалій телеметрії для платформи ATmega328P.</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="cm"> */</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Arduino.h&gt;</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1">// Максимальний розмір буфера в SRAM</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAX_SAMPLES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="kt">float</span><span class="w"> </span><span class="n">telemetryData</span><span class="p">[</span><span class="n">MAX_SAMPLES</span><span class="p">];</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="kt">float</span><span class="w"> </span><span class="n">filteredBuffer</span><span class="p">[</span><span class="n">MAX_SAMPLES</span><span class="p">];</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="c1">// Структурні метрики складності виконання</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="k">struct</span><span class="w"> </span><span class="nc">ExecutionMetrics</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">K_L</span><span class="p">;</span><span class="w">     </span><span class="c1">// Заголовки циклів</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">K_AS</span><span class="p">;</span><span class="w">    </span><span class="c1">// Присвоєння</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">K_A</span><span class="p">;</span><span class="w">     </span><span class="c1">// Арифметика</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">K_C</span><span class="p">;</span><span class="w">     </span><span class="c1">// Порівняння</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">K_total</span><span class="p">;</span><span class="w"> </span><span class="c1">// Загальна кількість операцій</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">durationUs</span><span class="p">;</span><span class="w"> </span><span class="c1">// Час виконання в мікросекундах</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="p">};</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="cm">/**</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="cm"> * Функція фільтрації телеметрії з підрахунком операцій та вимірюванням WCET</span>
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="cm"> */</span>
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="n">ExecutionMetrics</span><span class="w"> </span><span class="nf">processTelemetryFilter</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">lowBarrier</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">highBarrier</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">  </span><span class="n">ExecutionMetrics</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span>
+</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>
+</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="w">  </span><span class="n">m</span><span class="p">.</span><span class="n">K_AS</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// Ініціалізація лічильника запису</span>
+</span><span id="__span-4-33"><a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">filteredCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a>
+</span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="w">  </span><span class="n">m</span><span class="p">.</span><span class="n">K_AS</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// Ініціалізація лічильника i = 0</span>
+</span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="w">  </span><span class="n">m</span><span class="p">.</span><span class="n">K_L</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">K_C</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// Перша перевірка умови циклу</span>
+</span><span id="__span-4-37"><a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>
+</span><span id="__span-4-38"><a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="w">  </span><span class="c1">// Фіксація початкового часу в мікросекундах</span>
+</span><span id="__span-4-39"><a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">tStart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">micros</span><span class="p">();</span>
+</span><span id="__span-4-40"><a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a>
+</span><span id="__span-4-41"><a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-42"><a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a><span class="w">    </span><span class="n">m</span><span class="p">.</span><span class="n">K_C</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// Перевірка першої умови розгалуження (T &lt; lowBarrier)</span>
+</span><span id="__span-4-43"><a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">telemetryData</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">lowBarrier</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-44"><a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a><span class="w">      </span><span class="n">m</span><span class="p">.</span><span class="n">K_AS</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// Відкидання нижньої аномалії</span>
+</span><span id="__span-4-45"><a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span>
+</span><span id="__span-4-46"><a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-47"><a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a><span class="w">      </span><span class="n">m</span><span class="p">.</span><span class="n">K_C</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// Перевірка другої умови розгалуження (T &gt; highBarrier)</span>
+</span><span id="__span-4-48"><a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">telemetryData</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">highBarrier</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-49"><a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a><span class="w">        </span><span class="n">m</span><span class="p">.</span><span class="n">K_AS</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// Відкидання верхньої аномалії</span>
+</span><span id="__span-4-50"><a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a><span class="w">      </span><span class="p">}</span><span class="w"> </span>
+</span><span id="__span-4-51"><a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a><span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-52"><a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a><span class="w">        </span><span class="c1">// Замір у межах норми</span>
+</span><span id="__span-4-53"><a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a><span class="w">        </span><span class="n">filteredBuffer</span><span class="p">[</span><span class="n">filteredCount</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">telemetryData</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span><span id="__span-4-54"><a id="__codelineno-4-54" name="__codelineno-4-54" href="#__codelineno-4-54"></a><span class="w">        </span><span class="n">filteredCount</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-4-55"><a id="__codelineno-4-55" name="__codelineno-4-55" href="#__codelineno-4-55"></a><span class="w">        </span><span class="n">m</span><span class="p">.</span><span class="n">K_AS</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</span><span id="__span-4-56"><a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a><span class="w">      </span><span class="p">}</span>
+</span><span id="__span-4-57"><a id="__codelineno-4-57" name="__codelineno-4-57" href="#__codelineno-4-57"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-58"><a id="__codelineno-4-58" name="__codelineno-4-58" href="#__codelineno-4-58"></a>
+</span><span id="__span-4-59"><a id="__codelineno-4-59" name="__codelineno-4-59" href="#__codelineno-4-59"></a><span class="w">    </span><span class="n">m</span><span class="p">.</span><span class="n">K_A</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">K_AS</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// Інкремент i++</span>
+</span><span id="__span-4-60"><a id="__codelineno-4-60" name="__codelineno-4-60" href="#__codelineno-4-60"></a><span class="w">    </span><span class="n">m</span><span class="p">.</span><span class="n">K_L</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">K_C</span><span class="o">++</span><span class="p">;</span><span class="w">  </span><span class="c1">// Повторна перевірка умови циклу</span>
+</span><span id="__span-4-61"><a id="__codelineno-4-61" name="__codelineno-4-61" href="#__codelineno-4-61"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-4-62"><a id="__codelineno-4-62" name="__codelineno-4-62" href="#__codelineno-4-62"></a>
+</span><span id="__span-4-63"><a id="__codelineno-4-63" name="__codelineno-4-63" href="#__codelineno-4-63"></a><span class="w">  </span><span class="c1">// Фіксація кінцевого часу</span>
+</span><span id="__span-4-64"><a id="__codelineno-4-64" name="__codelineno-4-64" href="#__codelineno-4-64"></a><span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">tEnd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">micros</span><span class="p">();</span>
+</span><span id="__span-4-65"><a id="__codelineno-4-65" name="__codelineno-4-65" href="#__codelineno-4-65"></a><span class="w">  </span><span class="n">m</span><span class="p">.</span><span class="n">durationUs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tEnd</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tStart</span><span class="p">;</span>
+</span><span id="__span-4-66"><a id="__codelineno-4-66" name="__codelineno-4-66" href="#__codelineno-4-66"></a><span class="w">  </span><span class="n">m</span><span class="p">.</span><span class="n">K_total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">K_L</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">K_AS</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">K_A</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">K_C</span><span class="p">;</span>
+</span><span id="__span-4-67"><a id="__codelineno-4-67" name="__codelineno-4-67" href="#__codelineno-4-67"></a>
+</span><span id="__span-4-68"><a id="__codelineno-4-68" name="__codelineno-4-68" href="#__codelineno-4-68"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+</span><span id="__span-4-69"><a id="__codelineno-4-69" name="__codelineno-4-69" href="#__codelineno-4-69"></a><span class="p">}</span>
+</span><span id="__span-4-70"><a id="__codelineno-4-70" name="__codelineno-4-70" href="#__codelineno-4-70"></a>
+</span><span id="__span-4-71"><a id="__codelineno-4-71" name="__codelineno-4-71" href="#__codelineno-4-71"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-72"><a id="__codelineno-4-72" name="__codelineno-4-72" href="#__codelineno-4-72"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+</span><span id="__span-4-73"><a id="__codelineno-4-73" name="__codelineno-4-73" href="#__codelineno-4-73"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span><span id="__span-4-74"><a id="__codelineno-4-74" name="__codelineno-4-74" href="#__codelineno-4-74"></a>
+</span><span id="__span-4-75"><a id="__codelineno-4-75" name="__codelineno-4-75" href="#__codelineno-4-75"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;==================================================&quot;</span><span class="p">));</span>
+</span><span id="__span-4-76"><a id="__codelineno-4-76" name="__codelineno-4-76" href="#__codelineno-4-76"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot; КФС: Аналіз часової складності та WCET (ATmega328P)&quot;</span><span class="p">));</span>
+</span><span id="__span-4-77"><a id="__codelineno-4-77" name="__codelineno-4-77" href="#__codelineno-4-77"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot; Стратегія: Відсікання бар&#39;єрами телеметрії&quot;</span><span class="p">));</span>
+</span><span id="__span-4-78"><a id="__codelineno-4-78" name="__codelineno-4-78" href="#__codelineno-4-78"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;==================================================&quot;</span><span class="p">));</span>
+</span><span id="__span-4-79"><a id="__codelineno-4-79" name="__codelineno-4-79" href="#__codelineno-4-79"></a>
+</span><span id="__span-4-80"><a id="__codelineno-4-80" name="__codelineno-4-80" href="#__codelineno-4-80"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">testSizes</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">};</span>
+</span><span id="__span-4-81"><a id="__codelineno-4-81" name="__codelineno-4-81" href="#__codelineno-4-81"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">lowB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">15.0</span><span class="p">,</span><span class="w"> </span><span class="n">highB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">40.0</span><span class="p">;</span>
+</span><span id="__span-4-82"><a id="__codelineno-4-82" name="__codelineno-4-82" href="#__codelineno-4-82"></a>
+</span><span id="__span-4-83"><a id="__codelineno-4-83" name="__codelineno-4-83" href="#__codelineno-4-83"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-84"><a id="__codelineno-4-84" name="__codelineno-4-84" href="#__codelineno-4-84"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">testSizes</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+</span><span id="__span-4-85"><a id="__codelineno-4-85" name="__codelineno-4-85" href="#__codelineno-4-85"></a>
+</span><span id="__span-4-86"><a id="__codelineno-4-86" name="__codelineno-4-86" href="#__codelineno-4-86"></a><span class="w">    </span><span class="c1">// Заповнення масиву тестовими даними (суміш норми та аномалій)</span>
+</span><span id="__span-4-87"><a id="__codelineno-4-87" name="__codelineno-4-87" href="#__codelineno-4-87"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-88"><a id="__codelineno-4-88" name="__codelineno-4-88" href="#__codelineno-4-88"></a><span class="w">      </span><span class="n">telemetryData</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">random</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">10.0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Значення 5.0 ... 50.0</span>
+</span><span id="__span-4-89"><a id="__codelineno-4-89" name="__codelineno-4-89" href="#__codelineno-4-89"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-90"><a id="__codelineno-4-90" name="__codelineno-4-90" href="#__codelineno-4-90"></a>
+</span><span id="__span-4-91"><a id="__codelineno-4-91" name="__codelineno-4-91" href="#__codelineno-4-91"></a><span class="w">    </span><span class="n">ExecutionMetrics</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">processTelemetryFilter</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">lowB</span><span class="p">,</span><span class="w"> </span><span class="n">highB</span><span class="p">);</span>
+</span><span id="__span-4-92"><a id="__codelineno-4-92" name="__codelineno-4-92" href="#__codelineno-4-92"></a>
+</span><span id="__span-4-93"><a id="__codelineno-4-93" name="__codelineno-4-93" href="#__codelineno-4-93"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;Розмірність n = &quot;</span><span class="p">));</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+</span><span id="__span-4-94"><a id="__codelineno-4-94" name="__codelineno-4-94" href="#__codelineno-4-94"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot; | K_total = &quot;</span><span class="p">));</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">K_total</span><span class="p">);</span>
+</span><span id="__span-4-95"><a id="__codelineno-4-95" name="__codelineno-4-95" href="#__codelineno-4-95"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot; | Час = &quot;</span><span class="p">));</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">durationUs</span><span class="p">);</span>
+</span><span id="__span-4-96"><a id="__codelineno-4-96" name="__codelineno-4-96" href="#__codelineno-4-96"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot; us&quot;</span><span class="p">));</span>
+</span><span id="__span-4-97"><a id="__codelineno-4-97" name="__codelineno-4-97" href="#__codelineno-4-97"></a>
+</span><span id="__span-4-98"><a id="__codelineno-4-98" name="__codelineno-4-98" href="#__codelineno-4-98"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;  [Деталі] K_L=&quot;</span><span class="p">));</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">K_L</span><span class="p">);</span>
+</span><span id="__span-4-99"><a id="__codelineno-4-99" name="__codelineno-4-99" href="#__codelineno-4-99"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;, K_AS=&quot;</span><span class="p">));</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">K_AS</span><span class="p">);</span>
+</span><span id="__span-4-100"><a id="__codelineno-4-100" name="__codelineno-4-100" href="#__codelineno-4-100"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;, K_A=&quot;</span><span class="p">));</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">K_A</span><span class="p">);</span>
+</span><span id="__span-4-101"><a id="__codelineno-4-101" name="__codelineno-4-101" href="#__codelineno-4-101"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;, K_C=&quot;</span><span class="p">));</span><span class="w"> </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">K_C</span><span class="p">);</span>
+</span><span id="__span-4-102"><a id="__codelineno-4-102" name="__codelineno-4-102" href="#__codelineno-4-102"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;--------------------------------------------------&quot;</span><span class="p">));</span>
+</span><span id="__span-4-103"><a id="__codelineno-4-103" name="__codelineno-4-103" href="#__codelineno-4-103"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-4-104"><a id="__codelineno-4-104" name="__codelineno-4-104" href="#__codelineno-4-104"></a><span class="p">}</span>
+</span><span id="__span-4-105"><a id="__codelineno-4-105" name="__codelineno-4-105" href="#__codelineno-4-105"></a>
+</span><span id="__span-4-106"><a id="__codelineno-4-106" name="__codelineno-4-106" href="#__codelineno-4-106"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-107"><a id="__codelineno-4-107" name="__codelineno-4-107" href="#__codelineno-4-107"></a><span class="w">  </span><span class="c1">// Одноразовий запуск у setup()</span>
+</span><span id="__span-4-108"><a id="__codelineno-4-108" name="__codelineno-4-108" href="#__codelineno-4-108"></a><span class="p">}</span>
+</span></code></pre></div>
+<h5 id="2-python-srccomplexity_analyzerpy">Крок 2. Розробка аналітичного та графічного скрипта у Python (<code>src/complexity_analyzer.py</code>)</h5>
+<p>Створіть файл <code>src/complexity_analyzer.py</code>, який моделює розрахунок функції трудомісткості <span class="arithmatex">\(\Psi\)</span>, будує порівняльні графіки для великих <span class="arithmatex">\(n\)</span> та зберігає їх у папку <code>exports</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="sd">Практичне заняття №2. Оцінювання трудомісткості обчислювальних процесів.</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="sd">Скрипт розрахунку функції трудомісткості Psi, K_сер та побудови графіків.</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="k">def</span><span class="w"> </span><span class="nf">calculate_complexity</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">c1</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">c2</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">c3</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">c4</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="sd">    Аналітичний розрахунок складності для Варіанта №1 (Фільтрація аномалій).</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="c1"># Найкращий випадок: Усі елементи відсікаються першим бар&#39;єром K_min</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    <span class="n">K_L_min</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="n">K_AS_min</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">3</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>    <span class="n">K_A_min</span> <span class="o">=</span> <span class="n">n</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>    <span class="n">K_C_min</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>    <span class="n">K_min</span> <span class="o">=</span> <span class="n">K_L_min</span> <span class="o">+</span> <span class="n">K_AS_min</span> <span class="o">+</span> <span class="n">K_A_min</span> <span class="o">+</span> <span class="n">K_C_min</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>    <span class="c1"># Найгірший випадок WCET: Усі елементи переходять до другої перевірки K_max</span>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>    <span class="n">K_L_max</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>    <span class="n">K_AS_max</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">3</span>
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>    <span class="n">K_A_max</span> <span class="o">=</span> <span class="n">n</span>
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>    <span class="n">K_C_max</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>    <span class="n">K_max</span> <span class="o">=</span> <span class="n">K_L_max</span> <span class="o">+</span> <span class="n">K_AS_max</span> <span class="o">+</span> <span class="n">K_A_max</span> <span class="o">+</span> <span class="n">K_C_max</span>
+</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>
+</span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>    <span class="c1"># Середня кількість операцій</span>
+</span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>    <span class="n">K_avg</span> <span class="o">=</span> <span class="p">(</span><span class="n">K_min</span> <span class="o">+</span> <span class="n">K_max</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+</span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>
+</span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>    <span class="c1"># Розрахунок ємнісних параметрів у байтах для платформи ATmega328P</span>
+</span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a>    <span class="n">M_code</span> <span class="o">=</span> <span class="mi">4500</span> <span class="c1"># Оцінка розміру Flash-пам&#39;яті (байтів)</span>
+</span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a>    <span class="n">S_d</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="mi">4</span>   <span class="c1"># Пам&#39;ять SRAM під масив float (байтів)</span>
+</span><span id="__span-5-35"><a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a>    <span class="n">S_r</span> <span class="o">=</span> <span class="mi">32</span>      <span class="c1"># Стекова пам&#39;ять під виклики функцій (байтів)</span>
+</span><span id="__span-5-36"><a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a>
+</span><span id="__span-5-37"><a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a>    <span class="c1"># Розрахунок універсальної функції трудомісткості Psi</span>
+</span><span id="__span-5-38"><a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a>    <span class="n">psi_val</span> <span class="o">=</span> <span class="n">c1</span> <span class="o">*</span> <span class="n">K_avg</span> <span class="o">+</span> <span class="n">c2</span> <span class="o">*</span> <span class="n">M_code</span> <span class="o">+</span> <span class="n">c3</span> <span class="o">*</span> <span class="n">S_d</span> <span class="o">+</span> <span class="n">c4</span> <span class="o">*</span> <span class="n">S_r</span>
+</span><span id="__span-5-39"><a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a>
+</span><span id="__span-5-40"><a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a>    <span class="k">return</span> <span class="n">K_min</span><span class="p">,</span> <span class="n">K_max</span><span class="p">,</span> <span class="n">K_avg</span><span class="p">,</span> <span class="n">psi_val</span>
+</span><span id="__span-5-41"><a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a>
+</span><span id="__span-5-42"><a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a><span class="k">def</span><span class="w"> </span><span class="nf">run_benchmarks</span><span class="p">():</span>
+</span><span id="__span-5-43"><a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a>    <span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2500</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">7500</span><span class="p">,</span> <span class="mi">10000</span><span class="p">]</span>
+</span><span id="__span-5-44"><a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a>
+</span><span id="__span-5-45"><a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a>    <span class="n">k_avg_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-5-46"><a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a>    <span class="n">psi_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-5-47"><a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a>
+</span><span id="__span-5-48"><a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;==================================================&quot;</span><span class="p">)</span>
+</span><span id="__span-5-49"><a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; РЕЗУЛЬТАТИ АНАЛІТИЧНОГО РОЗРАХУНКУ ТРУДОМІСТКОСТІ&quot;</span><span class="p">)</span>
+</span><span id="__span-5-50"><a id="__codelineno-5-50" name="__codelineno-5-50" href="#__codelineno-5-50"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;==================================================&quot;</span><span class="p">)</span>
+</span><span id="__span-5-51"><a id="__codelineno-5-51" name="__codelineno-5-51" href="#__codelineno-5-51"></a>
+</span><span id="__span-5-52"><a id="__codelineno-5-52" name="__codelineno-5-52" href="#__codelineno-5-52"></a>    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">:</span>
+</span><span id="__span-5-53"><a id="__codelineno-5-53" name="__codelineno-5-53" href="#__codelineno-5-53"></a>        <span class="n">k_min</span><span class="p">,</span> <span class="n">k_max</span><span class="p">,</span> <span class="n">k_avg</span><span class="p">,</span> <span class="n">psi</span> <span class="o">=</span> <span class="n">calculate_complexity</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</span><span id="__span-5-54"><a id="__codelineno-5-54" name="__codelineno-5-54" href="#__codelineno-5-54"></a>        <span class="n">k_avg_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k_avg</span><span class="p">)</span>
+</span><span id="__span-5-55"><a id="__codelineno-5-55" name="__codelineno-5-55" href="#__codelineno-5-55"></a>        <span class="n">psi_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span>
+</span><span id="__span-5-56"><a id="__codelineno-5-56" name="__codelineno-5-56" href="#__codelineno-5-56"></a>
+</span><span id="__span-5-57"><a id="__codelineno-5-57" name="__codelineno-5-57" href="#__codelineno-5-57"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;n = </span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">5d</span><span class="si">}</span><span class="s2"> | K_min = </span><span class="si">{</span><span class="n">k_min</span><span class="si">:</span><span class="s2">6.0f</span><span class="si">}</span><span class="s2"> | K_max = </span><span class="si">{</span><span class="n">k_max</span><span class="si">:</span><span class="s2">6.0f</span><span class="si">}</span><span class="s2"> | K_сер = </span><span class="si">{</span><span class="n">k_avg</span><span class="si">:</span><span class="s2">6.1f</span><span class="si">}</span><span class="s2"> | Psi = </span><span class="si">{</span><span class="n">psi</span><span class="si">:</span><span class="s2">8.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-5-58"><a id="__codelineno-5-58" name="__codelineno-5-58" href="#__codelineno-5-58"></a>
+</span><span id="__span-5-59"><a id="__codelineno-5-59" name="__codelineno-5-59" href="#__codelineno-5-59"></a>    <span class="c1"># Побудова графічної залежності</span>
+</span><span id="__span-5-60"><a id="__codelineno-5-60" name="__codelineno-5-60" href="#__codelineno-5-60"></a>    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;../exports&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-5-61"><a id="__codelineno-5-61" name="__codelineno-5-61" href="#__codelineno-5-61"></a>
+</span><span id="__span-5-62"><a id="__codelineno-5-62" name="__codelineno-5-62" href="#__codelineno-5-62"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</span><span id="__span-5-63"><a id="__codelineno-5-63" name="__codelineno-5-63" href="#__codelineno-5-63"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">psi_list</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Функція трудомісткості Ψ(n)&#39;</span><span class="p">)</span>
+</span><span id="__span-5-64"><a id="__codelineno-5-64" name="__codelineno-5-64" href="#__codelineno-5-64"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">k_avg_list</span><span class="p">,</span> <span class="s1">&#39;s--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Середня кількість операцій K_сер(n)&#39;</span><span class="p">)</span>
+</span><span id="__span-5-65"><a id="__codelineno-5-65" name="__codelineno-5-65" href="#__codelineno-5-65"></a>
+</span><span id="__span-5-66"><a id="__codelineno-5-66" name="__codelineno-5-66" href="#__codelineno-5-66"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Залежність трудомісткості та кількості операцій від розмірності входу n&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+</span><span id="__span-5-67"><a id="__codelineno-5-67" name="__codelineno-5-67" href="#__codelineno-5-67"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Розмірність вхідного масиву n (елементів)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span><span id="__span-5-68"><a id="__codelineno-5-68" name="__codelineno-5-68" href="#__codelineno-5-68"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Величина показника (одиниць)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span><span id="__span-5-69"><a id="__codelineno-5-69" name="__codelineno-5-69" href="#__codelineno-5-69"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+</span><span id="__span-5-70"><a id="__codelineno-5-70" name="__codelineno-5-70" href="#__codelineno-5-70"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</span><span id="__span-5-71"><a id="__codelineno-5-71" name="__codelineno-5-71" href="#__codelineno-5-71"></a>
+</span><span id="__span-5-72"><a id="__codelineno-5-72" name="__codelineno-5-72" href="#__codelineno-5-72"></a>    <span class="n">plot_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;../exports&quot;</span><span class="p">,</span> <span class="s2">&quot;complexity_plot.png&quot;</span><span class="p">)</span>
+</span><span id="__span-5-73"><a id="__codelineno-5-73" name="__codelineno-5-73" href="#__codelineno-5-73"></a>    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">plot_path</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</span><span id="__span-5-74"><a id="__codelineno-5-74" name="__codelineno-5-74" href="#__codelineno-5-74"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------------------------------------------------&quot;</span><span class="p">)</span>
+</span><span id="__span-5-75"><a id="__codelineno-5-75" name="__codelineno-5-75" href="#__codelineno-5-75"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Графік успішно збережено у файл: </span><span class="si">{</span><span class="n">plot_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-5-76"><a id="__codelineno-5-76" name="__codelineno-5-76" href="#__codelineno-5-76"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;==================================================&quot;</span><span class="p">)</span>
+</span><span id="__span-5-77"><a id="__codelineno-5-77" name="__codelineno-5-77" href="#__codelineno-5-77"></a>
+</span><span id="__span-5-78"><a id="__codelineno-5-78" name="__codelineno-5-78" href="#__codelineno-5-78"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span id="__span-5-79"><a id="__codelineno-5-79" name="__codelineno-5-79" href="#__codelineno-5-79"></a>    <span class="n">run_benchmarks</span><span class="p">()</span>
+</span></code></pre></div>
+<h5 id="3-simulide">Крок 3. Схема конвеєра експериментального профайлінгу в SimulIDE</h5>
+<p>Взаємодія інструментів під час виконання хронометражу та аналізу подана на рисунку 2.</p>
+<p><pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    participant IDE as Arduino IDE
+    participant Hex as Файл прошивки (.hex)
+    participant MCU as ATmega328P (SimulIDE)
+    participant UART as Serial Monitor (SimulIDE)
+    participant Py as complexity_analyzer.py
+
+    IDE-&gt;&gt;Hex: Компіляція скетчу C++ (Ctrl+Alt+S)
+    Hex-.-&gt;MCU: Load firmware у SimulIDE
+    MCU-&gt;&gt;MCU: Вимірювання часу micros() та операцій K_total
+    MCU-&gt;&gt;UART: Друк результатів у лог Serial Monitor
+    UART--&gt;&gt;Py: Порівняння з аналітичною моделлю у Python
+    Py-&gt;&gt;Py: Розрахунок K_min, K_max, K_сер та Psi(n)
+    Py-&gt;&gt;Py: Збереження графіків у exports/complexity_plot.png</code></pre>
+<em>Рисунок 2 — Послідовність взаємодії апаратно-симуляційного комплексу та аналітичного скрипта Python</em></p>
+<hr />
+<h5 id="4">Крок 4. Запуск та зняття метрик</h5>
+<ol>
+<li>
+<p>У середовищі <strong>Arduino IDE</strong> зкомпілюйте скетч та експортуйте двійковий файл: <strong>Sketch -&gt; Export Compiled Binary</strong> (<code>Ctrl + Alt + S</code>).</p>
+</li>
+<li>
+<p>Запустіть <strong>SimulIDE</strong>, завантажте файл <code>.hex</code> у мікроконтролер <strong>ATmega328P</strong>, відкрийте <strong>Serial Monitor</strong> та запустіть симуляцію.</p>
+</li>
+<li>
+<p>Запустіть аналітичний скрипт Python у терміналі:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span>src
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>python<span class="w"> </span>complexity_analyzer.py
+</span></code></pre></div></p>
+</li>
+</ol>
+<p><strong>Приклад очікуваного виведення у Serial Monitor (SimulIDE):</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>==================================================
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a> КФС: Аналіз часової складності та WCET (ATmega328P)
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a> Стратегія: Відсікання бар&#39;єрами телеметрії
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>==================================================
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>Розмірність n = 10 | K_total = 74 | Час = 112 us
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>  [Деталі] K_L=11, K_AS=23, K_A=10, K_C=30
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>--------------------------------------------------
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>Розмірність n = 20 | K_total = 144 | Час = 216 us
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>  [Деталі] K_L=21, K_AS=43, K_A=20, K_C=60
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>--------------------------------------------------
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>Розмірність n = 50 | K_total = 354 | Час = 528 us
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>  [Деталі] K_L=51, K_AS=103, K_A=50, K_C=150
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>--------------------------------------------------
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>Розмірність n = 100 | K_total = 704 | Час = 1048 us
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>  [Деталі] K_L=101, K_AS=203, K_A=100, K_C=300
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>--------------------------------------------------
+</span></code></pre></div>
+<hr />
+<h3 id="4_1">4 Вимоги до змісту звіту</h3>
+<p>Звіт з практичного заняття оформлюється у форматі PDF або MS Word і повинен містити наступні обов'язкові розділи:</p>
+<ol>
+<li>
+<p><strong>Титульна сторінка.</strong></p>
+<ul>
+<li>
+<p>Назва вищого навчального закладу, кафедри, дисципліни.</p>
+</li>
+<li>
+<p>Номер та назва лабораторної роботи, номер обраного варіанта.</p>
+</li>
+<li>
+<p>ПІБ, шифр навчальної групи.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Мета роботи, короткі теоретичні відомості та опис отриманого завдання.</strong></p>
+<ul>
+<li>
+<p>Виклад основного теоретичного базису.</p>
+</li>
+<li>
+<p>Опис завдання згідно з таблицею варіантів.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Схемотехнічна модель SimulIDE.</strong> Скріншот робочого поля симулятора з підключеною платою Arduino Uno та відкритим вікном Serial Monitor.</p>
+</li>
+<li>
+<p><strong>Аналітичний розрахунок.</strong></p>
+<ul>
+<li>
+<p>Розгорнуті математичні вирази для <span class="arithmatex">\(K_L\)</span>, <span class="arithmatex">\(K_{AS}\)</span>, <span class="arithmatex">\(K_A\)</span>, <span class="arithmatex">\(K_C\)</span> як функції від <span class="arithmatex">\(n\)</span>.</p>
+</li>
+<li>
+<p>Аналітичний розрахунок <span class="arithmatex">\(K_{min}\)</span>, <span class="arithmatex">\(K_{max}\)</span> та <span class="arithmatex">\(K_{сер}\)</span>.</p>
+</li>
+<li>
+<p>Підсумкова формула функції трудомісткості <span class="arithmatex">\(\Psi(n)\)</span> із підставленими ваговими коефіцієнтами для ATmega328P.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Програмний код.</strong> Повний код скетчу <code>cps-pz2-complexity.ino</code> та Python-скрипта <code>src/complexity_analyzer.py</code> з коментарями.</p>
+</li>
+<li>
+<p><strong>Експериментальні результати.</strong> Скріншоти логів з Serial Monitor та роздрукований графік з папки <code>exports/complexity_plot.png</code>.</p>
+</li>
+<li>
+<p><strong>Висновки.</strong> Обґрунтування відповідності експериментально отриманої складності теоретичній <span class="arithmatex">\(O\)</span>-символіці, аналіз впливу розгалужень на WCET та оцінка придатності алгоритму для систем жорсткого реального часу.</p>
+</li>
+</ol>
+<hr />
+<h3 id="5">5 Контрольні запитання</h3>
+<ol>
+<li>
+<p>У чому полягає фундаментальна відмінність між оцінюванням алгоритмів у системах м'якого та жорсткого реального часу? Чому показник WCET є вирішальним для КФС?</p>
+</li>
+<li>
+<p>Поясніть фізичний зміст кожного зі складників функції трудомісткості <span class="arithmatex">\(\Psi = c_1 \cdot F_a(N) + c_2 \cdot M + c_3 \cdot S_d + c_4 \cdot S_r\)</span>. Як обмеження Flash та SRAM пам'яті мікроконтролера ATmega328P впливають на коефіцієнти <span class="arithmatex">\(c_2\)</span> та <span class="arithmatex">\(c_3\)</span>?</p>
+</li>
+<li>
+<p>Яким чином наявність умовних розгалужень у тілі циклу впливає на різницю між мінімальною кількістю операцій <span class="arithmatex">\(K_{min}\)</span> та максимальною <span class="arithmatex">\(K_{max}\)</span>? Поясніть фізичний зміст <span class="arithmatex">\(K_{сер}\)</span>.</p>
+</li>
+<li>
+<p>У чому полягає відмінність між асимптотичними оцінками <span class="arithmatex">\(O(f(n))\)</span>, <span class="arithmatex">\(\Omega(f(n))\)</span> та <span class="arithmatex">\(\Theta(f(n))\)</span> у контексті найгіршого, найкращого та середнього випадків виконання алгоритму?</p>
+</li>
+<li>
+<p>Як використання системного таймера <code>micros()</code> в Arduino IDE дозволяє експериментально вимірювати тривалість виконання обчислювальних процедур КФС?</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

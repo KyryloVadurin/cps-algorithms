@@ -1,0 +1,1995 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Прикладні алгоритми КФС"">
+      
+      
+      
+      
+        <link rel="prev" href="../topic-2/">
+      
+      
+        <link rel="next" href="../topic-4/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Тема 3. Архітектура та обмін даними - Прикладні алгоритми кіберфізичних систем</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Прикладні алгоритми кіберфізичних систем" class="md-header__button md-logo" aria-label="Прикладні алгоритми кіберфізичних систем" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v1h3v2h-3v2h3v2h-3v2h3v2h-3v2h3v2h-3v1H6v-1H3v-2h3v-2H3v-2h3v-2H3V9h3V7H3V5h3zm5 11v3h1v-3zm2 0v3h1v-3zm2 0v3h1v-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Прикладні алгоритми кіберфізичних систем
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Тема 3. Архітектура та обмін даними
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча навчальна програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../topic-1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/lab-1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../practicals/pz-1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../self-study/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../rg/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Розрахунково-графічна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../self-study/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Перелік тестових та практичних завдань для самопідготовки
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Прикладні алгоритми кіберфізичних систем" class="md-nav__button md-logo" aria-label="Прикладні алгоритми кіберфізичних систем" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v1h3v2h-3v2h3v2h-3v2h3v2h-3v2h3v2h-3v1H6v-1H3v-2h3v-2H3v-2h3v-2H3V9h3V7H3V5h3zm5 11v3h1v-3zm2 0v3h1v-3zm2 0v3h1v-3z"/></svg>
+
+    </a>
+    Прикладні алгоритми кіберфізичних систем
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча навчальна програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Теоретичні засади алгоритмізації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Керуючі конструкції в алгоритмах реального часу
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. Архітектура та обмін даними
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. Архітектура та обмін даними
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31-iiot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Екосистема Інтернету речей та архітектура IIoT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Екосистема Інтернету речей та архітектура IIoT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Сенсорні пристрої, давачі та системи їх живлення
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Сенсорні пристрої, давачі та системи їх живлення">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-mqtt-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Протоколи обміну даними: MQTT та використання веб-сокетів
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 Протоколи обміну даними: MQTT та використання веб-сокетів">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Алгоритми обробки структурованих даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Нечітка логіка та евристики
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Пошук, сортування та графи в мережах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Хмарні та граничні обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання логіки керування низького рівня
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Розробка алгоритмів обробки даних з давачів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Оркестрування потоків даних у середовищі Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Обробка матриць сигналів у розподілених системах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Побудова нечіткого контролера для автоматизації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Оптимізація маршрутів у сенсорних мережах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Віртуалізація сервісів за допомогою Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Графічна формалізація алгоритмів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Оцінювання трудомісткості обчислювальних процесів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Проєктивання ієрархії тем MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Реалізація черги повідомлень для керування завданнями
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Вирішення задач маршрутизації евристичними методами
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Порівняльний аналіз методів сортування даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Аналіз архітектурних рішень для Big Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../self-study/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Розрахунково-графічна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../self-study/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Перелік тестових та практичних завдань для самопідготовки
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31-iiot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Екосистема Інтернету речей та архітектура IIoT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Екосистема Інтернету речей та архітектура IIoT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Сенсорні пристрої, давачі та системи їх живлення
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Сенсорні пристрої, давачі та системи їх живлення">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-mqtt-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Протоколи обміну даними: MQTT та використання веб-сокетів
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 Протоколи обміну даними: MQTT та використання веб-сокетів">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="3">Тема 3. Архітектура та обмін даними</h1>
+<h2 id="31-iiot">3.1 Екосистема Інтернету речей та архітектура IIoT</h2>
+<p>У сучасній інженерії <strong>екосистема Інтернету речей</strong> (Internet of Things, IoT) розглядається як фундаментальна складова кіберфізичних систем, що забезпечує інтеграцію фізичних об’єктів у цифровий простір для автоматизованого збору та обміну даними. Ця екосистема базується на принципах побудови мереж, де кожен пристрій має унікальну ідентифікацію та здатність взаємодіяти з іншими вузлами без прямої участі людини. Фундаментальними принципами побудови такої системи є її класифікація за основними ознаками, такими як дальність дії, тип енергозабезпечення та методи передачі сигналів. У контексті кіберфізичних систем особливого значення набуває рівень <strong>Brainware</strong> (алгоритмічне забезпечення), який перетворює "сирі" дані з сенсорів на інтелектуальні рішення для управління технологічними процесами.</p>
+<p><strong>Промисловий Інтернет речей</strong> (Industrial IoT, IIoT) є розширенням загальної концепції IoT, орієнтованим на критичну інфраструктуру та виробничі потужності, де вимоги до надійності та безпеки є значно вищими. Архітектор IIoT-системи стикається з величезним вибором технологічних рішень, оскільки на сьогодні доступно понад 1,5 мільйона різних комбінацій архітектурних параметрів: від типу давача до вибору хмарного провайдера. Ключовою бізнес-метою створення такої архітектури є не просто збір даних, а досягнення конкретних показників ефективності через зв’язування об’єктів керування в єдину мережу. Важливим аспектом архітектури є інтеграція <strong>технології функціонування</strong> (Operational Technology, OT) з <strong>інформаційними технологіями</strong> (Information Technology, IT), що дозволяє оптимізувати витрати ресурсів та прогнозувати стан обладнання.</p>
+<p>На нижньому рівні архітектури розташовані <strong>сенсорні пристрої</strong> та <strong>давачі</strong>, які поділяються на автономні та керовані. <strong>Автономний давач</strong> самостійно визначає моменти передачі даних на шлюз або до сусідніх систем, тоді як керований пристрій діє за командами центрального контролера. Наступним рівнем є комунікаційна інфраструктура, яка може базуватися на IP-технологіях або специфічних не-IP протоколах, таких як Bluetooth Mesh чи LPWAN. Для забезпечення ефективного обміну даними в умовах обмежених ресурсів використовується протокол <strong>MQTT</strong>, який працює за моделлю "публікація/підписка" та дозволяє гнучко налаштовувати ієрархію тем (топіків).</p>
+<p>Верхні рівні архітектури включають <strong>хмарні</strong>, <strong>граничні</strong> (Edge) та <strong>туманні</strong> (Fog) обчислення. Граничні обчислення дозволяють обробляти критично важливі дані безпосередньо біля джерела сигналу, що забезпечує мінімальну затримку (латентність), необхідну для систем реального часу. Туманні обчислення виступають як проміжний рівень віртуалізації, що об’єднує ресурси локальної мережі для виконання складних обчислювальних завдань. На найвищому рівні архітектури застосовуються технології <strong>Big Data</strong> та аналітичні пакети, що працюють у хмарах, для обробки історичних даних та виявлення прихованих закономірностей у роботі системи. Зокрема, <strong>Lambda-архітектура</strong> дозволяє поєднувати пакетну обробку великих обсягів даних із потоковою обробкою подій у режимі реального часу.</p>
+<p>Для оцінки ефективності передачі даних в екосистемі IoT використовується <strong>теорема Шеннона-Гартлі</strong>, яка визначає максимальну пропускну здатність каналу <span class="arithmatex">\(C\)</span> (біт/с) залежно від смуги пропускання <span class="arithmatex">\(W\)</span> (Гц) та відношення сигнал/шум <span class="arithmatex">\(S/N\)</span>:</p>
+<div class="arithmatex">\[
+C = W \cdot \log_2\left(1 + \frac{S}{N}\right).
+\]</div>
+<p>У наведеній формулі смуга пропускання <span class="arithmatex">\(W\)</span> визначає частотний діапазон, у якому працює радіомодуль давача, а відношення <span class="arithmatex">\(S/N\)</span> відображає якість сигналу в умовах завад. Збільшення потужності сигналу або розширення смуги дозволяє підвищити швидкість передачі, проте це веде до зростання енергоспоживання пристрою.</p>
+<p>Важливим розрахунковим показником для автономних вузлів IoT є <strong>час життя батареї</strong> (Battery Life), який залежить від ємності джерела живлення та середнього струму споживання. Якщо пристрій працює циклічно, середній струм споживання <span class="arithmatex">\(I_{avg}\)</span> розраховується як:</p>
+<div class="arithmatex">\[
+I_{avg} = \frac{I_{active} \cdot t_{active} + I_{sleep} \cdot t_{sleep}}{t_{cycle}},
+\]</div>
+<p>де <span class="arithmatex">\(I_{active}\)</span> та <span class="arithmatex">\(t_{active}\)</span> — струм та час роботи пристрою в активному режимі (передача даних), <span class="arithmatex">\(I_{sleep}\)</span> та <span class="arithmatex">\(t_{sleep}\)</span> — показники в режимі сну, а <span class="arithmatex">\(t_{cycle}\)</span> — загальний період циклу. Мінімізація часу перебування в активному режимі за рахунок використання ефективних алгоритмів (Brainware) дозволяє суттєво подовжити термін експлуатації вузла.</p>
+<p>Для оцінки затримок у сенсорних мережах розраховується <strong>латентність</strong>, яка в системах Edge-обчислень має бути суворо обмеженою для запобігання аварійним ситуаціям. Кількість операцій у алгоритмах обробки даних на граничних вузлах оцінюється через часову складність <span class="arithmatex">\(O(n)\)</span>, що дозволяє визначити придатність конкретного мікроконтролера для виконання завдань аналітики.</p>
+<p>Порівняльна характеристика основних технологій зв'язку далекої дії (LPWAN), що використовуються в екосистемі IIoT, наведена в таблиці нижче.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Специфікація</th>
+<th style="text-align: left;">NB-IoT (13 реліз)</th>
+<th style="text-align: left;">LoRa/LoRaWAN</th>
+<th style="text-align: left;">Sigfox</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Смуга пропускання</strong></td>
+<td style="text-align: left;">180 КГц</td>
+<td style="text-align: left;">125 КГц</td>
+<td style="text-align: left;">100 Гц</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Пікове навантаження</strong></td>
+<td style="text-align: left;">до 200 Кб/с</td>
+<td style="text-align: left;">до 50 Кб/с</td>
+<td style="text-align: left;">до 600 б/с</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Дальність дії</strong></td>
+<td style="text-align: left;">~7 x Cat-1 (стільниковий)</td>
+<td style="text-align: left;">до 15 км (пригород)</td>
+<td style="text-align: left;">до 50 км</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Енергоспоживання</strong></td>
+<td style="text-align: left;">Дуже низьке (~15 мкА)</td>
+<td style="text-align: left;">Екстремально низьке</td>
+<td style="text-align: left;">Екстремально низьке</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Затримка (Latency)</strong></td>
+<td style="text-align: left;">1,6 – 10 мс</td>
+<td style="text-align: left;">500 мс – 2 с</td>
+<td style="text-align: left;">до 60 с</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Вартість вузла</strong></td>
+<td style="text-align: left;">~$5</td>
+<td style="text-align: left;">~$15</td>
+<td style="text-align: left;">~$3</td>
+</tr>
+</tbody>
+</table>
+<p>Також в архітектурі IIoT важливим є поділ сервісів за моделями обслуговування, що представлено у наступній класифікації.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Модель сервісу</th>
+<th style="text-align: left;">Опис та приналежність</th>
+<th style="text-align: left;">Сфера відповідальності користувача</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>IaaS</strong></td>
+<td style="text-align: left;">Інфраструктура як сервіс.</td>
+<td style="text-align: left;">Операційні системи, дані, додатки.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PaaS</strong></td>
+<td style="text-align: left;">Платформа як сервіс.</td>
+<td style="text-align: left;">Власні розроблені додатки та дані.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>SaaS</strong></td>
+<td style="text-align: left;">Програмне забезпечення як сервіс.</td>
+<td style="text-align: left;">Тільки налаштування конфігурації.</td>
+</tr>
+</tbody>
+</table>
+<p>Логічна архітектура IIoT базується на багаторівневому потоці даних від фізичного об’єкта до хмарних сервісів аналітики. Схема нижче ілюструє взаємодію між основними рівнями обчислень.</p>
+<pre class="mermaid"><code>flowchart TD
+    A[Пристрої та механізми] -- Сирі дані --&gt; B[Границя - Edge Layer]
+    B -- Потокова обробка / MQTT --&gt; C[Туман - Fog Layer]
+    C -- Агреговані дані / WAN --&gt; D[Хмара - Cloud Layer]
+    D -- Глибока аналітика / Big Data --&gt; E[Прийняття рішень]
+    E -- Зворотний зв'язок / Управління --&gt; A
+
+    subgraph Edge_Functions[Функції на границі]
+    B1[Логування]
+    B2[Фільтрація]
+    B3[Локальні додатки]
+    end
+
+    subgraph Cloud_Functions[Функції в хмарі]
+    D1[Навчання моделей]
+    D2[Історична база HDFS]
+    D3[Lambda-архітектура]
+    end</code></pre>
+<p>Наведена модель демонструє, що <strong>граничний рівень</strong> бере на себе завдання первинної фільтрації та швидкого реагування, тоді як <strong>хмарний рівень</strong> забезпечує довгострокове зберігання та навчання складних моделей машинного навчання.</p>
+<h3 id="_1">Питання для самоперевірки</h3>
+<ol>
+<li>
+<p>Чому при проектуванні IIoT-системи архітектору необхідно враховувати понад 1,5 мільйона комбінацій технологічних рішень і як це впливає на вибір апаратної платформи?</p>
+</li>
+<li>
+<p>У чому полягає принципова різниця між автономним та керованим давачем у контексті енергозабезпечення та логіки обміну повідомленнями в мережі IoT?</p>
+</li>
+<li>
+<p>Поясніть роль Lambda-архітектури в обробці великих даних (Big Data) для промислових систем. Які два типи обробки вона поєднує?</p>
+</li>
+<li>
+<p>Яким чином використання Edge-обчислень допомагає зменшити латентність системи і чому це критично для забезпечення безпеки персоналу на виробництві?</p>
+</li>
+<li>
+<p>На основі теореми Шеннона-Гартлі поясніть, чому підвищення рівня завад у радіоканалі (зменшення <span class="arithmatex">\(S/N\)</span>) змушує архітектора обирати протоколи з меншим піковим навантаженням.</p>
+</li>
+</ol>
+<h2 id="32">3.2 Сенсорні пристрої, давачі та системи їх живлення</h2>
+<p>У структурі сучасних кіберфізичних систем (КФС) сенсорний рівень виступає фундаментальною ланкою, що забезпечує отримання первинної інформації про стан фізичних об’єктів та навколишнього середовища. <strong>Сенсорні пристрої</strong> та <strong>давачі</strong> інтегруються у єдину екосистему Інтернету речей (IoT), де кожен вузол має унікальну ідентифікацію та здатність до взаємодії без прямої участі людини. У контексті промислового Інтернету речей (IIoT) архітектор системи стикається з надзвичайно широким спектром технічних рішень: на сьогодні доступно понад 1,5 мільйона комбінацій архітектурних параметрів, починаючи від вибору типу сенсора і закінчуючи методами обробки даних у хмарі. Важливо розуміти, що збір даних сам по собі не є кінцевою бізнес-метою; основне завдання полягає у досягненні конкретних показників ефективності через інтелектуальне зв’язування об’єктів керування.</p>
+<p>За логікою функціонування сенсорні пристрої поділяються на дві великі категорії: <strong>автономні</strong> та <strong>керовані</strong>. <strong>Автономний давач</strong> самостійно визначає моменти передачі даних на шлюз або до сусідніх вузлів мережі, ґрунтуючись на внутрішніх алгоритмах або змінах вимірюваної величини. На противагу йому, <strong>керований давач</strong> діє суворо за командами центрального контролера або шлюзу. Окреме місце посідають <strong>інтелектуальні давачі</strong>, які мають вбудовані обчислювальні ресурси для первинної фільтрації, логування та локальної обробки сигналів безпосередньо на «границі» (Edge Layer) системи. Це дозволяє суттєво зменшити навантаження на канали зв'язку та знизити латентність системи, що є критичним для забезпечення функціональної безпеки персоналу та обладнання.</p>
+<p>Якість сенсорного пристрою визначається набором характеристик, серед яких ключовими є <strong>чутливість</strong> (здатність реагувати на мінімальні зміни вхідного сигналу) та <strong>динамічний діапазон</strong> (діапазон значень між мінімально та максимально можливим рівнем вимірювання). Вибір апаратної платформи для сенсорного вузла завжди є компромісом між обчислювальною потужністю, вартістю та енергоефективністю, оскільки більшість таких пристроїв працює в умовах обмежених енергетичних ресурсів.</p>
+<p>Системи живлення в КФС та IoT стикаються з низкою проблем, пов'язаних із необхідністю тривалої автономної роботи без заміни джерел енергії. Традиційні <strong>батареї живлення</strong> мають обмежену ємність, тому сучасні технології орієнтовані на використання систем <strong>відновлення енергії (Energy Harvesting)</strong>. До основних методів належать перетворення сонячної енергії за допомогою фотоелементів, використання п'єзомеханічних ефектів (перетворення енергії вібрації або натискання), термоелектричне перетворення (використання різниці температур) та збір енергії радіохвиль. Для короткочасного зберігання енергії та згладжування пікових навантажень часто використовуються <strong>іоністори</strong> (суперконденсатори), які витримують значно більшу кількість циклів заряду-розряду порівняно з акумуляторами. У специфічних галузях, де заміна живлення неможлива протягом десятиліть, розглядається використання радіоактивних джерел живлення.</p>
+<p>Для забезпечення надійної роботи автономного вузла КФС критично важливим є точний розрахунок <strong>часу життя батареї</strong> (<span class="arithmatex">\(T_{life}\)</span>). Цей показник залежить від ємності джерела живлення та середнього струму споживання пристрою в різних режимах роботи. Оскільки типовий IoT-пристрій більшу частину часу проводить у режимі глибокого сну і активується лише для замірів та передачі даних, середній струм споживання (<span class="arithmatex">\(I_{avg}\)</span>) розраховується за формулою циклічного режиму:</p>
+<div class="arithmatex">\[
+I_{avg} = \frac{I_{active} \cdot t_{active} + I_{sleep} \cdot t_{sleep}}{t_{cycle}}.
+\]</div>
+<p>У цій формулі:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(I_{avg}\)</span> — середній струм споживання пристрою протягом одного повного циклу (вимірюється в амперах, А, або міліамперах, мА).</p>
+</li>
+<li>
+<p><span class="arithmatex">\(I_{active}\)</span> — струм, який споживає пристрій під час виконання активних операцій: опитування сенсорів, обробки даних процесором та радіопередачі.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(t_{active}\)</span> — тривалість активної фази циклу (секунди, с).</p>
+</li>
+<li>
+<p><span class="arithmatex">\(I_{sleep}\)</span> — струм споживання в режимі енергозбереження (сну), коли активним залишається лише таймер пробудження.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(t_{sleep}\)</span> — час перебування пристрою в стані сну (секунди, с).</p>
+</li>
+<li>
+<p><span class="arithmatex">\(t_{cycle}\)</span> — загальний період циклу роботи (<span class="arithmatex">\(t_{cycle} = t_{active} + t_{sleep}\)</span>).</p>
+</li>
+</ul>
+<p>Знаючи середній струм та номінальну ємність батареї (<span class="arithmatex">\(C_{bat}\)</span>), можна обчислити теоретичний термін експлуатації вузла до повної розрядки:</p>
+<div class="arithmatex">\[
+T_{life} = \frac{C_{bat}}{I_{avg} \cdot 24 \cdot 365}
+\]</div>
+<p>де <span class="arithmatex">\(T_{life}\)</span> — час життя джерела живлення в роках, а <span class="arithmatex">\(C_{bat}\)</span> — ємність батареї (мА·год). При розрахунках слід враховувати коефіцієнт саморозряду батареї та ефективність перетворювачів напруги, що зазвичай зменшує реальний час роботи на 10-20%. Використання ефективних алгоритмів передачі даних, таких як MQTT з оптимізованими рівнями QoS, дозволяє мінімізувати <span class="arithmatex">\(t_{active}\)</span> і, відповідно, суттєво подовжити термін роботи вузла.</p>
+<p>Ефективність сенсорного вузла залежить від правильного вибору методу отримання енергії з навколишнього середовища. Нижче наведено порівняльну характеристику джерел відновлюваної енергії для IoT.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Метод відновлення енергії</th>
+<th style="text-align: left;">Фізичний принцип</th>
+<th style="text-align: left;">Переваги</th>
+<th style="text-align: left;">Обмеження</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Сонячна енергія</strong></td>
+<td style="text-align: left;">Фотоелектричний ефект</td>
+<td style="text-align: left;">Висока щільність енергії на відкритому повітрі.</td>
+<td style="text-align: left;">Залежність від часу доби та погодних умов.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>П'єзомеханічний</strong></td>
+<td style="text-align: left;">П'єзоефект (вібрація, тиск)</td>
+<td style="text-align: left;">Незалежність від світла, можливість вбудовування в дороги/механізми.</td>
+<td style="text-align: left;">Потребує постійної механічної дії (руху).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Термоелектричний</strong></td>
+<td style="text-align: left;">Ефект Зеєбека (градієнт температур)</td>
+<td style="text-align: left;">Відсутність рухомих частин, надійність.</td>
+<td style="text-align: left;">Потребує значної різниці температур для ефективності.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Енергія радіохвиль</strong></td>
+<td style="text-align: left;">Індукція від ЕМ-полів (RF harvesting)</td>
+<td style="text-align: left;">Можливість живлення всередині приміщень з Wi-Fi/LTE.</td>
+<td style="text-align: left;">Дуже низька вихідна потужність, мала дальність.</td>
+</tr>
+</tbody>
+</table>
+<p>Також важливо враховувати фундаментальні характеристики, що визначають придатність давача для конкретної задачі в КФС.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Характеристика давача</th>
+<th style="text-align: left;">Сутність параметру</th>
+<th style="text-align: left;">Вплив на систему</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Чутливість</strong></td>
+<td style="text-align: left;">Мінімальна зміна входу для зміни виходу.</td>
+<td style="text-align: left;">Визначає точність моніторингу процесів.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Динамічний діапазон</strong></td>
+<td style="text-align: left;">Відношення max сигналу до min (шуму).</td>
+<td style="text-align: left;">Впливає на здатність працювати в різних середовищах.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Час відгуку</strong></td>
+<td style="text-align: left;">Швидкість реакції на фізичну зміну.</td>
+<td style="text-align: left;">Критично для систем реального часу та Edge-обчислень.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Лінійність</strong></td>
+<td style="text-align: left;">Сталість коефіцієнту передачі сигналу.</td>
+<td style="text-align: left;">Спрощує математичну обробку даних (Brainware).</td>
+</tr>
+</tbody>
+</table>
+<p>Життєвий цикл керування енергоспоживанням сенсорного вузла в кіберфізичній системі базується на балансі між накопиченням енергії та виконанням корисних дій.</p>
+<pre class="mermaid"><code>flowchart TD
+    Start((Запуск вузла)) --&gt; Sleep["Режим сну: I_sleep,&lt;br/&gt;t_sleep"]
+    Sleep --&gt; Timer{Таймер / Подія?}
+    Timer -- Ні --&gt; Sleep
+    Timer -- Так --&gt; WakeUp[Пробудження системи]
+    WakeUp --&gt; Sense[Зняття даних з давачів]
+    Sense --&gt; EdgeProc["Локальна обробка /&lt;br/&gt;Фільтрація"]
+    EdgeProc --&gt; Radio["Передача даних:&lt;br/&gt;I_active, t_active"]
+    Radio --&gt; EnergyCheck{Рівень заряду?}
+    EnergyCheck -- Низький --&gt; Harvest["Активація Energy&lt;br/&gt;Harvesting"]
+    Harvest --&gt; Sleep
+    EnergyCheck -- Норма --&gt; Sleep
+
+    subgraph PowerSystem[Система живлення]
+    Bat[Батарея / Акумулятор]
+    Ion[Іоністор]
+    EH["Джерело EH:&lt;br/&gt;Сонце/П'єзо/Тепло"]
+    EH --&gt; Ion
+    Ion --&gt; Bat
+    end</code></pre>
+<p>Дана модель ілюструє дискретність роботи IoT-пристрою, де фаза передачі даних через радіоканал є найбільш енерговитратною. Застосування Edge-обчислень безпосередньо перед фазою передачі дозволяє відфільтрувати "інформаційне сміття" і не вмикати радіомодуль, якщо стан фізичного об'єкта не змінився, що радикально економить ресурс батареї.</p>
+<h3 id="_2">Питання для самоперевірки</h3>
+<ol>
+<li>
+<p>У чому полягає принципова відмінність між автономним та керованим давачем з точки зору архітектури мережі та споживання трафіку?</p>
+</li>
+<li>
+<p>Як використання інтелектуальних давачів на рівні Edge обчислень впливає на загальну відмовостійкість та латентність КФС?</p>
+</li>
+<li>
+<p>Поясніть фізичний зміст параметрів <span class="arithmatex">\(I_{active}\)</span> та <span class="arithmatex">\(I_{sleep}\)</span> у формулі розрахунку середнього струму споживання. Який із цих параметрів зазвичай має більший вплив на час життя пристрою при тривалому циклі (<span class="arithmatex">\(t_{cycle}\)</span> &gt; 1 год)?</p>
+</li>
+<li>
+<p>Порівняйте використання іоністорів та традиційних акумуляторів для систем, що використовують Energy Harvesting. Які переваги надає іоністор у буферній зоні живлення?</p>
+</li>
+<li>
+<p>На основі аналізу літератури, поясніть, чому підвищення чутливості та динамічного діапазону давача часто призводить до збільшення вимог до обчислювальних ресурсів Brainware.</p>
+</li>
+</ol>
+<h2 id="33-mqtt-">3.3 Протоколи обміну даними: MQTT та використання веб-сокетів</h2>
+<p>У сучасному ландшафті кіберфізичних систем та промислового Інтернету речей (IIoT) вибір протоколу обміну даними є критичним архітектурним рішенням, оскільки він визначає латентність, енергоефективність та надійність зв'язку між мільйонами розподілених пристроїв. Одним із найпоширеніших стандартів для таких завдань є протокол <strong>MQTT (Message Queuing Telemetry Transport)</strong>, який був спеціально розроблений для роботи в умовах обмежених обчислювальних ресурсів та нестабільних каналів зв'язку. На відміну від традиційної моделі «запит-відповідь», властивої протоколу HTTP, MQTT базується на моделі <strong>«публікація/підписка» (publish/subscribe)</strong>, що дозволяє повністю розв'язати відправника та отримувача повідомлень у часі та просторі.</p>
+<p>Архітектура MQTT-мережі включає два типи вузлів: <strong>клієнти</strong> (сенсори або виконавчі механізми) та центральний вузол — <strong>брокер</strong>, який виконує роль посередника, приймаючи повідомлення від публікаторів та пересилаючи їх відповідним підписникам згідно із заданими <strong>топіками (темами)</strong>. Топік у MQTT — це рядок у форматі UTF-8, який має ієрархічну структуру, де рівні розділені символом слешу («/»), що дозволяє створювати складні логічні дерева даних, наприклад, <code>місто / вулиця / квартира / температура</code>. Для гнучкого управління підписками протокол підтримує символи шаблонів: <strong>однорівневий шаблон «+»</strong>, який замінює будь-яку одну назву на поточному рівні ієрархії, та <strong>багаторівневий шаблон «#»</strong>, що замінює всі наступні підрівні та повинен завжди вказуватися наприкінці рядка.</p>
+<p>Важливою перевагою MQTT є вбудована підтримка рівнів якості обслуговування (<strong>Quality of Service, QoS</strong>), що дозволяє розробнику гнучко налаштовувати гарантії доставки повідомлень. Рівень <strong>QoS 0</strong> забезпечує доставку «не більше одного разу» без підтвердження, що є найбільш енергоефективним методом, але не гарантує отримання даних. Рівень <strong>QoS 1</strong> гарантує доставку «принаймні один раз» через систему підтверджень, проте може призвести до дублювання повідомлень. Найбільш складним є рівень <strong>QoS 2</strong>, який через чотирьохетапне рукостискання забезпечує доставку «строго один раз», що критично для фінансових транзакцій або команд керування в КФС, де дублювання команди може призвести до аварії. Крім того, протокол містить механізми запобігання наслідкам розриву з'єднання, зокрема функцію <strong>Last Will and Testament (LWT)</strong>, яка дозволяє брокеру сповістити підписників про раптову втрату зв'язку з клієнтом.</p>
+<p>Паралельно з MQTT у кіберфізичних системах широко використовуються <strong>веб-сокети (WebSockets)</strong>, які забезпечують повнодуплексний, двосторонній обмін даними між клієнтом (зазвичай веб-браузером або панеллю моніторингу) та сервером через одне стійке TCP-з'єднання. На відміну від MQTT, веб-сокети частіше застосовуються на верхніх рівнях архітектури IIoT для візуалізації станів системи в реальному часі, оскільки вони дозволяють серверу ініціювати передачу даних клієнту без необхідності постійного опитування. Це радикально знижує накладні витрати на заголовки повідомлень порівняно з HTTP та забезпечує мінімальну латентність, необхідну для динамічних інтерфейсів операторів КФС.</p>
+<p>Ефективність передачі даних у MQTT безпосередньо залежить від структури пакета, яка складається з фіксованого заголовка, заголовка змінної довжини та корисного навантаження (<strong>payload</strong>). Загальна довжина пакета MQTT кодується специфічним чином у фіксованому заголовку для економії байтів. Для кодування поля «Remaining Length» використовується від одного до чотирьох байтів, де сім молодших бітів кожного байта зберігають дані, а восьмий біт є «прапорцем продовження» (continuation bit).</p>
+<p>Якщо ми позначимо значення байтів як <span class="arithmatex">\(B_1, B_2, B_3, B_4\)</span>, то розрахунок фактичної довжини повідомлення <span class="arithmatex">\(L\)</span> у байтах виконується за наступною формулою:</p>
+<div class="arithmatex">\[
+L = \sum_{i=1}^{n} (B_i \text{ AND } 127) \cdot 128^{i-1}
+\]</div>
+<p>У наведеній формулі:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(L\)</span> — результуюча довжина залишкової частини пакета.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(n\)</span> — кількість байтів, використаних для кодування довжини (від 1 до 4).</p>
+</li>
+<li>
+<p><span class="arithmatex">\(B_i\)</span> — значення <span class="arithmatex">\(i\)</span>-го байта поля довжини.</p>
+</li>
+<li>
+<p>Операція <code>&amp; 127</code> (побітове «І» з числом 127) дозволяє виділити 7 бітів даних, відкинувши службовий біт продовження.</p>
+</li>
+</ul>
+<p>Така схема кодування дозволяє MQTT передавати повідомлення довжиною до 256 МБ, витрачаючи при цьому мінімальну кількість байтів для коротких повідомлень, що є типовим для сенсорних мереж. Часова складність обробки таких пакетів на мікроконтролерах сенсорних вузлів є лінійною <span class="arithmatex">\(O(n)\)</span>, що підтверджує придатність протоколу для систем реального часу.</p>
+<p>Порівняльна характеристика рівнів якості обслуговування (QoS) у протоколі MQTT представлена у наступній таблиці.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Рівень QoS</th>
+<th style="text-align: left;">Назва гарантії</th>
+<th style="text-align: left;">Механізм підтвердження</th>
+<th style="text-align: left;">Вплив на ресурси (енергія/трафік)</th>
+<th style="text-align: left;">Типове застосування</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>QoS 0</strong></td>
+<td style="text-align: left;">Не більше одного разу (At most once).</td>
+<td style="text-align: left;">Відсутнє.</td>
+<td style="text-align: left;">Мінімальний, найвища швидкість.</td>
+<td style="text-align: left;">Передача телеметрії, де втрата окремих точок не є критичною.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>QoS 1</strong></td>
+<td style="text-align: left;">Принаймні один раз (At least once).</td>
+<td style="text-align: left;">PUBACK (підтвердження публікації).</td>
+<td style="text-align: left;">Середній, можливе дублювання пакетів.</td>
+<td style="text-align: left;">Важливі статуси станів, де факт доставки є пріоритетним.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>QoS 2</strong></td>
+<td style="text-align: left;">Строго один раз (Exactly once).</td>
+<td style="text-align: left;">Чотири фази: PUBREC, PUBREL, PUBCOMP.</td>
+<td style="text-align: left;">Максимальний, найбільша затримка.</td>
+<td style="text-align: left;">Команди управління виконавчим механізмом, фінансові операції.</td>
+</tr>
+</tbody>
+</table>
+<p>Вибір ієрархії топіків також потребує структурування для забезпечення масштабованості системи КФС.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Елемент шаблону</th>
+<th style="text-align: left;">Символ</th>
+<th style="text-align: left;">Опис дії</th>
+<th style="text-align: left;">Приклад використання</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Однорівневий</strong></td>
+<td style="text-align: left;"><code>+</code></td>
+<td style="text-align: left;">Замінює точно один рівень ієрархії.</td>
+<td style="text-align: left;"><code>sensor/+/temp</code> (всі температурні датчики всіх пристроїв).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Багаторівневий</strong></td>
+<td style="text-align: left;"><code>#</code></td>
+<td style="text-align: left;">Замінює всі рівні від поточної позиції до кінця.</td>
+<td style="text-align: left;"><code>factory/shop1/#</code> (всі дані з усіх пристроїв першого цеху).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Роздільник</strong></td>
+<td style="text-align: left;"><code>/</code></td>
+<td style="text-align: left;">Розділяє логічні рівні ієрархії тем.</td>
+<td style="text-align: left;"><code>home/livingroom/light</code> (чітка адресація пристрою).</td>
+</tr>
+</tbody>
+</table>
+<p>Взаємодія між компонентами MQTT-мережі за моделлю «публікація/підписка» ілюструє логіку децентралізованого обміну повідомленнями.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant P as Публікатор (Сенсор)
+    participant B as MQTT Брокер
+    participant S as Підписник (Додаток/Dashboard)
+
+    Note over S, B: Підписка на тему "factory/temp"
+    S-&gt;&gt;B: SUBSCRIBE "factory/temp" (QoS 1)
+    B--&gt;&gt;S: SUBACK
+
+    Note over P, B: Публікація даних
+    P-&gt;&gt;B: PUBLISH "factory/temp", payload: "25.5"
+
+    Note over B: Фільтрація та маршрутизація
+    B-&gt;&gt;S: PUBLISH "factory/temp", payload: "25.5"
+    S--&gt;&gt;B: PUBACK (якщо QoS 1)</code></pre>
+<p>Наведена діаграма демонструє, що <strong>публікатор</strong> не знає про існування <strong>підписника</strong>, що дозволяє легко додавати нові вузли до кіберфізичної системи без переналаштування існуючих компонентів. <strong>Брокер</strong> виступає інтелектуальним фільтром, який забезпечує доставку даних лише тим споживачам, які виявили зацікавленість у конкретній темі.</p>
+<h3 id="_3">Питання для самоперевірки</h3>
+<ol>
+<li>
+<p>Чому використання моделі «публікація/підписка» в протоколі MQTT є більш виправданим для великих сенсорних мереж порівняно з моделлю «клієнт-сервер», що використовується в HTTP?</p>
+</li>
+<li>
+<p>Яким чином вибір рівня QoS 2 впливає на час життя батареї автономного давача в мережі IoT та чому цей рівень рідко використовується для передачі періодичної телеметрії?</p>
+</li>
+<li>
+<p>Поясніть алгоритм розрахунку поля довжини повідомлення у фіксованому заголовку MQTT. Яку максимальну довжину корисного навантаження можна закодувати за допомогою чотирьох байтів?</p>
+</li>
+<li>
+<p>У чому полягає функціональна різниця між використанням символів «+» та «#» при формуванні підписки на топіки і які обмеження накладаються на позицію символу «#» у рядку?</p>
+</li>
+<li>
+<p>Опишіть переваги веб-сокетів над традиційним HTTP-опитуванням (polling) у контексті побудови диспетчерських пультів моніторингу КФС реального часу.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

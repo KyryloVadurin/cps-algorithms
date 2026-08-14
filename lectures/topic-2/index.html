@@ -1,0 +1,2006 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Прикладні алгоритми КФС"">
+      
+      
+      
+      
+        <link rel="prev" href="../topic-1/">
+      
+      
+        <link rel="next" href="../topic-3/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Тема 2. Керуючі конструкції в алгоритмах реального часу - Прикладні алгоритми кіберфізичних систем</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Прикладні алгоритми кіберфізичних систем" class="md-header__button md-logo" aria-label="Прикладні алгоритми кіберфізичних систем" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v1h3v2h-3v2h3v2h-3v2h3v2h-3v2h3v2h-3v1H6v-1H3v-2h3v-2H3v-2h3v-2H3V9h3V7H3V5h3zm5 11v3h1v-3zm2 0v3h1v-3zm2 0v3h1v-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Прикладні алгоритми кіберфізичних систем
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Тема 2. Керуючі конструкції в алгоритмах реального часу
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча навчальна програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../topic-1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/lab-1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../practicals/pz-1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../self-study/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../rg/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Розрахунково-графічна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../self-study/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Перелік тестових та практичних завдань для самопідготовки
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Прикладні алгоритми кіберфізичних систем" class="md-nav__button md-logo" aria-label="Прикладні алгоритми кіберфізичних систем" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v1h3v2h-3v2h3v2h-3v2h3v2h-3v2h3v2h-3v1H6v-1H3v-2h3v-2H3v-2h3v-2H3V9h3V7H3V5h3zm5 11v3h1v-3zm2 0v3h1v-3zm2 0v3h1v-3z"/></svg>
+
+    </a>
+    Прикладні алгоритми кіберфізичних систем
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча навчальна програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Теоретичні засади алгоритмізації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Керуючі конструкції в алгоритмах реального часу
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Керуючі конструкції в алгоритмах реального часу
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Розгалужені алгоритми та булеві операції в умовах обмежених ресурсів
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 Розгалужені алгоритми та булеві операції в умовах обмежених ресурсів">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-while-dowhile-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Циклічні конструкції (While, DoWhile, For) та правила їх організації
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 Циклічні конструкції (While, DoWhile, For) та правила їх організації">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Алгоритмічні прийоми: прапорці, знакові змінні, бар'єри
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Алгоритмічні прийоми: прапорці, знакові змінні, бар&#39;єри">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. Архітектура та обмін даними
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Алгоритми обробки структурованих даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Нечітка логіка та евристики
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Пошук, сортування та графи в мережах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Хмарні та граничні обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання логіки керування низького рівня
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Розробка алгоритмів обробки даних з давачів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Оркестрування потоків даних у середовищі Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Обробка матриць сигналів у розподілених системах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Побудова нечіткого контролера для автоматизації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Оптимізація маршрутів у сенсорних мережах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Віртуалізація сервісів за допомогою Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Графічна формалізація алгоритмів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Оцінювання трудомісткості обчислювальних процесів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Проєктивання ієрархії тем MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Реалізація черги повідомлень для керування завданнями
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Вирішення задач маршрутизації евристичними методами
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Порівняльний аналіз методів сортування даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Аналіз архітектурних рішень для Big Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../self-study/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Розрахунково-графічна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../self-study/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Перелік тестових та практичних завдань для самопідготовки
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Розгалужені алгоритми та булеві операції в умовах обмежених ресурсів
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 Розгалужені алгоритми та булеві операції в умовах обмежених ресурсів">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-while-dowhile-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Циклічні конструкції (While, DoWhile, For) та правила їх організації
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 Циклічні конструкції (While, DoWhile, For) та правила їх організації">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Алгоритмічні прийоми: прапорці, знакові змінні, бар'єри
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Алгоритмічні прийоми: прапорці, знакові змінні, бар&#39;єри">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="2">Тема 2. Керуючі конструкції в алгоритмах реального часу</h1>
+<h2 id="21">2.1 Розгалужені алгоритми та булеві операції в умовах обмежених ресурсів</h2>
+<p>У контексті розробки кіберфізичних систем (КФС) реального часу, де обчислювальні ресурси часто є суворо обмеженими, проектування <strong>розгалужених алгоритмів</strong> вимагає особливого підходу до вибору керуючих конструкцій та логічних операцій. Розгалужений алгоритм — це послідовність операторних і умовних блоків, у якій відсутні зворотні зв’язки, а шлях обчислень визначається істинністю певних умов. На рівні <strong>Brainware</strong> (алгоритмічного забезпечення) розробник має знайти баланс між читабельністю коду та його апаратною ефективністю.</p>
+<p>Фундаментом для побудови умов у таких алгоритмах є <strong>булева алгебра</strong>, яка оперує логічними виразами, що можуть приймати лише одне з двох значень: «істина» (<strong>true</strong>) або «хибність» (<strong>false</strong>). Базовий логічний базис включає три операції: заперечення (<strong>not</strong>), кон’юнкцію (<strong>and</strong>) та диз’юнкцію (<strong>or</strong>). При роботі в умовах обмежених ресурсів (наприклад, у вбудованих системах з малим об'ємом пам'яті) важливо враховувати <strong>пріоритети операцій</strong>: найвищий пріоритет має унарна операція <strong>not</strong>, далі слідує <strong>and</strong>, а найнижчий — <strong>or</strong>. Це дозволяє мінімізувати кількість дужок у коді, що економить пам'ять програм.</p>
+<p>Розробка розгалужених алгоритмів може здійснюватися за трьома основними стратегіями. Перша стратегія передбачає послідовне відсікання діапазонів значень (наприклад, за точками зліва направо на числовій осі), що дозволяє створювати регулярні та прозорі алгоритми без використання складних булевих виразів. Друга стратегія фокусується виключно на виділенні діапазонів існування функції, а третя — на попередньому відсіканні областей, де результат не визначений. Використання булевих операцій (стратегії 2 та 3) дозволяє об'єднати декілька простих перевірок в одну складну умову, що значно покращує читабельність алгоритму, але може негативно вплинути на швидкість його виконання.</p>
+<p>Критичним аспектом для систем реального часу є вибір між <strong>повною</strong> та <strong>короткою схемою обчислення</strong> булевих виразів. При повній схемі компілятор обчислює всі частини виразу незалежно від проміжних результатів, що може призвести до зайвих витрат процесорного часу або навіть помилок доступу до пам'яті (наприклад, звернення до неіснуючого елемента масиву). Коротка схема припиняє обчислення, як тільки результат стає однозначним (наприклад, якщо перший операнд у зв'язці <strong>and</strong> є хибним). Це властивість є надзвичайно важливою для КФС, оскільки дозволяє суттєво прискорити обробку даних у критичних ділянках коду.</p>
+<p>Для об’єктивної оцінки ефективності алгоритму в умовах обмежених ресурсів використовують <strong>функцію трудомісткості</strong> <span class="arithmatex">\(\Psi\)</span>, яка враховує не лише час виконання, а й витрати пам'яті. Математично вона виглядає наступним чином:</p>
+<div class="arithmatex">\[
+\Psi = c_1 \cdot F_a(N) + c_2 \cdot M + c_3 \cdot S_d + c_4 \cdot S_r.
+\]</div>
+<p>У наведеній формулі:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(F_a(N)\)</span> — <strong>часова складність</strong>, що визначається кількістю елементарних операцій (порівняння, присвоєння, арифметичні дії), які виконує алгоритм при вхідних даних розмірністю <span class="arithmatex">\(N\)</span>.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(M\)</span> — об'єм програмного коду (кількість машинних інструкцій), що є критичним для систем з обмеженою флеш-пам'яттю.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(S_d\)</span> — обсяг пам'яті, необхідний для зберігання статичних та динамічних структур даних.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(S_r\)</span> — обсяг оперативної пам'яті, що витрачається на організацію обчислювального процесу (стек, рекурсивні виклики тощо).</p>
+</li>
+<li>
+<p><span class="arithmatex">\(c_1, c_2, c_3, c_4\)</span> — вагові коефіцієнти, що визначаються специфікою конкретного мікроконтролера чи процесора.</p>
+</li>
+</ul>
+<p>При аналізі швидкодії розгалужених алгоритмів розраховують <strong>середню кількість операцій</strong> <span class="arithmatex">\(K_{сер}\)</span>:</p>
+<div class="arithmatex">\[
+K_{сер} = \frac{K_{min} + K_{max}}{2},
+\]</div>
+<p>де <span class="arithmatex">\(K_{min}\)</span> та <span class="arithmatex">\(K_{max}\)</span> — мінімальна та максимальна кількість операцій залежно від гілки, якою підуть обчислення. Згідно з дослідженнями, алгоритми без булевих операцій зазвичай мають менше <span class="arithmatex">\(K_{сер}\)</span>, ніж еквівалентні їм алгоритми зі складними булевими виразами, що робить їх кращим вибором для жорсткого реального часу.</p>
+<p>Порівняльна характеристика підходів до реалізації розгалужень наведена в таблиці нижче за основними критеріями ефективності КФС.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Критерій оцінки</th>
+<th style="text-align: left;">Без булевих операцій (А1, А2)</th>
+<th style="text-align: left;">З булевими операціями (А3, А4)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Читабельність</strong></td>
+<td style="text-align: left;">Низька (через велику вкладеність умов)</td>
+<td style="text-align: left;">Висока (компактний запис логіки)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Швидкість (Kсер)</strong></td>
+<td style="text-align: left;"><strong>Максимальна</strong> (швидке проходження гілок)</td>
+<td style="text-align: left;">Середня/Низька (час на обчислення виразів)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Обсяг коду (M)</strong></td>
+<td style="text-align: left;">Більший (багато операторів <code>if-else</code>)</td>
+<td style="text-align: left;"><strong>Менший</strong> (менше структурних блоків)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Обсяг пам'яті (Sd)</strong></td>
+<td style="text-align: left;">Однаковий</td>
+<td style="text-align: left;">Однаковий</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Режим реального часу</strong></td>
+<td style="text-align: left;">Рекомендовано для жорстких обмежень</td>
+<td style="text-align: left;">Допустимо при короткій схемі обчислень</td>
+</tr>
+</tbody>
+</table>
+<p>Також важливо враховувати варіанти позначення логічних операцій у різних середовищах проектування.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Назва операції</th>
+<th style="text-align: left;">Мова C/C++</th>
+<th style="text-align: left;">Математична логіка</th>
+<th style="text-align: left;">Опис дії</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Заперечення</strong></td>
+<td style="text-align: left;"><code>!</code></td>
+<td style="text-align: left;"><span class="arithmatex">\(\neg\)</span></td>
+<td style="text-align: left;">Змінює значення на протилежне</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Кон'юнкція</strong></td>
+<td style="text-align: left;"><code>&amp;&amp;</code></td>
+<td style="text-align: left;"><span class="arithmatex">\(\wedge\)</span></td>
+<td style="text-align: left;">Істина, якщо обидва операнди істинні</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Диз'юнкція</strong></td>
+<td style="text-align: left;"><code>||</code></td>
+<td style="text-align: left;"><span class="arithmatex">\(\vee\)</span></td>
+<td style="text-align: left;">Істина, якщо хоча б один операнд істинний</td>
+</tr>
+</tbody>
+</table>
+<p>Логіка обробки вхідного сигналу <span class="arithmatex">\(x\)</span> для кусково-неперервної функції за стратегією «відсікання бар'єрами» ілюструє, як працює розгалуження без булевих операцій. Зелена лінія на схемі позначає «бар'єр», лівіше якого значення вже не розглядаються.</p>
+<pre class="mermaid"><code>flowchart TD
+    Start([Початок]) --&gt; Input[/Ввід x/]
+    Input --&gt; Cond1{x &lt;= -10?}
+    Cond1 -- Так --&gt; Out1[/y не існує/]
+    Cond1 -- Ні --&gt; Barrier1[Бар'єр x &gt; -10]
+    Barrier1 --&gt; Cond2{x &lt;= 0?}
+    Cond2 -- Так --&gt; Calc1[y = x * x]
+    Cond2 -- Ні --&gt; Barrier2[Бар'єр x &gt; 0]
+    Calc1 --&gt; Out2[/Вивід y/]
+    Out2 --&gt; End([Кінець])
+    Out1 --&gt; End
+    Cond2 -- Ні --&gt; Cond3{x &lt; 20?}
+    Cond3 -- Так --&gt; Out1</code></pre>
+<p>Описана модель демонструє принцип <strong>детермінованості</strong>: після кожного кроку чітко визначено наступну дію, що забезпечує надійність системи.</p>
+<h3 id="_1">Питання для самоперевірки</h3>
+<ol>
+<li>
+<p>Чому при розробці систем жорсткого реального часу рекомендується мінімізувати вкладеність булевих операцій у складних логічних виразах?</p>
+</li>
+<li>
+<p>Поясніть фізичний зміст коефіцієнта <span class="arithmatex">\(c_2\)</span> у формулі функції трудомісткості <span class="arithmatex">\(\Psi\)</span> та його значення для вбудованих контролерів.</p>
+</li>
+<li>
+<p>Яким чином «коротка схема обчислення» булевих виразів дозволяє уникнути критичних помилок при роботі з масивами даних?</p>
+</li>
+<li>
+<p>Опишіть переваги стратегії «відсікання точок зліва направо» (Алгоритм 1) перед стратегією виділення тільки зон існування в контексті швидкодії.</p>
+</li>
+<li>
+<p>Як зміна пріоритету логічних операцій (наприклад, через дужки) впливає на часову складність <span class="arithmatex">\(F_a(N)\)</span> та об'єм програмного коду <span class="arithmatex">\(M\)</span>?</p>
+</li>
+</ol>
+<h2 id="22-while-dowhile-for">2.2 Циклічні конструкції (While, DoWhile, For) та правила їх організації</h2>
+<p>У теорії алгоритмізації та практичному програмуванні <strong>циклічні алгоритми</strong> займають центральне місце, оскільки вони дозволяють описувати процеси, що потребують багаторазового повторення певної послідовності дій над різними даними або до досягнення заданої мети. Відповідно до графічної нотації блок-схем, циклічний алгоритм складається з операторних та умовних блоків, у яких хоча б один із логічних зв'язків обов'язково є <strong>зворотним (циклічним)</strong>. Кожен окремий прохід тіла циклу в програмуванні прийнято називати <strong>ітерацією</strong>.</p>
+<p>Класифікація керуючих конструкцій виділяє три основні види циклів: з передумовою (<strong>While</strong>), з післяумовою (<strong>DoWhile</strong>) та з лічильником, або параметром (<strong>For</strong>). Вибір конкретної конструкції визначається логікою задачі та вимогами до початкового стану системи. На рівні структурного проектування для візуалізації циклів найбільш ефективно використовувати <strong>діаграми дій (Action Diagrams)</strong>, де циклічність позначається спеціальними подвійними горизонтальними лініями в заголовку та в кінці блоку, що наочно демонструє межі повторюваних операцій.</p>
+<p><strong>Цикл з передумовою While</strong> характеризується тим, що перевірка логічного виразу (умови продовження) здійснюється до початку виконання тіла циклу. Це фундаментальна конструкція, оскільки, згідно з теоретичними положеннями, будь-яка структурна програма може бути реалізована лише за допомогою лінійних блоків, розгалужень та циклів While. Важливою особливістю цієї конструкції є те, що вона може не виконатися жодного разу, якщо при першому вході умова відразу виявиться хибною. На діаграмах дій заголовок такого циклу містить умову в круглих дужках безпосередньо під верхньою подвійною лінією.</p>
+<p><strong>Цикл з післяумовою DoWhile</strong> застосовується у випадках, коли тіло циклу необхідно виконати хоча б один раз, незалежно від істинності умови на старті. У цій конструкції логічна перевірка виконується в самому кінці ітерації. Відповідно до правил візуалізації в діаграмах дій, умова в DoWhile записується внизу блоку, біля закриваючої подвійної лінії. Типовими прикладами використання такої структури є організація користувацького меню або перевірка коректності введення даних, де програма спочатку запитує значення, а потім перевіряє його на відповідність діапазону.</p>
+<p><strong>Цикл з лічильником For</strong> є найбільш структурованим варіантом, де кількість повторень точно визначається початковим та кінцевим значеннями параметра, а також кроком його зміни. Головна відмінність For від умовних циклів полягає в автоматизації керування: значення лічильника нарощується або зменшується самостійно після кожної ітерації, тоді як у While та DoWhile програміст повинен окремим оператором (наприклад, <code>i = i + 1</code>) змінювати стан змінної. У діаграмах дій заголовок циклу For містить інформацію про лічильник та його межі, наприклад <code>(i = 1, n)</code>, та стрілку, що вказує напрямок (крок +1 або інший).</p>
+<p>Окрему категорію становить <strong>безумовний (нескінченний) цикл</strong>, який не має в заголовку жодних перевірок і теоретично працює вічно. Такі конструкції є критично важливими для кіберфізичних систем, де бортове програмне забезпечення (наприклад, система керування супутником) не повинно завершуватися за жодних обставин. Вихід із нескінченного циклу може бути реалізований лише всередині його тіла за допомогою спеціальних операторів переходу, таких як <strong>break</strong>.</p>
+<p>Для коректної організації циклічного процесу необхідно враховувати функціональну залежність між параметрами циклу. Якщо ми розглядаємо задачу накопичення суми натуральних чисел від <span class="arithmatex">\(1\)</span> до <span class="arithmatex">\(n\)</span>, загальний вигляд результату <span class="arithmatex">\(S\)</span> визначається формулою:</p>
+<div class="arithmatex">\[
+S = \sum_{i=1}^{n} i = 1 + 2 + 3 + \dots + n,
+\]</div>
+<p>де:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(S\)</span> — цільова змінна-акумулятор (результат).</p>
+</li>
+<li>
+<p><span class="arithmatex">\(i\)</span> — параметр циклу (лічильник), що змінюється на кожній ітерації.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(n\)</span> — верхня границя циклу (кількість елементів).</p>
+</li>
+</ul>
+<p>При розробці алгоритмів оцінюється їхня <strong>часова складність</strong> <span class="arithmatex">\(T(n)\)</span>, яка для простих циклів зазвичай має лінійний характер <span class="arithmatex">\(O(n)\)</span>. Загальна кількість операцій <span class="arithmatex">\(K\)</span> у циклічному алгоритмі обчислюється як:</p>
+<div class="arithmatex">\[
+K = K_L + K_{AS} + K_A + K_C,
+\]</div>
+<p>де:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(K_L\)</span> — кількість разів обробки заголовків циклів (дорівнює кількості ітерацій).</p>
+</li>
+<li>
+<p><span class="arithmatex">\(K_{AS}\)</span> — кількість операцій присвоювання (включаючи ініціалізацію перед циклом та накопичення в тілі).</p>
+</li>
+<li>
+<p><span class="arithmatex">\(K_A\)</span> — кількість арифметичних операцій (наприклад, множення або додавання на кожному кроці).</p>
+</li>
+<li>
+<p><span class="arithmatex">\(K_C\)</span> — кількість операцій порівняння в заголовку або тілі циклу.</p>
+</li>
+</ul>
+<p>Якщо крок циклу <span class="arithmatex">\(s\)</span> відмінний від одиниці, кількість ітерацій розраховується як <span class="arithmatex">\(\lfloor (n - 1) / s \rfloor + 1\)</span> (для циклу від <span class="arithmatex">\(1\)</span> до <span class="arithmatex">\(n\)</span>). У випадку вкладених циклів складність зростає поліноміально. Наприклад, для суми степенів <span class="arithmatex">\(S = \sum_{i=1}^{n} i^i\)</span> складність становитиме <span class="arithmatex">\(O(n^2)\)</span>, оскільки внутрішній цикл виконуватиметься різну кількість разів для кожного кроку зовнішнього циклу.</p>
+<p>Порівняльна характеристика основних типів циклів дозволяє обрати оптимальну конструкцію залежно від специфіки задачі.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Характеристика</th>
+<th style="text-align: left;">Цикл While</th>
+<th style="text-align: left;">Цикл DoWhile</th>
+<th style="text-align: left;">Цикл For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Місце перевірки умови</strong></td>
+<td style="text-align: left;">Перед ітерацією (передумова)</td>
+<td style="text-align: left;">Після ітерації (післяумова)</td>
+<td style="text-align: left;">Перед ітерацією</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Мінімальна кількість ітерацій</strong></td>
+<td style="text-align: left;">0 (може не виконатися)</td>
+<td style="text-align: left;">1 (виконується завжди хоча б раз)</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Керування лічильником</strong></td>
+<td style="text-align: left;">Вручну в тілі циклу (<code>i = i + 1</code>)</td>
+<td style="text-align: left;">Вручну в тілі циклу</td>
+<td style="text-align: left;">Автоматично в заголовку</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Початкові установки</strong></td>
+<td style="text-align: left;">Обов'язкові перед заголовком</td>
+<td style="text-align: left;">Обов'язкові перед заголовком</td>
+<td style="text-align: left;">Вбудовані в заголовок</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Типове застосування</strong></td>
+<td style="text-align: left;">Коли кількість ітерацій заздалегідь невідома</td>
+<td style="text-align: left;">Меню, перевірка вводу, ітераційні наближення</td>
+<td style="text-align: left;">Обробка масивів, відома кількість повторів</td>
+</tr>
+</tbody>
+</table>
+<p>Також існують суворі <strong>правила організації умовних циклів</strong>, недотримання яких призводить до логічних помилок:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Елемент організації</th>
+<th style="text-align: left;">Опис правила</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Початкові установки</strong></td>
+<td style="text-align: left;">Перед циклом змінні, що входять в умову, повинні отримати коректні значення.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Умова циклу</strong></td>
+<td style="text-align: left;">Визначає логіку «працювати, поки істинно» та «завершити, коли хибно».</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Зміна стану</strong></td>
+<td style="text-align: left;">В тілі циклу має бути хоча б один оператор, що змінює змінні, які керують умовою.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Коректність кроку</strong></td>
+<td style="text-align: left;">Крок повинен змінювати лічильник у напрямку до межі, а не від неї.</td>
+</tr>
+</tbody>
+</table>
+<p>Логічний зв'язок між компонентами циклічного процесу можна представити у вигляді моделі, що ілюструє життєвий цикл ітерації.</p>
+<pre class="mermaid"><code>flowchart TD
+    Start((Початок)) --&gt; Init["Початкові установки&lt;br/&gt;змінних"]
+    Init --&gt; Header{"Перевірка умови&lt;br/&gt;продовження"}
+    Header -- Істина --&gt; Body["Виконання тіла циклу -&lt;br/&gt;оператори"]
+    Body --&gt; Mod["Зміна керуючих змінних&lt;br/&gt;- крок"]
+    Mod --&gt; Header
+    Header -- Хиба --&gt; Exit[Вихід із циклу]
+    Exit --&gt; Post["Наступний оператор&lt;br/&gt;програми"]
+    Post --&gt; End((Кінець))
+
+    subgraph Iteration[Ітерація циклу]
+    Header
+    Body
+    Mod
+    end</code></pre>
+<p>Ця схема демонструє механізм <strong>циклу з передумовою</strong>. У випадку циклу For блок "Зміна керуючих змінних" інтегрований у логіку заголовка, а для DoWhile перевірка в ромбі була б розташована після блоку "Body". Важливо пам'ятати правило перевірки: необхідно «прокрутити» цикл 3-4 рази, перевіривши коректність початку, переходу між ітераціями та виходу в крайніх випадках.</p>
+<h3 id="_2">Питання для самоперевірки</h3>
+<ol>
+<li>
+<p>У чому полягає принципова різниця між циклами While та DoWhile щодо гарантованого виконання коду і за яких умов цикл While не виконає жодної ітерації?</p>
+</li>
+<li>
+<p>Чому при використанні циклу For у мові С категорично не рекомендується змінювати значення лічильника безпосередньо в тілі циклу, хоча синтаксис це дозволяє?</p>
+</li>
+<li>
+<p>Які три елементи організації умовного циклу знаходяться у тісному взаємозв’язку, і чому зміна одного з них вимагає негайної перевірки інших?</p>
+</li>
+<li>
+<p>Опишіть призначення безумовного циклу в критичних системах управління та вкажіть, за допомогою яких керуючих конструкцій можна перервати його хід.</p>
+</li>
+<li>
+<p>Як визначається значення змінної-лічильника після нормального завершення циклу For згідно зі строгим структурним стилем, і які варіанти реалізації цього існують у різних компіляторах?</p>
+</li>
+</ol>
+<h2 id="23">2.3 Алгоритмічні прийоми: прапорці, знакові змінні, бар'єри</h2>
+<p>У процесі розробки алгоритмів для кіберфізичних систем, де критично важливими є надійність логіки (<strong>Brainware</strong>) та ефективність використання ресурсів, програмісти використовують набір стандартизованих інтелектуальних прийомів. Ці методи дозволяють спростити структуру програмного коду, зробити його більш читабельним та мінімізувати кількість вкладених умовних переходів. До базових алгоритмічних прийомів, що широко застосовуються у процедурному програмуванні, належать використання знакових змінних, прапорців (булевих змінних) та бар'єрів.</p>
+<p>Прийом використання <strong>знакової змінної</strong> є найбільш доцільним при реалізації обчислювальних алгоритмів, що працюють із числовими рядами, де знаки доданків чергуються. Суть цього методу полягає у введенні додаткової робочої змінної, яка на кожній ітерації циклу змінює своє значення на протилежне (наприклад, з 1 на -1 і навпаки). Це дозволяє уникнути складних перевірок парності індексу лічильника або використання математичної функції піднесення -1 до степеня, що суттєво прискорює роботу програми в системах реального часу.</p>
+<p><strong>Прапорець</strong> (flag) — це один із найбільш універсальних прийомів, який базується на застосуванні булевої змінної для фіксації настання певної події або вибору шляху подальшого виконання алгоритму. У програмуванні під прапорцями розуміють змінні, що приймають значення «істина» (<strong>true</strong>) або «хибність» (<strong>false</strong>). Для коректної роботи алгоритму з прапорцем необхідно суворо дотримуватися чотирьох правил: обов'язкове оголошення з коментарем щодо змісту значень, початкова установка (ініціалізація), наявність принаймні однієї перевірки стану та обов'язковий оператор інверсії (зміни стану). Якщо хоча б одна з цих точок використання відсутня, логіка прапорця вважається помилковою.</p>
+<p>Окремим випадком є <strong>індекс-прапорець</strong>, де роль індикатора стану виконує цілочисельна змінна, яка зазвичай зберігає номер знайденого елемента масиву. Якщо об'єкт не знайдено, такий «прапорець» ініціалізується значенням, що не входить у допустимий діапазон (наприклад, -1), що дозволяє програмі чітко розрізняти результат пошуку та факт його неуспішності.</p>
+<p>Прийом <strong>бар'єра</strong> використовується для оптимізації алгоритмів пошуку та сортування в масивах. Бар'єром називають додатковий (фіктивний) елемент, який додається на початку або в кінці структури даних для виключення необхідності постійної перевірки виходу індексу за межі масиву під час ітерацій. Занесення шуканого значення безпосередньо в комірку бар'єра гарантує, що цикл обов'язково завершиться, навіть якщо в основній частині даних значення відсутнє. Це дозволяє прибрати одну з двох умов у заголовку циклу, що дає відчутний виграш у швидкодії при обробці великих масивів даних у КФС.</p>
+<p>При використанні знакової змінної <span class="arithmatex">\(p\)</span> для обчислення суми ряду виду <span class="arithmatex">\(S = 1^2 - 2^2 + 3^2 - \dots\)</span>, математична модель зміни знака на кожному кроці циклу описується рекурентним співвідношенням:</p>
+<div class="arithmatex">\[
+p_{i+1} = -p_i.
+\]</div>
+<p>У наведеній залежності змінна <span class="arithmatex">\(p\)</span> ініціалізується значенням 1 перед початком циклу (<span class="arithmatex">\(p=1\)</span>). На кожній <span class="arithmatex">\(i\)</span>-й ітерації поточний доданок множиться на <span class="arithmatex">\(p\)</span>, після чого виконується операція <span class="arithmatex">\(p = -p\)</span> для підготовки наступного кроку.</p>
+<p>Ефективність алгоритмів оцінюється через загальну кількість операцій <span class="arithmatex">\(K\)</span>. Для циклічного алгоритму обчислення суми за допомогою прапорця або знакової змінної часова складність визначається як:</p>
+<div class="arithmatex">\[
+K = K_L + K_{AS} + K_A + K_C,
+\]</div>
+<p>де:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(K_L\)</span> — кількість обробок заголовків циклу (відповідає числу ітерацій <span class="arithmatex">\(n\)</span>);</p>
+</li>
+<li>
+<p><span class="arithmatex">\(K_{AS}\)</span> — кількість операцій присвоювання, включаючи ініціалізацію прапорця та його інверсію (<span class="arithmatex">\(p = -p\)</span> або <span class="arithmatex">\(f = not f\)</span>);</p>
+</li>
+<li>
+<p><span class="arithmatex">\(K_A\)</span> — кількість арифметичних операцій;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(K_C\)</span> — кількість порівнянь, яка при використанні прапорця в умові <code>if</code> збільшується на <span class="arithmatex">\(n\)</span>.</p>
+</li>
+</ul>
+<p>Аналіз показує, що алгоритм із використанням бар’єра в лінійному пошуку має лінійну складність <span class="arithmatex">\(O(n)\)</span>, проте фактична кількість операцій порівняння <span class="arithmatex">\(K_C\)</span> зменшується вдвічі порівняно з класичним пошуком, оскільки перевірка <span class="arithmatex">\(i &lt; n\)</span> виноситься за межі тіла циклу.</p>
+<p>Порівняльна характеристика розглянутих алгоритмічних прийомів наведена в таблиці нижче.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Алгоритмічний прийом</th>
+<th style="text-align: left;">Основне призначення</th>
+<th style="text-align: left;">Тип змінної</th>
+<th style="text-align: left;">Переваги для КФС</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Знакова змінна</strong></td>
+<td style="text-align: left;">Чергування знаків у числових рядах.</td>
+<td style="text-align: left;">Ціла (int/Z)</td>
+<td style="text-align: left;">Висока швидкість обчислень порівняно з функцією pow<span class="arithmatex">\([0, 1]\)</span>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Прапорець (Flag)</strong></td>
+<td style="text-align: left;">Моніторинг станів, керування розгалуженнями.</td>
+<td style="text-align: left;">Булева (bool/B)</td>
+<td style="text-align: left;">Універсальність логіки, покращення читабельності коду.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Бар'єр</strong></td>
+<td style="text-align: left;">Пошук та сортування в масивах.</td>
+<td style="text-align: left;">Елемент масиву</td>
+<td style="text-align: left;">Зменшення кількості перевірок у циклі, захист від виходу за межі.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Індекс-прапорець</strong></td>
+<td style="text-align: left;">Пошук елементів із фіксацією позиції.</td>
+<td style="text-align: left;">Ціла (int/Z)</td>
+<td style="text-align: left;">Суміщення функцій пошуку результату та індикації успіху.</td>
+</tr>
+</tbody>
+</table>
+<p>Обов'язкові етапи (точки) використання прапорця в алгоритмі згідно з методикою:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">№ точки</th>
+<th style="text-align: left;">Дія в алгоритмі</th>
+<th style="text-align: left;">Зміст та вимоги</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;"><strong>Оголошення</strong></td>
+<td style="text-align: left;">Створення змінної булевого типу з обов'язковим коментарем смислу значень.</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><strong>Ініціалізація</strong></td>
+<td style="text-align: left;">Встановлення початкового стану (true/false) до входу в цикл або умовний блок.</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><strong>Перевірка</strong></td>
+<td style="text-align: left;">Використання змінної в логічному виразі (наприклад, <code>if (f == true)</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;"><strong>Інверсія</strong></td>
+<td style="text-align: left;">Зміна стану прапорця на протилежний (<code>f = not f</code>) всередині логіки процесу.</td>
+</tr>
+</tbody>
+</table>
+<p>Логіку роботи алгоритму з використанням прапорця для чергування дій (наприклад, додавання та віднімання в циклі) можна представити наступною схемою.</p>
+<pre class="mermaid"><code>flowchart TD
+    Start([Початок]) --&gt; Init[S = 0, f = true]
+    Init --&gt; Loop{i = 1, n}
+    Loop -- Цикл завершено --&gt; Output[/Вивід S/]
+    Output --&gt; End([Кінець])
+    Loop -- Наступна ітерація --&gt; CheckFlag{f == true?}
+    CheckFlag -- Так --&gt; Add[S = S + i*i]
+    CheckFlag -- Ні --&gt; Sub[S = S - i*i]
+    Add --&gt; Invert[f = not f]
+    Sub --&gt; Invert
+    Invert --&gt; Loop</code></pre>
+<p>Ця модель демонструє застосування <strong>прапорця</strong> для керування логічними гілками всередині циклічного процесу. Стан змінної <code>f</code> визначає, яка саме гілка обчислень буде активована на поточному кроці, а операція інверсії забезпечує правильний перехід до іншого стану для наступної ітерації.</p>
+<h3 id="_3">Питання для самоперевірки</h3>
+<ol>
+<li>
+<p>Чому при використанні знакової змінної для чергування знаків у рядах її ініціалізація зазвичай виконується значенням 1, а не 0?</p>
+</li>
+<li>
+<p>Поясніть, у яких випадках доцільно використовувати індексну змінну як прапорець, і яке значення рекомендується надавати їй для позначення ситуації "елемент не знайдено"?</p>
+</li>
+<li>
+<p>Які чотири обов'язкові точки використання прапорця в коді програми визначають коректність реалізації алгоритму?</p>
+</li>
+<li>
+<p>Яким чином використання бар'єра в алгоритмі лінійного пошуку дозволяє скоротити кількість операцій порівняння в заголовку циклу?</p>
+</li>
+<li>
+<p>Проаналізуйте, як впливає вибір між використанням прапорця та двома окремими циклами (для парних і непарних елементів) на загальну часову складність алгоритму.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

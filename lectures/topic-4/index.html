@@ -1,0 +1,1929 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Прикладні алгоритми КФС"">
+      
+      
+      
+      
+        <link rel="prev" href="../topic-3/">
+      
+      
+        <link rel="next" href="../topic-5/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Тема 4. Алгоритми обробки структурованих даних - Прикладні алгоритми кіберфізичних систем</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Прикладні алгоритми кіберфізичних систем" class="md-header__button md-logo" aria-label="Прикладні алгоритми кіберфізичних систем" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v1h3v2h-3v2h3v2h-3v2h3v2h-3v2h3v2h-3v1H6v-1H3v-2h3v-2H3v-2h3v-2H3V9h3V7H3V5h3zm5 11v3h1v-3zm2 0v3h1v-3zm2 0v3h1v-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Прикладні алгоритми кіберфізичних систем
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Тема 4. Алгоритми обробки структурованих даних
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча навчальна програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../topic-1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/lab-1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../practicals/pz-1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../self-study/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../rg/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Розрахунково-графічна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../self-study/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Перелік тестових та практичних завдань для самопідготовки
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Прикладні алгоритми кіберфізичних систем" class="md-nav__button md-logo" aria-label="Прикладні алгоритми кіберфізичних систем" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v1h3v2h-3v2h3v2h-3v2h3v2h-3v2h3v2h-3v1H6v-1H3v-2h3v-2H3v-2h3v-2H3V9h3V7H3V5h3zm5 11v3h1v-3zm2 0v3h1v-3zm2 0v3h1v-3z"/></svg>
+
+    </a>
+    Прикладні алгоритми кіберфізичних систем
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча навчальна програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Теоретичні засади алгоритмізації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Керуючі конструкції в алгоритмах реального часу
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. Архітектура та обмін даними
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Алгоритми обробки структурованих даних
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Алгоритми обробки структурованих даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Опрацювання одновимірних масивів (векторів) та двовимірних матриць
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Опрацювання одновимірних масивів (векторів) та двовимірних матриць">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Способи обходу матриць (змійка, спіраль) та симетричні перетворення
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Способи обходу матриць (змійка, спіраль) та симетричні перетворення">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Лінійні структури: стек, черга, пріоритетна черга
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 Лінійні структури: стек, черга, пріоритетна черга">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Нечітка логіка та евристики
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Пошук, сортування та графи в мережах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Хмарні та граничні обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання логіки керування низького рівня
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Розробка алгоритмів обробки даних з давачів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Оркестрування потоків даних у середовищі Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Обробка матриць сигналів у розподілених системах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Побудова нечіткого контролера для автоматизації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Оптимізація маршрутів у сенсорних мережах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/lab-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Віртуалізація сервісів за допомогою Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Графічна формалізація алгоритмів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Оцінювання трудомісткості обчислювальних процесів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Проєктивання ієрархії тем MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Реалізація черги повідомлень для керування завданнями
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Вирішення задач маршрутизації евристичними методами
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Порівняльний аналіз методів сортування даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Аналіз архітектурних рішень для Big Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../self-study/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Розрахунково-графічна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../self-study/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Перелік тестових та практичних завдань для самопідготовки
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Опрацювання одновимірних масивів (векторів) та двовимірних матриць
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Опрацювання одновимірних масивів (векторів) та двовимірних матриць">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Способи обходу матриць (змійка, спіраль) та симетричні перетворення
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Способи обходу матриць (змійка, спіраль) та симетричні перетворення">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Лінійні структури: стек, черга, пріоритетна черга
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 Лінійні структури: стек, черга, пріоритетна черга">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Питання для самоперевірки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="4">Тема 4. Алгоритми обробки структурованих даних</h1>
+<h2 id="41">4.1 Опрацювання одновимірних масивів (векторів) та двовимірних матриць</h2>
+<p>У сучасній алгоритмізації та програмуванні <strong>масив</strong> визначається як іменована послідовність областей пам’яті, що містять однотипні елементи, розташовані в пам'яті комп'ютера безпосередньо один за одним. Така структура даних є статичною, що означає фіксацію кількості елементів та обсягу виділеної пам’яті на етапі оголошення програми. Основними характеристиками масиву є його <strong>вимір</strong>, який визначає кількість індексів для доступу до елемента (одновимірні, двовимірні тощо), та <strong>розмірність</strong>, що задає кількість елементів у кожному вимірі. </p>
+<p><strong>Одновимірні масиви</strong>, часто звані <strong>векторами</strong>, потребують лише одного індексу для ідентифікації конкретного значення. Опрацювання векторів зазвичай ґрунтується на циклічних алгоритмах, де параметр циклу виступає в ролі індексу. Базовими задачами при роботі з векторами є обчислення суми або добутку елементів. При знаходженні суми змінна-акумулятор обов'язково ініціалізується нульовим значенням, тоді як для накопичення добутку початкове значення має дорівнювати одиниці. Окрему групу складають алгоритми пошуку елементів за певними ознаками: пошук мінімального/максимального значення або знаходження елементів з абсолютними характеристиками (додатних, від’ємних чи нульових). Для фіксації результату пошуку професійною практикою вважається використання змінної типу <strong>індекс-прапорець</strong>, яка зберігає індекс знайденого елемента або спеціальне значення (наприклад, -1), якщо елемент відсутній у масиві.</p>
+<p><strong>Двовимірні масиви</strong>, або <strong>матриці</strong>, являють собою сукупність елементів, доступ до яких здійснюється за допомогою двох індексів: номера рядка та номера стовпчика. У пам’яті комп'ютера матриця зазвичай розгортається у лінійну послідовність, де елементи розташовані рядок за рядком. Ключовим поняттям при роботі з матрицями є <strong>обхід матриці</strong> — послідовне звертання до кожного її елемента для виконання певної дії. Прості способи обходу включають прохід по рядках або по стовпчиках, що реалізується за допомогою вкладених циклів. Більш складні, «декоративні» способи, такі як обхід <strong>«змійкою»</strong>, <strong>«спіралью»</strong> або по діагоналях, використовуються для специфічних задач, наприклад, у графічній обробці даних.</p>
+<p>Для <strong>квадратних матриць</strong> (де кількість рядків дорівнює кількості стовпчиків) особливе значення мають <strong>головна діагональ</strong>, елементи якої мають однакові індекси рядка та стовпчика, та <strong>побічна діагональ</strong>, що проходить від верхнього правого до нижнього лівого кута. Алгоритми перетворення матриць охоплюють симетричні («дзеркальні») відображення відносно осей симетрії чи діагоналей, а також повороти частин матриці навколо її центру на кути, кратні 90 градусам. Такі перетворення вимагають чіткого математичного зв’язку між індексами вихідних та цільових комірок пам’яті.</p>
+<p>При оцінюванні складності алгоритмів опрацювання масивів використовується поняття <strong>часової складності</strong> <span class="arithmatex">\(T(n)\)</span>, яка визначає залежність кількості операцій від розмірності вхідних даних. Для повного перебору елементів вектора довжиною <span class="arithmatex">\(n\)</span> часова складність є лінійною:</p>
+<div class="arithmatex">\[
+T(n) = O(n),
+\]</div>
+<p>де <span class="arithmatex">\(n\)</span> — кількість елементів у векторі. Для двовимірної матриці розміром <span class="arithmatex">\(m \times n\)</span> складність повного обходу стає квадратичною (якщо <span class="arithmatex">\(m=n\)</span>):</p>
+<div class="arithmatex">\[
+T(n) = O(n^2),
+\]</div>
+<p>оскільки кожен елемент у кожному рядку має бути оброблений.</p>
+<p>При виконанні перестановок елементів (наприклад, при дзеркальному відображенні вектора) використовується допоміжна комірка пам'яті для тимчасового зберігання значення. Розрахункова формула для індексу симетричного елемента у векторі <span class="arithmatex">\(A[n]\)</span> при відображенні виглядає наступним чином:</p>
+<div class="arithmatex">\[
+j = (n - 1) - i,
+\]</div>
+<p>де <span class="arithmatex">\(i\)</span> — поточний індекс елемента від початку масиву, а <span class="arithmatex">\(j\)</span> — індекс елемента, з яким необхідно виконати обмін.</p>
+<p>Для квадратних матриць порядку <span class="arithmatex">\(n\)</span> математичні властивості діагоналей визначають логіку доступу до елементів <span class="arithmatex">\(A[i][j]\)</span> наступним чином:</p>
+<ol>
+<li>
+<p>Елементи головної діагоналі задовольняють умові: <span class="arithmatex">\(i = j\)</span>.</p>
+</li>
+<li>
+<p>Елементи побічної діагоналі задовольняють умові: <span class="arithmatex">\(i + j = n - 1\)</span>.</p>
+</li>
+<li>
+<p>Елементи вище головної діагоналі характеризуються нерівністю: <span class="arithmatex">\(i &lt; j\)</span>.</p>
+</li>
+</ol>
+<p>Порівняльна характеристика основних методів обходу та опрацювання матриць наведена в таблиці нижче.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Спосіб обходу / Дія</th>
+<th style="text-align: left;">Особливості реалізації</th>
+<th style="text-align: left;">Сфера застосування</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>По рядках / стовпчиках</strong></td>
+<td style="text-align: left;">Найпростіші вкладені цикли з послідовною ітерацією індексів.</td>
+<td style="text-align: left;">Стандартна обробка даних, обчислення сум, пошук.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>«Змійкою»</strong></td>
+<td style="text-align: left;">Зміна напрямку проходу в кожному наступному рядку/стовпчику.</td>
+<td style="text-align: left;">Специфічні алгоритми візуалізації, сортування.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>По «спіралі»</strong></td>
+<td style="text-align: left;">Чотири фази руху (вправо, вниз, вліво, вгору) зі звуженням меж.</td>
+<td style="text-align: left;">Криптографія, стиснення зображень, матричні ігри.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Дзеркальне відображення</strong></td>
+<td style="text-align: left;">Обмін елементів відносно осі симетрії з проходом лише половини масиву.</td>
+<td style="text-align: left;">Обробка зображень, матрична алгебра.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Транспонування</strong></td>
+<td style="text-align: left;">Обмін елементів <span class="arithmatex">\(A[i][j]\)</span> та <span class="arithmatex">\(A[j][i]\)</span> відносно головної діагоналі.</td>
+<td style="text-align: left;">Розв'язання систем лінійних рівнянь, зміна орієнтації даних.</td>
+</tr>
+</tbody>
+</table>
+<p>Логіка алгоритму пошуку останнього від’ємного елемента у векторі (ефективний варіант з проходом від кінця до початку) представлена на схемі нижче. Такий підхід дозволяє припинити виконання циклу одразу після знаходження першого підходящого елемента, що є оптимальним для систем реального часу.</p>
+<pre class="mermaid"><code>flowchart TD
+    Start([Початок]) --&gt; Init[ind = -1, i = n-1]
+    Init --&gt; Condition{i &gt;= 0}
+    Condition -- Так --&gt; Check{"A[i] &lt; 0"}
+    Check -- Так --&gt; Found[ind = i]
+    Check -- Ні --&gt; Next[i = i - 1]
+    Next --&gt; Condition
+    Found --&gt; ResultCheck{ind == -1}
+    Condition -- Ні --&gt; ResultCheck
+    ResultCheck -- Так --&gt; NoMsg["/Від'ємних елементів&lt;br/&gt;не знайдено/"]
+    ResultCheck -- Ні --&gt; ShowRes["Результат: A[ind], позиція: ind"]
+    NoMsg --&gt; End([Кінець])
+    ShowRes --&gt; End</code></pre>
+<p>Ця модель демонструє використання <strong>індекс-прапорця</strong> <code>ind</code> для фіксації результату та властивість детермінованості алгоритму.</p>
+<h3 id="_1">Питання для самоперевірки</h3>
+<ol>
+<li>
+<p>Чому при розробці ефективного алгоритму пошуку <em>останнього</em> від’ємного елемента вектора рекомендується починати обхід з індексу <span class="arithmatex">\(n-1\)</span>, а не з <span class="arithmatex">\(0\)</span>?</p>
+</li>
+<li>
+<p>Яким чином використання «бар’єра» в алгоритмах лінійного пошуку дозволяє зменшити кількість операцій порівняння в заголовку циклу?</p>
+</li>
+<li>
+<p>Поясніть, які математичні умови накладаються на індекси <span class="arithmatex">\(i\)</span> та <span class="arithmatex">\(j\)</span> для ідентифікації елементів, що знаходяться суворо <em>нижче</em> побічної діагоналі квадратної матриці.</p>
+</li>
+<li>
+<p>У чому полягає відмінність між фізичним розташуванням матриці в пам’яті комп’ютера та її логічним представленням у вигляді таблиці?</p>
+</li>
+<li>
+<p>Опишіть алгоритмічну логіку повороту квадратної матриці на 180 градусів: які саме індексні перетворення мають відбутися для кожного елемента?</p>
+</li>
+</ol>
+<h2 id="42">4.2 Способи обходу матриць (змійка, спіраль) та симетричні перетворення</h2>
+<p>У процесі розробки прикладних алгоритмів для роботи з двовимірними масивами ключовим поняттям є <strong>обхід матриці</strong>, що визначається як послідовне звернення до кожного її елемента для виконання певних операцій, таких як обчислення, порівняння або модифікація значень. Традиційно способи обходу поділяють на прості та «декоративні». До простих методів відносять прохід по рядках або по стовпчиках, де внутрішній стан індексів змінюється лінійно. Однак для специфічних задач, наприклад, у графічній обробці даних або при створенні візуальних ефектів, застосовуються складніші стратегії, такі як обхід <strong>«змійкою»</strong> та <strong>«спіралью»</strong>.</p>
+<p>Обхід матриці <strong>«змійкою»</strong> за рядками передбачає, що в кожному наступному рядку напрямок проходу змінюється на протилежний (зліва направо в парних рядках і справа наліво в непарних, або навпаки). Виділяють чотири варіанти такої «змійки» по рядках та чотири варіанти по стовпчиках. Більш складним є обхід «змійкою» по діагоналях, який має вісім різних модифікацій залежно від початкової точки та першого напрямку руху. Ці алгоритми вимагають ретельного керування індексами <span class="arithmatex">\(i\)</span> та <span class="arithmatex">\(j\)</span>, щоб забезпечити правильний перехід між суміжними діагоналями.</p>
+<p>Обхід матриці <strong>«спіралью»</strong> характеризується рухом по периметрах вкладених прямокутників, що утворюють структуру матриці. Розрізняють два основних типи спіралі: <strong>ззовні всередину</strong> (від країв до центру) та <strong>зсередини назовні</strong> (від центру до країв). Кожен із цих типів має по вісім варіантів реалізації залежно від напрямку руху (за годинниковою стрілкою чи проти) та початкового кута. Алгоритми спірального обходу зазвичай реалізуються через зміну чотирьох меж (верхньої, нижньої, лівої та правої), які поступово звужуються або розширюються.</p>
+<p>Окрему групу операцій становлять <strong>симетричні («дзеркальні») перетворення</strong>, які дозволяють змінити логічну структуру матриці шляхом перестановки елементів відносно певних осей. <strong>Вертикальна вісь симетрії</strong> проходить через середину рядків, і перетворення відносно неї міняє місцями ліві та праві частини матриці. <strong>Горизонтальна вісь симетрії</strong> розділяє матрицю на верхню та нижню частини. Для квадратних матриць критично важливими є перетворення відносно <strong>головної діагоналі</strong> (відоме як <strong>транспонування</strong>) та відносно <strong>побічної діагоналі</strong>. Крім того, виділяють відображення відносно <strong>центру симетрії</strong>, що еквівалентно повороту матриці на <span class="arithmatex">\(180^\circ\)</span>. Повороти на <span class="arithmatex">\(90^\circ\)</span> ліворуч або праворуч є складнішими, оскільки вимагають не просто обміну елементів, а циклічного переміщення значень між чотирма квадрантами матриці.</p>
+<p>Для виконання симетричних перетворень необхідно встановити математичний зв'язок між індексами вихідного елемента <span class="arithmatex">\(A[i][j]\)</span> та цільового елемента <span class="arithmatex">\(A[i^*][j^*]\)</span>. У матриці розміром <span class="arithmatex">\(m \times n\)</span> (де <span class="arithmatex">\(m\)</span> — кількість рядків, а <span class="arithmatex">\(n\)</span> — кількість стовпчиків) застосовуються наступні залежності:</p>
+<ol>
+<li><strong>Симетричне відображення відносно вертикальної осі симетрії:</strong></li>
+</ol>
+<div class="arithmatex">\[
+j^* = (n - 1) - j, \quad i^* = i.
+\]</div>
+<p>У наведеній формулі індекс рядка <span class="arithmatex">\(i\)</span> залишається незмінним, а індекс стовпчика <span class="arithmatex">\(j\)</span> трансформується таким чином, що перший елемент стає останнім, а другий — передостаннім у межах того ж рядка.</p>
+<ol>
+<li><strong>Симетричне відображення відносно горизонтальної осі симетрії:</strong></li>
+</ol>
+<div class="arithmatex">\[
+i^* = (m - 1) - i, \quad j^* = j.
+\]</div>
+<p>Тут незмінним залишається індекс стовпчика <span class="arithmatex">\(j\)</span>, тоді як індекси рядків відображаються дзеркально відносно середини висоти матриці.</p>
+<ol>
+<li><strong>Транспонування квадратної матриці порядку <span class="arithmatex">\(n\)</span> (відображення відносно головної діагоналі):</strong></li>
+</ol>
+<div class="arithmatex">\[
+i^* = j, \quad j^* = i.
+\]</div>
+<p>Це перетворення передбачає взаємний обмін місцями індексів рядка та стовпчика. Важливо, що операція виконується лише для елементів, де <span class="arithmatex">\(i &lt; j\)</span> (вище діагоналі) або <span class="arithmatex">\(i &gt; j\)</span> (нижче діагоналі), щоб уникнути подвійного обміну, який повернув би елементи на вихідні позиції.</p>
+<ol>
+<li><strong>Відображення відносно побічної діагоналі квадратної матриці:</strong></li>
+</ol>
+<div class="arithmatex">\[
+i^* = (n - 1) - j, \quad j^* = (n - 1) - i.
+\]</div>
+<p>Дана формула описує складне перетворення, де новий індекс рядка залежить від старого індексу стовпчика, а новий індекс стовпчика — від старого індексу рядка, з врахуванням розмірності матриці <span class="arithmatex">\(n\)</span>.</p>
+<ol>
+<li><strong>Поворот матриці на <span class="arithmatex">\(180^\circ\)</span> (відображення відносно центру симетрії):</strong></li>
+</ol>
+<div class="arithmatex">\[
+i^* = (m - 1) - i, \quad j^* = (n - 1) - j.
+\]</div>
+<p>Це перетворення поєднує в собі вертикальне та горизонтальне дзеркальне відображення. Для реалізації такого алгоритму «на тому ж місці» необхідно обійти лише половину елементів матриці (наприклад, <span class="arithmatex">\(i &lt; m/2\)</span>), щоб не виконати повторний обмін.</p>
+<p>Порівняльна характеристика типів симетрії в матрицях та умов їх застосування представлена у таблиці нижче.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Тип симетрії / Вісь</th>
+<th style="text-align: left;">Математична умова для <span class="arithmatex">\(A[i][j]\)</span></th>
+<th style="text-align: left;">Область обміну елементів</th>
+<th style="text-align: left;">Примітка</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Вертикальна</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(j \leftrightarrow (n-1)-j\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(i \in [0, m-1], j \in [0, n/2)\)</span></td>
+<td style="text-align: left;">Обмін у кожному рядку.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Горизонтальна</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(i \leftrightarrow (m-1)-i\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(i \in [0, m/2), j \in [0, n-1]\)</span></td>
+<td style="text-align: left;">Обмін у кожному стовпчику.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Головна діагональ</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(i \leftrightarrow j, j \leftrightarrow i\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(i \in [0, n-1], j \in (i, n-1]\)</span></td>
+<td style="text-align: left;">Тільки для квадратних матриць.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Побічна діагональ</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(i \leftrightarrow (n-1)-j, \dots\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(i \in [0, n-2], j \in [0, n-2-i]\)</span></td>
+<td style="text-align: left;">Тільки для квадратних матриць.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Центральна (<span class="arithmatex">\(180^\circ\)</span>)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(i, j \leftrightarrow (m-1)-i, (n-1)-j\)</span></td>
+<td style="text-align: left;">Половина загальної кількості елементів</td>
+<td style="text-align: left;">Еквівалентно подвійному віддзеркаленню.</td>
+</tr>
+</tbody>
+</table>
+<p>Варіанти «декоративних» способів обходу матриць згідно з класифікацією джерела:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Спосіб обходу</th>
+<th style="text-align: left;">Кількість варіантів</th>
+<th style="text-align: left;">Характер траєкторії</th>
+<th style="text-align: left;">Сфера застосування</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>«Змійка» по рядках</strong></td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">Горизонтальні зигзаги</td>
+<td style="text-align: left;">Специфічне сканування даних.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>«Змійка» по стовпчиках</strong></td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">Вертикальні зигзаги</td>
+<td style="text-align: left;">Обробка сигналів, сортування.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>«Змійка» по діагоналях</strong></td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">Нахилені зигзаги</td>
+<td style="text-align: left;">Стиснення зображень (напр. JPEG).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>«Спіраль» (ззовні/зсередини)</strong></td>
+<td style="text-align: left;">16 (8+8)</td>
+<td style="text-align: left;">Концентричні прямокутники</td>
+<td style="text-align: left;">Матричні ігри, криптографія.</td>
+</tr>
+</tbody>
+</table>
+<p>Логіка виконання симетричного відображення матриці відносно вертикальної осі «на тому ж місці» (з використанням однієї додаткової комірки пам'яті <span class="arithmatex">\(tmp\)</span>) може бути представлена наступним алгоритмом.</p>
+<pre class="mermaid"><code>flowchart TD
+    Start([Початок]) --&gt; Init[i = 0, m-1]
+    Init --&gt; InnerLoop[j = 0, n/2 - 1]
+    InnerLoop -- Наступна пара --&gt; Swap["tmp = A[i][j]"]
+    Swap --&gt; Replace1["A[i][j] = A[i][n-1-j]"]
+    Replace1 --&gt; Replace2["A[i][n-1-j] = tmp"]
+    Replace2 --&gt; InnerLoop
+    InnerLoop -- Рядок оброблено --&gt; NextRow{i &lt; m-1?}
+    NextRow -- Так --&gt; IncRow[i = i + 1]
+    IncRow --&gt; InnerLoop
+    NextRow -- Ні --&gt; End([Кінець])</code></pre>
+<p>Ця схема ілюструє важливу особливість: внутрішній цикл по <span class="arithmatex">\(j\)</span> виконується лише до середини рядка (<span class="arithmatex">\(n/2\)</span>), що забезпечує коректність дзеркального відображення без повернення елементів у початковий стан. У випадку «декоративних» обходів (наприклад, змійки) блок-схема містила б умовний оператор для перевірки парності індексу <span class="arithmatex">\(i\)</span> для вибору напрямку руху індексу <span class="arithmatex">\(j\)</span> (зростання або спадання).</p>
+<h3 id="_2">Питання для самоперевірки</h3>
+<ol>
+<li>
+<p>Чому при реалізації алгоритму транспонування квадратної матриці важливо обходити тільки елементи, що знаходяться вище (або нижче) головної діагоналі? Який результат буде отримано при повному обході матриці (<span class="arithmatex">\(i \in [0, n-1], j \in [0, n-1]\)</span>)?</p>
+</li>
+<li>
+<p>Опишіть траєкторію обходу матриці «змійкою» по рядках. Як змінюється напрямок руху індексу <span class="arithmatex">\(j\)</span> при переході від нульового до першого рядка?</p>
+</li>
+<li>
+<p>Яка математична залежність описує симетричне відображення елемента квадратної матриці <span class="arithmatex">\(A[i][j]\)</span> відносно її центру симетрії (поворот на <span class="arithmatex">\(180^\circ\)</span>)? Чим це перетворення відрізняється від горизонтального відображення?</p>
+</li>
+<li>
+<p>Скільки всього існує варіантів обходу матриці «спіралью» зсередини назовні згідно з матеріалами посібника? Назвіть чинники, що визначають ці варіанти.</p>
+</li>
+<li>
+<p>Поясніть логіку використання чотирьох змінних-меж при побудові алгоритму обходу матриці по спіралі ззовні всередину. Яка з меж змінюється після завершення проходу вздовж верхнього ряду?</p>
+</li>
+</ol>
+<h2 id="43">4.3 Лінійні структури: стек, черга, пріоритетна черга</h2>
+<p>У фундаментальній теорії алгоритмів та структур даних особливе місце посідають лінійні структури, які забезпечують впорядковане зберігання та доступ до елементів інформації. <strong>Стек</strong> (stack) визначається як динамічна структура даних, побудована на принципі «останнім прийшов — першим пішов», що в міжнародній термінології позначається абревіатурою <strong>LIFO</strong> (Last-In, First-Out). Характерною особливістю стека є те, що всі операції — як додавання нового елемента, так і видалення існуючого — здійснюються лише з одного кінця структури, який називається <strong>верхівкою стека</strong> (top). Наочною фізичною аналогією стека є стопка книжок: для того, щоб дістати книгу, яка знаходиться всередині або знизу, необхідно послідовно прибрати всі книжки, що лежать над нею, оскільки безпосередній доступ можливий лише до верхнього елемента. У системному програмуванні стек є незамінним для реалізації механізму рекурсивних викликів функцій, обробки переривань та аналізу збалансованості дужкових послідовностей у математичних виразах.</p>
+<p>На відміну від стека, <strong>черга</strong> (queue) базується на протилежному логічному принципі — «першим прийшов — першим пішов», або <strong>FIFO</strong> (First-In, First-Out). У цій структурі додавання нових елементів відбувається в один кінець, який зазвичай називають хвостом або тилом (rear), а видалення — з іншого кінця, відомого як голова черги (head). Такий підхід моделює поведінку реальних черг у повсякденному житті, де обслуговування здійснюється в порядку надходження запитів. Різновидом черги є <strong>дек</strong> (deque — double-ended queue), або черга з двома кінцями, що дозволяє виконувати операції додавання та видалення з обох боків структури, поєднуючи в собі властивості і стека, і звичайної черги.</p>
+<p>Окрему інтелектуальну категорію становить <strong>пріоритетна черга</strong> (priority queue). У цій структурі порядок обслуговування елементів визначається не лише часом їхнього потрапляння в систему, а й пов'язаним із кожним елементом числовим значенням — <strong>пріоритетом</strong>. Під час вилучення елемента з пріоритетної черги система завжди обирає той об'єкт, який має найвищий пріоритет (або найменше значення пріоритету, залежно від реалізації). Хоча таку чергу можна змоделювати на основі звичайного впорядкованого масиву або списку, найбільш ефективною формою її реалізації для роботи з великими обсягами даних є структура <strong>двійкової купи</strong> (binary heap), яка забезпечує високу продуктивність операцій.</p>
+<p>Ефективність лінійних структур даних оцінюється через показник асимптотичної складності операцій. Для базових структур, таких як стек та проста черга, час виконання основних операцій (додавання та видалення) не залежить від кількості елементів у структурі <span class="arithmatex">\(n\)</span>. Це означає, що часова складність цих операцій є константною:</p>
+<div class="arithmatex">\[
+T(n) = O(1).
+\]</div>
+<p>У наведеній формулі <span class="arithmatex">\(T(n)\)</span> позначає функцію часу виконання відносно розмірності входу <span class="arithmatex">\(n\)</span>. Стала складність <span class="arithmatex">\(O(1)\)</span> свідчить про те, що доступ до верхівки стека або голови черги здійснюється за один крок, незалежно від того, наскільки великим є обсяг даних.</p>
+<p>Однак для пріоритетної черги ситуація змінюється. Якщо вона реалізована на основі двійкової купи, то операції вставки нового елемента та видалення елемента з найвищим пріоритетом вимагають перебудови дерева (процедури «просіювання» вгору або вниз). Математично час виконання таких операцій має логарифмічну залежність від загальної кількості елементів <span class="arithmatex">\(n\)</span> у черзі:</p>
+<div class="arithmatex">\[
+T(n) = O(\log_2 n).
+\]</div>
+<p>Це означає, що при збільшенні кількості елементів у черзі в 1024 рази, час виконання операції зросте лише приблизно в 10 разів (оскільки <span class="arithmatex">\(\log_2 1024 = 10\)</span>), що робить таку структуру надзвичайно масштабованою для систем реального часу та алгоритмів на графах, таких як алгоритм Дейкстри.</p>
+<p>Для системного порівняння лінійних структур доцільно розглянути їхні ключові характеристики в межах єдиної класифікації.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Характеристика</th>
+<th style="text-align: left;">Стек (Stack)</th>
+<th style="text-align: left;">Черга (Queue)</th>
+<th style="text-align: left;">Пріоритетна черга</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Логічний принцип</strong></td>
+<td style="text-align: left;"><strong>LIFO</strong> (останнім прийшов — першим пішов)</td>
+<td style="text-align: left;"><strong>FIFO</strong> (першим прийшов — першим пішов)</td>
+<td style="text-align: left;">За значенням пріоритету елемента</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Точки доступу</strong></td>
+<td style="text-align: left;">Тільки верхівка (один кінець)</td>
+<td style="text-align: left;">Голова (видалення) та хвіст (додавання)</td>
+<td style="text-align: left;">Видалення — найвищий пріоритет, вставка — у хвіст купи</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Складність операцій</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(O(1)\)</span> для всіх операцій</td>
+<td style="text-align: left;"><span class="arithmatex">\(O(1)\)</span> для всіх операцій</td>
+<td style="text-align: left;"><span class="arithmatex">\(O(\log n)\)</span> (при використанні купи)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Типові застосування</strong></td>
+<td style="text-align: left;">Рекурсія, обробка виразів, відміна дій (Undo)</td>
+<td style="text-align: left;">Буферизація, планування завдань ОС</td>
+<td style="text-align: left;">Планування процесів, алгоритми на графах</td>
+</tr>
+</tbody>
+</table>
+<p>Логіку функціонування стека та черги можна представити через послідовні фази зміни стану структур під час виконання операцій. Нижче наведено схему життєвого циклу елементів у цих структурах.</p>
+<pre class="mermaid"><code>graph LR
+    subgraph STACK_LIFO
+    A1[Вхід елемента] --&gt;|PUSH| B1[Верхівка стека]
+    B1 --&gt;|POP| C1[Вихід елемента]
+    end
+
+    subgraph QUEUE_FIFO
+    A2[Вхід елемента] --&gt;|ENQUEUE| B2[Хвіст черги]
+    B2 --&gt; D2[Тіло черги]
+    D2 --&gt; E2[Голова черги]
+    E2 --&gt;|DEQUEUE| C2[Вихід елемента]
+    end</code></pre>
+<h3 id="_3">Питання для самоперевірки</h3>
+<ol>
+<li>
+<p>Поясніть сутність принципу LIFO на прикладі стопки книг. Чому доступ до нижньої книги вимагає виконання послідовності операцій видалення?</p>
+</li>
+<li>
+<p>У чому полягає фундаментальна відмінність між чергою (FIFO) та деком (double-ended queue) з точки зору можливих точок модифікації структури?</p>
+</li>
+<li>
+<p>Чому використання двійкової купи для реалізації пріоритетної черги є більш ефективним, ніж використання звичайного несортованого масиву, якщо ми оцінюємо складність операції видалення елемента?</p>
+</li>
+<li>
+<p>Яке значення має показник часової складності <span class="arithmatex">\(O(1)\)</span> для операцій зі стеком у контексті розробки високонавантажених обчислювальних систем?</p>
+</li>
+<li>
+<p>Наведіть приклад завдання, для розв'язання якого обов'язково потрібен стек, і поясніть, як саме він там використовується (наприклад, при перевірці збалансованості дужок).</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2517 @@
+
+<!doctype html>
+<html lang="uk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Навчальний портал з дисципліни "Прикладні алгоритми КФС"">
+      
+      
+      
+      
+        <link rel="prev" href="../lab-1/">
+      
+      
+        <link rel="next" href="../lab-3/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>ЛБ 2. Розробка алгоритмів обробки даних з давачів - Прикладні алгоритми кіберфізичних систем</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#no-2" class="md-skip">
+          Перейти до змісту
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Хедер">
+    <a href="../.." title="Прикладні алгоритми кіберфізичних систем" class="md-header__button md-logo" aria-label="Прикладні алгоритми кіберфізичних систем" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v1h3v2h-3v2h3v2h-3v2h3v2h-3v2h3v2h-3v1H6v-1H3v-2h3v-2H3v-2h3v-2H3V9h3V7H3V5h3zm5 11v3h1v-3zm2 0v3h1v-3zm2 0v3h1v-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Прикладні алгоритми кіберфізичних систем
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ЛБ 2. Розробка алгоритмів обробки даних з давачів
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Переключити на темну тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключити на темну тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Переключити на світлу тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключити на світлу тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Пошук" placeholder="Пошук" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Шукати">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистити" aria-label="Очистити" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Пошук розпочато
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Робоча навчальна програма
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lectures/topic-1/" class="md-tabs__link">
+          
+  
+  
+  Лекції
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../lab-1/" class="md-tabs__link">
+          
+  
+  
+  Лабораторні роботи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../practicals/pz-1/" class="md-tabs__link">
+          
+  
+  
+  Практичні заняття
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../self-study/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Самостійна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../rg/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Розрахунково-графічна робота
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../self-study/quest/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Перелік тестових та практичних завдань для самопідготовки
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навігація" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Прикладні алгоритми кіберфізичних систем" class="md-nav__button md-logo" aria-label="Прикладні алгоритми кіберфізичних систем" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 4h12v1h3v2h-3v2h3v2h-3v2h3v2h-3v2h3v2h-3v1H6v-1H3v-2h3v-2H3v-2h3v-2H3V9h3V7H3V5h3zm5 11v3h1v-3zm2 0v3h1v-3zm2 0v3h1v-3z"/></svg>
+
+    </a>
+    Прикладні алгоритми кіберфізичних систем
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Робоча навчальна програма
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лекції
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лекції
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 1. Теоретичні засади алгоритмізації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 2. Керуючі конструкції в алгоритмах реального часу
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 3. Архітектура та обмін даними
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 4. Алгоритми обробки структурованих даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 5. Нечітка логіка та евристики
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 6. Пошук, сортування та графи в мережах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/topic-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тема 7. Хмарні та граничні обчислення
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторні роботи
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Лабораторні роботи
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 1. Моделювання логіки керування низького рівня
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Розробка алгоритмів обробки даних з давачів
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 2. Розробка алгоритмів обробки даних з давачів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета роботи та стек технологій
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 Теоретичні відомості
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 Теоретичні відомості">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Особливості алгоритмів обробки телеметрії в системах жорсткого реального часу
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Стратегія побудови умовних розгалужень без складних булевих виразів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Циклічні конструкції та накопичення ковзного середнього
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Математичний апарат та функції трудомісткості
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 Підготовка середовища та розгортання проєкту (Крок 0)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 Підготовка середовища та розгортання проєкту (Крок 0)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 0.1. Встановлення ПЗ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 0.2. Створення робочого проєкту
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-simulide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 0.3. Налаштування симуляційної схеми в SimulIDE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 Порядок виконання роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Порядок виконання роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Індивідуальні завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arduino-ide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий алгоритм розробки скетчу в Arduino IDE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simulide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Компіляція та завантаження прошивки в SimulIDE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Проведення експерименту та зняття логів
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 Вимоги до змісту звіту
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 Контрольні запитання
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 3. Оркестрування потоків даних у середовищі Node-RED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 4. Обробка матриць сигналів у розподілених системах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 5. Побудова нечіткого контролера для автоматизації
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 6. Оптимізація маршрутів у сенсорних мережах
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ЛБ 7. Віртуалізація сервісів за допомогою Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практичні заняття
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Практичні заняття
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 1. Графічна формалізація алгоритмів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 2. Оцінювання трудомісткості обчислювальних процесів
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 3. Проєктивання ієрархії тем MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 4. Реалізація черги повідомлень для керування завданнями
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 5. Вирішення задач маршрутизації евристичними методами
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 6. Порівняльний аналіз методів сортування даних
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicals/pz-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ПЗ 7. Аналіз архітектурних рішень для Big Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../self-study/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Самостійна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Розрахунково-графічна робота
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../self-study/quest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Перелік тестових та практичних завдань для самопідготовки
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Зміст">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Зміст
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мета роботи та стек технологій
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 Теоретичні відомості
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 Теоретичні відомості">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Особливості алгоритмів обробки телеметрії в системах жорсткого реального часу
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Стратегія побудови умовних розгалужень без складних булевих виразів
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Циклічні конструкції та накопичення ковзного середнього
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Математичний апарат та функції трудомісткості
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 Підготовка середовища та розгортання проєкту (Крок 0)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 Підготовка середовища та розгортання проєкту (Крок 0)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 0.1. Встановлення ПЗ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 0.2. Створення робочого проєкту
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-simulide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Крок 0.3. Налаштування симуляційної схеми в SimulIDE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 Порядок виконання роботи
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Порядок виконання роботи">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Індивідуальні завдання
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arduino-ide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Покроковий алгоритм розробки скетчу в Arduino IDE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simulide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Компіляція та завантаження прошивки в SimulIDE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Проведення експерименту та зняття логів
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 Вимоги до змісту звіту
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 Контрольні запитання
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="no-2"><strong>Лабораторна робота № 2<br>Розробка алгоритмів обробки даних з давачів</strong></h1>
+<h2 id="_1">Мета роботи та стек технологій</h2>
+<p><strong>Мета:</strong> Набуття практичних навичок проєктування та реалізації високоефективних алгоритмів первинної обробки телеметрії від сенсорних пристроїв у системах жорсткого реального часу. Навчання включає реалізацію алгоритмів відсікання аномальних значень і шуму за допомогою умовних розгалужень та обчислення ковзного середнього з використанням циклічних конструкцій мовою C/C++ у середовищі Arduino IDE та схемотехнічному симуляторі SimulIDE.</p>
+<p><strong>Стек технологій та інструменти:</strong></p>
+<ul>
+<li>
+<p><strong>Мова програмування:</strong> C/C++ (стандарт C++17 для вбудованих систем).</p>
+</li>
+<li>
+<p><strong>Середовище розробки:</strong> Arduino IDE (версія 1.8.x або 2.x).</p>
+</li>
+<li>
+<p><strong>Схемотехнічний симулятор:</strong> SimulIDE (версія 0.4.15 або новіша).</p>
+</li>
+<li>
+<p><strong>Апаратна платформа симуляції:</strong> мікроконтролер ATmega328P (платформа Arduino Uno), віртуальні термопари, потенціометри аналогового сигналу, послідовний порт UART (Serial Terminal).</p>
+</li>
+</ul>
+<hr />
+<h2 id="1">1 Теоретичні відомості</h2>
+<h3 id="_2">Особливості алгоритмів обробки телеметрії в системах жорсткого реального часу</h3>
+<p>Кіберфізичні системи функціонують у безпосередньому зв'язку з фізичним середовищем, де затримка в обробці сигналу від датчика може призвести до системної аварії або деструкції обладнання. У системах жорсткого реального часу час виконання алгоритму є такою ж критичною характеристикою коректності, як і математична точність результату.</p>
+<p>Під час зчитування сигналів із первинних перетворювачів (наприклад, термопар, датчиків тиску чи вібрації) на вхідні кола мікроконтролера потрапляє корисний сигнал, спотворений електромагнітними завадами, імпульсними перешкодами та шумами аналогово-цифрового перетворення. Для отримання достовірної інформації на рівні алгоритмічного забезпечення (<strong>Brainware</strong>) застосовують два послідовних етапи:</p>
+<ol>
+<li>
+<p><strong>Фільтрація аномальних значень (відсікання шумів)</strong> за допомогою умовних розгалужень, де виміри, що виходять за допустимі фізичні межі, відкидаються.</p>
+</li>
+<li>
+<p><strong>Згладжування (фільтрація високочастотного шуму)</strong> шляхом накопичення вибірки коректних значень у циклічному буфері та обчислення середнього арифметичного значення.</p>
+</li>
+</ol>
+<h3 id="_3">Стратегія побудови умовних розгалужень без складних булевих виразів</h3>
+<p>Під час розробки алгоритмів реального часу для мікроконтролерів із обмеженою частотою тактування та малим обсягом оперативної пам'яті вибір керуючих конструкцій має вирішальне значення.</p>
+<p>Традиційний підхід із використанням складних булевих виразів вигляду <code>if (temp &gt;= T_MIN &amp;&amp; temp &lt;= T_MAX)</code> вимагає від процесора обчислення кількох логічних операндів та виконання декількох умовних переходів на рівні машинних інструкцій. Це збільшує середню кількість операцій <span class="arithmatex">\(K_{сер}\)</span> та створює невизначеність у часі виконання різних гілок коду.</p>
+<p>Альтернативною та рекомендованою для систем жорсткого реального часу є <strong>стратегія відсікання бар'єрами (послідовне відсікання значень зліва направо)</strong>. Цей підхід передбачає послідовну перевірку вхідного значення на вихід за межі допустимого діапазону за допомогою простих умовних операторів <code>if - else if</code>. </p>
+<p>Застосування послідовного відсікання бар'єрами дає змогу швидко завершити обробку аномального сигналу на першому ж логічному кроці. Це мінімізує обсяг скомпільованого машинного коду <span class="arithmatex">\(M\)</span> у флеш-пам'яті мікроконтролера та забезпечує детермінований час проходження алгоритму.</p>
+<h3 id="_4">Циклічні конструкції та накопичення ковзного середнього</h3>
+<p>Для згладжування флуктуацій сигналу використовується алгоритм ковзного середнього. Накопичення <span class="arithmatex">\(N\)</span> послідовних коректних замірів здійснюється в циклічному буфері (масиві).</p>
+<p>При організації циклів у вбудованих системах застосовують наступні керуючі конструкції:</p>
+<ul>
+<li>
+<p>Конструкція <code>while</code> здійснює перевірку умови до початку ітерації та використовується у випадках, коли кількість повторень заздалегідь невідома.</p>
+</li>
+<li>
+<p>Конструкція <code>do - while</code> виконує перевірку умови в кінці ітерації, що гарантує принаймні одноразове виконання тіла циклу.</p>
+</li>
+<li>
+<p>Конструкція <code>for</code> автоматизує лічильник ітерацій і є найбільш структурованою для обробки фіксованих масивів даних.</p>
+</li>
+</ul>
+<h3 id="_5"><strong>Математичний апарат та функції трудомісткості</strong></h3>
+<p>Аналогово-цифровий перетворювач (АЦП) мікроконтролера ATmega328P є 10-розрядним, тому він трансформує аналогову напругу <span class="arithmatex">\(V_{in}\)</span> у цифровий код <span class="arithmatex">\(ADC_{val}\)</span> у діапазоні від <span class="arithmatex">\(0\)</span> до <span class="arithmatex">\(1023\)</span>.</p>
+<p>Залежність напруги на вхідному аналоговому піні від цифрового коду АЦП описується формулою:</p>
+<div class="arithmatex">\[
+V_{in} = \frac{ADC_{val} \cdot V_{ref}}{1023}
+\]</div>
+<p>де:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(V_{in}\)</span> — виміряна напруга на аналоговому вході, вимірюється у волотах (<span class="arithmatex">\(\text{В}\)</span>);</p>
+</li>
+<li>
+<p><span class="arithmatex">\(ADC_{val}\)</span> — цілочисельний код АЦП у діапазоні <span class="arithmatex">\([0, 1023]\)</span>;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(V_{ref}\)</span> — опорна напруга АЦП (для Arduino Uno за замовчуванням <span class="arithmatex">\(V_{ref} = 5.0\text{ В}\)</span>).</p>
+</li>
+</ul>
+<p>Лінійна трансформація виміряної напруги <span class="arithmatex">\(V_{in}\)</span> у значення температури <span class="arithmatex">\(T\)</span> здійснюється за залежністю:</p>
+<div class="arithmatex">\[
+T = T_{min} + \frac{V_{in}}{V_{ref}} \cdot (T_{max} - T_{min})
+\]</div>
+<p>де:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(T\)</span> — розрахована температура, вимірюється у градусах Цельсія (<span class="arithmatex">\(^\circ\text{C}\)</span>);</p>
+</li>
+<li>
+<p><span class="arithmatex">\(T_{min}, T_{max}\)</span> — мінімальне та максимальне значення температурного діапазону конкретного датчика.</p>
+</li>
+</ul>
+<p>Обчислення середнього арифметичного значення <span class="arithmatex">\(\bar{T}\)</span> для вибірки з <span class="arithmatex">\(N\)</span> коректних вимірів реалізується за формулою:</p>
+<div class="arithmatex">\[
+\bar{T} = \frac{1}{N} \sum_{i=0}^{N-1} T_i
+\]</div>
+<p>де:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(\bar{T}\)</span> — усереднене значення температури (<span class="arithmatex">\(^\circ\text{C}\)</span>);</p>
+</li>
+<li>
+<p><span class="arithmatex">\(T_i\)</span> — <span class="arithmatex">\(i\)</span>-й коректний замір температури, що пройшов бар'єрну фільтрацію;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(N\)</span> — розмір вікна накопичення (кількість елементів вибірки).</p>
+</li>
+</ul>
+<p>Ефективність алгоритму в умовах обмежених ресурсів мікроконтролера оцінюється за <strong>функцією трудомісткості</strong> <span class="arithmatex">\(\Psi\)</span>:</p>
+<div class="arithmatex">\[
+\Psi = c_1 \cdot F_a(N) + c_2 \cdot M + c_3 \cdot S_d + c_4 \cdot S_r
+\]</div>
+<p>де:</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(F_a(N)\)</span> — часова складність алгоритму (загальна кількість елементарних операцій додавання, порівняння та присвоєння), вимірюється в тактах;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(M\)</span> — обсяг програмного коду в машинного інструкціях (розмір Flash-пам'яті);</p>
+</li>
+<li>
+<p><span class="arithmatex">\(S_d\)</span> — обсяг оперативної пам'яті (SRAM), виділений під статичні та глобальні змінні (масив буфера);</p>
+</li>
+<li>
+<p><span class="arithmatex">\(S_r\)</span> — обсяг оперативної пам'яті, необхідний для організації системного стека під час виклику функцій;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(c_1, c_2, c_3, c_4\)</span> — вагові коефіцієнти значущості ресурсів для платформи ATmega328P.</p>
+</li>
+</ul>
+<p>Середня кількість операцій <span class="arithmatex">\(K_{сер}\)</span> для розгалужених алгоритмів фільтрації обчислюється як:</p>
+<div class="arithmatex">\[
+K_{сер} = \frac{K_{min} + K_{max}}{2}
+\]</div>
+<p>де <span class="arithmatex">\(K_{min}\)</span> та <span class="arithmatex">\(K_{max}\)</span> — відповідно мінімальна та максимальна кількість операцій порівняння і переходу залежно від того, якою гілкою підуть обчислення.</p>
+<p><pre class="mermaid"><code>flowchart TD
+    Start([Початок циклу loop]) --&gt; ReadADC["Зчитування коду АЦП з&lt;br/&gt;аналогового входу A0"]
+    ReadADC --&gt; CalcVolt[Обчислення напруги Vin]
+    CalcVolt --&gt; CalcTemp["Перерахунок напруги у&lt;br/&gt;температуру T"]
+    CalcTemp --&gt; Barrier1{T &lt; T_low?}
+    Barrier1 -- Так (Нижній шум) --&gt; LogNoise1["Маркування: Аномалія&lt;br/&gt;нижнього бар'єра"]
+    Barrier1 -- Ні --&gt; Barrier2{T &gt; T_high?}
+    Barrier2 -- Так (Верхній шум) --&gt; LogNoise2["Маркування: Аномалія&lt;br/&gt;верхнього бар'єра"]
+    Barrier2 -- Ні (Норма) --&gt; SaveBuffer["Збереження T у&lt;br/&gt;циклічний буфер"]
+    SaveBuffer --&gt; IncCount["Збільшення лічильника&lt;br/&gt;коректних замірів&lt;br/&gt;count++"]
+    IncCount --&gt; CheckFull{count == N?}
+    CheckFull -- Ні --&gt; EndLoop([Кінець ітерації])
+    CheckFull -- Так --&gt; CalcMean["Обчислення ковзного&lt;br/&gt;середнього T_mean в&lt;br/&gt;циклі for"]
+    CalcMean --&gt; SendUART["Передача T_mean у&lt;br/&gt;послідовний порт UART"]
+    SendUART --&gt; ResetCount["Скидання лічильника&lt;br/&gt;count = 0"]
+    ResetCount --&gt; EndLoop
+    LogNoise1 --&gt; EndLoop
+    LogNoise2 --&gt; EndLoop</code></pre>
+<em>Рисунок 1 — Алгоритм відсікання аномальних значений та обчислення середнього значення телеметрії</em></p>
+<p>Представлена схема наочно ілюструє відсутність складних вкладених умовних операторів. Вхідне значення температури спочатку перевіряється нижнім бар'єром, і у разі завади обробка переривається, що забезпечує мінімальний час затримки <span class="arithmatex">\(K_{min}\)</span>.</p>
+<hr />
+<h2 id="2-0">2 Підготовка середовища та розгортання проєкту (Крок 0)</h2>
+<p>Для виконання роботи необхідно встановити та налаштувати програмний комплекс, що складається з середовища розробки Arduino IDE та симулятора SimulIDE.</p>
+<h3 id="01"><strong>Крок 0.1. Встановлення ПЗ</strong></h3>
+<ol>
+<li>
+<p>Завантажте та встановіть <strong>Arduino IDE</strong> з офіційного сайту <a href="https://www.arduino.cc/en/software">arduino.cc</a>.</p>
+</li>
+<li>
+<p>Завантажте схемотехнічний симулятор <strong>SimulIDE</strong> з офіційного ресурсу <a href="https://www.simulide.com/">simulide.com</a>. Симулятор не потребує інсталяції та запускається з розархівованої папки за допомогою виконуваного файлу <code>SimulIDE.exe</code>.</p>
+</li>
+</ol>
+<h3 id="02"><strong>Крок 0.2. Створення робочого проєкту</strong></h3>
+<p>Створіть на диску папку для проєкту з назвою <code>cps-lab2-sensor</code>. Всередині папки створіть скетч Arduino з аналогічною назвою <code>cps-lab2-sensor.ino</code>.</p>
+<p>Структура папки проєкту повинна мати вигляд:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>cps-lab2-sensor/
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── cps-lab2-sensor.ino   (Файл коду C/C++)
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>└── circuit.simu           (Схема моделювання SimulIDE)
+</span></code></pre></div></p>
+<h3 id="03-simulide">Крок 0.3. Налаштування симуляційної схеми в SimulIDE</h3>
+<ol>
+<li>
+<p>Запустіть <code>SimulIDE.exe</code>.</p>
+</li>
+<li>
+<p>У лівій панелі компонентів у розділі <strong>Micro</strong> знайдіть компонент <strong>Arduino Uno</strong> та перетягніть його на робоче поле.</p>
+</li>
+<li>
+<p>У розділі <strong>Switches/Potentiometers</strong> знайдіть <strong>Potentiometer</strong> (або у розділі <strong>Sources</strong> візьміть <strong>Volt. Source</strong>) для імітації виходу термопари.</p>
+</li>
+<li>
+<p>З’єднайте центральний вивід потенціометра з аналоговим входом <strong>A0</strong> плати Arduino Uno. Крайні виводи потенціометра підключіть до ліній <strong>5V</strong> та <strong>GND</strong>.</p>
+</li>
+<li>
+<p>Клацніть правою кнопкою миші на плату Arduino Uno та оберіть пункт <strong>Open Serial Monitor</strong> для відкриття консолі UART.</p>
+</li>
+<li>
+<p>Збережіть схему у папку проєкту під назвою <code>circuit.simu</code>.</p>
+</li>
+</ol>
+<hr />
+<h2 id="3">3 Порядок виконання роботи</h2>
+<h3 id="_6">Індивідуальні завдання</h3>
+<p>Параметри систем обробки телеметрії вибираються з наведеної нижче таблиці відповідно до номера варіанта (номер студента у списку групи).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Варіант</th>
+<th style="text-align: left;">Процес / Тип датчика</th>
+<th style="text-align: center;"><span class="arithmatex">\(V_{ref}\)</span>, В</th>
+<th style="text-align: center;"><span class="arithmatex">\(T_{min}, ^\circ\text{C}\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(T_{max}, ^\circ\text{C}\)</span></th>
+<th style="text-align: center;">Нижній бар'єр <span class="arithmatex">\(T_{low}, ^\circ\text{C}\)</span></th>
+<th style="text-align: center;">Верхній бар'єр <span class="arithmatex">\(T_{high}, ^\circ\text{C}\)</span></th>
+<th style="text-align: center;">Розмір вікна <span class="arithmatex">\(N\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;">Охолодження реактора</td>
+<td style="text-align: center;"><span class="arithmatex">\(5.0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-50\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+150\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-20\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+100\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(8\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: left;">Термообробка сталі</td>
+<td style="text-align: center;"><span class="arithmatex">\(5.0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+1000\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+100\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+850\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(10\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: left;">Клімат-контроль теплиці</td>
+<td style="text-align: center;"><span class="arithmatex">\(5.0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-10\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+60\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+45\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: left;">Моніторинг двигуна</td>
+<td style="text-align: center;"><span class="arithmatex">\(5.0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-40\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+200\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-10\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+140\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(12\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: left;">Кріогенна установка</td>
+<td style="text-align: center;"><span class="arithmatex">\(5.0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-200\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+50\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-180\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(6\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>6</strong></td>
+<td style="text-align: left;">Сушильна камера</td>
+<td style="text-align: center;"><span class="arithmatex">\(5.0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+300\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+20\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+220\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(8\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>7</strong></td>
+<td style="text-align: left;">Інкубатор птахофабрики</td>
+<td style="text-align: center;"><span class="arithmatex">\(5.0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+10\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+50\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+25\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+42\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>8</strong></td>
+<td style="text-align: left;">Паровий котел</td>
+<td style="text-align: center;"><span class="arithmatex">\(5.0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+500\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+50\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+400\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(15\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>9</strong></td>
+<td style="text-align: left;">Масляний трансформатор</td>
+<td style="text-align: center;"><span class="arithmatex">\(5.0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-20\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+120\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+90\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(10\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>10</strong></td>
+<td style="text-align: left;">Теплообмінник ГВС</td>
+<td style="text-align: center;"><span class="arithmatex">\(5.0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+100\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+10\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+80\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>11</strong></td>
+<td style="text-align: left;">Автоклав харчовий</td>
+<td style="text-align: center;"><span class="arithmatex">\(5.0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+200\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+30\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+150\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(8\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>12</strong></td>
+<td style="text-align: left;">Сонячний колектор</td>
+<td style="text-align: center;"><span class="arithmatex">\(5.0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-30\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+120\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-10\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+95\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(6\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>13</strong></td>
+<td style="text-align: left;">Серверна стійка</td>
+<td style="text-align: center;"><span class="arithmatex">\(5.0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+70\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+10\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+45\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>14</strong></td>
+<td style="text-align: left;">Ливарна форма</td>
+<td style="text-align: center;"><span class="arithmatex">\(5.0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+100\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+1200\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+200\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+1000\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(12\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>15</strong></td>
+<td style="text-align: left;">Холодильна камера</td>
+<td style="text-align: center;"><span class="arithmatex">\(5.0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-35\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+15\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-30\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+5\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(8\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>16</strong></td>
+<td style="text-align: left;">Газова турбіна</td>
+<td style="text-align: center;"><span class="arithmatex">\(5.0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+800\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+100\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+650\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(10\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>17</strong></td>
+<td style="text-align: left;">Магістральний нафтопровід</td>
+<td style="text-align: center;"><span class="arithmatex">\(5.0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-40\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+80\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-20\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+50\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(6\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>18</strong></td>
+<td style="text-align: left;">Паяльна станція</td>
+<td style="text-align: center;"><span class="arithmatex">\(5.0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+450\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+100\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+380\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>19</strong></td>
+<td style="text-align: left;">Електролізний ванна</td>
+<td style="text-align: center;"><span class="arithmatex">\(5.0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+250\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+40\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+180\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(8\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>20</strong></td>
+<td style="text-align: left;">Система дегазації</td>
+<td style="text-align: center;"><span class="arithmatex">\(5.0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-20\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+150\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+110\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(10\)</span></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="arduino-ide">Покроковий алгоритм розробки скетчу в Arduino IDE</h3>
+<p>Відкрийте файл <code>cps-lab2-sensor.ino</code> у середовищі Arduino IDE та введіть повний програмний код, поданий нижче.</p>
+<blockquote>
+<p><strong>Увага:</strong> У коді наведено конфігурацію для <strong>Варіанта №1</strong>. При виконанні свого варіанта замініть значення констант <code>T_MIN</code>, <code>T_MAX</code>, <code>T_LOW_BARRIER</code>, <code>T_HIGH_BARRIER</code> та <code>WINDOW_SIZE</code> на значення з таблиці.</p>
+</blockquote>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cm">/**</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cm"> * Лабораторна робота №2. Прикладні алгоритми КФС.</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cm"> * Алгоритм відсікання аномальних значень телеметрії та накопичення ковзного середнього.</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="cm"> * Варіант №1: Охолодження реактора.</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="cm"> */</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1">// 1. Конфігураційні константи системи (залежать від Варіанта)</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">V_REF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5.0</span><span class="p">;</span><span class="w">            </span><span class="c1">// Опорна напруга АЦП, Вольт</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">T_MIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">-50.0</span><span class="p">;</span><span class="w">          </span><span class="c1">// Мінімальна температура датчика, град. C</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">T_MAX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">150.0</span><span class="p">;</span><span class="w">          </span><span class="c1">// Максимальна температура датчика, град. C</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">T_LOW_BARRIER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">-20.0</span><span class="p">;</span><span class="w">  </span><span class="c1">// Нижній допустимий бар&#39;єр відсікання, град. C</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">T_HIGH_BARRIER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100.0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Верхній допустимий бар&#39;єр відсікання, град. C</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">WINDOW_SIZE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w">          </span><span class="c1">// Розмір вікна накопичення коректних замірів N</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="c1">// 2. Визначення вхідного піна АЦП</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">SENSOR_PIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A0</span><span class="p">;</span><span class="w">          </span><span class="c1">// Аналоговий вхід мікроконтролера</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="c1">// 3. Глобальні змінні для зберігання стану буфера</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="kt">float</span><span class="w"> </span><span class="n">tempBuffer</span><span class="p">[</span><span class="n">WINDOW_SIZE</span><span class="p">];</span><span class="w">      </span><span class="c1">// Циклічний буфер для збереження коректних замірів</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="kt">int</span><span class="w"> </span><span class="n">validSampleCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">           </span><span class="c1">// Лічильник збережених коректних замірів</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">totalReadings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">    </span><span class="c1">// Загальний лічильник виконаних зчитувань</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">rejectedReadings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Лічильник відкинутих аномальних значень</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">  </span><span class="c1">// Ініціалізація послідовного порту UART зі швидкістю 9600 біт/с</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">  </span><span class="c1">// Виведення банера системи у консоль</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;==================================================&quot;</span><span class="p">));</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot; КФС: Система первинної обробки телеметрії реального часу&quot;</span><span class="p">));</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot; Стратегія: Послідовне відсікання бар&#39;єрами без складних булевих умов&quot;</span><span class="p">));</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;==================================================&quot;</span><span class="p">));</span>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="p">}</span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">  </span><span class="c1">// 1. Зчитування цифрового коду АЦП з аналогового входу A0</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">  </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">adcRaw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">analogRead</span><span class="p">(</span><span class="n">SENSOR_PIN</span><span class="p">);</span>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">  </span><span class="n">totalReadings</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">  </span><span class="c1">// 2. Розрахунок фактичної напруги Vin</span>
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">vIn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">adcRaw</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">V_REF</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1023.0</span><span class="p">;</span>
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a>
+</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">  </span><span class="c1">// 3. Масштабування напруги у фізичне значення температури T</span>
+</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">currentTemp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">T_MIN</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">vIn</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">V_REF</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">T_MAX</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">T_MIN</span><span class="p">);</span>
+</span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a>
+</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="w">  </span><span class="c1">// 4. Реалізація стратегії відсікання бар&#39;єрами (оптимізована для реального часу)</span>
+</span><span id="__span-1-50"><a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="w">  </span><span class="c1">// Використовуємо прості послідовні перевірки замість складних умов з &amp;&amp; та ||</span>
+</span><span id="__span-1-51"><a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">currentTemp</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T_LOW_BARRIER</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-52"><a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a><span class="w">    </span><span class="c1">// Відсікання за нижньою межею (аномальний холод/шум)</span>
+</span><span id="__span-1-53"><a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="w">    </span><span class="n">rejectedReadings</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-1-54"><a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;[АНОМАЛІЯ НИЖНЯ] Замір #&quot;</span><span class="p">));</span>
+</span><span id="__span-1-55"><a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">totalReadings</span><span class="p">);</span>
+</span><span id="__span-1-56"><a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;: T = &quot;</span><span class="p">));</span>
+</span><span id="__span-1-57"><a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">currentTemp</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+</span><span id="__span-1-58"><a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot; deg C &lt; T_low. Відкинуто.&quot;</span><span class="p">));</span>
+</span><span id="__span-1-59"><a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span>
+</span><span id="__span-1-60"><a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a><span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">currentTemp</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">T_HIGH_BARRIER</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-61"><a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="w">    </span><span class="c1">// Відсікання за верхньою межею (аномальне перегрівання/імпульсний шум)</span>
+</span><span id="__span-1-62"><a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="w">    </span><span class="n">rejectedReadings</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-1-63"><a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;[АНОМАЛІЯ ВЕРХНЯ] Замір #&quot;</span><span class="p">));</span>
+</span><span id="__span-1-64"><a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">totalReadings</span><span class="p">);</span>
+</span><span id="__span-1-65"><a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;: T = &quot;</span><span class="p">));</span>
+</span><span id="__span-1-66"><a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">currentTemp</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+</span><span id="__span-1-67"><a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot; deg C &gt; T_high. Відкинуто.&quot;</span><span class="p">));</span>
+</span><span id="__span-1-68"><a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span>
+</span><span id="__span-1-69"><a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a><span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-70"><a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a><span class="w">    </span><span class="c1">// Замір знаходиться в межах норми - додаємо до циклічного буфера</span>
+</span><span id="__span-1-71"><a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a><span class="w">    </span><span class="n">tempBuffer</span><span class="p">[</span><span class="n">validSampleCount</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentTemp</span><span class="p">;</span>
+</span><span id="__span-1-72"><a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a><span class="w">    </span><span class="n">validSampleCount</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-1-73"><a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a>
+</span><span id="__span-1-74"><a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;[НОРМА] Замір #&quot;</span><span class="p">));</span>
+</span><span id="__span-1-75"><a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">totalReadings</span><span class="p">);</span>
+</span><span id="__span-1-76"><a id="__codelineno-1-76" name="__codelineno-1-76" href="#__codelineno-1-76"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;: T = &quot;</span><span class="p">));</span>
+</span><span id="__span-1-77"><a id="__codelineno-1-77" name="__codelineno-1-77" href="#__codelineno-1-77"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">currentTemp</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+</span><span id="__span-1-78"><a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot; deg C занесено в буфер (&quot;</span><span class="p">));</span>
+</span><span id="__span-1-79"><a id="__codelineno-1-79" name="__codelineno-1-79" href="#__codelineno-1-79"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">validSampleCount</span><span class="p">);</span>
+</span><span id="__span-1-80"><a id="__codelineno-1-80" name="__codelineno-1-80" href="#__codelineno-1-80"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">));</span>
+</span><span id="__span-1-81"><a id="__codelineno-1-81" name="__codelineno-1-81" href="#__codelineno-1-81"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">WINDOW_SIZE</span><span class="p">);</span>
+</span><span id="__span-1-82"><a id="__codelineno-1-82" name="__codelineno-1-82" href="#__codelineno-1-82"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;)&quot;</span><span class="p">));</span>
+</span><span id="__span-1-83"><a id="__codelineno-1-83" name="__codelineno-1-83" href="#__codelineno-1-83"></a>
+</span><span id="__span-1-84"><a id="__codelineno-1-84" name="__codelineno-1-84" href="#__codelineno-1-84"></a><span class="w">    </span><span class="c1">// 5. Перевірка заповнення вікна накопичення N</span>
+</span><span id="__span-1-85"><a id="__codelineno-1-85" name="__codelineno-1-85" href="#__codelineno-1-85"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">validSampleCount</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">WINDOW_SIZE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-86"><a id="__codelineno-1-86" name="__codelineno-1-86" href="#__codelineno-1-86"></a><span class="w">      </span><span class="c1">// Обчислення ковзного середнього за допомогою циклу for</span>
+</span><span id="__span-1-87"><a id="__codelineno-1-87" name="__codelineno-1-87" href="#__codelineno-1-87"></a><span class="w">      </span><span class="kt">float</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+</span><span id="__span-1-88"><a id="__codelineno-1-88" name="__codelineno-1-88" href="#__codelineno-1-88"></a><span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">WINDOW_SIZE</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-89"><a id="__codelineno-1-89" name="__codelineno-1-89" href="#__codelineno-1-89"></a><span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">tempBuffer</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span><span id="__span-1-90"><a id="__codelineno-1-90" name="__codelineno-1-90" href="#__codelineno-1-90"></a><span class="w">      </span><span class="p">}</span>
+</span><span id="__span-1-91"><a id="__codelineno-1-91" name="__codelineno-1-91" href="#__codelineno-1-91"></a><span class="w">      </span><span class="kt">float</span><span class="w"> </span><span class="n">meanTemp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">WINDOW_SIZE</span><span class="p">;</span>
+</span><span id="__span-1-92"><a id="__codelineno-1-92" name="__codelineno-1-92" href="#__codelineno-1-92"></a>
+</span><span id="__span-1-93"><a id="__codelineno-1-93" name="__codelineno-1-93" href="#__codelineno-1-93"></a><span class="w">      </span><span class="c1">// Виведення підсумкового результату</span>
+</span><span id="__span-1-94"><a id="__codelineno-1-94" name="__codelineno-1-94" href="#__codelineno-1-94"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;--------------------------------------------------&quot;</span><span class="p">));</span>
+</span><span id="__span-1-95"><a id="__codelineno-1-95" name="__codelineno-1-95" href="#__codelineno-1-95"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;&gt;&gt;&gt; УСЕРЕДНЕНА ТЕЛЕМЕТРІЯ (N=&quot;</span><span class="p">));</span>
+</span><span id="__span-1-96"><a id="__codelineno-1-96" name="__codelineno-1-96" href="#__codelineno-1-96"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">WINDOW_SIZE</span><span class="p">);</span>
+</span><span id="__span-1-97"><a id="__codelineno-1-97" name="__codelineno-1-97" href="#__codelineno-1-97"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;): T_mean = &quot;</span><span class="p">));</span>
+</span><span id="__span-1-98"><a id="__codelineno-1-98" name="__codelineno-1-98" href="#__codelineno-1-98"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">meanTemp</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+</span><span id="__span-1-99"><a id="__codelineno-1-99" name="__codelineno-1-99" href="#__codelineno-1-99"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot; deg C &lt;&lt;&lt;&quot;</span><span class="p">));</span>
+</span><span id="__span-1-100"><a id="__codelineno-1-100" name="__codelineno-1-100" href="#__codelineno-1-100"></a>
+</span><span id="__span-1-101"><a id="__codelineno-1-101" name="__codelineno-1-101" href="#__codelineno-1-101"></a><span class="w">      </span><span class="c1">// Статистика відсікання завад</span>
+</span><span id="__span-1-102"><a id="__codelineno-1-102" name="__codelineno-1-102" href="#__codelineno-1-102"></a><span class="w">      </span><span class="kt">float</span><span class="w"> </span><span class="n">errorRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="kt">float</span><span class="p">)</span><span class="n">rejectedReadings</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">totalReadings</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100.0</span><span class="p">;</span>
+</span><span id="__span-1-103"><a id="__codelineno-1-103" name="__codelineno-1-103" href="#__codelineno-1-103"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;Статистика: Всього замірів: &quot;</span><span class="p">));</span>
+</span><span id="__span-1-104"><a id="__codelineno-1-104" name="__codelineno-1-104" href="#__codelineno-1-104"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">totalReadings</span><span class="p">);</span>
+</span><span id="__span-1-105"><a id="__codelineno-1-105" name="__codelineno-1-105" href="#__codelineno-1-105"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot; | Відкинуто завад: &quot;</span><span class="p">));</span>
+</span><span id="__span-1-106"><a id="__codelineno-1-106" name="__codelineno-1-106" href="#__codelineno-1-106"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">rejectedReadings</span><span class="p">);</span>
+</span><span id="__span-1-107"><a id="__codelineno-1-107" name="__codelineno-1-107" href="#__codelineno-1-107"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot; (&quot;</span><span class="p">));</span>
+</span><span id="__span-1-108"><a id="__codelineno-1-108" name="__codelineno-1-108" href="#__codelineno-1-108"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">errorRate</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-1-109"><a id="__codelineno-1-109" name="__codelineno-1-109" href="#__codelineno-1-109"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">&quot;%)</span><span class="se">\n</span><span class="s">--------------------------------------------------&quot;</span><span class="p">));</span>
+</span><span id="__span-1-110"><a id="__codelineno-1-110" name="__codelineno-1-110" href="#__codelineno-1-110"></a>
+</span><span id="__span-1-111"><a id="__codelineno-1-111" name="__codelineno-1-111" href="#__codelineno-1-111"></a><span class="w">      </span><span class="c1">// Скидання лічильника буфера для наступного вікна</span>
+</span><span id="__span-1-112"><a id="__codelineno-1-112" name="__codelineno-1-112" href="#__codelineno-1-112"></a><span class="w">      </span><span class="n">validSampleCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-113"><a id="__codelineno-1-113" name="__codelineno-1-113" href="#__codelineno-1-113"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-114"><a id="__codelineno-1-114" name="__codelineno-1-114" href="#__codelineno-1-114"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-115"><a id="__codelineno-1-115" name="__codelineno-1-115" href="#__codelineno-1-115"></a>
+</span><span id="__span-1-116"><a id="__codelineno-1-116" name="__codelineno-1-116" href="#__codelineno-1-116"></a><span class="w">  </span><span class="c1">// Затримка 500 мс між замірами для симуляції періодичного опитування</span>
+</span><span id="__span-1-117"><a id="__codelineno-1-117" name="__codelineno-1-117" href="#__codelineno-1-117"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+</span><span id="__span-1-118"><a id="__codelineno-1-118" name="__codelineno-1-118" href="#__codelineno-1-118"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="simulide">Компіляція та завантаження прошивки в SimulIDE</h3>
+<ol>
+<li>
+<p>У середовищі <strong>Arduino IDE</strong> перевірте правильність налаштувань плати: оберіть пункт меню <strong>Tools -&gt; Board -&gt; Arduino AVR Boards -&gt; Arduino Uno</strong>.</p>
+</li>
+<li>
+<p>Виконайте експорт скомпільованого двійкового файлу прошивки: оберіть пункт меню <strong>Sketch -&gt; Export Compiled Binary</strong> (або натисніть комбінацію клавіш <code>Ctrl + Alt + S</code>).</p>
+</li>
+<li>
+<p>У папці проєкту <code>cps-lab2-sensor</code> з'явиться скомпільований файл із розширенням <code>.hex</code> (наприклад, <code>cps-lab2-sensor.ino.hex</code>).</p>
+</li>
+<li>
+<p>Перейдіть до вікна програму <strong>SimulIDE</strong>.</p>
+</li>
+<li>
+<p>Клацніть правою кнопкою миші на мікроконтролер <strong>ATmega328P</strong> (Arduino Uno) та у контекстному меню оберіть пункт <strong>Load firmware</strong>.</p>
+</li>
+<li>
+<p>У вікні файлового менеджера вкажіть шлях до завантаженого <code>.hex</code> файлу.</p>
+</li>
+<li>
+<p>Натисніть кнопку <strong>Power Circuit</strong> (червона кнопка запуску симуляції у верхній лівій частині вікна SimulIDE).</p>
+</li>
+</ol>
+<p><pre class="mermaid"><code>flowchart LR
+    subgraph SimulIDE ["Схемотехнічний&lt;br/&gt;симулятор SimulIDE"]
+        Potentiometer["Потенціометр / Джерело&lt;br/&gt;напруги Vin"] --&gt;|Вхід A0| MCU["ATmega328P / Arduino&lt;br/&gt;Uno"]
+        MCU --&gt;|UART Tx/Rx| Terminal["Serial Terminal&lt;br/&gt;Консоль"]
+    end
+
+    subgraph ArduinoIDE [Середовище Arduino IDE]
+        Code[Код скетчу C/C++] --&gt;|Ctrl+Alt+S| Hex[Файл прошивки .hex]
+    end
+
+    Hex -.-&gt;|Load firmware| MCU</code></pre>
+<em>Рисунок 2 — Схема взаємодії апаратних компонентів та програмного комплексу в SimulIDE</em></p>
+<p>Ця схема показує, що прошивка C/C++, розроблена в Arduino IDE, після компіляції в <code>.hex</code> файл завантажується у віртуальний мікроконтролер, який зчитує аналоговий сигнал від потенціометра та виводить відфільтровані результати в консоль UART.</p>
+<hr />
+<h3 id="_7">Проведення експерименту та зняття логів</h3>
+<ol>
+<li>
+<p>Після запуску симулятора відкрийте <strong>Serial Monitor</strong> у SimulIDE.</p>
+</li>
+<li>
+<p>Змінюйте положення ручки потенціометра для створення різного рівня напруги <span class="arithmatex">\(V_{in}\)</span>:</p>
+<ul>
+<li>
+<p>Встановіть напругу, яка відповідає нормальній температурі (наприклад, <span class="arithmatex">\(2.5\text{ В}\)</span>). Переконайтеся у появі повідомлень <code>[НОРМА]</code> та заповненні буфера.</p>
+</li>
+<li>
+<p>Зменшіть напругу до <span class="arithmatex">\(0\text{ В}\)</span> (температура нижче <span class="arithmatex">\(T_{low}\)</span>). Переконайтеся у появі повідомлень <code>[АНОМАЛІЯ НИЖНЯ]</code> та відсутності зміни лічильника <code>validSampleCount</code>.</p>
+</li>
+<li>
+<p>Збільште напругу до <span class="arithmatex">\(5\text{ В}\)</span> (температура вище <span class="arithmatex">\(T_{high}\)</span>). Переконайтеся у появі повідомлень <code>[АНОМАЛІЯ ВЕРХНЯ]</code>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Після накопичення <span class="arithmatex">\(N\)</span> коректних замірів перевірте розрахунок підсумкового значення <code>T_mean</code>.</p>
+</li>
+</ol>
+<p><strong>Приклад виведення у Serial Monitor:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>==================================================
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a> КФС: Система первинної обробки телеметрії реального часу
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a> Стратегія: Послідовне відсікання бар&#39;єрами без складних булевих умов
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>==================================================
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>[НОРМА] Замір #1: T = 25.40 deg C занесено в буфер (1/8)
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>[НОРМА] Замір #2: T = 26.10 deg C занесено в буфер (2/8)
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>[АНОМАЛІЯ ВЕРХНЯ] Замір #3: T = 125.00 deg C &gt; T_high. Відкинуто.
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>[НОРМА] Замір #4: T = 24.80 deg C занесено в буфер (3/8)
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>[АНОМАЛІЯ НИЖНЯ] Замір #5: T = -45.00 deg C &lt; T_low. Відкинуто.
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>[НОРМА] Замір #6: T = 25.00 deg C занесено в буфер (4/8)
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>[НОРМА] Замір #7: T = 25.20 deg C занесено в буфер (5/8)
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>[НОРМА] Замір #8: T = 24.90 deg C занесено в буфер (6/8)
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>[НОРМА] Замір #9: T = 25.10 deg C занесено в буфер (7/8)
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>[НОРМА] Замір #10: T = 25.30 deg C занесено в буфер (8/8)
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>--------------------------------------------------
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>&gt;&gt;&gt; УСЕРЕДНЕНА ТЕЛЕМЕТРІЯ (N=8): T_mean = 25.225 deg C &lt;&lt;&lt;
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>Статистика: Всього замірів: 10 | Відкинуто завад: 2 (20.0%)
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>--------------------------------------------------
+</span></code></pre></div>
+<hr />
+<h2 id="4">4 Вимоги до змісту звіту</h2>
+<p>Звіт з лабораторної роботи оформлюється у форматі PDF або MS Word відповідно до стандартів вищого навчального закладу і повинен містити наступні обов’язкові елементи:</p>
+<ol>
+<li>
+<p><strong>Титульна сторінка.</strong></p>
+<ul>
+<li>
+<p>Назва вищого навчального закладу, кафедри, дисципліни.</p>
+</li>
+<li>
+<p>Номер та назва лабораторної роботи, номер обраного варіанта.</p>
+</li>
+<li>
+<p>ПІБ, шифр навчальної групи.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Мета роботи, короткі теоретичні відомості та опис отриманого завдання.</strong></p>
+<ul>
+<li>
+<p>Виклад основного теоретичного базису.</p>
+</li>
+<li>
+<p>Опис завдання згідно з таблицею варіантів.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Схемотехнічна модель.</strong> Скріншот робочого поля симулятора SimulIDE із зображенням підключеної плати Arduino Uno, аналогового джерела сигналу та відкритого монітора послідовного порту.</p>
+</li>
+<li>
+<p><strong>Програмний код.</strong> Повний текст скетчу C/C++ (<code>cps-lab2-sensor.ino</code>) із коментарями.</p>
+</li>
+<li>
+<p><strong>Результати вимірювань.</strong> Скріншоти консолі UART, що підтверджують відсікання нижньої та верхньої аномалій, а також підсумковий розрахунок усередненої температури <code>T_mean</code>.</p>
+</li>
+<li>
+<p><strong>Аналітичний розрахунок складності.</strong></p>
+<ul>
+<li>
+<p>Розрахунок середньої кількості операцій розгалуження <span class="arithmatex">\(K_{сер} = \frac{K_{min} + K_{max}}{2}\)</span>.</p>
+</li>
+<li>
+<p>Оцінка обсягу Flash та SRAM пам’яті, використаної скетчем (на основі звіту компілятора Arduino IDE).</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Висновки.</strong> Підсумковий аналіз ефективності застосування стратегії відсікання бар'єрами для систем жорсткого реального часу.</p>
+</li>
+</ol>
+<hr />
+<h2 id="5">5 Контрольні запитання</h2>
+<ol>
+<li>
+<p>Чому при розробці програмного забезпечення для систем жорсткого реального часу рекомендується уникати складних умовних виразів із великою кількістю вкладених булевих операторів (<code>&amp;&amp;</code>, <code>||</code>)?</p>
+</li>
+<li>
+<p>Поясніть фізичний зміст коефіцієнтів <span class="arithmatex">\(c_1, c_2, c_3, c_4\)</span> у формулі функції трудомісткості <span class="arithmatex">\(\Psi\)</span>. Який із ресурсів є найбіднішим у мікроконтролері ATmega328P?</p>
+</li>
+<li>
+<p>У чому полягає відмінність між повною та короткою схемами обчислення булевих виразів компілятором C++? Як короткий вирахування запобігає помилкам звернення до пам'яті?</p>
+</li>
+<li>
+<p>Яким чином розрядність АЦП (10 біт) впливає на роздільну здатність вимірювання температури у градусах Цельсія для вашого варіанта? Наведіть розрахунок ціни найменшого розряду (LSB).</p>
+</li>
+<li>
+<p>Як використання статичного масиву як циклічного буфера впливає на ємнісну складність <span class="arithmatex">\(S_d\)</span> в оперативній пам'яті (SRAM) порівняно з використанням динамічної пам'яті (<code>malloc</code>/<code>new</code>) у мікроконтролерах?</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Повернутись нагору
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "header.autohide", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u0421\u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0429\u0435 1 \u0437\u0431\u0456\u0433 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.more.other": "\u0429\u0435 # \u0437\u0431\u0456\u0433\u0456\u0432 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456", "search.result.none": "\u0417\u0431\u0456\u0433\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0437\u0431\u0456\u0433", "search.result.other": "\u0417\u043d\u0430\u0439\u0434\u0435\u043d\u043e # \u0437\u0431\u0456\u0433\u0456\u0432", "search.result.placeholder": "\u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u043f\u0438\u0441\u0430\u0442\u0438 \u0434\u043b\u044f \u043f\u043e\u0448\u0443\u043a\u0443", "search.result.term.missing": "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0437\u0430\u043f\u0438\u0442\u0443", "select.version": "\u041e\u0431\u0440\u0430\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
