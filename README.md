@@ -64,11 +64,10 @@
 
 У процесі виконання лабораторних, практичних робіт та розрахунково-графічного проєкту здобувачі опановують інструментарій, що відповідає сучасним вимогам до розробників у галузі Embedded Systems, IIoT та Edge/Fog Computing:
 
-| Категорія | Використовуване програмне забезпечення та бібліотеки |
+| Категорія | Використовуване програмне забезпечення та інструменти |
 | :--- | :--- |
-| **Мови програмування** | C/C++ (стандарт C++17), JavaScript (ECMAScript 2022+), Python (v3.10+), SQL / Line Protocol |
-| **Мікроконтролерне середовище** | Arduino IDE (v1.8.x / 2.x), схемотехнічний симулятор SimulIDE (v0.4.15+), ATmega328P |
-| **Серверні платформи та скрипти** | Node.js (v18.0+ / v20.0+), пакет `mqtt`, `express` |
+| **Мікроконтролерне середовище** | Arduino IDE (v1.8.x / 2.x — компіляція C/C++ скетчів `.ino`), схемотехнічний симулятор SimulIDE (v0.4.15+), ATmega328P |
+| **Серверні платформи та скрипти** | Node.js (v18.0+ / v20.0+), Python (v3.10+), JavaScript (ECMAScript 2022+) |
 | **Оркестрація та візуалізація** | Node-RED (v3.1+), плагін `node-red-dashboard` |
 | **Мережева інфраструктура** | MQTT-брокер Eclipse Mosquitto (v2.0+), WebSockets |
 | **Контейнеризація** | Docker Engine (v24.0+), Docker Compose (v2.20+), мережі `bridge`, іменовані томи `volumes` |
@@ -88,7 +87,7 @@
    node -v
    npm -v
    ```
-3. Встановіть глобально платформу **Node-RED** та CLI-інструмент візуалізації Mermaid:
+3. Встановіть глобально платформу **Node-RED** з [nodered.org](https://nodered.org/) та CLI-інструмент візуалізації Mermaid:
    ```bash
    npm install -g --unsafe-perm node-red @mermaid-js/mermaid-cli
    ```
@@ -98,15 +97,14 @@
    npm install node-red-dashboard
    ```
 
-### Крок 2. Встановлення компілятора C++ та середовища Python
-1. Для Windows встановіть **MinGW-w64** (або Dev-C++ / MS Visual Studio), для Linux — пакет `build-essential` (`sudo apt install build-essential g++`).
-2. Встановіть **Python 3.10+** та необхідні аналітичні бібліотеки:
+### Крок 2. Встановлення середовища Python
+1. Встановіть **Python 3.10+** [python.org](https://www.python.org/) та необхідні аналітичні бібліотеки:
    ```bash
    pip install numpy pandas matplotlib
    ```
 
 ### Крок 3. Налаштування Docker та Docker Compose
-1. Встановіть **Docker Desktop** (Windows/macOS) або **Docker Engine + Docker Compose** (Linux).
+1. Встановіть **Docker Desktop** з [docker.com](https://www.docker.com/) (Windows/macOS) або **Docker Engine + Docker Compose** (Linux).
 2. Перевірте функціонування демона контейнеризації:
    ```bash
    docker -v
@@ -152,4 +150,4 @@ flowchart TD
 
 * **Навчальний заклад:** Кременчуцький національний університет імені Михайла Остроградського
 * **Кафедра:** Комп'ютерної інженерії та електроніки
-* **Автор курсу:** [Вадурін Кирило Олегович]([http://kras.kdu.edu.ua/](https://cee.kdu.edu.ua/uk/vadurin-kyrylo-olehovych)
+* **Автор курсу:** [Вадурін Кирило Олегович](https://cee.kdu.edu.ua/uk/vadurin-kyrylo-olehovych)
