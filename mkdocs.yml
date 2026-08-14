@@ -82,7 +82,7 @@ extra_javascript:
 extra_css:
   - stylesheets/extra.css
 
-copyright: 'Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
+copyright: 'Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>'
 
 nav:
   - Головна: index.md
@@ -117,3 +117,4 @@ nav:
 
   - Самостійна робота: self-study/index.md
   - Розрахунково-графічна робота: rg/index.md
+  - Перелік тестових та практичних завдань для самопідготовки: rg/quest.md
