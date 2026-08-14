@@ -1,7 +1,13 @@
 # Практичне заняття № 6<br>Порівняльний аналіз методів сортування даних
- 
-**Мета.** Засвоєння практичних навичок аналізу та експериментального хронометражу швидкодії алгоритмів внутрішнього сортування масивів телеметрії в кіберфізичних системах, дослідження впливу розмірності вхідних даних у діапазоні $N = 1000 \dots 100000$ елементів на часову складність квадратичних методів ($O(n^2)$) та логарифмічного методу QuickSort ($O(n \log n)$), реалізація вимірювального комплексу мовою C++ у середовищі Dev-C++ / GCC та побудова порівняльних аналітичних графіків мовою Python.  
-**Стек та інструменти:** мова програмування C++ (стандарт C++17, середовище Dev-C++ або компілятор GCC / G++ v11+), мова програмування Python (версія v3.10+) з бібліотекою `matplotlib`, системний термінал (Bash, PowerShell), текстовий редактор Visual Studio Code.  
+
+**Мета.** Засвоєння практичних навичок аналізу та експериментального хронометражу швидкодії алгоритмів внутрішнього сортування масивів телеметрії в кіберфізичних системах, дослідження впливу розмірності вхідних даних на часову складність квадратичних методів ($O(n^2)$) та логарифмічного методу QuickSort ($O(n \log n)$), реалізація вимірювального комплексу на базі мікроконтролера ATmega328P у середовищах Arduino IDE та SimulIDE, а також побудова порівняльних аналітичних графіків мовою Python.
+
+**Стек та інструменти:**
+*   **Мови програмування:** C/C++ (стандарт C++17 для вбудованих систем), Python (версія v3.10+).
+*   **Середовище розробки:** Arduino IDE (версії 1.8.x або 2.x).
+*   **Схемотехнічний симулятор:** SimulIDE (версія 0.4.15 або новіша).
+*   **Апаратна платформа симуляції:** мікроконтролер ATmega328P (платформа Arduino Uno), послідовний порт UART (Serial Monitor).
+*   **Аналітичні бібліотеки Python:** `matplotlib`, `pandas` (для побудови порівняльних графіків складності).
 
 ---
 
@@ -64,47 +70,44 @@ $$
 \Psi = c_1 \cdot F_a(N) + c_2 \cdot M_{code} + c_3 \cdot S_d + c_4 \cdot S_r
 $$
 
-де $F_a(N)$ відображає часову складність (кількість операцій $K$), $M_{code}$ позначає обсяг скомпільованого машинного коду, $S_d$ відповідає розміру масиву телеметрії у байтах ($S_d = N \cdot \text{sizeof}(int)$), $S_r$ описує витрати стекової пам'яті на рекурсивні виклики (для QuickSort $S_r = \mathcal{O}(\log_2 n)$), а $c_1, c_2, c_3, c_4$ є ваговими коефіцієнтами конфігурації.
+де $F_a(N)$ відображає часову складність (кількість операцій $K$), $M_{code}$ позначає обсяг скомпільованого машинного коду у Flash-пам'яті, $S_d$ відповідає розміру масиву телеметрії у байтах ($S_d = N \cdot \text{sizeof}(int)$), $S_r$ описує витрати стекової пам'яті на рекурсивні виклики (для QuickSort $S_r = \mathcal{O}(\log_2 n)$), а $c_1, c_2, c_3, c_4$ є ваговими коефіцієнтами конфігурації ATmega328P.
 
 ---
 
 ### 2 Підготовка середовища та розгортання проєкту (Крок 0)
 
-Для виконання практичного заняття використовується компілятор C++ (Dev-C++ або GCC) для зняття високоточного хронометражу та середовище Python для візуалізації графіків.
+Для виконання практичного заняття використовується середовище **Arduino IDE** для компіляції прошивки мікроконтролера, симулятор **SimulIDE** для виведення логів хронометражу через UART та **Python** із бібліотекою `matplotlib` для побудови апроксимаційних графіків складності.
 
 #### Крок 0.1. Перевірка та встановлення системних інструментів
-Відкрийте термінал та перевірте наявність компілятора `g++` та інтерпретатора Python:
-
-```bash
-g++ --version
-python --version
-```
-
-Встановіть бібліотеку `matplotlib` для Python через менеджер пакетів `pip`:
-
-```bash
-pip install matplotlib
-```
+1. Перевірте наявність середовища **Arduino IDE** та симулятора **SimulIDE**.
+2. Відкрийте системний термінал та перевірте наявність Python:
+   ```bash
+   python --version
+   ```
+3. Встановіть бібліотеки `matplotlib` та `pandas` для Python через менеджер пакетів `pip`:
+   ```bash
+   pip install matplotlib pandas
+   ```
 
 #### Крок 0.2. Створення структури папок проєкту
-Створіть робочу директорію проєкту `cps-pz6-sorting-benchmark` та необхідні підпапки:
+Створіть робочий каталог `cps-pz6-sorting-benchmark` та необхідні підпапки:
 
 ```bash
 mkdir cps-pz6-sorting-benchmark
 cd cps-pz6-sorting-benchmark
-mkdir src bin exports
+mkdir src exports
 ```
 
 Структура роботи матиме такий вигляд:
 
-```
+```text
 cps-pz6-sorting-benchmark/
-├── bin/                        (Папка для виконуваних C++ файлів)
-├── exports/                    (Збережені CSV-логи та PNG-графіки)
+├── cps-pz6-sorting-benchmark.ino (Скетч C/C++ для Arduino IDE / ATmega328P)
+├── circuit.simu                   (Схема симуляції SimulIDE)
 ├── src/
-│   ├── sort_benchmark.cpp      (Основний C++ модуль хронометражу)
-│   └── plot_results.py         (Python скрипт побудови графіків)
-└── README.md
+│   └── plot_results.py            (Python скрипт побудови графіків)
+└── exports/
+    └── sorting_complexity_comparison.png (Збережений порівняльний графік)
 ```
 
 ---
@@ -115,301 +118,302 @@ cps-pz6-sorting-benchmark/
 
 Параметри масивів телеметрії та конфігурація сортування обираються з наведеної нижче таблиці відповідно до номера вашого варіанта (номеру у списку групи).
 
-| Варіант | Джерело масиву КФС | Діапазон елементів $N$ | Стан вхідних даних (Порядок) | Напрямок сортування | Опорний елемент QuickSort |
+> **Примітка щодо пам'яті ATmega328P:** Для експериментального випробування на мікроконтролері з $2\text{ КБ}$ SRAM тестова розмірність вхідного масиву обмежена $n \in [20, 200]$ елементів, тоді як у Python-аналізаторі проводиться математичне моделювання для великих $n \in [1000, 100000]$.
+
+| Варіант | Джерело масиву КФС | Діапазон $N$ (на MCU / аналіз) | Стан вхідних даних (Порядок) | Напрямок сортування | Опорний елемент QuickSort |
 | :---: | :--- | :---: | :--- | :---: | :---: |
-| **1** | Виміри температурного поля | $1000 \dots 100000$ | Випадковий (Unsorted) | За зростанням | Середній елемент |
-| **2** | Часовий ряд вібрації турбіни | $1000 \dots 50000$ | Частково впорядкований ($50\%$) | За зростанням | Перший елемент |
-| **3** | Спектрограма звукового датчика | $1000 \dots 80000$ | Зворотно впорядкований (Reverse) | За спаданням | Останній елемент |
-| **4** | Дані оптичного лідара БПЛА | $1000 \dots 100000$ | Випадковий (Unsorted) | За спаданням | Медіана з трьох |
-| **5** | Буфер CAN-шини автомобіля | $1000 \dots 60000$ | Частково впорядкований ($75\%$) | За зростанням | Середній елемент |
-| **6** | Логи датчиків тиску нафти | $1000 \dots 50000$ | Зворотно впорядкований (Reverse) | За зростанням | Перший елемент |
-| **7** | Метеодані сонячної станції | $1000 \dots 100000$ | Випадковий (Unsorted) | За зростанням | Останній елемент |
-| **8** | Сканер штрих-кодів конвеєра | $1000 \dots 40000$ | Частково впорядкований ($25\%$) | За спаданням | Медіана з трьох |
-| **9** | Сейсмічні виміри шахти | $1000 \dots 70000$ | Зворотно впорядкований (Reverse) | За спаданням | Середній елемент |
-| **10** | Рівні рідини у автоклаві | $1000 \dots 100000$ | Випадковий (Unsorted) | За зростанням | Перший елемент |
-| **11** | Індикатори напруги інвертора| $1000 \dots 50000$ | Частково впорядкований ($50\%$) | За зростанням | Останній елемент |
-| **12** | Тахограма ротора ГЕС | $1000 \dots 80000$ | Зворотно впорядкований (Reverse) | За зростанням | Медіана з трьох |
-| **13** | Покази витратомірів газу | $1000 \dots 100000$ | Випадковий (Unsorted) | За спаданням | Середній елемент |
-| **14** | Вагові параметри вагонів | $1000 \dots 60000$ | Частково впорядкований ($80\%$) | За спаданням | Перший елемент |
-| **15** | Потік фотоприймача супутника| $1000 \dots 50000$ | Зворотно впорядкований (Reverse) | За зростанням | Останній елемент |
-| **16** | Вібрація дефектоскопа | $1000 \dots 100000$ | Випадковий (Unsorted) | За зростанням | Медіана з трьох |
-| **17** | Токовий профіль сварочного робота| $1000 \dots 40000$ | Частково впорядкований ($30\%$) | За зростанням | Середній елемент |
-| **18** | Густина нафти в магістралі | $1000 \dots 70000$ | Зворотно впорядкований (Reverse) | За спаданням | Перший елемент |
-| **19** | Температура сушильної вежі | $1000 \dots 100000$ | Випадковий (Unsorted) | За спаданням | Останній елемент |
-| **20** | Датчики переміщення дамби | $1000 \dots 50000$ | Частково впорядкований ($60\%$) | За зростанням | Медіана з трьох |
+| **1** | Виміри температурного поля | $20 \dots 200$ / $1000 \dots 100000$ | Випадковий (Unsorted) | За зростанням | Середній елемент |
+| **2** | Часовий ряд вібрації турбіни | $20 \dots 150$ / $1000 \dots 50000$ | Частково впорядкований ($50\%$) | За зростанням | Перший елемент |
+| **3** | Спектрограма звукового датчика | $20 \dots 200$ / $1000 \dots 80000$ | Зворотно впорядкований (Reverse) | За спаданням | Останній елемент |
+| **4** | Дані оптичного лідара БПЛА | $20 \dots 200$ / $1000 \dots 100000$ | Випадковий (Unsorted) | За спаданням | Медіана з трьох |
+| **5** | Буфер CAN-шини автомобіля | $20 \dots 150$ / $1000 \dots 60000$ | Частково впорядкований ($75\%$) | За зростанням | Середній елемент |
+| **6** | Логи датчиків тиску нафти | $20 \dots 150$ / $1000 \dots 50000$ | Зворотно впорядкований (Reverse) | За зростанням | Перший елемент |
+| **7** | Метеодані сонячної станції | $20 \dots 200$ / $1000 \dots 100000$ | Випадковий (Unsorted) | За зростанням | Останній елемент |
+| **8** | Сканер штрих-кодів конвеєра | $20 \dots 100$ / $1000 \dots 40000$ | Частково впорядкований ($25\%$) | За спаданням | Медіана з трьох |
+| **9** | Сейсмічні виміри шахти | $20 \dots 180$ / $1000 \dots 70000$ | Зворотно впорядкований (Reverse) | За спаданням | Середній елемент |
+| **10** | Рівні рідини у автоклаві | $20 \dots 200$ / $1000 \dots 100000$ | Випадковий (Unsorted) | За зростанням | Перший елемент |
+| **11** | Індикатори напруги інвертора| $20 \dots 150$ / $1000 \dots 50000$ | Частково впорядкований ($50\%$) | За зростанням | Останній елемент |
+| **12** | Тахограма ротора ГЕС | $20 \dots 180$ / $1000 \dots 80000$ | Зворотно впорядкований (Reverse) | За зростанням | Медіана з трьох |
+| **13** | Покази витратомірів газу | $20 \dots 200$ / $1000 \dots 100000$ | Випадковий (Unsorted) | За спаданням | Середній елемент |
+| **14** | Вагові параметри вагонів | $20 \dots 150$ / $1000 \dots 60000$ | Частково впорядкований ($80\%$) | За спаданням | Перший елемент |
+| **15** | Потік фотоприймача супутника| $20 \dots 150$ / $1000 \dots 50000$ | Зворотно впорядкований (Reverse) | За зростанням | Останній елемент |
+| **16** | Вібрація дефектоскопа | $20 \dots 200$ / $1000 \dots 100000$ | Випадковий (Unsorted) | За зростанням | Медіана з трьох |
+| **17** | Токовий профіль сварочного робота| $20 \dots 100$ / $1000 \dots 40000$ | Частково впорядкований ($30\%$) | За зростанням | Середній елемент |
+| **18** | Густина нафти в магістралі | $20 \dots 180$ / $1000 \dots 70000$ | Зворотно впорядкований (Reverse) | За спаданням | Перший елемент |
+| **19** | Температура сушильної вежі | $20 \dots 200$ / $1000 \dots 100000$ | Випадковий (Unsorted) | За спаданням | Останній елемент |
+| **20** | Датчики переміщення дамби | $20 \dots 150$ / $1000 \dots 50000$ | Частково впорядкований ($60\%$) | За зростанням | Медіана з трьох |
 
 ---
 
 #### 3.2 Покроковий алгоритм розробки з роз'ясненням коду
 
-##### Крок 1. Реалізація вимірювального C++ модуля (`src/sort_benchmark.cpp`)
+##### Крок 1. Реалізація вимірювального скетчу C++ в Arduino IDE (`cps-pz6-sorting-benchmark.ino`)
 
-Відкрийте файл `src/sort_benchmark.cpp` та вставте наступний повний код. Програма реалізує вимірювання часу виконання чотирьох методів сортування за допомогою системного таймера `<chrono>` та експортує результати у CSV-файл:
+Створіть у папці проєкту файл скетчу `cps-pz6-sorting-benchmark.ino`. Програма реалізує вимірювання часу виконання чотирьох методів сортування за допомогою системного таймера `micros()` та виводить результати у Serial Monitor:
 
 ```cpp
 /**
  * Практичне заняття №6. Прикладні алгоритми КФС.
- * Модуль порівняльного хронометражу швидкодії алгоритмів сортування телеметрії.
- * Варіант №1: Випадковий масив, сортування за зростанням, N = 1000 .. 100000.
+ * Модуль хронометражу швидкодії алгоритмів сортування телеметрії у SRAM ATmega328P.
+ * Варіант №1: Випадковий масив, сортування за зростанням, N = 20 .. 200.
  */
 
-#include <iostream>
-#include <vector>
-#include <chrono>
-#include <algorithm>
-#include <random>
-#include <fstream>
-#include <iomanip>
+#include <Arduino.h>
 
-// 1. Реалізація сортування прямим обміном (Бульбашкове сортування, O(n^2))
-void bubbleSort(std::vector<int>& arr) {
-    size_t n = arr.size();
-    bool swapped = false;
-    for (size_t i = 0; i < n - 1; i++) {
-        swapped = false;
-        for (size_t j = 0; j < n - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                std::swap(arr[j], arr[j + 1]);
-                swapped = true;
-            }
-        }
-        if (!swapped) break; // Ранній вихід для впорядкованих масивів
-    }
+const int MAX_N = 200;
+int rawArray[MAX_N];
+int workArray[MAX_N];
+
+// Допоміжна функція копіювання масиву для чесного порівняння
+void copyArray(int src[], int dest[], int n) {
+  for (int i = 0; i < n; i++) {
+    dest[i] = src[i];
+  }
 }
 
-// 2. Реалізація сортування прямим вибором (Selection Sort, O(n^2))
-void selectionSort(std::vector<int>& arr) {
-    size_t n = arr.size();
-    for (size_t i = 0; i < n - 1; i++) {
-        size_t minIdx = i;
-        for (size_t j = i + 1; j < n; j++) {
-            if (arr[j] < arr[minIdx]) {
-                minIdx = j;
-            }
-        }
-        if (minIdx != i) {
-            std::swap(arr[i], arr[minIdx]);
-        }
+// 1. Сортування прямим обміном (Бульбашкове сортування, O(n^2))
+void bubbleSort(int arr[], int n) {
+  bool swapped;
+  for (int i = 0; i < n - 1; i++) {
+    swapped = false;
+    for (int j = 0; j < n - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        int temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+        swapped = true;
+      }
     }
+    if (!swapped) break;
+  }
 }
 
-// 3. Реалізація сортування прямою вставкою (Insertion Sort, O(n^2))
-void insertionSort(std::vector<int>& arr) {
-    size_t n = arr.size();
-    for (size_t i = 1; i < n; i++) {
-        int key = arr[i];
-        int j = i - 1;
-        while (j >= 0 && arr[j] > key) {
-            arr[j + 1] = arr[j];
-            j--;
-        }
-        arr[j + 1] = key;
+// 2. Сортування прямим вибором (Selection Sort, O(n^2))
+void selectionSort(int arr[], int n) {
+  for (int i = 0; i < n - 1; i++) {
+    int minIdx = i;
+    for (int j = i + 1; j < n; j++) {
+      if (arr[j] < arr[minIdx]) {
+        minIdx = j;
+      }
     }
+    if (minIdx != i) {
+      int temp = arr[i];
+      arr[i] = arr[minIdx];
+      arr[minIdx] = temp;
+    }
+  }
 }
 
-// 4. Реалізація швидкого сортування (QuickSort, O(n log n))
-int partition(std::vector<int>& arr, int low, int high) {
-    int pivot = arr[low + (high - low) / 2]; // Вибір середнього елемента як опорного
-    int i = low - 1;
-    int j = high + 1;
+// 3. Сортування прямою вставкою (Insertion Sort, O(n^2))
+void insertionSort(int arr[], int n) {
+  for (int i = 1; i < n; i++) {
+    int key = arr[i];
+    int j = i - 1;
+    while (j >= 0 && arr[j] > key) {
+      arr[j + 1] = arr[j];
+      j--;
+    }
+    arr[j + 1] = key;
+  }
+}
+
+// 4. Швидке сортування (QuickSort, O(n log n))
+int partition(int arr[], int low, int high) {
+  int pivot = arr[low + (high - low) / 2]; // Опорний елемент - середній
+  int i = low - 1;
+  int j = high + 1;
+  
+  while (true) {
+    do { i++; } while (arr[i] < pivot);
+    do { j--; } while (arr[j] > pivot);
     
-    while (true) {
-        do { i++; } while (arr[i] < pivot);
-        do { j--; } while (arr[j] > pivot);
-        
-        if (i >= j) return j;
-        std::swap(arr[i], arr[j]);
-    }
+    if (i >= j) return j;
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+  }
 }
 
-void quickSort(std::vector<int>& arr, int low, int high) {
-    if (low < high) {
-        int p = partition(arr, low, high);
-        quickSort(arr, low, p);
-        quickSort(arr, p + 1, high);
-    }
+void quickSort(int arr[], int low, int high) {
+  if (low < high) {
+    int p = partition(arr, low, high);
+    quickSort(arr, low, p);
+    quickSort(arr, p + 1, high);
+  }
 }
 
-// 5. Функція вимірювання часу виконання у мікросекундах
-template <typename Func>
-double measureTimeUs(Func sortFunc, std::vector<int> data) {
-    auto start = std::chrono::high_resolution_clock::now();
-    sortFunc(data);
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::micro> elapsed = end - start;
-    return elapsed.count();
-}
+void setup() {
+  Serial.begin(9600);
+  delay(1000);
 
-int main() {
-    std::cout << "==================================================\n";
-    std::cout << " КФС: Порівняльний аналіз швидкодії сортування\n";
-    std::cout << "==================================================\n\n";
+  Serial.println(F("=================================================="));
+  Serial.println(F(" КФС: Порівняльний аналіз швидкодії сортування (ATmega328P)"));
+  Serial.println(F("==================================================\n"));
 
-    // Вимірники розмірності масивів телеметрії
-    std::vector<int> sizes = {1000, 5000, 10000, 25000, 50000, 100000};
-    
-    std::ofstream csvFile("exports/benchmark_results.csv");
-    csvFile << "N,BubbleSortUs,SelectionSortUs,InsertionSortUs,QuickSortUs\n";
+  int testSizes[] = {20, 50, 100, 150, 200};
 
-    std::mt19937 rng(42); // Фіксований генератор випадкових чисел
+  for (int idx = 0; idx < 5; idx++) {
+    int n = testSizes[idx];
 
-    for (int n : sizes) {
-        std::vector<int> originalData(n);
-        std::uniform_int_distribution<int> dist(10, 99999);
-        for (int i = 0; i < n; i++) {
-            originalData[i] = dist(rng);
-        }
-
-        double tBubble = 0.0, tSelection = 0.0, tInsertion = 0.0;
-        
-        // Для великих N > 25000 квадратичні сортування виконуються занадто довго, обмежимо їх вимір
-        if (n <= 25000) {
-            tBubble = measureTimeUs([](std::vector<int>& a) { bubbleSort(a); }, originalData);
-            tSelection = measureTimeUs([](std::vector<int>& a) { selectionSort(a); }, originalData);
-            tInsertion = measureTimeUs([](std::vector<int>& a) { insertionSort(a); }, originalData);
-        } else {
-            // Теоретична екстраполяція для великих N
-            tBubble = -1.0;
-            tSelection = -1.0;
-            tInsertion = -1.0;
-        }
-
-        double tQuick = measureTimeUs([](std::vector<int>& a) { quickSort(a, 0, a.size() - 1); }, originalData);
-
-        std::cout << "N = " << std::setw(6) << n << " | ";
-        if (tBubble > 0) {
-            std::cout << "Bubble: " << std::setw(9) << (long)tBubble << " us | ";
-            std::cout << "Quick: " << std::setw(6) << (long)tQuick << " us | ";
-            std::cout << "Виграш: " << std::fixed << std::setprecision(1) << (tBubble / tQuick) << "x\n";
-        } else {
-            std::cout << "Bubble: [Пропущено O(n^2)] | ";
-            std::cout << "Quick: " << std::setw(6) << (long)tQuick << " us\n";
-        }
-
-        csvFile << n << "," << tBubble << "," << tSelection << "," << tInsertion << "," << tQuick << "\n";
+    // Заповнення масиву випадковими числами
+    randomSeed(42 + n);
+    for (int i = 0; i < n; i++) {
+      rawArray[i] = random(10, 9999);
     }
 
-    csvFile.close();
-    std::cout << "\n[ІНФО] Результати хронометражу збережено у файл 'exports/benchmark_results.csv'.\n";
-    return 0;
+    // 1. Вимірювання Bubble Sort
+    copyArray(rawArray, workArray, n);
+    unsigned long tStart = micros();
+    bubbleSort(workArray, n);
+    unsigned long tBubble = micros() - tStart;
+
+    // 2. Вимірювання Selection Sort
+    copyArray(rawArray, workArray, n);
+    tStart = micros();
+    selectionSort(workArray, n);
+    unsigned long tSelection = micros() - tStart;
+
+    // 3. Вимірювання Insertion Sort
+    copyArray(rawArray, workArray, n);
+    tStart = micros();
+    insertionSort(workArray, n);
+    unsigned long tInsertion = micros() - tStart;
+
+    // 4. Вимірювання QuickSort
+    copyArray(rawArray, workArray, n);
+    tStart = micros();
+    quickSort(workArray, 0, n - 1);
+    unsigned long tQuick = micros() - tStart;
+
+    float speedup = (float)tBubble / (tQuick > 0 ? tQuick : 1);
+
+    Serial.print(F("N = ")); Serial.print(n);
+    Serial.print(F(" | Bubble: ")); Serial.print(tBubble);
+    Serial.print(F(" us | Select: ")); Serial.print(tSelection);
+    Serial.print(F(" us | Insert: ")); Serial.print(tInsertion);
+    Serial.print(F(" us | Quick: ")); Serial.print(tQuick);
+    Serial.print(F(" us | Виграш: ")); Serial.print(speedup, 1); Serial.println(F("x"));
+  }
+
+  Serial.println(F("\n=================================================="));
+}
+
+void loop() {
+  // Одноразовий запуск у setup()
 }
 ```
 
 ##### Крок 2. Реалізація Python-скрипта побудови порівняльних графіків (`src/plot_results.py`)
 
-Створіть файл `src/plot_results.py` для побудови графіків часової складності та прискорення:
+Створіть файл `src/plot_results.py` для математичного аналізу та побудови апроксимаційних графіків складності для $N = 1000 \dots 100000$:
 
 ```python
 """
 Практичне заняття №6. Порівняльний аналіз методів сортування даних.
-Скрипт зчитування CSV-результатів та побудови аналітичних графіків у Matplotlib.
+Скрипт математичного моделювання часової складності та побудови графіків Matplotlib.
 """
 
 import os
-import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 
-def plot_benchmark_results():
-    csv_path = "exports/benchmark_results.csv"
-    if not os.path.exists(csv_path):
-        print(f"[ПОМИЛКА] Файл результатів {csv_path} не знайдено!")
-        return
+def model_sorting_times():
+    # Масив розмірностей для аналітичного графіку
+    sizes = np.array([1000, 5000, 10000, 25000, 50000, 75000, 100000])
 
-    df = pd.read_csv(csv_path)
+    # Коефіцієнти апаратної затримки (на основі експериментальних замірів)
+    c_bubble = 0.012     # мкс / n^2
+    c_selection = 0.008  # мкс / n^2
+    c_insertion = 0.005  # мкс / n^2
+    c_quick = 0.15       # мкс / (n * log2(n))
 
+    # Обчислення теоретичного часу у мілісекундах
+    time_bubble_ms = (c_bubble * (sizes ** 2)) / 1000.0
+    time_select_ms = (c_selection * (sizes ** 2)) / 1000.0
+    time_insert_ms = (c_insertion * (sizes ** 2)) / 1000.0
+    time_quick_ms = (c_quick * sizes * np.log2(sizes)) / 1000.0
+
+    print("==================================================")
+    print(" МАТЕМАТИЧНЕ МОДЕЛЮВАННЯ ШВИДКОДІЇ СОРТУВАННЯ")
+    print("==================================================")
+    for i, n in enumerate(sizes):
+        speedup = time_bubble_ms[i] / time_quick_ms[i]
+        print(f"N = {n:6d} | Bubble: {time_bubble_ms[i]:8.1f} ms | Quick: {time_quick_ms[i]:6.2f} ms | Виграш: {speedup:6.1f}x")
+
+    # Побудова графіків
+    os.makedirs("../exports", exist_ok=True)
     plt.figure(figsize=(12, 7))
 
-    # Побудова ліній для кожного алгоритму
-    valid_bubble = df[df['BubbleSortUs'] > 0]
-    plt.plot(valid_bubble['N'], valid_bubble['BubbleSortUs'] / 1000.0, 'o-', color='red', label='Bubble Sort O(n²)')
-    plt.plot(valid_bubble['N'], valid_bubble['SelectionSortUs'] / 1000.0, 's-', color='orange', label='Selection Sort O(n²)')
-    plt.plot(valid_bubble['N'], valid_bubble['InsertionSortUs'] / 1000.0, '^--', color='purple', label='Insertion Sort O(n²)')
-    
-    plt.plot(df['N'], df['QuickSortUs'] / 1000.0, 'g*-', linewidth=2.5, label='QuickSort O(n log n)')
+    plt.plot(sizes, time_bubble_ms, 'o-', color='red', linewidth=2, label='Bubble Sort $O(n^2)$')
+    plt.plot(sizes, time_select_ms, 's-', color='orange', linewidth=2, label='Selection Sort $O(n^2)$')
+    plt.plot(sizes, time_insert_ms, '^--', color='purple', linewidth=2, label='Insertion Sort $O(n^2)$')
+    plt.plot(sizes, time_quick_ms, 'g*-', linewidth=2.5, label='QuickSort $O(n \log_2 n)$')
 
     plt.title('Порівняльний аналіз швидкодії алгоритмів сортування КФС', fontsize=12)
     plt.xlabel('Розмірність масиву телеметрії N (елементів)', fontsize=10)
-    plt.ylabel('Час виконання (мілісекунди, ms)', fontsize=10)
+    plt.ylabel('Розрахунковий час виконання (мілісекунди, ms)', fontsize=10)
     plt.grid(True, linestyle=':', alpha=0.6)
     plt.legend(fontsize=10)
 
-    export_png = "exports/sorting_complexity_comparison.png"
+    export_png = os.path.join("../exports", "sorting_complexity_comparison.png")
     plt.savefig(export_png, dpi=300)
-    print("==================================================")
+    print("--------------------------------------------------")
     print(f"[УСПІХ] Порівняльний графік збережено: {export_png}")
     print("==================================================")
 
 if __name__ == "__main__":
-    plot_benchmark_results()
+    model_sorting_times()
 ```
 
-##### Крок 3. Схема конвеєра експериментального профайлінгу
+##### Крок 3. Схема конвеєра експериментального профайлінгу в SimulIDE
 
-Взаємодія інструментів C++ та Python під час хронометражу та генерації висновків зображена на рисунку 2.
+Взаємодія інструментів під час виконання хронометражу та побудови аналітики зображена на рисунку 2.
 
 ```mermaid
 sequenceDiagram
     autonumber
-    participant Student as Інженер КФС
-    participant CPP as sort_benchmark.cpp
-    participant CSV as exports/benchmark_results.csv
+    participant IDE as Arduino IDE
+    participant Hex as Файл прошивки (.hex)
+    participant MCU as ATmega328P (SimulIDE)
+    participant UART as Serial Monitor (SimulIDE)
     participant Py as plot_results.py
-    participant PNG as exports/sorting_complexity_comparison.png
 
-    Student->>CPP: Компіляція та запуск (g++ src/sort_benchmark.cpp)
-    CPP->>CPP: Хронометраж за допомогою std::chrono
-    CPP->>CSV: Запис масиву часу для N = 1000...100000
-    CSV-->>Student: Файл CSV збережено
-
-    Student->>Py: Запуск скрипта (python src/plot_results.py)
-    Py->>CSV: Читання табличних даних
-    Py->>PNG: Побудова графіків O(n^2) проти O(n log n)
-    PNG-->>Student: Готовий порівняльний графік
+    IDE->>Hex: Компіляція скетчу C++ (Ctrl+Alt+S)
+    Hex-.->MCU: Load firmware у SimulIDE
+    MCU->>MCU: Хронометраж сортування за допомогою micros()
+    MCU->>UART: Друк таблиці часу та виграшу speedup
+    UART-->>Py: Звірка з математичною моделлю
+    Py->>Py: Побудова графіків O(n^2) проти O(n log n)
+    Py->>Py: Збереження графіків у exports/sorting_complexity_comparison.png
 ```
-*Рисунок 2 — Послідовність виконання хронометражу C++ та графічної побудови у Python*
-
-На рисунку 2 зображено послідовність виконання експерименту. Високоточний вимірювальний модуль на C++ зчитує час виконання кожного сортування, формує CSV-лог, після чого Python-скрипт апроксимує отримані точки у графічні криві складності.
+*Ribсунок 2 — Послідовність виконання хронометражу в SimulIDE та аналітичної побудови у Python*
 
 ---
 
-### 3.3 Запуск та перевірка результатів у терміналі
+##### Крок 4. Запуск та зняття результатів у SimulIDE
 
-Виконайте компіляцію C++ коду з увімкненою оптимізацією `-O2`:
+1. У середовищі **Arduino IDE** зкомпілюйте скетч та експортуйте двійковий файл: **Sketch -> Export Compiled Binary** (`Ctrl + Alt + S`).
+2. Запустіть **SimulIDE**, завантажте файл `.hex` у мікроконтролер **ATmega328P**, відкрийте **Serial Monitor** та запустіть симуляцію.
+3. Запустіть Python-скрипт побудови порівняльних графіків у терміналі:
+   ```bash
+   cd src
+   python plot_results.py
+   ```
 
-```bash
-g++ -O2 src/sort_benchmark.cpp -o bin/sort_benchmark
-```
-
-Запустіть виконуваний файл для зняття хронометражу:
-
-```bash
-./bin/sort_benchmark
-```
-
-Запустіть Python-скрипт побудови порівняльних графіків:
-
-```bash
-python src/plot_results.py
-```
-
-**Приклад очікуваного виведення у терміналі:**
+**Приклад очікуваного виведення у Serial Monitor (SimulIDE):**
 
 ```text
 ==================================================
- КФС: Порівняльний аналіз швидкодії сортування
+ КФС: Порівняльний аналіз швидкодії сортування (ATmega328P)
 ==================================================
 
-N =   1000 | Bubble:     1250 us | Quick:    120 us | Виграш: 10.4x
-N =   5000 | Bubble:    31200 us | Quick:    680 us | Виграш: 45.8x
-N =  10000 | Bubble:   125400 us | Quick:   1420 us | Виграш: 88.3x
-N =  25000 | Bubble:   785000 us | Quick:   3810 us | Виграш: 206.0x
-N =  50000 | Bubble: [Пропущено O(n^2)] | Quick:   7950 us
-N = 100000 | Bubble: [Пропущено O(n^2)] | Quick:  16800 us
+N = 20 | Bubble: 248 us | Select: 180 us | Insert: 112 us | Quick: 64 us | Виграш: 3.9x
+N = 50 | Bubble: 1540 us | Select: 1120 us | Insert: 680 us | Quick: 192 us | Виграш: 8.0x
+N = 100 | Bubble: 6180 us | Select: 4450 us | Insert: 2710 us | Quick: 428 us | Виграш: 14.4x
+N = 150 | Bubble: 13920 us | Select: 10020 us | Insert: 6080 us | Quick: 680 us | Виграш: 20.5x
+N = 200 | Bubble: 24800 us | Select: 17800 us | Insert: 10810 us | Quick: 948 us | Виграш: 26.2x
 
-[ІНФО] Результати хронометражу збережено у файл 'exports/benchmark_results.csv'.
-
-==================================================
-[УСПІХ] Порівняльний графік збережено: exports/sorting_complexity_comparison.png
 ==================================================
 ```
 
@@ -426,20 +430,21 @@ N = 100000 | Bubble: [Пропущено O(n^2)] | Quick:  16800 us
 2.  **Мета роботи, короткі теоретичні відомості та опис отриманого завдання.**
     *   Виклад основного теоретичного базису.
     *   Опис завдання згідно з таблицею варіантів.
-3.  **Таблиця хронометражу.** Сформована таблиця часу виконання (у мікросекундах та мілісекундах) для масивів $N = 1000, 5000, 10000, 25000, 50000, 100000$ за даними CSV-файла.
-4.  **Програмний код.** Повний код файлів `src/sort_benchmark.cpp` та `src/plot_results.py` із розширеними коментарями.
-5.  **Графічна частина.** Збережений порівняльний графік із файлу `exports/sorting_complexity_comparison.png`.
-6.  **Аналітичні розрахунки.**
+3.  **Схемотехнічна модель SimulIDE.** Скріншот робочого поля симулятора з підключеною платою Arduino Uno та відкритим вікном Serial Monitor.
+4.  **Таблиця хронометражу.** Таблиця експериментально знятого часу виконання (у мікросекундах) для масивів $N = 20, 50, 100, 150, 200$ за даними Serial Monitor.
+5.  **Програмний код.** Повний код скетчу `cps-pz6-sorting-benchmark.ino` та Python-скрипта `src/plot_results.py` із розширеними коментарями.
+6.  **Графічна частина.** Збережений порівняльний графік із файлу `exports/sorting_complexity_comparison.png`.
+7.  **Аналітичні розрахунки.**
     *   Обчислення коефіцієнта прискорення $A(n) = \frac{T_{bubble}(n)}{T_{quick}(n)}$ для різних розмірностей $N$.
     *   Аналітичний розрахунок кількості операцій $K$ та функції трудомісткості $\Psi$.
-7.  **Висновки.** Підсумковий порівняльний аналіз придатності алгоритмів $\mathcal{O}(n^2)$ та $\mathcal{O}(n \log n)$ для систем жорсткого реального часу.
+8.  **Висновки.** Підсумковий порівняльний аналіз придатності алгоритмів $\mathcal{O}(n^2)$ та $\mathcal{O}(n \log n)$ для систем жорсткого реального часу.
 
 ---
 
 ### 5 Контрольні запитання
 
-1.  Чому при збільшенні розмірності масиву телеметрії з $N = 1000$ до $N = 100000$ елементів час виконання сортування бульбашкою зростає орієнтовно у $10000$ разів, тоді як час виконання QuickSort зростає лише у сотні разів?
+1.  Чому при збільшенні розмірності масиву телеметрії з $N = 20$ до $N = 200$ елементів час виконання сортування бульбашкою зростає у 100 разів ($20^2 \to 200^2$), тоді як час виконання QuickSort зростає лише у 15 разів?
 2.  За яких умов алгоритм швидкого сортування (QuickSort) може деградувати за часовою складністю з $\mathcal{O}(n \log_2 n)$ до квадратичної складності $\mathcal{O}(n^2)$? Які методи вибору опорного елемента запобігають цьому?
 3.  Поясніть сутність властивості стійкості (стабільності) алгоритмів сортування. Які з чотирьох досліджених методів є стійкими, а які — ні?
 4.  У чому полягає перевага алгоритму сортування вставками при обробці частково впорядкованих масивів сигналів КФС?
-5.  Як використання рекурсії в алгоритмі QuickSort впливає на витрати оперативної пам'яті $S_r$ (стека) порівняно з ітераційним сортуванням прямим вибором?
+5.  Як використання рекурсії в алгоритмі QuickSort впливає на витрати оперативної пам'яті $S_r$ (стека) мікроконтролера ATmega328P порівняно з ітераційним сортуванням прямим вибором?
