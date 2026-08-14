@@ -88,7 +88,6 @@ extra_css:
 copyright: 'Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>'
 
 nav:
-  - Головна: index.md
   - Робоча навчальна програма: rnp.md
   
   - Лекції:
