@@ -11,14 +11,17 @@ theme:
     favicon: material/chip
 
   palette:
+    # Світла тема
     - scheme: default
       primary: indigo
       accent: cyan
       toggle:
         icon: material/brightness-7
         name: Переключити на темну тему
+
+    # Темна тема (Slate)
     - scheme: slate
-      primary: indigo
+      primary: blue        # Яскравіший синій для кращого контрасту
       accent: cyan
       toggle:
         icon: material/brightness-4
