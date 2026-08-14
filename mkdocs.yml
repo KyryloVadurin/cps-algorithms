@@ -88,7 +88,7 @@ extra_css:
 copyright: 'Copyright &copy; 2026 Kyrylo Vadurin &bull; <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>'
 
 nav:
-  - Робоча навчальна програма: rnp.md
+  - Робоча навчальна програма: index.md
   
   - Лекції:
       - "Тема 1. Теоретичні засади алгоритмізації": lectures/topic-1.md
