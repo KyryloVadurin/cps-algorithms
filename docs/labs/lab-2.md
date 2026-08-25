@@ -130,7 +130,7 @@ flowchart TD
 
 ### **Крок 0.1. Встановлення ПЗ**
 1.  Завантажте та встановіть **Arduino IDE** з офіційного сайту [arduino.cc](https://www.arduino.cc/en/software).
-2.  Завантажте схемотехнічний симулятор **SimulIDE** з офіційного ресурсу [simulide.com](https://www.simulide.com/). Симулятор не потребує інсталяції та запускається з розархівованої папки за допомогою виконуваного файлу `SimulIDE.exe`.
+2.  Завантажте схемотехнічний симулятор **SimulIDE 1.1** з офіційного ресурсу [simulide.com](https://www.simulide.com/). Симулятор не потребує інсталяції та запускається з розархівованої папки за допомогою виконуваного файлу `SimulIDE.exe`.
 
 ### **Крок 0.2. Створення робочого проєкту**
 Створіть на диску папку для проєкту з назвою `cps-lab2-sensor`. Всередині папки створіть скетч Arduino з аналогічною назвою `cps-lab2-sensor.ino`.
@@ -145,10 +145,10 @@ cps-lab2-sensor/
 ### Крок 0.3. Налаштування симуляційної схеми в SimulIDE
 1.  Запустіть `SimulIDE.exe`.
 2.  У лівій панелі компонентів у розділі **Micro** знайдіть компонент **Arduino Uno** та перетягніть його на робоче поле.
-3.  У розділі **Switches/Potentiometers** знайдіть **Potentiometer** (або у розділі **Sources** візьміть **Volt. Source**) для імітації виходу термопари.
+3.  У розділі **Passive** знайдіть **Potentiometer** (або у розділі **Sources** візьміть **Volt. Source**) для імітації виходу термопари.
 4.  З’єднайте центральний вивід потенціометра з аналоговим входом **A0** плати Arduino Uno. Крайні виводи потенціометра підключіть до ліній **5V** та **GND**.
-5.  Клацніть правою кнопкою миші на плату Arduino Uno та оберіть пункт **Open Serial Monitor** для відкриття консолі UART.
-6.  Збережіть схему у папку проєкту під назвою `circuit.simu`.
+5.  Клацніть правою кнопкою миші на плату Arduino Uno та оберіть пункт **Open Monitor** для відкриття консолі USART.
+6.  Збережіть схему у папку проєкту під назвою `circuit.sim`.
 
 ---
 
@@ -191,118 +191,117 @@ cps-lab2-sensor/
 
 ```cpp
 /**
- * Лабораторна робота №2. Прикладні алгоритми КФС.
- * Алгоритм відсікання аномальних значень телеметрії та накопичення ковзного середнього.
- * Варіант №1: Охолодження реактора.
+ * Lab Work #2. Cyber-Physical Systems (CPS) Applied Algorithms.
+ * Telemetry outlier rejection and moving average accumulation.
+ * Variant #1: Reactor Cooling.
  */
 
-// 1. Конфігураційні константи системи (залежать від Варіанта)
-const float V_REF = 5.0;            // Опорна напруга АЦП, Вольт
-const float T_MIN = -50.0;          // Мінімальна температура датчика, град. C
-const float T_MAX = 150.0;          // Максимальна температура датчика, град. C
-const float T_LOW_BARRIER = -20.0;  // Нижній допустимий бар'єр відсікання, град. C
-const float T_HIGH_BARRIER = 100.0; // Верхній допустимий бар'єр відсікання, град. C
-const int WINDOW_SIZE = 8;          // Розмір вікна накопичення коректних замірів N
+// 1. System configuration constants (depend on Variant)
+const float V_REF = 5.0;            // ADC Reference Voltage, Volts
+const float T_MIN = -50.0;          // Min sensor temperature, deg C
+const float T_MAX = 150.0;          // Max sensor temperature, deg C
+const float T_LOW_BARRIER = -20.0;  // Low cut-off threshold, deg C
+const float T_HIGH_BARRIER = 100.0; // High cut-off threshold, deg C
+const int WINDOW_SIZE = 8;          // Sample window size N
 
-// 2. Визначення вхідного піна АЦП
-const int SENSOR_PIN = A0;          // Аналоговий вхід мікроконтролера
+// 2. ADC input pin definition
+const int SENSOR_PIN = A0;          // Microcontroller analog input pin
 
-// 3. Глобальні змінні для зберігання стану буфера
-float tempBuffer[WINDOW_SIZE];      // Циклічний буфер для збереження коректних замірів
-int validSampleCount = 0;           // Лічильник збережених коректних замірів
-unsigned long totalReadings = 0;    // Загальний лічильник виконаних зчитувань
-unsigned long rejectedReadings = 0; // Лічильник відкинутих аномальних значень
+// 3. Global variables for buffer state
+float tempBuffer[WINDOW_SIZE];      // Buffer for valid samples
+int validSampleCount = 0;           // Counter of stored valid samples
+unsigned long totalReadings = 0;    // Total readings counter
+unsigned long rejectedReadings = 0; // Rejected outliers counter
 
 void setup() {
-  // Ініціалізація послідовного порту UART зі швидкістю 9600 біт/с
+  // Initialize UART serial communication at 9600 bps
   Serial.begin(9600);
   
-  // Виведення банера системи у консоль
+  // System banner output
   Serial.println(F("=================================================="));
-  Serial.println(F(" КФС: Система первинної обробки телеметрії реального часу"));
-  Serial.println(F(" Стратегія: Послідовне відсікання бар'єрами без складних булевих умов"));
+  Serial.println(F(" CPS: Real-Time Telemetry Pre-Processing System"));
+  Serial.println(F(" Strategy: Sequential barrier filtering"));
   Serial.println(F("=================================================="));
 }
 
 void loop() {
-  // 1. Зчитування цифрового коду АЦП з аналогового входу A0
+  // 1. Read raw ADC value from analog pin A0
   uint16_t adcRaw = analogRead(SENSOR_PIN);
   totalReadings++;
 
-  // 2. Розрахунок фактичної напруги Vin
+  // 2. Calculate actual voltage Vin
   float vIn = (adcRaw * V_REF) / 1023.0;
 
-  // 3. Масштабування напруги у фізичне значення температури T
+  // 3. Scale voltage to physical temperature value T
   float currentTemp = T_MIN + (vIn / V_REF) * (T_MAX - T_MIN);
 
-  // 4. Реалізація стратегії відсікання бар'єрами (оптимізована для реального часу)
-  // Використовуємо прості послідовні перевірки замість складних умов з && та ||
+  // 4. Barrier cut-off strategy (optimized for real-time)
   if (currentTemp < T_LOW_BARRIER) {
-    // Відсікання за нижньою межею (аномальний холод/шум)
+    // Cut-off by lower bound (noise / extreme low)
     rejectedReadings++;
-    Serial.print(F("[АНОМАЛІЯ НИЖНЯ] Замір #"));
+    Serial.print(F("[ANOMALY LOW] Sample #"));
     Serial.print(totalReadings);
     Serial.print(F(": T = "));
     Serial.print(currentTemp, 2);
-    Serial.println(F(" deg C < T_low. Відкинуто."));
+    Serial.println(F(" deg C < T_low. Rejected."));
   } 
   else if (currentTemp > T_HIGH_BARRIER) {
-    // Відсікання за верхньою межею (аномальне перегрівання/імпульсний шум)
+    // Cut-off by upper bound (overheating / impulse noise)
     rejectedReadings++;
-    Serial.print(F("[АНОМАЛІЯ ВЕРХНЯ] Замір #"));
+    Serial.print(F("[ANOMALY HIGH] Sample #"));
     Serial.print(totalReadings);
     Serial.print(F(": T = "));
     Serial.print(currentTemp, 2);
-    Serial.println(F(" deg C > T_high. Відкинуто."));
+    Serial.println(F(" deg C > T_high. Rejected."));
   } 
   else {
-    // Замір знаходиться в межах норми - додаємо до циклічного буфера
+    // Sample within valid range - store into buffer
     tempBuffer[validSampleCount] = currentTemp;
     validSampleCount++;
 
-    Serial.print(F("[НОРМА] Замір #"));
+    Serial.print(F("[NORMAL] Sample #"));
     Serial.print(totalReadings);
     Serial.print(F(": T = "));
     Serial.print(currentTemp, 2);
-    Serial.print(F(" deg C занесено в буфер ("));
+    Serial.print(F(" deg C buffered ("));
     Serial.print(validSampleCount);
     Serial.print(F("/"));
     Serial.print(WINDOW_SIZE);
     Serial.println(F(")"));
 
-    // 5. Перевірка заповнення вікна накопичення N
+    // 5. Check if accumulation window N is full
     if (validSampleCount >= WINDOW_SIZE) {
-      // Обчислення ковзного середнього за допомогою циклу for
+      // Calculate moving average
       float sum = 0.0;
       for (int i = 0; i < WINDOW_SIZE; i++) {
         sum += tempBuffer[i];
       }
       float meanTemp = sum / WINDOW_SIZE;
 
-      // Виведення підсумкового результату
+      // Output aggregated result
       Serial.println(F("--------------------------------------------------"));
-      Serial.print(F(">>> УСЕРЕДНЕНА ТЕЛЕМЕТРІЯ (N="));
+      Serial.print(F(">>> AVERAGED TELEMETRY (N="));
       Serial.print(WINDOW_SIZE);
       Serial.print(F("): T_mean = "));
       Serial.print(meanTemp, 3);
       Serial.println(F(" deg C <<<"));
       
-      // Статистика відсікання завад
+      // Noise rejection statistics
       float errorRate = ((float)rejectedReadings / totalReadings) * 100.0;
-      Serial.print(F("Статистика: Всього замірів: "));
+      Serial.print(F("Stats: Total samples: "));
       Serial.print(totalReadings);
-      Serial.print(F(" | Відкинуто завад: "));
+      Serial.print(F(" | Rejected: "));
       Serial.print(rejectedReadings);
       Serial.print(F(" ("));
       Serial.print(errorRate, 1);
       Serial.println(F("%)\n--------------------------------------------------"));
 
-      // Скидання лічильника буфера для наступного вікна
+      // Reset buffer counter for next window
       validSampleCount = 0;
     }
   }
 
-  // Затримка 500 мс між замірами для симуляції періодичного опитування
+  // 500 ms delay between readings
   delay(500);
 }
 ```
@@ -310,12 +309,17 @@ void loop() {
 ### Компіляція та завантаження прошивки в SimulIDE
 
 1.  У середовищі **Arduino IDE** перевірте правильність налаштувань плати: оберіть пункт меню **Tools -> Board -> Arduino AVR Boards -> Arduino Uno**.
+
+![alt text](<Знімок екрана 2026-08-25 125000.png>)
+
 2.  Виконайте експорт скомпільованого двійкового файлу прошивки: оберіть пункт меню **Sketch -> Export Compiled Binary** (або натисніть комбінацію клавіш `Ctrl + Alt + S`).
 3.  У папці проєкту `cps-lab2-sensor` з'явиться скомпільований файл із розширенням `.hex` (наприклад, `cps-lab2-sensor.ino.hex`).
 4.  Перейдіть до вікна програму **SimulIDE**.
 5.  Клацніть правою кнопкою миші на мікроконтролер **ATmega328P** (Arduino Uno) та у контекстному меню оберіть пункт **Load firmware**.
 6.  У вікні файлового менеджера вкажіть шлях до завантаженого `.hex` файлу.
 7.  Натисніть кнопку **Power Circuit** (червона кнопка запуску симуляції у верхній лівій частині вікна SimulIDE).
+
+![alt text](<Знімок екрана 2026-08-25 125156.png>)
 
 ```mermaid
 flowchart LR
@@ -398,4 +402,3 @@ flowchart LR
 3.  У чому полягає відмінність між повною та короткою схемами обчислення булевих виразів компілятором C++? Як короткий вирахування запобігає помилкам звернення до пам'яті?
 4.  Яким чином розрядність АЦП (10 біт) впливає на роздільну здатність вимірювання температури у градусах Цельсія для вашого варіанта? Наведіть розрахунок ціни найменшого розряду (LSB).
 5.  Як використання статичного масиву як циклічного буфера впливає на ємнісну складність $S_d$ в оперативній пам'яті (SRAM) порівняно з використанням динамічної пам'яті (`malloc`/`new`) у мікроконтролерах?
-
